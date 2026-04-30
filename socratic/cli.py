@@ -122,7 +122,7 @@ def main():
     # 助教人格
     persona_name = args.persona
     if persona_name is None:
-        if args.solve or args.book or args.review or args.init_kb or args.report or args.stats or args.list or args.generate or args.flash:
+        if args.solve or args.book or args.review or args.init_kb or args.report or args.stats or args.list or args.generate or args.flash or subject in ("biology", "geography"):
             persona_name = "default"
         else:
             persona_name = show_persona_menu()
@@ -175,6 +175,13 @@ def main():
 
     if args.flash:
         from .flash import run_flash_mode
+        run_flash_mode(subject, SUBJECTS, ALL_PROBLEMS, persona)
+        return
+
+    # 生物/地理默认走闪卡模式
+    if subject in ("biology", "geography") and not args.no_loop and not args.generate and not args.review and not args.book and not args.solve and not args.stats and not args.list:
+        from .flash import run_flash_mode
+        print(f"{Color.DIM}  生物/地理默认闪卡模式，加 --no-loop 进入标准模式{Color.RESET}")
         run_flash_mode(subject, SUBJECTS, ALL_PROBLEMS, persona)
         return
 
