@@ -90,6 +90,8 @@ def main():
                         help="初始化知识库（为所有主题生成知识卡片）")
     parser.add_argument("--report", action="store_true",
                         help="📊 学习报告（周报/趋势/统计）")
+    parser.add_argument("--flash", action="store_true",
+                        help="⚡ 闪卡刷题（看题→回车看答案→自评对错，适合考前冲刺）")
     parser.add_argument("--version", "-v", action="store_true", help="显示版本")
 
     args = parser.parse_args()
@@ -120,7 +122,7 @@ def main():
     # 助教人格
     persona_name = args.persona
     if persona_name is None:
-        if args.solve or args.book or args.review or args.init_kb or args.report or args.stats or args.list or args.generate:
+        if args.solve or args.book or args.review or args.init_kb or args.report or args.stats or args.list or args.generate or args.flash:
             persona_name = "default"
         else:
             persona_name = show_persona_menu()
@@ -169,6 +171,11 @@ def main():
     if args.report:
         from .report import run_report
         run_report(subject, SUBJECTS, ALL_PROBLEMS)
+        return
+
+    if args.flash:
+        from .flash import run_flash_mode
+        run_flash_mode(subject, SUBJECTS, ALL_PROBLEMS, persona)
         return
 
     if args.list:
