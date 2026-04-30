@@ -7,8 +7,11 @@ from .generate import generate_problem, get_cached_generated
 import random as rnd
 
 
-def run_quiz(problems: list, subject: str, subjects: dict, all_problems: dict, loop_mode: bool = False):
+def run_quiz(problems: list, subject: str, subjects: dict, all_problems: dict, loop_mode: bool = False, persona: dict | None = None):
     """苏格拉底式交互答题"""
+    if persona is None:
+        from .persona import get_persona
+        persona = get_persona("default")
     progress = load_progress(subject)
     today = str(date.today())
     done_ids = set()
@@ -162,7 +165,8 @@ def run_quiz(problems: list, subject: str, subjects: dict, all_problems: dict, l
             if answer_matches(user_input, problem):
                 solved = True
                 print(f"\n{Color.BOLD}{Color.GREEN}✅ 完全正确！{Color.RESET}")
-                print(f"  {Color.GREEN}{'一次就对了，厉害！👏' if attempts == 1 else f'经过 {attempts} 次尝试，你自己找到了答案！'}{Color.RESET}")
+                praise = persona['praise']['first'] if attempts == 1 else persona['praise']['later']
+                print(f"  {Color.GREEN}{praise}{Color.RESET}")
                 print(f"\n{Color.BOLD}{Color.BLUE}━━ 解题过程 ━━{Color.RESET}")
                 for i, step in enumerate(problem["steps"], 1):
                     print(f"  {i}. {step}")
@@ -170,15 +174,15 @@ def run_quiz(problems: list, subject: str, subjects: dict, all_problems: dict, l
                 if concept:
                     print(f"\n{Color.DIM}💡 记住：{concept}{Color.RESET}")
                 # 追问模式：答对后 AI 追问"为什么"
-                _run_follow_up(problem, subject, subj)
+                _run_follow_up(problem, subject, subj, persona)
             else:
                 total_hints = len(problem.get("socratic_hints", []))
                 print(f"\n{Color.RED}❌ 不对哦，再想想{Color.RESET}")
                 hint = get_socratic_hint(problem, user_input, attempts)
                 if hint:
-                    print(f"  {hint}")
+                    print(f"  {persona['hint_prefix']}{hint}")
                 else:
-                    print(f"  {Color.YELLOW}已经给了所有提示了，再试一次吧！{Color.RESET}")
+                    print(f"  {Color.YELLOW}{persona['nudge']}{Color.RESET}")
                 if total_hints > 0:
                     used = min(attempts, total_hints)
                     print(f"  {Color.DIM}提示进度 {'🟡' * used}{'⚪' * (total_hints - used)}{Color.RESET}")
@@ -243,10 +247,13 @@ def run_quiz(problems: list, subject: str, subjects: dict, all_problems: dict, l
         print(f"{Color.CYAN}{'═' * 50}{Color.RESET}\n")
 
 
-def _run_follow_up(problem: dict, subject: str, subj: dict):
+def _run_follow_up(problem: dict, subject: str, subj: dict, persona: dict | None = None):
     """答对后 AI 追问，加深理解"""
     import subprocess as sp
     from .utils import latex_to_plain as ltp
+    if persona is None:
+        from .persona import get_persona
+        persona = get_persona("default")
 
     print(f"\n{Color.DIM}{'─' * 40}{Color.RESET}")
     print(f"{Color.BOLD}🧐 追问：{Color.RESET}{Color.DIM}答对了，但你真的理解了吗？(回车跳过){Color.RESET}")
@@ -254,11 +261,11 @@ def _run_follow_up(problem: dict, subject: str, subj: dict):
     question = problem["question"][:200]
     answer = problem["answer"]
     topic = problem["topic"]
-    name = subj["name"]
 
     prompt = (
-        f"你是一位初中{name}老师。学生刚做对了一道关于{topic}的题。\n"
+        f"你是一位初中{subj['name']}老师。学生刚做对了一道关于{topic}的题。\n"
         f"题目：{question}\n正确答案：{answer}\n\n"
+        f"{persona['system_extra']}\n\n"
         "请给学生出一个简短但深入的追问，要求：\n"
         "1. 问\"为什么这个方法是对的？\"或\"换个条件会怎样？\"\n"
         "2. 一句话，不要超过30个字\n"

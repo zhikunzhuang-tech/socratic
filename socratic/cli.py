@@ -10,6 +10,7 @@ from .adaptive import pick_problems
 from .quiz import run_quiz
 from .generate import generate_problem
 from .solve import run_solve_mode
+from .persona import get_persona, show_persona_menu, PERSONA_KEYS
 
 
 def select_subject(subjects: dict) -> str:
@@ -79,6 +80,10 @@ def main():
     parser.add_argument("--no-loop", action="store_true", dest="no_loop", help="单轮模式")
     parser.add_argument("--generate", "-g", action="store_true", help="AI 自动生成新题")
     parser.add_argument("--solve", action="store_true", help="自由输入题目，AI 苏格拉底引导解题")
+    parser.add_argument("--persona", "-p", default=None,
+                        help=f"助教风格：{', '.join(PERSONA_KEYS)}")
+    parser.add_argument("--book", type=str, nargs="?", const=True, default=None,
+                        help="📖 AI 生成互动学习章节，如 --book 一元一次方程")
     parser.add_argument("--version", "-v", action="store_true", help="显示版本")
 
     args = parser.parse_args()
@@ -106,6 +111,25 @@ def main():
 
     subj = SUBJECTS[subject]
     problems_list = ALL_PROBLEMS[subject]
+
+    # 助教人格
+    persona_name = args.persona
+    if persona_name is None:
+        if args.solve or args.book:
+            persona_name = "default"
+        else:
+            persona_name = show_persona_menu()
+    elif persona_name not in PERSONA_KEYS:
+        print(f"{Color.RED}⚠ 不支持的风格：{persona_name}。可选：{', '.join(PERSONA_KEYS)}{Color.RESET}")
+        sys.exit(1)
+    persona = get_persona(persona_name)
+
+    # --book 模式
+    if args.book is not None:
+        from .book import run_book_mode
+        topic = args.book if isinstance(args.book, str) else None
+        run_book_mode(subject, SUBJECTS, ALL_PROBLEMS, persona, topic=topic)
+        return
 
     # --solve 模式
     if args.solve:
@@ -163,10 +187,11 @@ def main():
             print(f"  模式：{Color.BOLD}🎯 自适应{Color.RESET} — 根据强弱项动态选题")
         print(f"  规则：答错了我会用问题引导你，"
               f"\n        不直接给答案——自己找到的答案才记得牢！")
+        print(f"  风格：{Color.BOLD}{persona['icon']} {persona['name']}{Color.RESET}")
         print(f"  捷径：{Color.DIM}h/提示  |  s/跳过  |  qq/退出{Color.RESET}")
         print(f"{Color.DIM}{'─' * 50}{Color.RESET}")
 
-    run_quiz(selected, subject, SUBJECTS, ALL_PROBLEMS, loop_mode=loop_mode)
+    run_quiz(selected, subject, SUBJECTS, ALL_PROBLEMS, loop_mode=loop_mode, persona=persona)
 
 
 if __name__ == "__main__":
