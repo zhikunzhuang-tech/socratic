@@ -6,6 +6,8 @@ SUBJECTS = {
     "english": {"name": "英语", "icon": "📖", "emoji": "🔤", "grades": "初一~初三", "tag": "eng"},
     "physics": {"name": "物理", "icon": "⚛", "emoji": "🔬", "grades": "初二~初三", "tag": "phy"},
     "chinese": {"name": "语文", "icon": "📜", "emoji": "🖋", "grades": "初一~初三", "tag": "chn"},
+    "biology": {"name": "生物", "icon": "🧬", "emoji": "🧬", "grades": "初二", "tag": "bio"},
+    "geography": {"name": "地理", "icon": "🌍", "emoji": "🌏", "grades": "初二", "tag": "geo"},
 }
 SUBJECT_KEYS = list(SUBJECTS.keys())
 SUBJECT_NAMES = {v["name"]: k for k, v in SUBJECTS.items()}

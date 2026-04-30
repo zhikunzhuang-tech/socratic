@@ -8,8 +8,8 @@ from .utils import DATA_DIR, Color, latex_to_plain
 
 CACHE_DIR = DATA_DIR / "cache"
 
-SUBJECT_NAMES = {"math": "数学", "english": "英语", "physics": "物理", "chinese": "语文"}
-SUBJECT_TAGS = {"math": "math", "english": "eng", "physics": "phy", "chinese": "chn"}
+SUBJECT_NAMES = {"math": "数学", "english": "英语", "physics": "物理", "chinese": "语文", "biology": "生物", "geography": "地理"}
+SUBJECT_TAGS = {"math": "math", "english": "eng", "physics": "phy", "chinese": "chn", "biology": "bio", "geography": "geo"}
 
 
 # ── 种子题（每个科目 5 道，冷启动 + 断网备用）────────────────
@@ -158,6 +158,38 @@ SEEDS = {
          "socratic_hints": ["蛇本来有脚吗？", "那给蛇画脚是不是多余？", "对，做多余的事。"],
          "common_errors": {"多管闲事": "强调做了多余的事"},
          "tags": ["成语"], "concept_note": "画蛇添足：做多余的事。"},
+    ],
+    "biology": [
+        {"id": "seed-bio-1", "topic": "生物特征", "grade": "初二", "difficulty": 1,
+         "question": "生物最基本的特征是什么？", "answer": "新陈代谢",
+         "alternatives": ["代谢"],
+         "steps": ["生物需要营养、能呼吸、能排出废物", "这些都是新陈代谢的表现", "新陈代谢是生物最基本的特征"],
+         "socratic_hints": ["生物和/or非生物的根本区别是什么？", "生物需要营养和能量来维持生命，这个过程叫什么？", "新陈代谢"],
+         "common_errors": {"繁殖": "繁殖也是特征，但不是最基本的", "生长": "生长是代谢的结果"},
+         "tags": ["生物", "会考"], "concept_note": "新陈代谢是生物最基本的特征。"},
+        {"id": "seed-bio-2", "topic": "生态系统", "grade": "初二", "difficulty": 2,
+         "question": "生态系统由哪两部分组成？", "answer": "生物部分和非生物部分",
+         "alternatives": ["生物和非生物"],
+         "steps": ["生物部分：植物、动物、微生物", "非生物部分：阳光、空气、水、土壤等", "两者缺一不可"],
+         "socratic_hints": ["一个池塘里除了鱼和水草还有什么？", "水、阳光、空气这些属于什么？", "生物部分和非生物部分"],
+         "common_errors": {"生物": "还有非生物部分", "生产者消费者": "那是生物部分的分类"},
+         "tags": ["生物", "会考"], "concept_note": "生态系统=生物部分+非生物部分。"},
+    ],
+    "geography": [
+        {"id": "seed-geo-1", "topic": "地图", "grade": "初二", "difficulty": 1,
+         "question": "地图三要素是什么？", "answer": "比例尺、方向、图例和注记",
+         "alternatives": ["比例尺 方向 图例和注记"],
+         "steps": ["比例尺表示图上距离与实际距离之比", "方向：上北下南左西右东", "图例和注记帮助读图"],
+         "socratic_hints": ["看地图需要知道哪些基本要素？", "地图上怎么知道实际距离？怎么辨认方向？", "比例尺、方向、图例和注记"],
+         "common_errors": {"比例尺": "还有方向和图例", "经线纬线": "经线纬线不是地图三要素"},
+         "tags": ["地理", "会考"], "concept_note": "地图三要素：比例尺、方向、图例和注记。"},
+        {"id": "seed-geo-2", "topic": "地球", "grade": "初二", "difficulty": 2,
+         "question": "地球的形状是什么？", "answer": "两极稍扁、赤道略鼓的不规则球体",
+         "alternatives": ["不规则球体", "两极稍扁赤道略鼓"],
+         "steps": ["地球不是完美的球体", "两极稍微扁平", "赤道部分略微鼓起"],
+         "socratic_hints": ["地球是完美的球形吗？", "从卫星照片看地球两极和赤道有什么不同？", "两极稍扁、赤道略鼓的不规则球体"],
+         "common_errors": {"圆形": "地球是球体不是圆形", "球形": "不是完美的球形"},
+         "tags": ["地理", "会考"], "concept_note": "地球：两极稍扁、赤道略鼓的不规则球体。"},
     ],
 }
 
