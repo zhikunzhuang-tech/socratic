@@ -140,8 +140,12 @@ def main():
 
     # --review 错题复习
     if args.review:
-        from .review import run_review_mode
-        run_review_mode(subject, SUBJECTS, ALL_PROBLEMS, persona)
+        if subject in ("biology", "geography"):
+            from .flash import run_flash_mode
+            run_flash_mode(subject, SUBJECTS, ALL_PROBLEMS, persona)
+        else:
+            from .review import run_review_mode
+            run_review_mode(subject, SUBJECTS, ALL_PROBLEMS, persona)
         return
 
     # --init-kb 初始化知识库
