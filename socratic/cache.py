@@ -259,7 +259,7 @@ def get_topics(subject: str) -> list:
 
 
 def _generate(subject: str, topic: str | None = None) -> dict | None:
-    """调用 sgpt 生成一道题（完整含提示、错误分支、步骤）"""
+    """两阶段出题：Idea → Generator，产出更高质量题目"""
     name = SUBJECT_NAMES.get(subject, "数学")
     tag = SUBJECT_TAGS.get(subject, "gen")
 
@@ -271,19 +271,105 @@ def _generate(subject: str, topic: str | None = None) -> dict | None:
     timestamp = int(time.time())
     rnd.seed(timestamp)
     difficulty = rnd.choice([1, 2, 3])
-
-    prompt = (
-        "你是一位中国初中" + name + "老师。出一道初中" + name + "题。\n"
-        f"主题：{topic}。难度：{'简单' if difficulty == 1 else '中等' if difficulty == 2 else '较难'}({difficulty}/3)。\n"
-        "只输出一行JSON，不要markdown，不要换行。格式：\n"
-        '{"id":"xxx","topic":"xxx","grade":"初一","difficulty":1,"question":"题目","answer":"答案","alternatives":["备选"],'
-        '"steps":["步骤1","步骤2"],"socratic_hints":["提示1（模糊）","提示2（更具体）","提示3（接近答案）"],'
-        '"common_errors":{"错误1":"反馈1","错误2":"反馈2","错误3":"反馈3"},"tags":["自动生成"],"concept_note":"一句话"}\n'
-        f'id用：{tag}-gen-{timestamp}\n'
-        "要求：socratic_hints必须正好3条，逐步引导但不直接给答案。common_errors至少3条。"
-    )
+    diff_label = "简单" if difficulty == 1 else "中等" if difficulty == 2 else "较难"
+    grade = "初一" if difficulty <= 1 else "初二" if difficulty <= 2 else "初三"
+    qid = f"{tag}-gen-{timestamp}"
 
     SGPT = "/home/zzk/.local/bin/sgpt"
+
+    # ── Stage 1: Idea Agent（出题规划） ──
+    # 分析已有题目，确保新题不重复
+    existing = load_cache(subject)
+    existing_topics = set(p["topic"] for p in existing)
+    existing_questions = [p["question"][:30] for p in existing[-10:]]
+
+    print(f"\n{Color.CYAN}🤖 正在规划新题目（第一阶段：出题构思）…{Color.RESET}")
+
+    idea_prompt = (
+        f"你是一位初中{name}出题规划师。请为一道{name}题做规划。\n"
+        f"主题范围：{topic}。难度：{diff_label}({difficulty}/3)。\n"
+        f"已考过的主题：{', '.join(list(existing_topics)[:8]) or '无'}。\n"
+        f"最近出过的题：{', '.join(existing_questions) or '无'}。\n\n"
+        "请输出一行JSON规划，不要markdown，格式：\n"
+        '{"focus":"具体考察点（与已考过的区分开）","question_type":"计算|概念|应用","rationale":"为什么出这道题"}\n'
+        "要求：focus 要具体，不要和已考主题重复太多次。"
+    )
+
+    try:
+        result = sp.run([SGPT, idea_prompt], capture_output=True, text=True, timeout=20)
+        if result.returncode != 0:
+            return _generate_fallback(subject, topic, tag, timestamp, difficulty, grade, qid, SGPT)
+        idea_text = " ".join(l for l in result.stdout.split("\n") if not l.startswith("Warning:")).strip()
+        idea_text = idea_text.replace("```json", "").replace("```", "").strip()
+        idea = json.loads(idea_text)
+        focus = idea.get("focus", topic)
+    except Exception:
+        focus = topic
+
+    # ── Stage 2: Generator（出题执行） ──
+    print(f"{Color.GREEN}✅ 构思完成，正在生成题目（第二阶段：出题执行）…{Color.RESET}")
+    gen_prompt = (
+        f"你是一位初中{name}老师。请根据以下出题规划出一道具体的{name}题。\n"
+        f"主题：{topic}\n具体考察点：{focus}\n难度：{diff_label}({difficulty}/3)\n年级：{grade}\n\n"
+        "只输出一行JSON，不要markdown，不要换行。格式：\n"
+        '{"question":"题目","answer":"正确答案","alternatives":["备选格式1"],'
+        '"steps":["步骤1","步骤2","步骤3"],'
+        '"socratic_hints":["提示1（模糊引导思路）","提示2（更具体指出关键）","提示3（接近答案但不说答案）"],'
+        '"common_errors":{"错误答案1":"针对性反馈","错误答案2":"针对性反馈","错误答案3":"针对性反馈"},'
+        '"concept_note":"一句话核心概念"}\n'
+        "要求：\n"
+        "- socratic_hints必须正好3条，逐步引导但不直接给答案\n"
+        "- common_errors至少3条常见错误\n"
+        "- 题目要有新意，不要和提示中的示例重复"
+    )
+
+    try:
+        result = sp.run([SGPT, gen_prompt], capture_output=True, text=True, timeout=30)
+        if result.returncode != 0:
+            return _generate_fallback(subject, topic, tag, timestamp, difficulty, grade, qid, SGPT)
+        text = " ".join(l for l in result.stdout.split("\n") if not l.startswith("Warning:")).strip()
+        text = text.replace("```json", "").replace("```", "").strip()
+        problem = json.loads(text)
+        required = ["question", "answer", "steps", "socratic_hints", "common_errors"]
+        if not all(f in problem for f in required):
+            return _generate_fallback(subject, topic, tag, timestamp, difficulty, grade, qid, SGPT)
+
+        # 组装完整题目
+        problem["id"] = qid
+        problem["topic"] = topic
+        problem["grade"] = grade
+        problem["difficulty"] = difficulty
+        problem.setdefault("alternatives", [])
+        problem.setdefault("tags", [topic, "自动生成"])
+        problem.setdefault("concept_note", "")
+        problem["focus"] = focus
+        while len(problem.get("socratic_hints", [])) < 3:
+            problem["socratic_hints"].append("再想想，你离答案很近了！")
+
+        # 清理 LaTeX
+        problem["question"] = latex_to_plain(problem["question"])
+        problem["answer"] = latex_to_plain(problem["answer"])
+        problem["concept_note"] = latex_to_plain(problem.get("concept_note", ""))
+        problem["steps"] = [latex_to_plain(s) for s in problem["steps"]]
+        problem["socratic_hints"] = [latex_to_plain(h) for h in problem["socratic_hints"]]
+        problem["common_errors"] = {latex_to_plain(k): latex_to_plain(v) for k, v in problem["common_errors"].items()}
+
+        return problem
+    except Exception:
+        return _generate_fallback(subject, topic, tag, timestamp, difficulty, grade, qid, SGPT)
+
+
+def _generate_fallback(subject, topic, tag, timestamp, difficulty, grade, qid, SGPT) -> dict | None:
+    """单阶段降级：一步生成（当两阶段失败时）"""
+    prompt = (
+        "你是一位中国初中" + SUBJECT_NAMES.get(subject, "数学") + "老师。出一道初中题。\n"
+        f"主题：{topic}。难度：{'简单' if difficulty == 1 else '中等' if difficulty == 2 else '较难'}({difficulty}/3)。\n"
+        "只输出一行JSON，不要markdown，不要换行。格式：\n"
+        '{"question":"题目","answer":"答案","alternatives":["备选"],'
+        '"steps":["步骤1","步骤2"],"socratic_hints":["提示1","提示2","提示3"],'
+        '"common_errors":{"错1":"反馈1","错2":"反馈2","错3":"反馈3"},"concept_note":"一句话"}\n'
+        "要求：socratic_hints必须3条，common_errors至少3条。"
+    )
     try:
         result = sp.run([SGPT, prompt], capture_output=True, text=True, timeout=30)
         if result.returncode != 0:
@@ -291,30 +377,20 @@ def _generate(subject: str, topic: str | None = None) -> dict | None:
         text = " ".join(l for l in result.stdout.split("\n") if not l.startswith("Warning:")).strip()
         text = text.replace("```json", "").replace("```", "").strip()
         problem = json.loads(text)
-        required = ["id", "question", "answer", "steps", "socratic_hints", "common_errors"]
+        required = ["question", "answer", "steps", "socratic_hints", "common_errors"]
         if not all(f in problem for f in required):
             return None
-
-        # 清理 LaTeX
-        for field in ["question", "answer", "concept_note"]:
-            if field in problem:
-                problem[field] = latex_to_plain(problem[field])
-        if "steps" in problem:
-            problem["steps"] = [latex_to_plain(s) for s in problem["steps"]]
-        if "socratic_hints" in problem:
-            problem["socratic_hints"] = [latex_to_plain(h) for h in problem["socratic_hints"]]
-        if "common_errors" in problem:
-            problem["common_errors"] = {latex_to_plain(k): latex_to_plain(v) for k, v in problem["common_errors"].items()}
-
-        # 补全可选字段
-        problem.setdefault("topic", topic)
-        problem.setdefault("grade", "初二")
-        problem.setdefault("difficulty", 2)
+        problem["id"] = qid
+        problem["topic"] = topic
+        problem["grade"] = grade
+        problem["difficulty"] = difficulty
         problem.setdefault("alternatives", [])
         problem.setdefault("tags", [topic, "自动生成"])
         problem.setdefault("concept_note", "")
         while len(problem.get("socratic_hints", [])) < 3:
-            problem["socratic_hints"].append("再想想，你离答案很近了！")
+            problem["socratic_hints"].append("再想想！")
+        problem["question"] = latex_to_plain(problem["question"])
+        problem["answer"] = latex_to_plain(problem["answer"])
         return problem
     except Exception:
         return None
