@@ -22,13 +22,12 @@ def run_flash_mode(subject: str, subjects: dict, all_problems: dict, persona: di
     print(f"{Color.DIM}  适合考前快速过知识点{Color.RESET}")
     print(f"{Color.CYAN}{'═' * 50}{Color.RESET}")
 
-    problems = get_problems(subject, count=50)
-    if not problems:
-        problems = get_all_problems(subject)
-
-    import random as rnd
-    # 生物/地理按章节顺序刷，不 shuffle
-    if subject not in ("biology", "geography"):
+    # 获取题目
+    if subject in ("biology", "geography"):
+        problems = get_all_problems(subject)  # 按章节顺序
+    else:
+        problems = get_problems(subject, count=50)
+        import random as rnd
         rnd.shuffle(problems)
 
     for problem in problems:
