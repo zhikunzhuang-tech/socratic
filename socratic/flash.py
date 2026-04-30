@@ -27,7 +27,9 @@ def run_flash_mode(subject: str, subjects: dict, all_problems: dict, persona: di
         problems = get_all_problems(subject)
 
     import random as rnd
-    rnd.shuffle(problems)
+    # 生物/地理按章节顺序刷，不 shuffle
+    if subject not in ("biology", "geography"):
+        rnd.shuffle(problems)
 
     for problem in problems:
         if problem["id"] in done_ids:
