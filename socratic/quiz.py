@@ -310,10 +310,23 @@ def _run_follow_up(problem: dict, subject: str, subj: dict, persona: dict | None
         "2. 一句话给出追问的正确答案和解释（让学生真正弄懂）\n"
         "总共两句话，简洁明了。"
     )
-    result = sp.run(["sgpt", explain_prompt], capture_output=True, text=True, timeout=20)
-    if result.returncode == 0:
-        explanation = " ".join(l for l in result.stdout.split("\n") if not l.startswith("Warning:")).strip()
-        explanation = ltp(explanation)
+    SGPT = "/home/zzk/.local/bin/sgpt"
+    explanation = ""
+    try:
+        result = sp.run([SGPT, explain_prompt], capture_output=True, text=True, timeout=20)
+        if result.returncode == 0:
+            explanation = " ".join(l for l in result.stdout.split("\n") if not l.startswith("Warning:")).strip()
+            explanation = ltp(explanation)
+    except Exception:
+        pass
+
+    if explanation:
         print(f"\n  {Color.GREEN}📝 {explanation}{Color.RESET}")
+    else:
+        # 降级：通用反馈
+        ans_short = student_answer[:60]
+        print(f"\n  {Color.GREEN}📝 你的回答：{ans_short}{Color.RESET}")
+        print(f"  {Color.DIM}  正确答案需要结合具体题目判断。{Color.RESET}")
+        print(f"  {Color.DIM}  建议回顾一下相关知识点，或者重做一次巩固。{Color.RESET}")
 
     print(f"{Color.DIM}{'─' * 40}{Color.RESET}")
