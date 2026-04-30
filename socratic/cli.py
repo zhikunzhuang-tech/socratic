@@ -11,6 +11,7 @@ from .quiz import run_quiz
 from .generate import generate_problem
 from .solve import run_solve_mode
 from .persona import get_persona, show_persona_menu, PERSONA_KEYS
+from .progress import show_wrong_stats
 
 
 def select_subject(subjects: dict) -> str:
@@ -84,6 +85,10 @@ def main():
                         help=f"助教风格：{', '.join(PERSONA_KEYS)}")
     parser.add_argument("--book", type=str, nargs="?", const=True, default=None,
                         help="📖 AI 生成互动学习章节，如 --book 一元一次方程")
+    parser.add_argument("--review", action="store_true",
+                        help="📕 错题复习模式")
+    parser.add_argument("--init-kb", action="store_true", dest="init_kb",
+                        help="初始化知识库（为所有主题生成知识卡片）")
     parser.add_argument("--version", "-v", action="store_true", help="显示版本")
 
     args = parser.parse_args()
@@ -115,7 +120,7 @@ def main():
     # 助教人格
     persona_name = args.persona
     if persona_name is None:
-        if args.solve or args.book:
+        if args.solve or args.book or args.review or args.init_kb:
             persona_name = "default"
         else:
             persona_name = show_persona_menu()
@@ -129,6 +134,26 @@ def main():
         from .book import run_book_mode
         topic = args.book if isinstance(args.book, str) else None
         run_book_mode(subject, SUBJECTS, ALL_PROBLEMS, persona, topic=topic)
+        return
+
+    # --review 错题复习
+    if args.review:
+        from .review import run_review_mode
+        run_review_mode(subject, SUBJECTS, ALL_PROBLEMS, persona)
+        return
+
+    # --init-kb 初始化知识库
+    if args.init_kb:
+        from .knowledge import auto_generate
+        topics = set()
+        for p in ALL_PROBLEMS.get(subject, []):
+            topics.add(p["topic"])
+        print(f"{Color.CYAN}📚 正在生成 {len(topics)} 个知识卡片…{Color.RESET}")
+        for i, t in enumerate(sorted(topics), 1):
+            print(f"  [{i}/{len(topics)}] {t}... ", end="", flush=True)
+            result = auto_generate(subject, t)
+            print(f"{Color.GREEN}✓{Color.RESET}" if result else f"{Color.RED}✗{Color.RESET}")
+        print(f"{Color.GREEN}✅ 知识库初始化完成！{Color.RESET}")
         return
 
     # --solve 模式
@@ -188,6 +213,13 @@ def main():
         print(f"  规则：答错了我会用问题引导你，"
               f"\n        不直接给答案——自己找到的答案才记得牢！")
         print(f"  风格：{Color.BOLD}{persona['icon']} {persona['name']}{Color.RESET}")
+        # 显示错题数
+        p = load_progress(subject)
+        wr = p.get("wrong_records", {})
+        if wr:
+            unsolved = sum(1 for recs in wr.values() for r in recs if not r["solved"])
+            if unsolved > 0:
+                print(f"  错题：{Color.RED}{unsolved} 道待复习{Color.RESET}  {Color.DIM}(socratic --review){Color.RESET}")
         print(f"  捷径：{Color.DIM}h/提示  |  s/跳过  |  qq/退出{Color.RESET}")
         print(f"{Color.DIM}{'─' * 50}{Color.RESET}")
 

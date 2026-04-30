@@ -2,8 +2,9 @@
 from datetime import date, timedelta
 from .utils import Color, answer_matches, get_socratic_hint, latex_to_plain
 from .adaptive import update_ability, pick_problems, pick_adaptive_problem
-from .progress import load_progress, save_progress, show_mastery_stats
+from .progress import load_progress, save_progress, show_mastery_stats, record_wrong_answer
 from .generate import generate_problem, get_cached_generated
+from .knowledge import show_knowledge
 import random as rnd
 
 
@@ -187,6 +188,11 @@ def run_quiz(problems: list, subject: str, subjects: dict, all_problems: dict, l
                     used = min(attempts, total_hints)
                     print(f"  {Color.DIM}提示进度 {'🟡' * used}{'⚪' * (total_hints - used)}{Color.RESET}")
                 print(f"  {Color.DIM}(输入 h 看提示 | s 跳过此题){Color.RESET}")
+                # 首次答错时显示知识库
+                if attempts == 1:
+                    show_knowledge(subject, problem["topic"])
+                # 记录错题
+                record_wrong_answer(progress, problem["id"], user_input, attempts, solved=False)
 
         if gave_up and not solved:
             print(f"\n{Color.MAGENTA}━━ 完整解法 ━━{Color.RESET}")
@@ -202,6 +208,8 @@ def run_quiz(problems: list, subject: str, subjects: dict, all_problems: dict, l
         if solved:
             progress["correct_eventually"] += 1
         update_ability(progress, problem, attempts, solved)
+        # 记录正确答案到错题本（如果之前有错题记录）
+        record_wrong_answer(progress, problem["id"], "", attempts, solved=solved)
 
         pid = problem["id"]
         progress.setdefault("problem_history", {})
