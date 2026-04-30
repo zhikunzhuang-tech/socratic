@@ -294,7 +294,7 @@ def _run_follow_up(problem: dict, subject: str, subj: dict, persona: dict | None
 
     # AI 评估学生的回答
     eval_prompt = (
-        f"你是一位初中{name}老师。你的追问：{follow_q}\n"
+        f"你是一位初中{subj['name']}老师。你的追问：{follow_q}\n"
         f"学生回答：{student_answer}\n\n"
         "请用一句话反馈：如果学生理解正确就表扬，如果有偏差就简单指出。最多两句话。"
     )
