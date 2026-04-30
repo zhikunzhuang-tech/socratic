@@ -89,6 +89,8 @@ def main():
                         help="📕 错题复习模式")
     parser.add_argument("--init-kb", action="store_true", dest="init_kb",
                         help="初始化知识库（为所有主题生成知识卡片）")
+    parser.add_argument("--report", action="store_true",
+                        help="📊 学习报告（周报/趋势/统计）")
     parser.add_argument("--version", "-v", action="store_true", help="显示版本")
 
     args = parser.parse_args()
@@ -120,7 +122,7 @@ def main():
     # 助教人格
     persona_name = args.persona
     if persona_name is None:
-        if args.solve or args.book or args.review or args.init_kb:
+        if args.solve or args.book or args.review or args.init_kb or args.report or args.stats or args.list:
             persona_name = "default"
         else:
             persona_name = show_persona_menu()
@@ -164,6 +166,11 @@ def main():
     if args.stats:
         progress = load_progress(subject)
         show_stats(progress, subject, SUBJECTS)
+        return
+
+    if args.report:
+        from .report import run_report
+        run_report(subject, SUBJECTS, ALL_PROBLEMS)
         return
 
     if args.list:
