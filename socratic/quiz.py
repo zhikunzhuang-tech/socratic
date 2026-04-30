@@ -169,6 +169,8 @@ def run_quiz(problems: list, subject: str, subjects: dict, all_problems: dict, l
                 print(f"{Color.BLUE}{'━' * 14}{Color.RESET}")
                 if concept:
                     print(f"\n{Color.DIM}💡 记住：{concept}{Color.RESET}")
+                # 追问模式：答对后 AI 追问"为什么"
+                _run_follow_up(problem, subject, subj)
             else:
                 total_hints = len(problem.get("socratic_hints", []))
                 print(f"\n{Color.RED}❌ 不对哦，再想想{Color.RESET}")
@@ -239,3 +241,60 @@ def run_quiz(problems: list, subject: str, subjects: dict, all_problems: dict, l
         if round_num > 5:
             show_mastery_stats(progress)
         print(f"{Color.CYAN}{'═' * 50}{Color.RESET}\n")
+
+
+def _run_follow_up(problem: dict, subject: str, subj: dict):
+    """答对后 AI 追问，加深理解"""
+    import subprocess as sp
+    from .utils import latex_to_plain as ltp
+
+    print(f"\n{Color.DIM}{'─' * 40}{Color.RESET}")
+    print(f"{Color.BOLD}🧐 追问：{Color.RESET}{Color.DIM}答对了，但你真的理解了吗？(回车跳过){Color.RESET}")
+
+    question = problem["question"][:200]
+    answer = problem["answer"]
+    topic = problem["topic"]
+    name = subj["name"]
+
+    prompt = (
+        f"你是一位初中{name}老师。学生刚做对了一道关于{topic}的题。\n"
+        f"题目：{question}\n正确答案：{answer}\n\n"
+        "请给学生出一个简短但深入的追问，要求：\n"
+        "1. 问\"为什么这个方法是对的？\"或\"换个条件会怎样？\"\n"
+        "2. 一句话，不要超过30个字\n"
+        "3. 不要直接重复题目，要触类旁通\n"
+        "4. 不要评价学生，只出题"
+    )
+
+    result = sp.run(["sgpt", prompt], capture_output=True, text=True, timeout=20)
+    if result.returncode != 0:
+        return
+    follow_q = " ".join(l for l in result.stdout.split("\n") if not l.startswith("Warning:")).strip()
+    follow_q = ltp(follow_q)
+
+    print(f"\n  {Color.CYAN}🤖 {follow_q}{Color.RESET}")
+    print(f"\n{Color.BOLD}{Color.GREEN}你的思考：{Color.RESET} ", end="")
+    try:
+        student_answer = input().strip()
+    except (EOFError, KeyboardInterrupt):
+        print()
+        return
+
+    if not student_answer:
+        return
+    if student_answer.lower() in ("q", "quit", "退出", "qq", "s", "skip", "跳过"):
+        return
+
+    # AI 评估学生的回答
+    eval_prompt = (
+        f"你是一位初中{name}老师。你的追问：{follow_q}\n"
+        f"学生回答：{student_answer}\n\n"
+        "请用一句话反馈：如果学生理解正确就表扬，如果有偏差就简单指出。最多两句话。"
+    )
+    result = sp.run(["sgpt", eval_prompt], capture_output=True, text=True, timeout=20)
+    if result.returncode == 0:
+        feedback = " ".join(l for l in result.stdout.split("\n") if not l.startswith("Warning:")).strip()
+        feedback = ltp(feedback)
+        print(f"\n  {Color.GREEN}📝 {feedback}{Color.RESET}")
+
+    print(f"{Color.DIM}{'─' * 40}{Color.RESET}")
