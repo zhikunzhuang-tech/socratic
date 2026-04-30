@@ -3,7 +3,7 @@ from datetime import date, timedelta
 from .utils import Color, answer_matches, get_socratic_hint, latex_to_plain
 from .adaptive import update_ability, pick_problems, pick_adaptive_problem
 from .progress import load_progress, save_progress, show_mastery_stats, record_wrong_answer
-from .generate import generate_problem, get_cached_generated
+from .cache import get_problems, get_all_problems as get_cached_all
 from .knowledge import show_knowledge
 import random as rnd
 
@@ -32,17 +32,17 @@ def run_quiz(problems: list, subject: str, subjects: dict, all_problems: dict, l
                     a = pick_adaptive_problem(all_problems[subject], progress, done_ids)
                     problems = [a] if a else pick_problems(all_problems[subject], count=1, exclude_ids=done_ids)
                 if not problems:
-                    cached = get_cached_generated(subject)
+                    cached = get_cached_all(subject)
                     remaining = [p for p in cached if p["id"] not in done_ids]
                     if remaining:
                         problems = [rnd.choice(remaining)]
                     else:
                         print(f"\n{Color.CYAN}🤖 题库用完了，AI 正在生成新题…{Color.RESET}")
                         weak = min(progress.get("mastery", {}).keys(), key=lambda t: progress["mastery"].get(t, 0.5)) if progress.get("mastery") else None
-                        new_p = generate_problem(subject, all_problems, weak)
-                        if new_p:
+                        new_list = get_problems(subject, count=1, topic=weak)
+                        if new_list:
                             print(f"{Color.GREEN}✅ 新题已加入缓存！{Color.RESET}")
-                            problems = [new_p]
+                            problems = new_list
 
             if not problems and not loop_mode:
                 break
@@ -82,10 +82,10 @@ def run_quiz(problems: list, subject: str, subjects: dict, all_problems: dict, l
                     elif choice == "g":
                         print(f"\n{Color.CYAN}🤖 AI 正在生成新题，请稍候…{Color.RESET}")
                         weak_topic = min(progress.get("mastery", {}).keys(), key=lambda t: progress["mastery"].get(t, 0.5)) if progress.get("mastery") else None
-                        new_p = generate_problem(subject, all_problems, topic=weak_topic)
-                        if new_p:
+                        new_list = get_problems(subject, count=1, topic=weak_topic)
+                        if new_list:
                             print(f"{Color.GREEN}✅ 新题生成成功！{Color.RESET}")
-                            problems = [new_p]
+                            problems = new_list
                             continue
                         else:
                             print(f"{Color.RED}⚠ AI 出题失败。{Color.RESET}")

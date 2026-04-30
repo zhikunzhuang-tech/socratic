@@ -8,10 +8,9 @@ from .problems import SUBJECTS, SUBJECT_KEYS, SUBJECT_NAMES, ALL_PROBLEMS
 from .progress import load_progress, show_stats, show_mastery_stats
 from .adaptive import pick_problems
 from .quiz import run_quiz
-from .generate import generate_problem
 from .solve import run_solve_mode
 from .persona import get_persona, show_persona_menu, PERSONA_KEYS
-from .progress import show_wrong_stats
+from .cache import get_problems, get_all_problems
 
 
 def select_subject(subjects: dict) -> str:
@@ -117,12 +116,11 @@ def main():
             subject = select_subject(SUBJECTS)
 
     subj = SUBJECTS[subject]
-    problems_list = ALL_PROBLEMS[subject]
 
     # 助教人格
     persona_name = args.persona
     if persona_name is None:
-        if args.solve or args.book or args.review or args.init_kb or args.report or args.stats or args.list:
+        if args.solve or args.book or args.review or args.init_kb or args.report or args.stats or args.list or args.generate:
             persona_name = "default"
         else:
             persona_name = show_persona_menu()
@@ -188,27 +186,36 @@ def main():
 
     loop_mode = not args.no_loop
 
-    # --generate 模式
+    # --generate 模式：强制 AI 生成新题
     if args.generate:
         print(f"\n{Color.CYAN}🤖 AI 生成模式 — 自动出全新题目{Color.RESET}")
-        new_p = generate_problem(subject, ALL_PROBLEMS, topic=args.topic)
-        if new_p:
-            selected = [new_p]
-        else:
-            print(f"{Color.YELLOW}⚠ AI 出题失败，从题库随机选题{Color.RESET}")
-            selected = pick_problems(problems_list, count=args.num, grade=args.grade, topic=args.topic)
+        # 直接通过 cache 系统生成（先清缓存计数，强制走 AI）
+        selected = get_problems(subject, count=args.num, topic=args.topic)
+        # 检查是否真的拿到了新题（非种子题）
+        if selected and selected[0]["id"].startswith("seed-"):
+            print(f"{Color.YELLOW}⚠ 从缓存取到的是种子题，强制 AI 生成{Color.RESET}")
+            from .cache import save_cache, get_all_problems
+            import socratic.cache as _c
+            new_p = _c._generate(subject, topic=args.topic)
+            if new_p:
+                all_p = get_all_problems(subject)
+                all_p.append(new_p)
+                save_cache(subject, all_p)
+                selected = [new_p]
+                print(f"{Color.GREEN}✅ AI 新题已加入题库！{Color.RESET}")
+            elif not selected:
+                selected = pick_problems(get_all_problems(subject), count=args.num, grade=args.grade, topic=args.topic)
     elif not loop_mode:
         today_seed = int(date.today().strftime("%Y%m%d"))
-        selected = pick_problems(problems_list, count=args.num, seed=today_seed,
+        selected = pick_problems(get_all_problems(subject), count=args.num, seed=today_seed,
                                  grade=args.grade, topic=args.topic)
     else:
-        selected = pick_problems(problems_list, count=args.num,
-                                 grade=args.grade, topic=args.topic)
+        # 自适应模式：从缓存取题
+        selected = get_problems(subject, count=args.num, topic=args.topic)
 
     if not selected:
         g = f"（年级={args.grade}）" if args.grade else ""
-        t = f"（主题={args.topic}）" if args.topic else ""
-        print(f"{Color.RED}⚠ 没有匹配的题目 {g}{t}{Color.RESET}")
+        print(f"{Color.RED}⚠ 没有匹配的题目 {g}{Color.RESET}")
         sys.exit(1)
 
     if not args.no_banner:
