@@ -292,16 +292,20 @@ def _run_follow_up(problem: dict, subject: str, subj: dict, persona: dict | None
     if student_answer.lower() in ("q", "quit", "退出", "qq", "s", "skip", "跳过"):
         return
 
-    # AI 评估学生的回答
-    eval_prompt = (
-        f"你是一位初中{subj['name']}老师。你的追问：{follow_q}\n"
+    # 不管答对答错，直接揭晓答案讲解
+    explain_prompt = (
+        f"你是一位初中{subj['name']}老师。\n"
+        f"你的追问：{follow_q}\n"
         f"学生回答：{student_answer}\n\n"
-        "请用一句话反馈：如果学生理解正确就表扬，如果有偏差就简单指出。最多两句话。"
+        "请给出：\n"
+        "1. 一句话反馈学生回答（正确就表扬，不对就温和指正）\n"
+        "2. 一句话给出追问的正确答案和解释（让学生真正弄懂）\n"
+        "总共两句话，简洁明了。"
     )
-    result = sp.run(["sgpt", eval_prompt], capture_output=True, text=True, timeout=20)
+    result = sp.run(["sgpt", explain_prompt], capture_output=True, text=True, timeout=20)
     if result.returncode == 0:
-        feedback = " ".join(l for l in result.stdout.split("\n") if not l.startswith("Warning:")).strip()
-        feedback = ltp(feedback)
-        print(f"\n  {Color.GREEN}📝 {feedback}{Color.RESET}")
+        explanation = " ".join(l for l in result.stdout.split("\n") if not l.startswith("Warning:")).strip()
+        explanation = ltp(explanation)
+        print(f"\n  {Color.GREEN}📝 {explanation}{Color.RESET}")
 
     print(f"{Color.DIM}{'─' * 40}{Color.RESET}")
