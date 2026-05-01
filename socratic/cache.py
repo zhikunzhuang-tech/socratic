@@ -199,6 +199,19 @@ def cache_path(subject: str) -> Path:
     return CACHE_DIR / f"{subject}.json"
 
 
+# 知识库上下文（由 CLI 设置，AI 出题时注入提示词）
+_kb_context: str | None = None
+
+
+def set_kb_context(text: str | None):
+    global _kb_context
+    _kb_context = text
+
+
+def get_kb_context() -> str | None:
+    return _kb_context
+
+
 def load_cache(subject: str) -> list:
     """加载缓存题目，缓存为空则用种子题初始化"""
     path = cache_path(subject)
@@ -294,11 +307,15 @@ def _generate(subject: str, topic: str | None = None) -> dict | None:
 
     print(f"\n{Color.CYAN}🤖 正在规划新题目（第一阶段：出题构思）…{Color.RESET}")
 
+    kb_text = get_kb_context()
+    kb_hint = f"\n\n请严格根据以下教材内容出题：\n{kb_text[:2000]}\n" if kb_text else ""
+
     idea_prompt = (
         f"你是一位初中{name}出题规划师。请为一道{name}题做规划。\n"
         f"主题范围：{topic}。难度：{diff_label}({difficulty}/3)。\n"
         f"已考过的主题：{', '.join(list(existing_topics)[:8]) or '无'}。\n"
-        f"最近出过的题：{', '.join(existing_questions) or '无'}。\n\n"
+        f"最近出过的题：{', '.join(existing_questions) or '无'}。\n"
+        f"{kb_hint}\n"
         "请输出一行JSON规划，不要markdown，格式：\n"
         '{"focus":"具体考察点（与已考过的区分开）","question_type":"计算|概念|应用","rationale":"为什么出这道题"}\n'
         "要求：focus 要具体，不要和已考主题重复太多次。"

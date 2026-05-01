@@ -78,10 +78,10 @@ def main():
     parser.add_argument("--list", action="store_true", help="浏览题库")
     parser.add_argument("--grade", help="年级")
     parser.add_argument("--topic", help="主题")
-    parser.add_argument("--num", type=int, default=1, help="每轮题数")
+    parser.add_argument("--num", type=int, default=1, help="每轮题数（或使用 --generate 时批量生成 N 题）")
     parser.add_argument("--no-banner", action="store_true", dest="no_banner")
     parser.add_argument("--no-loop", action="store_true", dest="no_loop", help="单轮模式")
-    parser.add_argument("--generate", "-g", action="store_true", help="AI 自动生成新题")
+    parser.add_argument("--generate", "-g", action="store_true", help="AI 自动生成新题（配合 --num 5 批量生成）")
     parser.add_argument("--solve", action="store_true", help="自由输入题目，AI 苏格拉底引导解题")
     parser.add_argument("--persona", "-p", default=None,
                         help=f"助教风格：{', '.join(PERSONA_KEYS)}")
@@ -96,11 +96,32 @@ def main():
     parser.add_argument("--flash", action="store_true",
                         help="⚡ 闪卡刷题（看题→回车看答案→自评对错，适合考前冲刺）")
     parser.add_argument("--version", "-v", action="store_true", help="显示版本")
+    parser.add_argument("--kb", help="使用知识库出题（kb名称）")
+    parser.add_argument("--kb-create", dest="kb_create", help="创建知识库")
+    parser.add_argument("--kb-add", dest="kb_add", nargs=2, metavar=("NAME", "FILE"), help="添加文档到知识库")
+    parser.add_argument("--kb-list", dest="kb_list", action="store_true", help="列出知识库")
+    parser.add_argument("--kb-show", dest="kb_show", help="查看知识库详情")
+    parser.add_argument("--kb-delete", dest="kb_delete", help="删除知识库")
 
     args = parser.parse_args()
 
     if args.version:
         print(f"socratic v{__version__}")
+        return
+
+    # KB 管理命令
+    if any([args.kb_create, args.kb_add, args.kb_list, args.kb_show, args.kb_delete]):
+        from . import kb
+        if args.kb_create:
+            kb.kb_create(args.kb_create)
+        elif args.kb_add:
+            kb.kb_add(args.kb_add[0], args.kb_add[1])
+        elif args.kb_list:
+            kb.kb_list()
+        elif args.kb_show:
+            kb.kb_show(args.kb_show)
+        elif args.kb_delete:
+            kb.kb_delete(args.kb_delete)
         return
 
     # 科目选择
@@ -121,6 +142,17 @@ def main():
             subject = select_subject(SUBJECTS)
 
     subj = SUBJECTS[subject]
+
+    # 知识库
+    if args.kb:
+        from .kb import kb_get_content
+        from .cache import set_kb_context
+        kb_text = kb_get_content(args.kb)
+        if kb_text:
+            set_kb_context(kb_text)
+            print(f"{Color.GREEN}📚 知识库「{args.kb}」已加载{Color.RESET}")
+        else:
+            print(f"{Color.RED}⚠ 知识库「{args.kb}」为空或不存在{Color.RESET}")
 
     # 助教人格
     persona_name = args.persona
@@ -235,8 +267,32 @@ def main():
 
     # --generate 模式：强制 AI 生成新题
     if args.generate:
+        if args.num > 1:
+            # 批量生成模式
+            print(f"\n{Color.CYAN}🤖 批量生成 {args.num} 道题目…{Color.RESET}")
+            from .cache import save_cache, get_all_problems, _generate as gen_fn
+            all_p = get_all_problems(subject)
+            topic = args.topic
+            new_count = 0
+            existing_qs = {p["question"] for p in all_p}
+            for i in range(args.num):
+                print(f"  [{i + 1}/{args.num}] ", end="", flush=True)
+                new_p = gen_fn(subject, topic=topic)
+                if new_p and new_p["question"] not in existing_qs:
+                    all_p.append(new_p)
+                    existing_qs.add(new_p["question"])
+                    new_count += 1
+                    print(f"{Color.GREEN}✓{Color.RESET}")
+                elif new_p:
+                    print(f"{Color.YELLOW}（重复，跳过）{Color.RESET}")
+                else:
+                    print(f"{Color.RED}✗{Color.RESET}")
+            save_cache(subject, all_p)
+            print(f"\n{Color.GREEN}✅ 成功生成 {new_count}/{args.num} 道新题{Color.RESET}")
+            return
+
+        # 单题生成模式
         print(f"\n{Color.CYAN}🤖 AI 生成模式 — 自动出全新题目{Color.RESET}")
-        # 直接通过 cache 系统生成（先清缓存计数，强制走 AI）
         selected = get_problems(subject, count=args.num, topic=args.topic)
         # 检查是否真的拿到了新题（非种子题）
         if selected and selected[0]["id"].startswith("seed-"):
