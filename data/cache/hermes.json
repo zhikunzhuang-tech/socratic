@@ -1,0 +1,3002 @@
+[
+  {
+    "id": "hermes-0001",
+    "topic": "CLI与基础",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "Hermes Agent 是哪个组织开发的开源项目？",
+    "answer": "Nous Research",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "Nous 开头的机构",
+      "专注于开源 AI 的研究机构"
+    ],
+    "common_errors": {},
+    "tags": [
+      "CLI与基础",
+      "入门"
+    ],
+    "concept_note": "Hermes Agent 由 Nous Research 开发。"
+  },
+  {
+    "id": "hermes-0002",
+    "topic": "CLI与基础",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "启动 Hermes Agent 交互式会话的最简单命令是什么？",
+    "answer": "hermes",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "直接输入程序名",
+      "不加任何参数"
+    ],
+    "common_errors": {},
+    "tags": [
+      "CLI与基础",
+      "入门"
+    ],
+    "concept_note": "直接输入 hermes 启动交互式会话。"
+  },
+  {
+    "id": "hermes-0003",
+    "topic": "CLI与基础",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "如何查看 Hermes Agent 的版本信息？",
+    "answer": "hermes --version 或 hermes -V",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "--version 或 -V",
+      "查看版本号的标志"
+    ],
+    "common_errors": {},
+    "tags": [
+      "CLI与基础",
+      "入门"
+    ],
+    "concept_note": "hermes --version 查看版本信息。"
+  },
+  {
+    "id": "hermes-0004",
+    "topic": "CLI与基础",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "如何用 Hermes 进行单次查询后立即退出？",
+    "answer": "hermes chat -q '<问题>'",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "-q 参数",
+      "chat 加 query"
+    ],
+    "common_errors": {},
+    "tags": [
+      "CLI与基础",
+      "入门"
+    ],
+    "concept_note": "hermes chat -q '问题' 单次查询后退出。"
+  },
+  {
+    "id": "hermes-0005",
+    "topic": "CLI与基础",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "Hermes 支持运行在哪些操作系统上？",
+    "answer": "Linux、macOS、WSL（Windows）",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "三个主流系统",
+      "包含 Windows 的子系统"
+    ],
+    "common_errors": {},
+    "tags": [
+      "CLI与基础",
+      "进阶"
+    ],
+    "concept_note": "Hermes 支持 Linux、macOS 和 WSL。"
+  },
+  {
+    "id": "hermes-0006",
+    "topic": "CLI与基础",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "--yolo 标志在 Hermes 中有什么作用？",
+    "answer": "跳过危险命令的审批确认",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "跳过确认",
+      "yolo 的俚语含义"
+    ],
+    "common_errors": {},
+    "tags": [
+      "CLI与基础",
+      "进阶"
+    ],
+    "concept_note": "--yolo 跳过危险命令审批，谨慎使用。"
+  },
+  {
+    "id": "hermes-0007",
+    "topic": "CLI与基础",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "安装 Hermes Agent 的命令是什么？",
+    "answer": "curl -fsSL https://raw.githubusercontent.com/NousResearch/hermes-agent/main/scripts/install.sh | bash",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "curl 安装脚本",
+      "从 GitHub 安装"
+    ],
+    "common_errors": {},
+    "tags": [
+      "CLI与基础",
+      "进阶"
+    ],
+    "concept_note": "使用官方安装脚本一键安装。"
+  },
+  {
+    "id": "hermes-0008",
+    "topic": "斜杠命令",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "Hermes 中哪个斜杠命令用于开始一个全新会话？",
+    "answer": "/new",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "new = 新的",
+      "斜杠加 new"
+    ],
+    "common_errors": {},
+    "tags": [
+      "斜杠命令",
+      "入门"
+    ],
+    "concept_note": "/new 开始全新会话。"
+  },
+  {
+    "id": "hermes-0009",
+    "topic": "斜杠命令",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "如何在 Hermes 会话中查看所有可用的斜杠命令？",
+    "answer": "/help",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "查看帮助",
+      "help 命令"
+    ],
+    "common_errors": {},
+    "tags": [
+      "斜杠命令",
+      "入门"
+    ],
+    "concept_note": "/help 显示所有斜杠命令。"
+  },
+  {
+    "id": "hermes-0010",
+    "topic": "斜杠命令",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "/model 命令在 Hermes 中有什么作用？",
+    "answer": "显示或切换当前使用的 LLM 模型",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "更换 AI 模型",
+      "model = 模型"
+    ],
+    "common_errors": {},
+    "tags": [
+      "斜杠命令",
+      "进阶"
+    ],
+    "concept_note": "/model 查看或切换当前模型。"
+  },
+  {
+    "id": "hermes-0011",
+    "topic": "斜杠命令",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "/undo 命令的作用是什么？",
+    "answer": "删除最近一次对话交互（消息+回复）",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "撤销操作",
+      "undo = 撤销"
+    ],
+    "common_errors": {},
+    "tags": [
+      "斜杠命令",
+      "进阶"
+    ],
+    "concept_note": "/undo 移除最后一次对话回合。"
+  },
+  {
+    "id": "hermes-0012",
+    "topic": "斜杠命令",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "/compress 命令的作用是什么？",
+    "answer": "手动压缩对话上下文以节省 token",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "手动压缩",
+      "减少上下文长度"
+    ],
+    "common_errors": {},
+    "tags": [
+      "斜杠命令",
+      "进阶"
+    ],
+    "concept_note": "/compress 手动压缩对话上下文。"
+  },
+  {
+    "id": "hermes-0013",
+    "topic": "斜杠命令",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "/rollback 命令的作用是什么？",
+    "answer": "恢复到之前的文件系统检查点",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "回滚到检查点",
+      "rollback = 回滚"
+    ],
+    "common_errors": {},
+    "tags": [
+      "斜杠命令",
+      "进阶"
+    ],
+    "concept_note": "/rollback 恢复到文件系统检查点。"
+  },
+  {
+    "id": "hermes-0014",
+    "topic": "斜杠命令",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "/btw 命令在 Hermes 中有什么特殊用途？",
+    "answer": "提出一个不打断主任务的旁侧问题（Ephemeral side question）",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "旁侧问题",
+      "by the way 缩写"
+    ],
+    "common_errors": {},
+    "tags": [
+      "斜杠命令",
+      "高级"
+    ],
+    "concept_note": "/btw 提问但不影响主任务流程。"
+  },
+  {
+    "id": "hermes-0015",
+    "topic": "斜杠命令",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "/branch 和 /fork 命令有什么关系？",
+    "answer": "两者功能相同，都是分支当前会话",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "分支会话",
+      "branch = fork"
+    ],
+    "common_errors": {},
+    "tags": [
+      "斜杠命令",
+      "高级"
+    ],
+    "concept_note": "/branch 和 /fork 都可以分支当前会话。"
+  },
+  {
+    "id": "hermes-0016",
+    "topic": "配置",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "Hermes 的主配置文件路径是什么？",
+    "answer": "~/.hermes/config.yaml",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      ".hermes 隐藏目录",
+      "YAML 格式"
+    ],
+    "common_errors": {},
+    "tags": [
+      "配置",
+      "入门"
+    ],
+    "concept_note": "主配置文件位于 ~/.hermes/config.yaml。"
+  },
+  {
+    "id": "hermes-0017",
+    "topic": "配置",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "API 密钥和敏感信息应该存放在哪个文件？",
+    "answer": "~/.hermes/.env",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      ".env 环境变量文件",
+      "与 config.yaml 同目录"
+    ],
+    "common_errors": {},
+    "tags": [
+      "配置",
+      "入门"
+    ],
+    "concept_note": "API 密钥存放在 ~/.hermes/.env 文件中。"
+  },
+  {
+    "id": "hermes-0018",
+    "topic": "配置",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "如何用一行命令直接编辑 Hermes 配置文件？",
+    "answer": "hermes config edit",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "config 子命令",
+      "edit 编辑"
+    ],
+    "common_errors": {},
+    "tags": [
+      "配置",
+      "进阶"
+    ],
+    "concept_note": "hermes config edit 打开 $EDITOR 编辑配置。"
+  },
+  {
+    "id": "hermes-0019",
+    "topic": "配置",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "如何检查 Hermes 配置是否有缺失或过期？",
+    "answer": "hermes config check",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "检查配置",
+      "config check"
+    ],
+    "common_errors": {},
+    "tags": [
+      "配置",
+      "进阶"
+    ],
+    "concept_note": "hermes config check 检查配置完整性。"
+  },
+  {
+    "id": "hermes-0020",
+    "topic": "配置",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "如何查看 Hermes 配置文件的路径？",
+    "answer": "hermes config path",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "查看路径",
+      "config path"
+    ],
+    "common_errors": {},
+    "tags": [
+      "配置",
+      "进阶"
+    ],
+    "concept_note": "hermes config path 打印配置文件路径。"
+  },
+  {
+    "id": "hermes-0021",
+    "topic": "配置",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "如何在 Hermes 中设置单个配置项？",
+    "answer": "hermes config set section.key value",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "set 子命令",
+      "点号分隔的键路径"
+    ],
+    "common_errors": {},
+    "tags": [
+      "配置",
+      "进阶"
+    ],
+    "concept_note": "hermes config set 用 section.key 格式设置配置项。"
+  },
+  {
+    "id": "hermes-0022",
+    "topic": "配置",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "配置中的 terminal.backend 支持哪些选项？",
+    "answer": "local、docker、ssh、modal",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "四种后端",
+      "本地/容器/SSH/云"
+    ],
+    "common_errors": {},
+    "tags": [
+      "配置",
+      "高级"
+    ],
+    "concept_note": "终端后端可选：local、docker、ssh、modal。"
+  },
+  {
+    "id": "hermes-0023",
+    "topic": "配置",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "compression.threshold 配置项的作用是什么？",
+    "answer": "设置触发自动压缩的上下文比例阈值（默认 0.50，即 50%）",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "压缩触发阈值",
+      "50% 时触发"
+    ],
+    "common_errors": {},
+    "tags": [
+      "配置",
+      "高级"
+    ],
+    "concept_note": "compression.threshold 控制自动压缩触发的时机。"
+  },
+  {
+    "id": "hermes-0024",
+    "topic": "提供商",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "Hermes 支持多少种 LLM 提供商？",
+    "answer": "20+ 种",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "20 种以上",
+      "包括 OpenRouter Anthropic OpenAI 等"
+    ],
+    "common_errors": {},
+    "tags": [
+      "提供商",
+      "入门"
+    ],
+    "concept_note": "Hermes 支持 20+ 种 LLM 提供商。"
+  },
+  {
+    "id": "hermes-0025",
+    "topic": "提供商",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "OpenRouter 提供商需要什么环境变量？",
+    "answer": "OPENROUTER_API_KEY",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "OpenRouter 的 API Key",
+      "环境变量名全大写"
+    ],
+    "common_errors": {},
+    "tags": [
+      "提供商",
+      "进阶"
+    ],
+    "concept_note": "OpenRouter 需要 OPENROUTER_API_KEY。"
+  },
+  {
+    "id": "hermes-0026",
+    "topic": "提供商",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "Anthropic 提供商的 API 密钥环境变量是什么？",
+    "answer": "ANTHROPIC_API_KEY",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "Anthropic 的 Key",
+      "ANTHROPIC 开头"
+    ],
+    "common_errors": {},
+    "tags": [
+      "提供商",
+      "进阶"
+    ],
+    "concept_note": "Anthropic 需要 ANTHROPIC_API_KEY。"
+  },
+  {
+    "id": "hermes-0027",
+    "topic": "提供商",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "如何交互式地切换 Hermes 使用的模型和提供商？",
+    "answer": "hermes model",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "切换模型的命令",
+      "model 子命令"
+    ],
+    "common_errors": {},
+    "tags": [
+      "提供商",
+      "进阶"
+    ],
+    "concept_note": "hermes model 交互式切换模型和提供商。"
+  },
+  {
+    "id": "hermes-0028",
+    "topic": "提供商",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "GitHub Copilot 在 Hermes 中的认证有什么特殊要求？",
+    "answer": "必须使用 Copilot 专属的 OAuth 设备码流程，不能用 gh auth login 的 token",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "特殊的认证方式",
+      "gh 的 token 不行"
+    ],
+    "common_errors": {},
+    "tags": [
+      "提供商",
+      "高级"
+    ],
+    "concept_note": "Copilot 需通过 hermes model 中的设备码流程认证。"
+  },
+  {
+    "id": "hermes-0029",
+    "topic": "工具集",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "如何查看所有可用的工具集？",
+    "answer": "hermes tools list",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "查看工具列表",
+      "tools list"
+    ],
+    "common_errors": {},
+    "tags": [
+      "工具集",
+      "入门"
+    ],
+    "concept_note": "hermes tools list 列出所有工具集。"
+  },
+  {
+    "id": "hermes-0030",
+    "topic": "工具集",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "如何启用或禁用一个工具集？",
+    "answer": "hermes tools enable/disable <名称>",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "enable 启用",
+      "disable 禁用"
+    ],
+    "common_errors": {},
+    "tags": [
+      "工具集",
+      "入门"
+    ],
+    "concept_note": "hermes tools enable/disable 开关工具集。"
+  },
+  {
+    "id": "hermes-0031",
+    "topic": "工具集",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "启用新工具集后，为什么需要执行 /reset？",
+    "answer": "工具变更不能应用在当前的对话上下文中，新会话才会加载新工具集",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "保护 prompt 缓存",
+      "新会话生效"
+    ],
+    "common_errors": {},
+    "tags": [
+      "工具集",
+      "进阶"
+    ],
+    "concept_note": "工具变更需要 /reset 新会话生效，以保护 prompt 缓存。"
+  },
+  {
+    "id": "hermes-0032",
+    "topic": "工具集",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "browser 工具集提供什么能力？",
+    "answer": "浏览器自动化（Browserbase、Camofox 或本地 Chromium）",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "网页自动化",
+      "三种后端"
+    ],
+    "common_errors": {},
+    "tags": [
+      "工具集",
+      "进阶"
+    ],
+    "concept_note": "browser 工具集提供浏览器自动化能力。"
+  },
+  {
+    "id": "hermes-0033",
+    "topic": "工具集",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "delegation 工具集的作用是什么？",
+    "answer": "子代理任务委派，将任务分发给独立的子代理执行",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "任务委派",
+      "subagent"
+    ],
+    "common_errors": {},
+    "tags": [
+      "工具集",
+      "进阶"
+    ],
+    "concept_note": "delegation 工具集提供子代理委派能力。"
+  },
+  {
+    "id": "hermes-0034",
+    "topic": "工具集",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "rl 和 moa 工具集为什么默认是关闭的？",
+    "answer": "rl 是强化学习工具，moa 是混合代理（Mixture of Agents），属于高级功能",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "强化学习",
+      "混合代理"
+    ],
+    "common_errors": {},
+    "tags": [
+      "工具集",
+      "高级"
+    ],
+    "concept_note": "rl 和 moa 是高级功能，默认关闭。"
+  },
+  {
+    "id": "hermes-0035",
+    "topic": "网关平台",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "Hermes 网关支持哪些消息平台？（列出至少 4 个）",
+    "answer": "Telegram、Discord、Slack、WhatsApp、Signal、Email 等 15+ 平台",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "即时通讯平台",
+      "包括 Telegram Discord 等"
+    ],
+    "common_errors": {},
+    "tags": [
+      "网关平台",
+      "入门"
+    ],
+    "concept_note": "Hermes 支持 15+ 消息平台。"
+  },
+  {
+    "id": "hermes-0036",
+    "topic": "网关平台",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "如何启动 Hermes 网关服务？",
+    "answer": "hermes gateway run",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "启动网关",
+      "gateway run"
+    ],
+    "common_errors": {},
+    "tags": [
+      "网关平台",
+      "进阶"
+    ],
+    "concept_note": "hermes gateway run 启动网关服务。"
+  },
+  {
+    "id": "hermes-0037",
+    "topic": "网关平台",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "如何将网关安装为后台系统服务？",
+    "answer": "hermes gateway install",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "安装服务",
+      "gateway install"
+    ],
+    "common_errors": {},
+    "tags": [
+      "网关平台",
+      "进阶"
+    ],
+    "concept_note": "hermes gateway install 后台服务化。"
+  },
+  {
+    "id": "hermes-0038",
+    "topic": "网关平台",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "如何查看网关的运行状态？",
+    "answer": "hermes gateway status",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "查看状态",
+      "gateway status"
+    ],
+    "common_errors": {},
+    "tags": [
+      "网关平台",
+      "进阶"
+    ],
+    "concept_note": "hermes gateway status 查看网关状态。"
+  },
+  {
+    "id": "hermes-0039",
+    "topic": "网关平台",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "Discord 机器人的 Message Content Intent 是什么？必须开启吗？",
+    "answer": "Discord 机器人必须启用 Message Content Intent（特权网关意图），否则无法读取消息内容",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "Discord 特权设置",
+      "读取消息内容的权限"
+    ],
+    "common_errors": {},
+    "tags": [
+      "网关平台",
+      "高级"
+    ],
+    "concept_note": "Discord bot 必须开启 Message Content Intent。"
+  },
+  {
+    "id": "hermes-0040",
+    "topic": "网关平台",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "Slack bot 默认只能在 DM 中工作，如何让它响应公开频道？",
+    "answer": "必须订阅 message.channels 事件",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "订阅公共频道事件",
+      "message.channels"
+    ],
+    "common_errors": {},
+    "tags": [
+      "网关平台",
+      "高级"
+    ],
+    "concept_note": "Slack bot 需要订阅 message.channels 事件才能响应公开频道。"
+  },
+  {
+    "id": "hermes-0041",
+    "topic": "技能系统",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "如何查看已安装的技能？",
+    "answer": "hermes skills list",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "列出技能",
+      "skills list"
+    ],
+    "common_errors": {},
+    "tags": [
+      "技能系统",
+      "入门"
+    ],
+    "concept_note": "hermes skills list 列出已安装的技能。"
+  },
+  {
+    "id": "hermes-0042",
+    "topic": "技能系统",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "如何搜索可安装的技能？",
+    "answer": "hermes skills search <关键词>",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "搜索技能",
+      "skills search"
+    ],
+    "common_errors": {},
+    "tags": [
+      "技能系统",
+      "入门"
+    ],
+    "concept_note": "hermes skills search 搜索技能中心。"
+  },
+  {
+    "id": "hermes-0043",
+    "topic": "技能系统",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "如何安装一个技能？",
+    "answer": "hermes skills install <技能ID>",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "安装技能",
+      "skills install"
+    ],
+    "common_errors": {},
+    "tags": [
+      "技能系统",
+      "进阶"
+    ],
+    "concept_note": "hermes skills install 安装技能。"
+  },
+  {
+    "id": "hermes-0044",
+    "topic": "技能系统",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "如何在当前会话中加载并使用一个技能？",
+    "answer": "/skill <技能名>",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "加载技能的命令",
+      "/skill"
+    ],
+    "common_errors": {},
+    "tags": [
+      "技能系统",
+      "进阶"
+    ],
+    "concept_note": "/skill <技能名> 在会话中加载技能。"
+  },
+  {
+    "id": "hermes-0045",
+    "topic": "技能系统",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "如何在启动时预加载多个技能？",
+    "answer": "hermes -s <技能名> 或 hermes --skills <技能名>",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "启动时加载",
+      "-s 参数"
+    ],
+    "common_errors": {},
+    "tags": [
+      "技能系统",
+      "进阶"
+    ],
+    "concept_note": "hermes -s 预加载指定技能。"
+  },
+  {
+    "id": "hermes-0046",
+    "topic": "技能系统",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "如何浏览所有可下载的技能？",
+    "answer": "hermes skills browse",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "浏览技能",
+      "skills browse"
+    ],
+    "common_errors": {},
+    "tags": [
+      "技能系统",
+      "进阶"
+    ],
+    "concept_note": "hermes skills browse 浏览技能中心。"
+  },
+  {
+    "id": "hermes-0047",
+    "topic": "技能系统",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "如何将自己的技能发布到技能中心？",
+    "answer": "hermes skills publish <路径>",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "发布技能",
+      "skills publish"
+    ],
+    "common_errors": {},
+    "tags": [
+      "技能系统",
+      "高级"
+    ],
+    "concept_note": "hermes skills publish 将技能发布到技能中心。"
+  },
+  {
+    "id": "hermes-0048",
+    "topic": "MCP",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "MCP 的全称是什么？",
+    "answer": "Model Context Protocol",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "三个单词缩写",
+      "Model 开头的协议"
+    ],
+    "common_errors": {},
+    "tags": [
+      "MCP",
+      "入门"
+    ],
+    "concept_note": "MCP = Model Context Protocol。"
+  },
+  {
+    "id": "hermes-0049",
+    "topic": "MCP",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "如何添加一个 MCP 服务器？",
+    "answer": "hermes mcp add <名称> --url <URL> 或 --command <命令>",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "mcp add",
+      "指定 URL 或命令"
+    ],
+    "common_errors": {},
+    "tags": [
+      "MCP",
+      "进阶"
+    ],
+    "concept_note": "hermes mcp add 添加 MCP 服务器。"
+  },
+  {
+    "id": "hermes-0050",
+    "topic": "MCP",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "如何测试 MCP 服务器的连接？",
+    "answer": "hermes mcp test <名称>",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "测试连接",
+      "mcp test"
+    ],
+    "common_errors": {},
+    "tags": [
+      "MCP",
+      "进阶"
+    ],
+    "concept_note": "hermes mcp test 测试 MCP 服务器连接。"
+  },
+  {
+    "id": "hermes-0051",
+    "topic": "MCP",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "如何列出已配置的 MCP 服务器？",
+    "answer": "hermes mcp list",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "列出 MCP 服务器",
+      "mcp list"
+    ],
+    "common_errors": {},
+    "tags": [
+      "MCP",
+      "进阶"
+    ],
+    "concept_note": "hermes mcp list 列出已配置的 MCP 服务器。"
+  },
+  {
+    "id": "hermes-0052",
+    "topic": "MCP",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "hermes mcp serve 命令的作用是什么？",
+    "answer": "将 Hermes Agent 本身作为 MCP 服务器运行，供其他 MCP 客户端调用",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "Hermes 成为 MCP 服务器",
+      "serve = 提供服务"
+    ],
+    "common_errors": {},
+    "tags": [
+      "MCP",
+      "高级"
+    ],
+    "concept_note": "hermes mcp serve 让 Hermes 作为 MCP 服务器对外提供服务。"
+  },
+  {
+    "id": "hermes-0053",
+    "topic": "会话管理",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "如何列出最近的会话？",
+    "answer": "hermes sessions list",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "列出会话",
+      "sessions list"
+    ],
+    "common_errors": {},
+    "tags": [
+      "会话管理",
+      "入门"
+    ],
+    "concept_note": "hermes sessions list 列出最近会话。"
+  },
+  {
+    "id": "hermes-0054",
+    "topic": "会话管理",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "如何恢复指定 ID 的会话？",
+    "answer": "hermes --resume <会话ID>",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "-r 或 --resume",
+      "加会话 ID"
+    ],
+    "common_errors": {},
+    "tags": [
+      "会话管理",
+      "进阶"
+    ],
+    "concept_note": "hermes --resume 恢复指定会话。"
+  },
+  {
+    "id": "hermes-0055",
+    "topic": "会话管理",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "如何按名称恢复最近的会话？",
+    "answer": "hermes --continue <名称>",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "-c 或 --continue",
+      "按名称恢复"
+    ],
+    "common_errors": {},
+    "tags": [
+      "会话管理",
+      "进阶"
+    ],
+    "concept_note": "hermes --continue 按名称恢复最近的匹配会话。"
+  },
+  {
+    "id": "hermes-0056",
+    "topic": "会话管理",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "如何重命名一个会话？",
+    "answer": "/title <名称> 或 hermes sessions rename <ID> <新名称>",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "重命名会话",
+      "/title 命令"
+    ],
+    "common_errors": {},
+    "tags": [
+      "会话管理",
+      "进阶"
+    ],
+    "concept_note": "/title 或在 CLI 中用 sessions rename 重命名会话。"
+  },
+  {
+    "id": "hermes-0057",
+    "topic": "会话管理",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "如何将会话导出为 JSONL 格式？",
+    "answer": "hermes sessions export <输出路径>",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "导出会话",
+      "sessions export"
+    ],
+    "common_errors": {},
+    "tags": [
+      "会话管理",
+      "高级"
+    ],
+    "concept_note": "hermes sessions export 导出会话为 JSONL。"
+  },
+  {
+    "id": "hermes-0058",
+    "topic": "记忆系统",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "Hermes 的记忆持久化能力解决了什么问题？",
+    "answer": "让 AI 在跨会话之间记住用户偏好、环境细节和学到的经验",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "跨会话记忆",
+      "不丢失上下文"
+    ],
+    "common_errors": {},
+    "tags": [
+      "记忆系统",
+      "入门"
+    ],
+    "concept_note": "记忆系统实现跨会话的持久化上下文。"
+  },
+  {
+    "id": "hermes-0059",
+    "topic": "记忆系统",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "如何查看当前记忆提供商的状态？",
+    "answer": "hermes memory status",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "查看记忆状态",
+      "memory status"
+    ],
+    "common_errors": {},
+    "tags": [
+      "记忆系统",
+      "进阶"
+    ],
+    "concept_note": "hermes memory status 查看记忆系统状态。"
+  },
+  {
+    "id": "hermes-0060",
+    "topic": "记忆系统",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "Hermes 支持哪些记忆提供商？",
+    "answer": "内置记忆、Honcho、Mem0 等",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "多种记忆后端",
+      "内置的和第三方的"
+    ],
+    "common_errors": {},
+    "tags": [
+      "记忆系统",
+      "进阶"
+    ],
+    "concept_note": "支持内置、Honcho、Mem0 等记忆提供商。"
+  },
+  {
+    "id": "hermes-0061",
+    "topic": "记忆系统",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "hermes memory setup 命令的作用是什么？",
+    "answer": "配置记忆提供商的安装和设置",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "配置记忆",
+      "memory setup"
+    ],
+    "common_errors": {},
+    "tags": [
+      "记忆系统",
+      "进阶"
+    ],
+    "concept_note": "hermes memory setup 初始化记忆系统。"
+  },
+  {
+    "id": "hermes-0062",
+    "topic": "记忆系统",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "记忆系统中的 user_profile_enabled 配置项有什么作用？",
+    "answer": "控制是否启用用户画像功能，记录用户偏好和习惯",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "用户画像开关",
+      "记录用户信息"
+    ],
+    "common_errors": {},
+    "tags": [
+      "记忆系统",
+      "高级"
+    ],
+    "concept_note": "user_profile_enabled 控制用户画像功能。"
+  },
+  {
+    "id": "hermes-0063",
+    "topic": "Cron 与 Webhook",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "如何创建一个定时任务？",
+    "answer": "hermes cron create '<间隔>' '<提示>'",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "创建定时任务",
+      "cron create"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Cron 与 Webhook",
+      "进阶"
+    ],
+    "concept_note": "hermes cron create 创建定时任务。"
+  },
+  {
+    "id": "hermes-0064",
+    "topic": "Cron 与 Webhook",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "Cron 任务支持哪些调度格式？",
+    "answer": "'30m'、'every 2h'、'0 9 * * *'（cron 表达式）、ISO 时间戳",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "多种格式",
+      "简单间隔和标准 cron"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Cron 与 Webhook",
+      "进阶"
+    ],
+    "concept_note": "支持自然语言间隔和标准 cron 表达式。"
+  },
+  {
+    "id": "hermes-0065",
+    "topic": "Cron 与 Webhook",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "如何查看所有定时任务？",
+    "answer": "hermes cron list",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "列出任务",
+      "cron list"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Cron 与 Webhook",
+      "进阶"
+    ],
+    "concept_note": "hermes cron list 查看所有定时任务。"
+  },
+  {
+    "id": "hermes-0066",
+    "topic": "Cron 与 Webhook",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "如何创建一个 Webhook 订阅？",
+    "answer": "hermes webhook subscribe <名称>",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "订阅 webhook",
+      "webhook subscribe"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Cron 与 Webhook",
+      "进阶"
+    ],
+    "concept_note": "hermes webhook subscribe 创建 Webhook 端点。"
+  },
+  {
+    "id": "hermes-0067",
+    "topic": "Cron 与 Webhook",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "Webhook 的接收路径是什么格式？",
+    "answer": "/webhooks/<名称>",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "webhooks 路径",
+      "斜杠开头"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Cron 与 Webhook",
+      "高级"
+    ],
+    "concept_note": "Webhook 端点路径为 /webhooks/<名称>。"
+  },
+  {
+    "id": "hermes-0068",
+    "topic": "Profiles",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "Hermes 的 Profile 功能解决了什么问题？",
+    "answer": "运行多个独立的 Hermes 实例，每个有隔离的配置、会话、技能和记忆",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "多实例隔离",
+      "独立配置"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Profiles",
+      "进阶"
+    ],
+    "concept_note": "Profiles 实现多个独立 Hermes 实例的配置隔离。"
+  },
+  {
+    "id": "hermes-0069",
+    "topic": "Profiles",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "如何列出所有 Profile？",
+    "answer": "hermes profile list",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "列出 profile",
+      "profile list"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Profiles",
+      "进阶"
+    ],
+    "concept_note": "hermes profile list 列出所有 Profile。"
+  },
+  {
+    "id": "hermes-0070",
+    "topic": "Profiles",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "如何创建一个新的 Profile？",
+    "answer": "hermes profile create <名称>",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "创建 profile",
+      "profile create"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Profiles",
+      "进阶"
+    ],
+    "concept_note": "hermes profile create 创建新 Profile。"
+  },
+  {
+    "id": "hermes-0071",
+    "topic": "Profiles",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "如何将当前 Profile 导出为 tar.gz 文件？",
+    "answer": "hermes profile export <名称>",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "导出 profile",
+      "profile export"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Profiles",
+      "高级"
+    ],
+    "concept_note": "hermes profile export 导出为 tar.gz 存档。"
+  },
+  {
+    "id": "hermes-0072",
+    "topic": "Profiles",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "如何从存档导入 Profile？",
+    "answer": "hermes profile import <文件路径>",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "导入 profile",
+      "profile import"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Profiles",
+      "高级"
+    ],
+    "concept_note": "hermes profile import 从存档导入 Profile。"
+  },
+  {
+    "id": "hermes-0073",
+    "topic": "凭证池",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "凭证池（Credential Pool）解决了什么问题？",
+    "answer": "在多个 API 密钥之间自动轮换，提高可用性和负载均衡",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "多个密钥轮换",
+      "自动切换"
+    ],
+    "common_errors": {},
+    "tags": [
+      "凭证池",
+      "进阶"
+    ],
+    "concept_note": "凭证池实现 API 密钥自动轮换。"
+  },
+  {
+    "id": "hermes-0074",
+    "topic": "凭证池",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "如何添加 API 密钥到凭证池？",
+    "answer": "hermes auth add",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "添加凭证",
+      "auth add"
+    ],
+    "common_errors": {},
+    "tags": [
+      "凭证池",
+      "进阶"
+    ],
+    "concept_note": "hermes auth add 交互式添加 API 密钥到凭证池。"
+  },
+  {
+    "id": "hermes-0075",
+    "topic": "凭证池",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "如何列出某个提供商的凭证池？",
+    "answer": "hermes auth list <提供商名>",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "列出凭证",
+      "auth list"
+    ],
+    "common_errors": {},
+    "tags": [
+      "凭证池",
+      "进阶"
+    ],
+    "concept_note": "hermes auth list 查看指定提供商的凭证列表。"
+  },
+  {
+    "id": "hermes-0076",
+    "topic": "凭证池",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "如何清除某个提供商的密钥耗尽状态？",
+    "answer": "hermes auth reset <提供商名>",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "重置状态",
+      "auth reset"
+    ],
+    "common_errors": {},
+    "tags": [
+      "凭证池",
+      "高级"
+    ],
+    "concept_note": "hermes auth reset 清除密钥耗尽标记。"
+  },
+  {
+    "id": "hermes-0077",
+    "topic": "高级功能",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "--worktree 或 -w 标志的作用是什么？",
+    "answer": "在隔离的 git 工作树中运行，适合并行代理避免代码冲突",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "隔离工作目录",
+      "并行代理"
+    ],
+    "common_errors": {},
+    "tags": [
+      "高级功能",
+      "入门"
+    ],
+    "concept_note": "-w 在隔离工作树中运行，防止 git 冲突。"
+  },
+  {
+    "id": "hermes-0078",
+    "topic": "高级功能",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "如何检查 Hermes 的依赖和配置健康状态？",
+    "answer": "hermes doctor",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "健康检查",
+      "doctor 子命令"
+    ],
+    "common_errors": {},
+    "tags": [
+      "高级功能",
+      "进阶"
+    ],
+    "concept_note": "hermes doctor 检查依赖和配置状态。"
+  },
+  {
+    "id": "hermes-0079",
+    "topic": "高级功能",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "hermes doctor --fix 的作用是什么？",
+    "answer": "自动修复检测到的问题",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "自动修复",
+      "doctor 加 --fix"
+    ],
+    "common_errors": {},
+    "tags": [
+      "高级功能",
+      "进阶"
+    ],
+    "concept_note": "hermes doctor --fix 自动修复问题。"
+  },
+  {
+    "id": "hermes-0080",
+    "topic": "高级功能",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "如何更新 Hermes 到最新版本？",
+    "answer": "hermes update",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "更新命令",
+      "update 子命令"
+    ],
+    "common_errors": {},
+    "tags": [
+      "高级功能",
+      "进阶"
+    ],
+    "concept_note": "hermes update 更新到最新版本。"
+  },
+  {
+    "id": "hermes-0081",
+    "topic": "高级功能",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "checkpoints 配置项的作用是什么？",
+    "answer": "启用文件系统检查点支持，允许使用 /rollback 回滚文件变更",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "检查点功能",
+      "文件回滚"
+    ],
+    "common_errors": {},
+    "tags": [
+      "高级功能",
+      "高级"
+    ],
+    "concept_note": "checkpoints 启用文件系统快照和回滚。"
+  },
+  {
+    "id": "hermes-0082",
+    "topic": "高级功能",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "如何卸载 Hermes Agent？",
+    "answer": "hermes uninstall",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "卸载命令",
+      "uninstall 子命令"
+    ],
+    "common_errors": {},
+    "tags": [
+      "高级功能",
+      "高级"
+    ],
+    "concept_note": "hermes uninstall 卸载 Hermes。"
+  },
+  {
+    "id": "hermes-0083",
+    "topic": "高级功能",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "/background 命令的作用是什么？",
+    "answer": "将提示词在后台运行，不阻塞当前会话",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "后台运行",
+      "不阻塞主会话"
+    ],
+    "common_errors": {},
+    "tags": [
+      "高级功能",
+      "高级"
+    ],
+    "concept_note": "/background 后台执行任务。"
+  },
+  {
+    "id": "hermes-0084",
+    "topic": "开发与贡献",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "添加一个 Hermes 工具需要修改哪些文件？",
+    "answer": "在 tools/ 目录下创建新文件并在 toolsets.py 注册",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "tools 目录",
+      "toolsets.py"
+    ],
+    "common_errors": {},
+    "tags": [
+      "开发与贡献",
+      "进阶"
+    ],
+    "concept_note": "添加工具需在 tools/ 创建 handler 并在 toolsets.py 注册。"
+  },
+  {
+    "id": "hermes-0085",
+    "topic": "开发与贡献",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "Hermes Agent 的核心对话循环入口文件是什么？",
+    "answer": "run_agent.py",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "运行代理的主文件",
+      "run_agent"
+    ],
+    "common_errors": {},
+    "tags": [
+      "开发与贡献",
+      "进阶"
+    ],
+    "concept_note": "run_agent.py 是核心对话循环入口。"
+  },
+  {
+    "id": "hermes-0086",
+    "topic": "开发与贡献",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "如何运行 Hermes 的测试套件？",
+    "answer": "python -m pytest tests/",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "pytest 运行测试",
+      "tests 目录"
+    ],
+    "common_errors": {},
+    "tags": [
+      "开发与贡献",
+      "进阶"
+    ],
+    "concept_note": "python -m pytest tests/ 运行全部测试。"
+  },
+  {
+    "id": "hermes-0087",
+    "topic": "开发与贡献",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "添加工具时，check_fn 回调函数有什么作用？",
+    "answer": "检查运行环境是否满足工具的依赖要求，不满足时工具不会出现在可用列表中",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "环境检查",
+      "不满足则不显示"
+    ],
+    "common_errors": {},
+    "tags": [
+      "开发与贡献",
+      "高级"
+    ],
+    "concept_note": "check_fn 确保工具只在满足依赖时可用。"
+  },
+  {
+    "id": "hermes-0088",
+    "topic": "开发与贡献",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "工具 handler 的返回值必须是什么格式？",
+    "answer": "JSON 字符串",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "JSON 格式",
+      "字符串类型"
+    ],
+    "common_errors": {},
+    "tags": [
+      "开发与贡献",
+      "高级"
+    ],
+    "concept_note": "所有工具 handler 必须返回 JSON 字符串。"
+  },
+  {
+    "id": "hermes-0089",
+    "topic": "开发与贡献",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "为什么不建议在代码中硬编码 ~/.hermes 路径？",
+    "answer": "因为使用 Profiles 时路径会改变，应使用 get_hermes_home() 获取正确路径",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "Profile 兼容",
+      "使用函数获取路径"
+    ],
+    "common_errors": {},
+    "tags": [
+      "开发与贡献",
+      "高级"
+    ],
+    "concept_note": "应使用 get_hermes_home() 而非硬编码路径。"
+  },
+  {
+    "id": "hermes-0090",
+    "topic": "故障排除",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "问题排查时，应该先查看什么日志文件？",
+    "answer": "~/.hermes/logs/gateway.log",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "网关日志",
+      "logs 目录"
+    ],
+    "common_errors": {},
+    "tags": [
+      "故障排除",
+      "进阶"
+    ],
+    "concept_note": "网关日志位于 ~/.hermes/logs/gateway.log。"
+  },
+  {
+    "id": "hermes-0091",
+    "topic": "故障排除",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "启用了新工具但用不了，应该怎么做？",
+    "answer": "执行 /reset 开始新会话（工具变更需要新会话生效）",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "重置会话",
+      "/reset"
+    ],
+    "common_errors": {},
+    "tags": [
+      "故障排除",
+      "进阶"
+    ],
+    "concept_note": "工具变更需要 /reset 新会话才能生效。"
+  },
+  {
+    "id": "hermes-0092",
+    "topic": "故障排除",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "辅助模型（vision、compression 等）不工作，可能是什么原因？",
+    "answer": "auto 提供商找不到后端，需要设置 OPENROUTER_API_KEY 或 GOOGLE_API_KEY，或显式配置辅助任务的提供商和模型",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "辅助模型不可用",
+      "配置提供商"
+    ],
+    "common_errors": {},
+    "tags": [
+      "故障排除",
+      "高级"
+    ],
+    "concept_note": "辅助模型需要显式配置提供商或设置通用 API Key。"
+  },
+  {
+    "id": "hermes-0093",
+    "topic": "故障排除",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "Windows 下 HTTP 400 'No models provided' 错误的原因是什么？",
+    "answer": "config.yaml 文件编码问题，可能包含 BOM（Byte Order Mark），需保存为 UTF-8 without BOM",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "编码问题",
+      "BOM 导致"
+    ],
+    "common_errors": {},
+    "tags": [
+      "故障排除",
+      "高级"
+    ],
+    "concept_note": "Windows 下需确保 config.yaml 是 UTF-8 without BOM。"
+  },
+  {
+    "id": "hermes-0094",
+    "topic": "综合",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "Hermes Agent 相比其他 AI Agent 的独特优势是什么？",
+    "answer": "自我改进（技能学习）、持久记忆、多平台网关、提供商无关、Profile 隔离、可扩展",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "多个独特能力",
+      "技能/记忆/多平台等"
+    ],
+    "common_errors": {},
+    "tags": [
+      "综合",
+      "进阶"
+    ],
+    "concept_note": "Hermes 的独特优势包括技能学习、记忆、多平台和供应商无关。"
+  },
+  {
+    "id": "hermes-0095",
+    "topic": "综合",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "如何获取 Hermes Agent 的详细文档？",
+    "answer": "https://hermes-agent.nousresearch.com/docs/",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "官方文档网站",
+      "docs 子域名"
+    ],
+    "common_errors": {},
+    "tags": [
+      "综合",
+      "进阶"
+    ],
+    "concept_note": "官方文档：hermes-agent.nousresearch.com/docs/。"
+  },
+  {
+    "id": "hermes-0096",
+    "topic": "综合",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "slack bot 和 discord bot 分别在什么情况下需要特殊配置？",
+    "answer": "Discord 需要开启 Message Content Intent；Slack 需要订阅 message.channels 事件才能响应公开频道",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "两个平台的特殊要求",
+      "Discord 开权限，Slack 订阅事件"
+    ],
+    "common_errors": {},
+    "tags": [
+      "综合",
+      "高级"
+    ],
+    "concept_note": "Discord 和 Slack 各有特殊的平台配置要求。"
+  },
+  {
+    "id": "hermes-0097",
+    "topic": "综合",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "delegate_task 和 spawning hermes 进程两种方式有什么区别？如何选择？",
+    "answer": "delegate_task 轻量快速、共享进程、适合短任务；spawn 独立进程、完全隔离、可交互、适合长任务",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "轻量委派 vs 独立进程",
+      "短任务 vs 长任务"
+    ],
+    "common_errors": {},
+    "tags": [
+      "综合",
+      "高级"
+    ],
+    "concept_note": "delegate_task 适合短任务，spawn 独立进程适合长任务。"
+  },
+  {
+    "id": "hermes-0098",
+    "topic": "CLI与基础",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "hermes chat 命令默认进入什么模式？",
+    "answer": "交互式会话模式",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "聊天模式",
+      "互动对话"
+    ],
+    "common_errors": {},
+    "tags": [
+      "CLI与基础",
+      "入门"
+    ],
+    "concept_note": "hermes chat 默认进入交互式会话。"
+  },
+  {
+    "id": "hermes-0099",
+    "topic": "CLI与基础",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "--pass-session-id 标志的作用是什么？",
+    "answer": "将会话 ID 包含在系统提示词中",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "传递会话 ID",
+      "系统提示中包含"
+    ],
+    "common_errors": {},
+    "tags": [
+      "CLI与基础",
+      "进阶"
+    ],
+    "concept_note": "--pass-session-id 将 session ID 注入系统提示词。"
+  },
+  {
+    "id": "hermes-0100",
+    "topic": "CLI与基础",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "--quiet 或 -Q 标志的作用是什么？",
+    "answer": "隐藏 banner、spinner 和工具预览输出",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "静默模式",
+      "减少输出"
+    ],
+    "common_errors": {},
+    "tags": [
+      "CLI与基础",
+      "进阶"
+    ],
+    "concept_note": "-Q 让输出更简洁。"
+  },
+  {
+    "id": "hermes-0101",
+    "topic": "CLI与基础",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "如何查看 Hermes 的会话统计信息？",
+    "answer": "hermes insights",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "查看洞察",
+      "使用量统计"
+    ],
+    "common_errors": {},
+    "tags": [
+      "CLI与基础",
+      "进阶"
+    ],
+    "concept_note": "hermes insights 查看使用分析。"
+  },
+  {
+    "id": "hermes-0102",
+    "topic": "CLI与基础",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "hermes status 命令显示什么信息？",
+    "answer": "各组件运行状态",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "组件状态",
+      "status 子命令"
+    ],
+    "common_errors": {},
+    "tags": [
+      "CLI与基础",
+      "进阶"
+    ],
+    "concept_note": "hermes status 显示各组件运行状态。"
+  },
+  {
+    "id": "hermes-0103",
+    "topic": "斜杠命令",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "/fast 命令的作用是什么？",
+    "answer": "切换优先/快速处理模式",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "快速模式",
+      "切换处理速度"
+    ],
+    "common_errors": {},
+    "tags": [
+      "斜杠命令",
+      "进阶"
+    ],
+    "concept_note": "/fast 切换快速处理模式。"
+  },
+  {
+    "id": "hermes-0104",
+    "topic": "斜杠命令",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "/usage 命令在 Hermes 中显示什么？",
+    "answer": "当前会话的 token 使用量",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "用量统计",
+      "token 使用"
+    ],
+    "common_errors": {},
+    "tags": [
+      "斜杠命令",
+      "进阶"
+    ],
+    "concept_note": "/usage 显示 token 用量。"
+  },
+  {
+    "id": "hermes-0105",
+    "topic": "斜杠命令",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "/stop 命令的作用是什么？",
+    "answer": "杀死后台运行的所有进程",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "停止后台进程",
+      "kill background"
+    ],
+    "common_errors": {},
+    "tags": [
+      "斜杠命令",
+      "进阶"
+    ],
+    "concept_note": "/stop 终止所有后台进程。"
+  },
+  {
+    "id": "hermes-0106",
+    "topic": "斜杠命令",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "/reasoning 命令支持哪些参数？",
+    "answer": "none、minimal、low、medium、high、xhigh、show、hide",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "推理级别参数",
+      "8 种选项"
+    ],
+    "common_errors": {},
+    "tags": [
+      "斜杠命令",
+      "高级"
+    ],
+    "concept_note": "/reasoning 控制推理深度。"
+  },
+  {
+    "id": "hermes-0107",
+    "topic": "斜杠命令",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "/queue 命令的作用是什么？",
+    "answer": "将一条消息加入队列，在下一轮对话发送",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "排队发送",
+      "下一轮执行"
+    ],
+    "common_errors": {},
+    "tags": [
+      "斜杠命令",
+      "高级"
+    ],
+    "concept_note": "/queue 将消息排入下一轮处理。"
+  },
+  {
+    "id": "hermes-0108",
+    "topic": "配置",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "display.skin 配置项控制什么？",
+    "answer": "终端主题/皮肤样式",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "主题皮肤",
+      "显示风格"
+    ],
+    "common_errors": {},
+    "tags": [
+      "配置",
+      "进阶"
+    ],
+    "concept_note": "display.skin 控制终端外观。"
+  },
+  {
+    "id": "hermes-0109",
+    "topic": "配置",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "security.tirith_enabled 配置项的作用是什么？",
+    "answer": "启用 TIRITH 安全检查机制",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "安全检查",
+      "Tirith 安全框架"
+    ],
+    "common_errors": {},
+    "tags": [
+      "配置",
+      "进阶"
+    ],
+    "concept_note": "tirith_enabled 启用安全扫描。"
+  },
+  {
+    "id": "hermes-0110",
+    "topic": "配置",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "agent.max_turns 默认值是多少？",
+    "answer": "90",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "最大轮数",
+      "默认 90"
+    ],
+    "common_errors": {},
+    "tags": [
+      "配置",
+      "进阶"
+    ],
+    "concept_note": "agent.max_turns 默认为 90。"
+  },
+  {
+    "id": "hermes-0111",
+    "topic": "提供商",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "DeepSeek 提供商需要什么环境变量？",
+    "answer": "DEEPSEEK_API_KEY",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "DeepSeek 的 Key",
+      "全大写"
+    ],
+    "common_errors": {},
+    "tags": [
+      "提供商",
+      "入门"
+    ],
+    "concept_note": "DeepSeek 需要 DEEPSEEK_API_KEY。"
+  },
+  {
+    "id": "hermes-0112",
+    "topic": "提供商",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "Google Gemini 的环境变量名是什么？",
+    "answer": "GOOGLE_API_KEY 或 GEMINI_API_KEY",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "Google 的 Key",
+      "两种变量名"
+    ],
+    "common_errors": {},
+    "tags": [
+      "提供商",
+      "进阶"
+    ],
+    "concept_note": "Google Gemini 支持 GOOGLE_API_KEY 或 GEMINI_API_KEY。"
+  },
+  {
+    "id": "hermes-0113",
+    "topic": "提供商",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "如何添加自定义端点作为提供商？",
+    "answer": "在 config.yaml 中设置 model.base_url 和 model.api_key",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "自定义端点",
+      "配置 URL 和 Key"
+    ],
+    "common_errors": {},
+    "tags": [
+      "提供商",
+      "高级"
+    ],
+    "concept_note": "自定义提供商通过配置 base_url 和 api_key 实现。"
+  },
+  {
+    "id": "hermes-0114",
+    "topic": "工具集",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "terminal 工具集提供什么能力？",
+    "answer": "Shell 命令执行和进程管理",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "终端能力",
+      "执行命令"
+    ],
+    "common_errors": {},
+    "tags": [
+      "工具集",
+      "入门"
+    ],
+    "concept_note": "terminal 工具集提供 Shell 执行能力。"
+  },
+  {
+    "id": "hermes-0115",
+    "topic": "工具集",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "vision 工具集提供什么能力？",
+    "answer": "图像分析和视觉识别",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "图像分析",
+      "AI 视觉"
+    ],
+    "common_errors": {},
+    "tags": [
+      "工具集",
+      "进阶"
+    ],
+    "concept_note": "vision 工具集提供图像分析能力。"
+  },
+  {
+    "id": "hermes-0116",
+    "topic": "工具集",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "cronjob 工具集的作用是什么？",
+    "answer": "定时任务的管理和调度",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "定时任务",
+      "cron 调度"
+    ],
+    "common_errors": {},
+    "tags": [
+      "工具集",
+      "进阶"
+    ],
+    "concept_note": "cronjob 工具集管理定时任务。"
+  },
+  {
+    "id": "hermes-0117",
+    "topic": "工具集",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "skills 工具集提供什么能力？",
+    "answer": "技能的浏览、搜索和管理",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "技能管理",
+      "skills 相关"
+    ],
+    "common_errors": {},
+    "tags": [
+      "工具集",
+      "进阶"
+    ],
+    "concept_note": "skills 工具集提供技能管理能力。"
+  },
+  {
+    "id": "hermes-0118",
+    "topic": "网关平台",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "如何在网关中查看已连接的平台状态？",
+    "answer": "/platforms 或 /gateway",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "查看平台",
+      "平台状态命令"
+    ],
+    "common_errors": {},
+    "tags": [
+      "网关平台",
+      "进阶"
+    ],
+    "concept_note": "/platforms 显示所有连接的平台状态。"
+  },
+  {
+    "id": "hermes-0119",
+    "topic": "网关平台",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "如何在网关中批准一个待处理的命令？",
+    "answer": "/approve",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "批准命令",
+      "/approve"
+    ],
+    "common_errors": {},
+    "tags": [
+      "网关平台",
+      "进阶"
+    ],
+    "concept_note": "/approve 批准待处理的命令。"
+  },
+  {
+    "id": "hermes-0120",
+    "topic": "网关平台",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "如何在网关中设置当前聊天为主频道？",
+    "answer": "/sethome",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "设为主频道",
+      "/sethome"
+    ],
+    "common_errors": {},
+    "tags": [
+      "网关平台",
+      "进阶"
+    ],
+    "concept_note": "/sethome 设置当前为网关主频道。"
+  },
+  {
+    "id": "hermes-0121",
+    "topic": "技能系统",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "如何检查技能是否有更新？",
+    "answer": "hermes skills check",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "检查更新",
+      "skills check"
+    ],
+    "common_errors": {},
+    "tags": [
+      "技能系统",
+      "进阶"
+    ],
+    "concept_note": "hermes skills check 检查技能更新。"
+  },
+  {
+    "id": "hermes-0122",
+    "topic": "技能系统",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "如何更新过期的技能？",
+    "answer": "hermes skills update",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "更新技能",
+      "skills update"
+    ],
+    "common_errors": {},
+    "tags": [
+      "技能系统",
+      "进阶"
+    ],
+    "concept_note": "hermes skills update 更新过期技能。"
+  },
+  {
+    "id": "hermes-0123",
+    "topic": "技能系统",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "如何卸载一个从技能中心安装的技能？",
+    "answer": "hermes skills uninstall <序号>",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "卸载技能",
+      "skills uninstall"
+    ],
+    "common_errors": {},
+    "tags": [
+      "技能系统",
+      "进阶"
+    ],
+    "concept_note": "hermes skills uninstall 移除技能。"
+  },
+  {
+    "id": "hermes-0124",
+    "topic": "MCP",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "如何删除一个 MCP 服务器？",
+    "answer": "hermes mcp remove <名称>",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "删除 MCP",
+      "mcp remove"
+    ],
+    "common_errors": {},
+    "tags": [
+      "MCP",
+      "进阶"
+    ],
+    "concept_note": "hermes mcp remove 删除 MCP 服务器。"
+  },
+  {
+    "id": "hermes-0125",
+    "topic": "MCP",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "MCP 工具注入（tool injection）是什么意思？",
+    "answer": "MCP 服务器暴露的工具被自动注册为 Hermes 的本地工具，无需额外配置",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "自动注册工具",
+      "零配置使用"
+    ],
+    "common_errors": {},
+    "tags": [
+      "MCP",
+      "高级"
+    ],
+    "concept_note": "MCP 工具自动注入为 Hermes 本地工具。"
+  },
+  {
+    "id": "hermes-0126",
+    "topic": "MCP",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "/reload-mcp 命令的作用是什么？",
+    "answer": "重新加载所有 MCP 服务器配置，无需重启会话",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "重载 MCP",
+      "热加载"
+    ],
+    "common_errors": {},
+    "tags": [
+      "MCP",
+      "高级"
+    ],
+    "concept_note": "/reload-mcp 热重载 MCP 配置。"
+  },
+  {
+    "id": "hermes-0127",
+    "topic": "会话管理",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "如何清理由会话历史文件占用的空间？",
+    "answer": "hermes sessions prune --older-than N 天",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "清理旧会话",
+      "prune 命令"
+    ],
+    "common_errors": {},
+    "tags": [
+      "会话管理",
+      "进阶"
+    ],
+    "concept_note": "hermes sessions prune 清理旧会话。"
+  },
+  {
+    "id": "hermes-0128",
+    "topic": "会话管理",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "如何删除一个会话？",
+    "answer": "hermes sessions delete <会话ID>",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "删除会话",
+      "sessions delete"
+    ],
+    "common_errors": {},
+    "tags": [
+      "会话管理",
+      "进阶"
+    ],
+    "concept_note": "hermes sessions delete 删除指定会话。"
+  },
+  {
+    "id": "hermes-0129",
+    "topic": "记忆系统",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "如何关闭 Hermes 的记忆功能？",
+    "answer": "hermes memory off",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "关闭记忆",
+      "memory off"
+    ],
+    "common_errors": {},
+    "tags": [
+      "记忆系统",
+      "进阶"
+    ],
+    "concept_note": "hermes memory off 关闭记忆功能。"
+  },
+  {
+    "id": "hermes-0130",
+    "topic": "记忆系统",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "记忆系统的 provider 配置支持哪些选项？",
+    "answer": "built-in、honcho、mem0 等",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "记忆提供商类型",
+      "多种后端支持"
+    ],
+    "common_errors": {},
+    "tags": [
+      "记忆系统",
+      "高级"
+    ],
+    "concept_note": "记忆系统支持多种 provider。"
+  },
+  {
+    "id": "hermes-0131",
+    "topic": "Cron 与 Webhook",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "如何立即触发一个定时任务执行？",
+    "answer": "hermes cron run <job_id>",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "立即执行",
+      "cron run"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Cron 与 Webhook",
+      "高级"
+    ],
+    "concept_note": "hermes cron run 立即触发定时任务。"
+  },
+  {
+    "id": "hermes-0132",
+    "topic": "Cron 与 Webhook",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "如何测试一个 Webhook 端点？",
+    "answer": "hermes webhook test <名称>",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "测试 webhook",
+      "webhook test"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Cron 与 Webhook",
+      "高级"
+    ],
+    "concept_note": "hermes webhook test 发送测试 POST。"
+  },
+  {
+    "id": "hermes-0133",
+    "topic": "Cron 与 Webhook",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "如何删除一个 Webhook 订阅？",
+    "answer": "hermes webhook remove <名称>",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "删除 webhook",
+      "webhook remove"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Cron 与 Webhook",
+      "高级"
+    ],
+    "concept_note": "hermes webhook remove 删除订阅。"
+  },
+  {
+    "id": "hermes-0134",
+    "topic": "Profiles",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "如何切换默认的 Profile？",
+    "answer": "hermes profile use <名称>",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "切换默认",
+      "profile use"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Profiles",
+      "进阶"
+    ],
+    "concept_note": "hermes profile use 设置默认 Profile。"
+  },
+  {
+    "id": "hermes-0135",
+    "topic": "Profiles",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "如何使用特定 Profile 启动 Hermes？",
+    "answer": "hermes --profile <名称>",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "启动指定 Profile",
+      "--profile 参数"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Profiles",
+      "进阶"
+    ],
+    "concept_note": "hermes --profile 使用指定 Profile 启动。"
+  },
+  {
+    "id": "hermes-0136",
+    "topic": "Profiles",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "克隆 Profile 时 --clone 和 --clone-all 有什么区别？",
+    "answer": "--clone 克隆基础配置，--clone-all 克隆包括技能和记忆在内的全部内容",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "部分克隆 vs 完整克隆",
+      "clone-all 克隆所有"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Profiles",
+      "高级"
+    ],
+    "concept_note": "--clone 基础克隆，--clone-all 完整克隆。"
+  },
+  {
+    "id": "hermes-0137",
+    "topic": "凭证池",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "凭证池支持的认证方式有哪些？",
+    "answer": "API Key、OAuth 等",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "多种认证方式",
+      "Key 和 OAuth"
+    ],
+    "common_errors": {},
+    "tags": [
+      "凭证池",
+      "高级"
+    ],
+    "concept_note": "凭证池支持 API Key 和 OAuth 等方式。"
+  },
+  {
+    "id": "hermes-0138",
+    "topic": "凭证池",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "hermes login 命令支持哪些提供商？",
+    "answer": "nous、openai-codex 等 OAuth 提供商",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "OAuth 登录",
+      "支持特定提供商"
+    ],
+    "common_errors": {},
+    "tags": [
+      "凭证池",
+      "高级"
+    ],
+    "concept_note": "hermes login 用于 OAuth 提供商认证。"
+  },
+  {
+    "id": "hermes-0139",
+    "topic": "高级功能",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "hermes completion bash|zsh 命令的作用是什么？",
+    "answer": "生成 Shell 自动补全脚本",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "命令补全",
+      "bash 或 zsh"
+    ],
+    "common_errors": {},
+    "tags": [
+      "高级功能",
+      "进阶"
+    ],
+    "concept_note": "hermes completion 生成 shell 补全脚本。"
+  },
+  {
+    "id": "hermes-0140",
+    "topic": "高级功能",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "ACP（Anthropic Communication Protocol）服务器的作用是什么？",
+    "answer": "让 IDE 工具（如 VS Code）集成 Hermes Agent",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "IDE 集成",
+      "ACP 协议"
+    ],
+    "common_errors": {},
+    "tags": [
+      "高级功能",
+      "高级"
+    ],
+    "concept_note": "hermes acp 启动 ACP 服务器用于 IDE 集成。"
+  },
+  {
+    "id": "hermes-0141",
+    "topic": "高级功能",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "hermes acp 命令的作用是什么？",
+    "answer": "启动 ACP 服务器用于 IDE 集成",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "IDE 集成服务器",
+      "ACP"
+    ],
+    "common_errors": {},
+    "tags": [
+      "高级功能",
+      "高级"
+    ],
+    "concept_note": "hermes acp 提供 IDE 集成能力。"
+  },
+  {
+    "id": "hermes-0142",
+    "topic": "开发与贡献",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "Hermes 的斜杠命令注册中心在哪个文件？",
+    "answer": "hermes_cli/commands.py",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "命令注册",
+      "commands.py"
+    ],
+    "common_errors": {},
+    "tags": [
+      "开发与贡献",
+      "进阶"
+    ],
+    "concept_note": "斜杠命令在 hermes_cli/commands.py 注册。"
+  },
+  {
+    "id": "hermes-0143",
+    "topic": "开发与贡献",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "Hermes 的配置默认值定义在哪个文件？",
+    "answer": "hermes_cli/config.py",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "默认配置",
+      "config.py"
+    ],
+    "common_errors": {},
+    "tags": [
+      "开发与贡献",
+      "进阶"
+    ],
+    "concept_note": "默认配置定义在 hermes_cli/config.py。"
+  },
+  {
+    "id": "hermes-0144",
+    "topic": "开发与贡献",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "为什么测试会自动重定向 HERMES_HOME？",
+    "answer": "防止测试时修改用户的真实配置和会话文件",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "安全隔离",
+      "测试保护"
+    ],
+    "common_errors": {},
+    "tags": [
+      "开发与贡献",
+      "高级"
+    ],
+    "concept_note": "测试自动使用临时目录避免污染真实环境。"
+  },
+  {
+    "id": "hermes-0145",
+    "topic": "故障排除",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "网关在 SSH 登出后自动停止怎么办？",
+    "answer": "启用 linger：sudo loginctl enable-linger $USER",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "保持运行",
+      "loginctl enable-linger"
+    ],
+    "common_errors": {},
+    "tags": [
+      "故障排除",
+      "高级"
+    ],
+    "concept_note": "启用 linger 让网关在 SSH 登出后继续运行。"
+  },
+  {
+    "id": "hermes-0146",
+    "topic": "故障排除",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "网关崩溃循环无法启动怎么办？",
+    "answer": "systemctl --user reset-failed hermes-gateway",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "重置失败状态",
+      "reset-failed"
+    ],
+    "common_errors": {},
+    "tags": [
+      "故障排除",
+      "高级"
+    ],
+    "concept_note": "使用 reset-failed 清除崩溃循环状态。"
+  },
+  {
+    "id": "hermes-0147",
+    "topic": "故障排除",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "WSL2 下网关服务无法持久运行的原因是什么？",
+    "answer": "WSL2 需要 systemd=true 在 /etc/wsl.conf 中配置才能正常运行系统服务",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "WSL2 systemd",
+      "wsl.conf 配置"
+    ],
+    "common_errors": {},
+    "tags": [
+      "故障排除",
+      "高级"
+    ],
+    "concept_note": "WSL2 需要配置 systemd=true。"
+  },
+  {
+    "id": "hermes-0148",
+    "topic": "综合",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "Hermes 的 plugins 命令可以做什么？",
+    "answer": "管理插件：list、install、remove",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "插件管理",
+      "list/install/remove"
+    ],
+    "common_errors": {},
+    "tags": [
+      "综合",
+      "进阶"
+    ],
+    "concept_note": "hermes plugins 管理 Hermes 插件。"
+  },
+  {
+    "id": "hermes-0149",
+    "topic": "综合",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "hermes pairing 命令的作用是什么？",
+    "answer": "管理 DM（私信）授权：list、approve、revoke",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "私信授权",
+      "配对管理"
+    ],
+    "common_errors": {},
+    "tags": [
+      "综合",
+      "高级"
+    ],
+    "concept_note": "hermes pairing 管理私信授权。"
+  },
+  {
+    "id": "hermes-0150",
+    "topic": "综合",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "Hermes 的 setup 向导支持哪些配置模块？",
+    "answer": "model（模型）、terminal（终端）、gateway（网关）、tools（工具）、agent（代理）",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "五个配置模块",
+      "模型/终端/网关/工具/代理"
+    ],
+    "common_errors": {},
+    "tags": [
+      "综合",
+      "进阶"
+    ],
+    "concept_note": "hermes setup 可配置 model、terminal、gateway、tools、agent 五个模块。"
+  }
+]

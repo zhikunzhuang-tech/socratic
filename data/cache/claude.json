@@ -1,0 +1,3350 @@
+[
+  {
+    "id": "claude-001",
+    "topic": "Slash Commands",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "在 Claude Code 中，输入什么键可以列出所有可用的斜杠命令？",
+    "answer": "/",
+    "alternatives": [
+      "/help"
+    ],
+    "steps": [
+      "在交互会话中输入 / 并回车",
+      "Claude Code 会显示所有可用的内置命令和技能"
+    ],
+    "socratic_hints": [
+      "试试只输入一个符号",
+      "斜杠开头的命令列表"
+    ],
+    "common_errors": {
+      "/help": "那是查看帮助，不是列出所有命令",
+      "help": "需要以 / 开头"
+    },
+    "tags": [
+      "Slash Commands",
+      "入门"
+    ],
+    "concept_note": "输入 / 即可查看所有可用命令列表。"
+  },
+  {
+    "id": "claude-002",
+    "topic": "Slash Commands",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "Claude Code 中用于查看当前会话 token 用量统计的内置命令是哪个？",
+    "answer": "/cost",
+    "alternatives": [],
+    "steps": [
+      "输入 /cost",
+      "Claude Code 会显示当前会话的 token 消耗统计"
+    ],
+    "socratic_hints": [
+      "和费用有关的命令",
+      "cost 本身就有成本的含义"
+    ],
+    "common_errors": {
+      "/stats": "那是显示会话统计的命令",
+      "/usage": "/cost 才是正确的"
+    },
+    "tags": [
+      "Slash Commands",
+      "入门"
+    ],
+    "concept_note": "/cost 命令显示 token 使用量统计。"
+  },
+  {
+    "id": "claude-003",
+    "topic": "Slash Commands",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "哪个命令可以清除当前对话历史？（两个别名）",
+    "answer": "/clear",
+    "alternatives": [
+      "/reset",
+      "/new"
+    ],
+    "steps": [
+      "输入 /clear",
+      "对话历史将被清除"
+    ],
+    "socratic_hints": [
+      "清理对话的命令",
+      "clear/reset/new 都是同一个功能"
+    ],
+    "common_errors": {
+      "/clean": "没有这个命令",
+      "/delete": "没有这个命令"
+    },
+    "tags": [
+      "Slash Commands",
+      "入门"
+    ],
+    "concept_note": "/clear（别名 /reset、/new）用于清除对话历史。"
+  },
+  {
+    "id": "claude-004",
+    "topic": "Slash Commands",
+    "grade": "入门",
+    "difficulty": 2,
+    "question": "用于在 Claude Code 中切换模型的命令是什么？它支持哪些模型？",
+    "answer": "/model",
+    "alternatives": [],
+    "steps": [
+      "输入 /model",
+      "使用左右箭头选择模型（sonnet/opus/haiku）"
+    ],
+    "socratic_hints": [
+      "切换 AI 模型的命令",
+      "直接输入 / 加关键词"
+    ],
+    "common_errors": {
+      "/switch": "没有这个命令",
+      "/ai": "没有这个命令"
+    },
+    "tags": [
+      "Slash Commands",
+      "入门"
+    ],
+    "concept_note": "/model 命令可切换 Claude 模型，默认在 sonnet/opus/haiku 之间选择。"
+  },
+  {
+    "id": "claude-005",
+    "topic": "Slash Commands",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "在 Claude Code 中，/compact 命令的作用是什么？",
+    "answer": "压缩对话历史，节省 token 空间",
+    "alternatives": [
+      "紧凑对话",
+      "压缩上下文"
+    ],
+    "steps": [
+      "当对话上下文接近上限时使用",
+      "输入 /compact 可压缩历史，可选指定保留重点"
+    ],
+    "socratic_hints": [
+      "token 太多时怎么办？",
+      "让对话变紧凑的命令"
+    ],
+    "common_errors": {
+      "/clear": "清除全部历史而不是压缩",
+      "/cost": "那是查看用量"
+    },
+    "tags": [
+      "Slash Commands",
+      "进阶"
+    ],
+    "concept_note": "/compact 压缩对话历史以释放 token 空间，可附带指令指定保留哪些重点内容。"
+  },
+  {
+    "id": "claude-006",
+    "topic": "Slash Commands",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "Claude Code 中 /btw 命令的用途是什么？",
+    "answer": "提出一个不加入对话历史的旁侧问题",
+    "alternatives": [
+      "旁侧问题",
+      "side question"
+    ],
+    "steps": [
+      "输入 /btw <问题>",
+      "Claude 会回答但该问题和回答不加入对话历史"
+    ],
+    "socratic_hints": [
+      "问一个和主线无关的问题",
+      "by the way 的缩写"
+    ],
+    "common_errors": {
+      "/ask": "没有这个命令",
+      "/hmm": "没有这个命令"
+    },
+    "tags": [
+      "Slash Commands",
+      "进阶"
+    ],
+    "concept_note": "/btw（By The Way）用于问无关问题但不污染对话历史。"
+  },
+  {
+    "id": "claude-007",
+    "topic": "Slash Commands",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "在 Claude Code 中，斜杠命令有哪四种类型？",
+    "answer": "内置命令、技能（Skills）、插件命令、MCP 提示词",
+    "alternatives": [
+      "Built-in, Skills, Plugin, MCP prompts"
+    ],
+    "steps": [
+      "内置命令由 Claude Code 提供，如 /help",
+      "技能是用户创建的 SKILL.md 命令",
+      "插件命令来源于安装的插件",
+      "MCP 提示词来自 MCP 服务器"
+    ],
+    "socratic_hints": [
+      "想一想命令的来源有哪些",
+      "官方提供的、用户自建的、外部集成的"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Slash Commands",
+      "进阶"
+    ],
+    "concept_note": "四种命令类型：内置、技能、插件、MCP 提示词。"
+  },
+  {
+    "id": "claude-008",
+    "topic": "Slash Commands",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "/effort 命令的可用级别有哪些？（列出从低到高）",
+    "answer": "low、medium、high、xhigh、max",
+    "alternatives": [
+      "low medium high xhigh max"
+    ],
+    "steps": [
+      "输入 /effort 并回车",
+      "使用左右箭头或上下键选择级别"
+    ],
+    "socratic_hints": [
+      "一共 5 个级别",
+      "从低到高，默认是 xhigh"
+    ],
+    "common_errors": {
+      "1-5": "不是数字，是文字级别"
+    },
+    "tags": [
+      "Slash Commands",
+      "高级"
+    ],
+    "concept_note": "/effort 设置努力级别：low → medium → high → xhigh → max，默认 xhigh，max 需要 Opus 4.7。"
+  },
+  {
+    "id": "claude-009",
+    "topic": "Memory",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "Claude Code 中用于保存跨会话持久化上下文的文件叫什么？",
+    "answer": "CLAUDE.md",
+    "alternatives": [
+      "claude.md"
+    ],
+    "steps": [
+      "在项目根目录创建 CLAUDE.md",
+      "Claude Code 会在每次会话开始时自动加载"
+    ],
+    "socratic_hints": [
+      "全部大写的一个 markdown 文件",
+      "文件名就是 Claude 的全大写形式"
+    ],
+    "common_errors": {
+      "README.md": "那是项目说明",
+      "CONFIG.md": "不是标准文件名"
+    },
+    "tags": [
+      "Memory",
+      "入门"
+    ],
+    "concept_note": "CLAUDE.md 是 Claude Code 的项目记忆文件，自动加载到上下文中。"
+  },
+  {
+    "id": "claude-010",
+    "topic": "Memory",
+    "grade": "入门",
+    "difficulty": 2,
+    "question": "如何初始化一个新的 CLAUDE.md 文件？",
+    "answer": "/init",
+    "alternatives": [
+      "使用 /init 命令"
+    ],
+    "steps": [
+      "在项目目录中启动 Claude Code",
+      "输入 /init"
+    ],
+    "socratic_hints": [
+      "一个斜杠命令",
+      "和初始化有关"
+    ],
+    "common_errors": {
+      "/create": "没有这个命令",
+      "touch CLAUDE.md": "不会自动填充结构"
+    },
+    "tags": [
+      "Memory",
+      "入门"
+    ],
+    "concept_note": "/init 命令交互式地初始化 CLAUDE.md 文件。"
+  },
+  {
+    "id": "claude-011",
+    "topic": "Memory",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "Claude Code 的记忆优先级从高到低依次是什么？（列出前 4 个）",
+    "answer": "托管策略（组织）、项目 CLAUDE.md、目录 CLAUDE.md、用户 ~/.claude/CLAUDE.md",
+    "alternatives": [
+      "托管策略 项目 目录 用户"
+    ],
+    "steps": [
+      "组织级策略优先级最高",
+      "项目根目录的 CLAUDE.md 次之",
+      "子目录的 CLAUDE.md 覆盖更具体路径",
+      "用户级 ~/.claude/CLAUDE.md 是全局默认"
+    ],
+    "socratic_hints": [
+      "越靠近组织的优先级越高",
+      "组织 > 项目 > 目录 > 用户"
+    ],
+    "common_errors": {
+      "用户>项目": "用户级优先级比项目级低"
+    },
+    "tags": [
+      "Memory",
+      "进阶"
+    ],
+    "concept_note": "记忆优先级：托管策略(组织) > 项目 > 目录 > 用户 > 本地 > 自动记忆。"
+  },
+  {
+    "id": "claude-012",
+    "topic": "Memory",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "什么是 Auto Memory？它有什么作用？",
+    "answer": "Claude Code 自动保存的关键上下文信息，跨会话生效",
+    "alternatives": [
+      "自动记忆"
+    ],
+    "steps": [
+      "Claude Code 在会话中自动识别重要信息",
+      "自动保存到记忆系统中",
+      "下次会话时自动恢复"
+    ],
+    "socratic_hints": [
+      "Claude 自己记住的东西",
+      "不需要手动保存"
+    ],
+    "common_errors": {
+      "缓存": "不是缓存，是跨会话的记忆"
+    },
+    "tags": [
+      "Memory",
+      "进阶"
+    ],
+    "concept_note": "Auto Memory 让 Claude 自动记住用户的关键偏好和工作上下文。"
+  },
+  {
+    "id": "claude-013",
+    "topic": "Memory",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "在对话中如何快速添加一条简短规则到记忆？",
+    "answer": "使用 # 前缀输入",
+    "alternatives": [
+      "# 加规则内容"
+    ],
+    "steps": [
+      "输入 # 后跟上你想记住的规则",
+      "Claude Code 会将其保存到记忆系统中"
+    ],
+    "socratic_hints": [
+      "一个井号开头",
+      "像注释一样的语法"
+    ],
+    "common_errors": {
+      "/memory": "那是编辑记忆的命令，不是快速添加"
+    },
+    "tags": [
+      "Memory",
+      "进阶"
+    ],
+    "concept_note": "对话中输入 # 加内容可快速添加规则到记忆。"
+  },
+  {
+    "id": "claude-014",
+    "topic": "Memory",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "Claude.mdExcludes 配置的作用是什么？",
+    "answer": "指定哪些文件和目录的内容不被写入 CLAUDE.md",
+    "alternatives": [
+      "排除文件免于写入"
+    ],
+    "steps": [
+      "在 settings.json 中配置",
+      "指定不需要写入 CLAUDE.md 的路径模式"
+    ],
+    "socratic_hints": [
+      "排除不需要的记忆内容",
+      "Excludes 的意思是排除"
+    ],
+    "common_errors": {
+      ".gitignore": "那是 git 用的"
+    },
+    "tags": [
+      "Memory",
+      "高级"
+    ],
+    "concept_note": "claudeMdExcludes 用于排除不需要写入 CLAUDE.md 的文件和目录。"
+  },
+  {
+    "id": "claude-015",
+    "topic": "Skills",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "Claude Code 中技能（Skill）的配置文件叫什么名字？放在什么目录？",
+    "answer": "SKILL.md，放在 .claude/skills/<技能名>/ 目录下",
+    "alternatives": [
+      ".claude/skills/ 下的 SKILL.md"
+    ],
+    "steps": [
+      "在 .claude/skills/ 下创建技能目录",
+      "在该目录中创建 SKILL.md 文件"
+    ],
+    "socratic_hints": [
+      "全部大写的文件名",
+      "skills 目录下"
+    ],
+    "common_errors": {
+      "skill.md": "必须全部大写",
+      "skills.json": "不是 JSON 格式"
+    },
+    "tags": [
+      "Skills",
+      "入门"
+    ],
+    "concept_note": "技能定义为 .claude/skills/<name>/SKILL.md。"
+  },
+  {
+    "id": "claude-016",
+    "topic": "Skills",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "SKILL.md 的 YAML frontmatter 中，哪个字段控制技能是否可以被 AI 自动触发？",
+    "answer": "disable-model-invocation",
+    "alternatives": [
+      "disable_model_invocation"
+    ],
+    "steps": [
+      "设置为 true 表示仅用户可调用",
+      "设置为 false（默认）表示 AI 可自动触发"
+    ],
+    "socratic_hints": [
+      "禁用模型自动调用的字段",
+      "disable 开头的字段"
+    ],
+    "common_errors": {
+      "user-invocable": "那是控制用户能否调用的"
+    },
+    "tags": [
+      "Skills",
+      "进阶"
+    ],
+    "concept_note": "disable-model-invocation: true 表示仅用户可调用，AI 不会自动触发。"
+  },
+  {
+    "id": "claude-017",
+    "topic": "Skills",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "Claude Code 技能支持哪三种参数替换方式？",
+    "answer": "$ARGUMENTS、$0/$1/$2 位置参数、!`command` 命令注入",
+    "alternatives": [],
+    "steps": [
+      "$ARGUMENTS 获取所有参数",
+      "$0 表示技能名，$1 表示第一个参数",
+      "!`command` 执行 shell 命令注入结果"
+    ],
+    "socratic_hints": [
+      "获取全部参数的方式",
+      "按位置获取参数的方式",
+      "执行命令的方式"
+    ],
+    "common_errors": {
+      "{{var}}": "那是模板语法，不是技能替换语法"
+    },
+    "tags": [
+      "Skills",
+      "进阶"
+    ],
+    "concept_note": "技能参数替换：$ARGUMENTS（全部）、$N（位置）、!`command`（命令注入）。"
+  },
+  {
+    "id": "claude-018",
+    "topic": "Skills",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "Claude Code 内置了哪 5 个技能？",
+    "answer": "/simplify、/batch、/debug、/loop、/claude-api",
+    "alternatives": [],
+    "steps": [
+      "/simplify 简化代码",
+      "/batch 批量处理",
+      "/debug 调试辅助",
+      "/loop 循环/定时任务",
+      "/claude-api Claude API 调用"
+    ],
+    "socratic_hints": [
+      "5 个斜杠开头的内置技能",
+      "simplify/batch/debug/loop/claude-api"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Skills",
+      "进阶"
+    ],
+    "concept_note": "5 个内置技能：/simplify、/batch、/debug、/loop、/claude-api。"
+  },
+  {
+    "id": "claude-019",
+    "topic": "Skills",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "技能的 progressive disclosure（渐进式加载）机制是怎样的？",
+    "answer": "3 层加载：1) 只读描述判断相关性 2) 加载 SKILL.md 核心指令 3) 按需加载脚本/模板等支撑文件",
+    "alternatives": [
+      "描述→核心指令→支撑文件"
+    ],
+    "steps": [
+      "第一层：读取 name 和 description 判断是否相关",
+      "第二层：加载完整的 SKILL.md 内容",
+      "第三层：按需加载 references/templates/scripts 目录下的文件"
+    ],
+    "socratic_hints": [
+      "分几步逐步加载",
+      "先看标题→再看内容→最后看附件"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Skills",
+      "高级"
+    ],
+    "concept_note": "渐进式加载：描述 → 核心指令 → 支撑文件，节省 token。"
+  },
+  {
+    "id": "claude-020",
+    "topic": "Skills",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "如何让一个技能在与主会话隔离的子代理（subagent）中执行？",
+    "answer": "在 SKILL.md frontmatter 中设置 context: fork",
+    "alternatives": [],
+    "steps": [
+      "在 frontmatter 中添加 context: fork",
+      "Claude Code 会为该技能启动独立子代理执行"
+    ],
+    "socratic_hints": [
+      "frontmatter 中的一个字段",
+      "fork 表示分叉执行"
+    ],
+    "common_errors": {
+      "subagent: true": "没有这个字段",
+      "isolated: true": "没有这个字段"
+    },
+    "tags": [
+      "Skills",
+      "高级"
+    ],
+    "concept_note": "context: fork 让技能在隔离的子代理中执行。"
+  },
+  {
+    "id": "claude-021",
+    "topic": "Subagents",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "Claude Code 的子代理（subagent）配置文件放在什么目录？是什么格式？",
+    "answer": ".claude/agents/ 目录，YAML frontmatter 的 Markdown 文件",
+    "alternatives": [
+      ".claude/agents/"
+    ],
+    "steps": [
+      "在 .claude/agents/ 下创建 .md 文件",
+      "使用 YAML frontmatter 定义名称、工具、提示词"
+    ],
+    "socratic_hints": [
+      "agents 目录下",
+      "Markdown 格式但带 YAML 头部"
+    ],
+    "common_errors": {
+      ".claude/subagents/": "目录名是 agents 不是 subagents"
+    },
+    "tags": [
+      "Subagents",
+      "入门"
+    ],
+    "concept_note": "子代理配置放在 .claude/agents/ 目录，使用带 YAML frontmatter 的 Markdown 文件。"
+  },
+  {
+    "id": "claude-022",
+    "topic": "Subagents",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "子代理的 frontmatter 中，tools 字段可以配置什么？",
+    "answer": "子代理可以使用的工具集（如 read-only 限制为只读工具）",
+    "alternatives": [],
+    "steps": [
+      "设置 permitted_tools 或 denied_tools",
+      "如 review 代理限制为 read-only"
+    ],
+    "socratic_hints": [
+      "控制子代理权限的字段",
+      "可以限制只能读不能写"
+    ],
+    "common_errors": {
+      "permissions": "没有这个字段"
+    },
+    "tags": [
+      "Subagents",
+      "进阶"
+    ],
+    "concept_note": "tools 字段配置子代理的工具权限，可用于限制为只读模式。"
+  },
+  {
+    "id": "claude-023",
+    "topic": "Subagents",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "如何显式调用一个已配置的子代理？",
+    "answer": "在对话中使用 @子代理名 提及其他由 Claude 自动调用",
+    "alternatives": [],
+    "steps": [
+      "输入 @ 加子代理名称",
+      "如 @code-reviewer 调用代码审查代理"
+    ],
+    "socratic_hints": [
+      "用 @ 符号提及",
+      "类似 @ 某人"
+    ],
+    "common_errors": {
+      "/agent 名字": "不是斜杠命令方式"
+    },
+    "tags": [
+      "Subagents",
+      "进阶"
+    ],
+    "concept_note": "用 @子代理名 在对话中调用子代理。"
+  },
+  {
+    "id": "claude-024",
+    "topic": "Subagents",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "Claude Code 内置了哪些子代理？（列出至少 3 个）",
+    "answer": "general-purpose、Plan、Explore（Haiku）、Bash、Claude Code Guide",
+    "alternatives": [],
+    "steps": [
+      "general-purpose 通用代理",
+      "Plan 规划代理",
+      "Explore 轻量探索（Haiku 模型）",
+      "Bash Shell 执行代理"
+    ],
+    "socratic_hints": [
+      "至少 5 个内置的",
+      "包括通用、规划、探索等"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Subagents",
+      "进阶"
+    ],
+    "concept_note": "内置子代理：general-purpose、Plan、Explore(Haiku)、Bash、Claude Code Guide。"
+  },
+  {
+    "id": "claude-025",
+    "topic": "Subagents",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "什么是 Agent Teams（代理团队）？它与普通子代理有什么不同？",
+    "answer": "实验性功能，支持多角色协作而非单次任务委派",
+    "alternatives": [],
+    "steps": [
+      "多个子代理协作完成复杂任务",
+      "不同于普通子代理的单次委派"
+    ],
+    "socratic_hints": [
+      "多名 AI 协作工作",
+      "Team 表示团队协作"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Subagents",
+      "高级"
+    ],
+    "concept_note": "Agent Teams 支持多代理协作，适合复杂任务分解。"
+  },
+  {
+    "id": "claude-026",
+    "topic": "Subagents",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "子代理配置的优先级顺序是什么？",
+    "answer": "CLI 命令行定义（--agents）> 用户级 > 项目级",
+    "alternatives": [],
+    "steps": [
+      "通过 --agents 传入的优先级最高",
+      "~/.claude/agents/ 用户级次之",
+      ".claude/agents/ 项目级最低"
+    ],
+    "socratic_hints": [
+      "命令行参数优先",
+      "离当前越近的优先级越高"
+    ],
+    "common_errors": {
+      "项目级>用户级": "项目级优先级低于用户级"
+    },
+    "tags": [
+      "Subagents",
+      "高级"
+    ],
+    "concept_note": "子代理优先级：CLI > 用户级 > 项目级。"
+  },
+  {
+    "id": "claude-027",
+    "topic": "MCP",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "MCP 的全称是什么？它的作用是什么？",
+    "answer": "Model Context Protocol，用于连接外部工具、服务和 API 的标准协议",
+    "alternatives": [],
+    "steps": [
+      "MCP = Model Context Protocol",
+      "Claude Code 通过 MCP 服务器访问外部资源"
+    ],
+    "socratic_hints": [
+      "三个单词的首字母缩写",
+      "Model 开头的协议"
+    ],
+    "common_errors": {
+      "Model Control Protocol": "Context 不是 Control"
+    },
+    "tags": [
+      "MCP",
+      "入门"
+    ],
+    "concept_note": "MCP 是连接 Claude Code 与外部工具的标准化协议。"
+  },
+  {
+    "id": "claude-028",
+    "topic": "MCP",
+    "grade": "入门",
+    "difficulty": 2,
+    "question": "MCP 配置文件的默认名称是什么？项目级和用户级的路径分别是什么？",
+    "answer": ".mcp.json（项目级）和 ~/.claude.json（用户级）",
+    "alternatives": [],
+    "steps": [
+      "项目级：在项目根目录创建 .mcp.json",
+      "用户级：编辑 ~/.claude.json 中的 mcpServers 配置"
+    ],
+    "socratic_hints": [
+      "隐藏文件，mcp 开头",
+      "项目级和用户级各有一个"
+    ],
+    "common_errors": {
+      "mcp.json": "需要点号开头",
+      "config/mcp.json": "路径不对"
+    },
+    "tags": [
+      "MCP",
+      "入门"
+    ],
+    "concept_note": "项目级：.mcp.json；用户级：~/.claude.json 中的 mcpServers 段。"
+  },
+  {
+    "id": "claude-029",
+    "topic": "MCP",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "MCP 支持哪几种传输类型？推荐使用哪种？",
+    "answer": "HTTP（推荐）、Stdio（本地）、SSE（已弃用）、WebSocket（实时双向）",
+    "alternatives": [],
+    "steps": [
+      "HTTP 传输适合远程服务",
+      "Stdio 适合同机进程通信",
+      "SSE 已弃用",
+      "WebSocket 适合实时双向通信"
+    ],
+    "socratic_hints": [
+      "4 种传输方式",
+      "推荐使用 HTTP"
+    ],
+    "common_errors": {},
+    "tags": [
+      "MCP",
+      "进阶"
+    ],
+    "concept_note": "MCP 传输：HTTP（推荐）、Stdio、SSE（弃用）、WebSocket。"
+  },
+  {
+    "id": "claude-030",
+    "topic": "MCP",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "MCP 提示词如何作为斜杠命令使用？格式是什么？",
+    "answer": "/mcp__<服务器名>__<提示词名称> 参数",
+    "alternatives": [],
+    "steps": [
+      "输入 /mcp__",
+      "跟上 MCP 服务器名称",
+      "再跟上提示词名称"
+    ],
+    "socratic_hints": [
+      "以 /mcp 开头的格式",
+      "用双下划线分隔"
+    ],
+    "common_errors": {
+      "/mcp-server-prompt": "格式不对"
+    },
+    "tags": [
+      "MCP",
+      "进阶"
+    ],
+    "concept_note": "MCP 提示词作为命令：/mcp__服务器__提示词。"
+  },
+  {
+    "id": "claude-031",
+    "topic": "MCP",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "claude mcp serve 命令的作用是什么？",
+    "answer": "将 Claude Code 本身作为一个 MCP 服务器暴露给其他 MCP 客户端调用",
+    "alternatives": [],
+    "steps": [
+      "运行 claude mcp serve",
+      "其他 MCP 客户端可以连接并使用 Claude 的能力"
+    ],
+    "socratic_hints": [
+      "把 Claude 提供给其它程序使用",
+      "Serve 表示提供服务"
+    ],
+    "common_errors": {
+      "运行 MCP 服务器": "方向反了，是 Claude 作为服务器"
+    },
+    "tags": [
+      "MCP",
+      "高级"
+    ],
+    "concept_note": "claude mcp serve 让 Claude Code 成为一个 MCP 服务器供其他客户端调用。"
+  },
+  {
+    "id": "claude-032",
+    "topic": "MCP",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "什么是 MCP Elicitation？",
+    "answer": "MCP 服务器在执行过程中向用户请求额外输入的能力",
+    "alternatives": [],
+    "steps": [
+      "MCP 服务器在执行任务时",
+      "可以主动向用户询问更多信息"
+    ],
+    "socratic_hints": [
+      "Elicit = 引出、询问",
+      "服务器主动问用户要信息"
+    ],
+    "common_errors": {},
+    "tags": [
+      "MCP",
+      "高级"
+    ],
+    "concept_note": "MCP Elicitation 让服务器可以主动向用户请求额外输入。"
+  },
+  {
+    "id": "claude-033",
+    "topic": "Hooks",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "Claude Code 的钩子（Hook）是什么？有哪些分类？",
+    "answer": "事件驱动的 shell 脚本，在 Claude Code 事件发生时自动执行。4 类：工具钩子、会话钩子、任务钩子、生命周期钩子",
+    "alternatives": [],
+    "steps": [
+      "在 settings.json 中配置 hook",
+      "指定触发事件和执行脚本"
+    ],
+    "socratic_hints": [
+      "类似于 git hooks",
+      "在特定事件发生时自动运行脚本"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Hooks",
+      "进阶"
+    ],
+    "concept_note": "Hooks 是事件驱动的自动脚本，分工具/会话/任务/生命周期 4 类。"
+  },
+  {
+    "id": "claude-034",
+    "topic": "Hooks",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "PreToolUse 和 PostToolUse 钩子分别在什么时候触发？",
+    "answer": "PreToolUse 在工具执行前触发，PostToolUse 在工具执行后触发",
+    "alternatives": [],
+    "steps": [
+      "PreToolUse 可用于验证或修改工具调用参数",
+      "PostToolUse 可用于处理工具执行结果"
+    ],
+    "socratic_hints": [
+      "Pre = 之前",
+      "Post = 之后"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Hooks",
+      "进阶"
+    ],
+    "concept_note": "PreToolUse（执行前）和 PostToolUse（执行后）工具钩子。"
+  },
+  {
+    "id": "claude-035",
+    "topic": "Hooks",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "钩子配置文件的格式和存放位置是？",
+    "answer": "在 settings.json 中的 hooks 字段配置，可放在项目级（.claude/settings.json）或用户级（~/.claude/settings.json）",
+    "alternatives": [],
+    "steps": [
+      "创建或编辑 settings.json",
+      "添加 hooks 字段，配置事件和对应脚本"
+    ],
+    "socratic_hints": [
+      "settings.json 文件中的 hooks 字段",
+      "项目级或用户级"
+    ],
+    "common_errors": {
+      ".claude/hooks.json": "不在独立文件中"
+    },
+    "tags": [
+      "Hooks",
+      "进阶"
+    ],
+    "concept_note": "Hooks 配置在 settings.json 的 hooks 字段中，支持项目和用户两级作用域。"
+  },
+  {
+    "id": "claude-036",
+    "topic": "Hooks",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "2026 年 3 月新增了哪两种钩子类型？分别有什么作用？",
+    "answer": "agent hook（触发子代理）和 prompt hook（注入提示文本）",
+    "alternatives": [],
+    "steps": [
+      "agent hook 在事件发生时自动启动子代理",
+      "prompt hook 向当前会话注入额外提示"
+    ],
+    "socratic_hints": [
+      "一种触发代理，一种注入文本",
+      "新增的两种 hook 类型"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Hooks",
+      "高级"
+    ],
+    "concept_note": "新增：agent hook（触发子代理）、prompt hook（注入提示文本）。"
+  },
+  {
+    "id": "claude-037",
+    "topic": "Hooks",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "PostToolUseFailure 钩子在什么情况下触发？",
+    "answer": "当工具调用失败时触发",
+    "alternatives": [],
+    "steps": [
+      "工具执行返回错误时",
+      "PostToolUseFailure 钩子自动执行"
+    ],
+    "socratic_hints": [
+      "出错了会触发",
+      "Failure 表示失败"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Hooks",
+      "高级"
+    ],
+    "concept_note": "PostToolUseFailure 在工具调用失败时触发。"
+  },
+  {
+    "id": "claude-038",
+    "topic": "Plugins",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "Claude Code 插件可以打包哪些组件？",
+    "answer": "斜杠命令、子代理、MCP 服务器、钩子、LSP 服务器",
+    "alternatives": [
+      "commands, agents, MCP, hooks, LSP"
+    ],
+    "steps": [
+      "插件是包含多个组件的集合包",
+      "一个插件可以同时包含命令、代理、MCP 配置等"
+    ],
+    "socratic_hints": [
+      "插件是多个功能的集合",
+      "可以包含命令、代理、MCP 等"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Plugins",
+      "进阶"
+    ],
+    "concept_note": "插件可包含：命令、子代理、MCP、钩子、LSP 等组件。"
+  },
+  {
+    "id": "claude-039",
+    "topic": "Plugins",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "安装插件的命令是什么？",
+    "answer": "/plugin install <来源>",
+    "alternatives": [],
+    "steps": [
+      "输入 /plugin install",
+      "指定插件来源（仓库 URL 或路径）"
+    ],
+    "socratic_hints": [
+      "斜杠命令安装",
+      "plugin 相关命令"
+    ],
+    "common_errors": {
+      "/install": "没有这个命令",
+      "npm install": "不是 Claude 的命令"
+    },
+    "tags": [
+      "Plugins",
+      "进阶"
+    ],
+    "concept_note": "使用 /plugin install 安装插件。"
+  },
+  {
+    "id": "claude-040",
+    "topic": "Plugins",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "插件支持的来源有哪些？（列出至少 3 种）",
+    "answer": "GitHub 仓库、本地路径、npm、pip、Git URL",
+    "alternatives": [],
+    "steps": [
+      "GitHub: 用户名/仓库名",
+      "本地: 相对路径或绝对路径",
+      "npm/pip 包"
+    ],
+    "socratic_hints": [
+      "可以从哪里安装插件",
+      "多种包管理器和 Git"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Plugins",
+      "进阶"
+    ],
+    "concept_note": "插件来源：GitHub、本地路径、npm、pip、Git URL 等。"
+  },
+  {
+    "id": "claude-041",
+    "topic": "Plugins",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "插件中的 LSP（Language Server Protocol）支持有什么作用？",
+    "answer": "为 Claude Code 提供代码诊断、导航、悬停信息、符号列表等 IDE 级功能",
+    "alternatives": [],
+    "steps": [
+      "插件配置 LSP 服务器",
+      "Claude Code 自动使用 LSP 诊断代码错误、提供补全等"
+    ],
+    "socratic_hints": [
+      "LSP 是编辑器功能",
+      "lint/诊断/补全等能力"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Plugins",
+      "高级"
+    ],
+    "concept_note": "LSP 支持为 Claude Code 带来代码诊断、导航等 IDE 能力。"
+  },
+  {
+    "id": "claude-042",
+    "topic": "Plugins",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "插件配置中的 userConfig 字段有什么特殊作用？",
+    "answer": "让用户可以在安装后自定义插件的行为选项；sensitive: true 时内容保存在系统钥匙串中",
+    "alternatives": [],
+    "steps": [
+      "插件作者定义可配置选项",
+      "用户安装后可调整个性化设置"
+    ],
+    "socratic_hints": [
+      "用户可配置的选项",
+      "敏感信息可存入钥匙串"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Plugins",
+      "高级"
+    ],
+    "concept_note": "userConfig 让插件可配置；sensitive 选项将值保存在系统钥匙串。"
+  },
+  {
+    "id": "claude-043",
+    "topic": "Checkpoints",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "在 Claude Code 中，创建和恢复检查点的快捷键是什么？",
+    "answer": "Esc + Esc（连续按两次 Esc）",
+    "alternatives": [],
+    "steps": [
+      "在会话中按两次 Esc 键",
+      "打开撤销/检查点菜单"
+    ],
+    "socratic_hints": [
+      "两个相同的按键",
+      "键盘左上角的那个键"
+    ],
+    "common_errors": {
+      "Ctrl+Z": "那是撤销代码修改"
+    },
+    "tags": [
+      "Checkpoints",
+      "入门"
+    ],
+    "concept_note": "Esc+Esc 快捷键打开检查点/撤销菜单。"
+  },
+  {
+    "id": "claude-044",
+    "topic": "Checkpoints",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "/rewind 命令有哪 5 个恢复选项？",
+    "answer": "1. 恢复代码和对话 2. 只恢复对话 3. 只恢复代码 4. 从此处开始摘要 5. 取消",
+    "alternatives": [],
+    "steps": [
+      "执行 /rewind 或 Esc+Esc",
+      "从菜单中选择恢复方式"
+    ],
+    "socratic_hints": [
+      "5 个选项，包括恢复代码、对话、两者都恢复等",
+      "还有摘要和取消"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Checkpoints",
+      "进阶"
+    ],
+    "concept_note": "/rewind 支持 5 种恢复方式，灵活选择。"
+  },
+  {
+    "id": "claude-045",
+    "topic": "Checkpoints",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "自动检查点的保留时间是多少？",
+    "answer": "30 天后自动清理",
+    "alternatives": [],
+    "steps": [
+      "Claude Code 自动为每次用户输入创建检查点",
+      "超过 30 天的自动清理"
+    ],
+    "socratic_hints": [
+      "一个月",
+      "30 天"
+    ],
+    "common_errors": {
+      "永久保留": "不会永久保留"
+    },
+    "tags": [
+      "Checkpoints",
+      "进阶"
+    ],
+    "concept_note": "自动检查点保留 30 天后自动清理。"
+  },
+  {
+    "id": "claude-046",
+    "topic": "Checkpoints",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "检查点和 git 版本控制的关系是什么？",
+    "answer": "检查点是 git 的补充，不是替代品。检查点保存会话状态（对话+文件），git 是版本控制系统",
+    "alternatives": [],
+    "steps": [
+      "检查点保存：消息、文件修改、工具历史",
+      "git 保存：代码版本历史、分支、协作"
+    ],
+    "socratic_hints": [
+      "两者用途不同",
+      "检查点用于会话管理，git 用于代码管理"
+    ],
+    "common_errors": {
+      "检查点可以替代 git": "不能替代"
+    },
+    "tags": [
+      "Checkpoints",
+      "进阶"
+    ],
+    "concept_note": "检查点是 git 的补充，两者用途不同，不可互相替代。"
+  },
+  {
+    "id": "claude-047",
+    "topic": "Advanced",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "Claude Code 的规划模式（Plan Mode）是什么工作流程？",
+    "answer": "两阶段流程：规划阶段（生成详细计划）→ 审批通过后执行阶段",
+    "alternatives": [],
+    "steps": [
+      "输入 /plan <描述> 进入规划模式",
+      "Claude 生成实现计划",
+      "用户审批 Yes/No/Modify",
+      "审批通过后自动进入执行"
+    ],
+    "socratic_hints": [
+      "分两步走",
+      "先规划后执行"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Advanced",
+      "进阶"
+    ],
+    "concept_note": "Plan Mode：先规划，审批通过后执行。"
+  },
+  {
+    "id": "claude-048",
+    "topic": "Advanced",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "如何在 Claude Code 中开启/关闭自动模式（Auto Mode）？快捷键是什么？",
+    "answer": "Shift + Tab 切换模式；用 --enable-auto-mode 启动",
+    "alternatives": [],
+    "steps": [
+      "使用 Shift+Tab 循环切换权限模式",
+      "或启动时加 --enable-auto-mode"
+    ],
+    "socratic_hints": [
+      "切换模式的热键",
+      "Shift 加 Tab 键"
+    ],
+    "common_errors": {
+      "Ctrl+M": "不是快捷键"
+    },
+    "tags": [
+      "Advanced",
+      "进阶"
+    ],
+    "concept_note": "Shift+Tab 切换模式；--enable-auto-mode 启动自动模式。"
+  },
+  {
+    "id": "claude-049",
+    "topic": "Advanced",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "Claude Code 中有哪 6 种权限模式？",
+    "answer": "default、acceptEdits、plan、auto、dontAsk、bypassPermissions",
+    "alternatives": [],
+    "steps": [
+      "default: 每个工具都询问",
+      "acceptEdits: 自动接受文件编辑",
+      "plan: 只读分析",
+      "auto: 后台自动判断",
+      "dontAsk: 跳过需要权限的工具",
+      "bypassPermissions: 跳过所有检查"
+    ],
+    "socratic_hints": [
+      "6 种模式，从严格到宽松",
+      "加 --dangerously-skip-permissions 可绕过所有权限"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Advanced",
+      "进阶"
+    ],
+    "concept_note": "6 种权限模式：default、acceptEdits、plan、auto、dontAsk、bypassPermissions。"
+  },
+  {
+    "id": "claude-050",
+    "topic": "Advanced",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "Claude Code 中 Extended Thinking（扩展思考）的作用是什么？如何开启？",
+    "answer": "分步推理能力，分解问题、比较选项、推导边界情况。Option+T（macOS）/ Alt+T（Linux/Windows）",
+    "alternatives": [],
+    "steps": [
+      "按下 Option+T (mac) 或 Alt+T (win/linux) 开启",
+      "Claude 会展示详细推理过程"
+    ],
+    "socratic_hints": [
+      "让 AI 展示思考过程",
+      "显示推理步骤"
+    ],
+    "common_errors": {
+      "/think": "不是命令方式"
+    },
+    "tags": [
+      "Advanced",
+      "高级"
+    ],
+    "concept_note": "Extended Thinking 展示 AI 的分步推理过程。"
+  },
+  {
+    "id": "claude-051",
+    "topic": "Advanced",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "claude -p（print/headless 模式）有什么用途？",
+    "answer": "非交互式模式：单次查询后退出，适合 CI/CD 集成、脚本化调用、管道输入",
+    "alternatives": [],
+    "steps": [
+      "在终端中使用 claude -p '问题'",
+      "支持管道输入：cat file | claude -p '分析'",
+      "支持 --output-format json 输出结构化结果"
+    ],
+    "socratic_hints": [
+      "不需要交互的模式",
+      "适合脚本和自动化"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Advanced",
+      "高级"
+    ],
+    "concept_note": "Print 模式用于自动化、CI/CD、管道输入等非交互场景。"
+  },
+  {
+    "id": "claude-052",
+    "topic": "Advanced",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "Claude Code 中的工作树（Worktree）特性有什么作用？如何启动？",
+    "answer": "隔离的并行分支开发环境，使用 claude -w 标志启动，支持单仓稀疏检出和自动清理",
+    "alternatives": [],
+    "steps": [
+      "使用 claude -w 启动工作树会话",
+      "每个工作树是独立的工作目录和分支"
+    ],
+    "socratic_hints": [
+      "并行分支开发",
+      "类似 git worktree 的隔离环境"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Advanced",
+      "高级"
+    ],
+    "concept_note": "Git Worktree 提供隔离的并行开发环境。"
+  },
+  {
+    "id": "claude-053",
+    "topic": "Advanced",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "/loop 命令的作用是什么？支持哪些调度方式？",
+    "answer": "创建定时重复任务。支持 /loop 5m <prompt>（每 5 分钟）、自然语言（每天上午 9 点）、云调度",
+    "alternatives": [],
+    "steps": [
+      "输入 /loop <间隔> <提示>",
+      "Claude Code 按计划自动执行"
+    ],
+    "socratic_hints": [
+      "定时重复执行任务",
+      "loop = 循环"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Advanced",
+      "高级"
+    ],
+    "concept_note": "/loop 创建定时重复任务，支持多种调度方式。"
+  },
+  {
+    "id": "claude-054",
+    "topic": "Advanced",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "Claude Code 的远程控制（Remote Control）功能是做什么的？",
+    "answer": "从 claude.ai 或 Claude App 远程控制本地的 Claude Code 会话",
+    "alternatives": [],
+    "steps": [
+      "启动时用 --remote-control 或 --rc",
+      "在 claude.ai 上可以看到并控制该会话"
+    ],
+    "socratic_hints": [
+      "远程遥控本地会话",
+      "从网页控制终端"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Advanced",
+      "高级"
+    ],
+    "concept_note": "Remote Control 让 claude.ai 可以远程控制本地会话。"
+  },
+  {
+    "id": "claude-055",
+    "topic": "CLI",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "如何查看 Claude Code 的版本信息？",
+    "answer": "claude --version 或 claude -v",
+    "alternatives": [],
+    "steps": [
+      "在终端中输入 claude --version",
+      "Claude 会输出版本号"
+    ],
+    "socratic_hints": [
+      "查看版本的标志参数",
+      "--version 或 -v"
+    ],
+    "common_errors": {
+      "claude version": "需要加 --"
+    },
+    "tags": [
+      "CLI",
+      "进阶"
+    ],
+    "concept_note": "claude --version 查看版本信息。"
+  },
+  {
+    "id": "claude-056",
+    "topic": "CLI",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "claude --output-format json 的作用是什么？",
+    "answer": "以 JSON 格式输出结果，便于程序化处理",
+    "alternatives": [],
+    "steps": [
+      "在 print 模式下使用 --output-format json",
+      "Claude 输出 JSON 格式的结果"
+    ],
+    "socratic_hints": [
+      "JSON 格式输出",
+      "适合程序解析"
+    ],
+    "common_errors": {},
+    "tags": [
+      "CLI",
+      "进阶"
+    ],
+    "concept_note": "--output-format json 输出结构化 JSON 结果。"
+  },
+  {
+    "id": "claude-057",
+    "topic": "CLI",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "claude --model sonnet 和 --agent 参数的区别是什么？",
+    "answer": "--model 指定基础模型，--agent 指定子代理配置",
+    "alternatives": [],
+    "steps": [
+      "--model 选择 Claude 模型（sonnet/opus/haiku）",
+      "--agent 使用预定义的子代理"
+    ],
+    "socratic_hints": [
+      "一个改 AI 大脑，一个改行为角色",
+      "模型 vs 代理"
+    ],
+    "common_errors": {},
+    "tags": [
+      "CLI",
+      "进阶"
+    ],
+    "concept_note": "--model 选模型，--agent 选子代理。"
+  },
+  {
+    "id": "claude-058",
+    "topic": "CLI",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "如何在 Claude Code 中为会话设置名称？",
+    "answer": "claude -n <会话名> 或 /rename <名称>",
+    "alternatives": [],
+    "steps": [
+      "启动时使用 -n 参数",
+      "或会话中使用 /rename 命令"
+    ],
+    "socratic_hints": [
+      "n 是 name 的缩写",
+      "也可以会话中改名"
+    ],
+    "common_errors": {},
+    "tags": [
+      "CLI",
+      "高级"
+    ],
+    "concept_note": "claude -n <名称> 或 /rename 设置会话名称。"
+  },
+  {
+    "id": "claude-059",
+    "topic": "综合",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "Claude Code 的功能对比中，记忆（Memory）和技能（Skill）的持久化方式有什么不同？",
+    "answer": "记忆是跨会话自动加载的上下文；技能是基于文件系统的可自动触发的能力包",
+    "alternatives": [],
+    "steps": [
+      "记忆：CLAUDE.md 文件，自动加载到上下文",
+      "技能：SKILL.md 文件，按需或自动触发"
+    ],
+    "socratic_hints": [
+      "一个持久化信息，一个持久化能力",
+      "记忆存事实，技能存流程"
+    ],
+    "common_errors": {},
+    "tags": [
+      "综合",
+      "进阶"
+    ],
+    "concept_note": "记忆存上下文（事实/偏好），技能存可执行能力（工作流）。"
+  },
+  {
+    "id": "claude-060",
+    "topic": "综合",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "Claude Code 中如何实现安全的凭证管理？哪些组件不能硬编码凭证？",
+    "answer": "使用环境变量传递凭证；MCP 服务器配置、插件配置、钩子脚本都不应硬编码",
+    "alternatives": [],
+    "steps": [
+      "使用 $VAR 引用环境变量",
+      "MCP 配置中的 token 用 env 变量",
+      "插件 userConfig sensitive: true 存入钥匙串"
+    ],
+    "socratic_hints": [
+      "不能把密码写在文件里",
+      "用环境变量或钥匙串"
+    ],
+    "common_errors": {},
+    "tags": [
+      "综合",
+      "高级"
+    ],
+    "concept_note": "凭证管理：环境变量、钥匙串、禁止硬编码。"
+  },
+  {
+    "id": "claude-061",
+    "topic": "综合",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "Claude Code 的技能（Skills）和子代理（Subagents）的核心区别是什么？",
+    "answer": "技能是自动/手动触发的可复用指令集；子代理是具有独立上下文和工具权限的专属 AI 助手",
+    "alternatives": [],
+    "steps": [
+      "技能：一组指令，在现有会话中执行",
+      "子代理：独立 AI 进程，有隔离上下文和专属工具"
+    ],
+    "socratic_hints": [
+      "一个加指令，一个加 AI",
+      "技能是扩展命令，子代理是独立助手"
+    ],
+    "common_errors": {},
+    "tags": [
+      "综合",
+      "进阶"
+    ],
+    "concept_note": "技能 = 指令集（扩展现有能力），子代理 = 独立 AI（专门化能力）。"
+  },
+  {
+    "id": "claude-062",
+    "topic": "综合",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "Claude Code 的 March 2026 更新中新增了哪些主要功能？（列出至少 5 个）",
+    "answer": "远程控制、Web 会话、桌面应用、代理团队、任务列表、Git 工作树、沙箱、语音听写、频道、自动模式等",
+    "alternatives": [],
+    "steps": [
+      "/remote-control 远程控制",
+      "claude --remote 创建 Web 会话",
+      "/desktop 桌面应用",
+      "语音听写支持 20 种语言",
+      "Channels 支持 Discord/Telegram 推送"
+    ],
+    "socratic_hints": [
+      "2026 年 3 月更新",
+      "远程桌面语音频道等"
+    ],
+    "common_errors": {},
+    "tags": [
+      "综合",
+      "高级"
+    ],
+    "concept_note": "March 2026 新增：远程控制、Web 会话、桌面 App、语音听写、Channels、工作树等。"
+  },
+  {
+    "id": "claude-0063",
+    "topic": "Slash Commands",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "/fork 和 /branch 命令是什么关系？",
+    "answer": "/fork 已在 v2.1.77 被重命名为 /branch，两者功能相同",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "一个已被重命名",
+      "branch = fork"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Slash Commands",
+      "进阶"
+    ],
+    "concept_note": "/fork 已重命名为 /branch。"
+  },
+  {
+    "id": "claude-0064",
+    "topic": "Slash Commands",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "/diff 命令在 Claude Code 中的用途是什么？",
+    "answer": "交互式查看未提交的代码变更差异",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "git diff 的 Claude 版本",
+      "查看修改内容"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Slash Commands",
+      "进阶"
+    ],
+    "concept_note": "/diff 显示未提交的修改差异。"
+  },
+  {
+    "id": "claude-0065",
+    "topic": "Slash Commands",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "如何给 Claude Code 会话设置终端提示栏颜色？",
+    "answer": "/color <颜色名> 或 /color default",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "改变颜色的命令",
+      "color 加颜色名"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Slash Commands",
+      "进阶"
+    ],
+    "concept_note": "/color 命令可以自定义终端提示栏颜色。"
+  },
+  {
+    "id": "claude-0066",
+    "topic": "Slash Commands",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "/insights 命令生成什么类型的报告？",
+    "answer": "会话分析报告，包括 token 使用、关键操作、效率建议等",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "分析和洞察",
+      "会话总结报告"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Slash Commands",
+      "高级"
+    ],
+    "concept_note": "/insights 生成包含 token 用量、关键操作等的会话分析报告。"
+  },
+  {
+    "id": "claude-0067",
+    "topic": "Slash Commands",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "/less-permission-prompts 命令的作用是什么？",
+    "answer": "分析最近的工具调用并生成权限白名单，减少权限询问弹窗",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "减少权限提示",
+      "与权限有关的优化命令"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Slash Commands",
+      "高级"
+    ],
+    "concept_note": "/less-permission-prompts 通过白名单减少权限提示。"
+  },
+  {
+    "id": "claude-0068",
+    "topic": "Slash Commands",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "哪个命令可以清空 Claude Code 的当前对话？（三个别名）",
+    "answer": "/clear、/reset、/new",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "清除对话的命令",
+      "三个不同的别名"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Slash Commands",
+      "入门"
+    ],
+    "concept_note": "三个别名：/clear、/reset、/new，功能相同。"
+  },
+  {
+    "id": "claude-0069",
+    "topic": "Slash Commands",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "在 Claude Code 中如何查看帮助信息？",
+    "answer": "/help",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "斜杠加 help",
+      "最基础的命令"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Slash Commands",
+      "入门"
+    ],
+    "concept_note": "/help 显示 Claude Code 帮助信息。"
+  },
+  {
+    "id": "claude-0070",
+    "topic": "Slash Commands",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "/export 命令支持哪些导出方式？",
+    "answer": "导出到文件或剪贴板",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "导出当前会话",
+      "可以导出到文件或剪贴板"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Slash Commands",
+      "高级"
+    ],
+    "concept_note": "/export 可将当前会话导出到文件或剪贴板。"
+  },
+  {
+    "id": "claude-0071",
+    "topic": "Memory",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "Claude Code 的记忆系统中，用户级记忆文件存放在哪里？",
+    "answer": "~/.claude/CLAUDE.md",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "在 home 目录的隐藏配置中",
+      "用户级别的记忆文件"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Memory",
+      "进阶"
+    ],
+    "concept_note": "用户级记忆：~/.claude/CLAUDE.md，存放个人偏好和常用设置。"
+  },
+  {
+    "id": "claude-0072",
+    "topic": "Memory",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "什么是目录级记忆（Directory Memory）？用在什么场景？",
+    "answer": "子目录下的 CLAUDE.md，用于覆盖项目内特定子模块的上下文",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "子目录中的 CLAUDE.md",
+      "比项目级更具体"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Memory",
+      "进阶"
+    ],
+    "concept_note": "目录级记忆为项目的特定子模块提供定制化上下文。"
+  },
+  {
+    "id": "claude-0073",
+    "topic": "Memory",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "本地记忆文件的名称是什么？有什么特性？",
+    "answer": "./CLAUDE.local.md，被 .gitignore 忽略，不会提交到仓库",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "带 .local 的文件名",
+      "不会被 git 提交"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Memory",
+      "进阶"
+    ],
+    "concept_note": "CLAUDE.local.md 是 git 忽略的本地记忆文件。"
+  },
+  {
+    "id": "claude-0074",
+    "topic": "Memory",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "CLAUDE.md 文件中应该写什么内容？",
+    "answer": "项目结构、技术栈、构建命令、代码规范、团队标准，不要拷贝完整 README",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "让 AI 快速了解项目的信息",
+      "不是文档备份"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Memory",
+      "进阶"
+    ],
+    "concept_note": "CLAUDE.md 记录关键项目信息，避免冗余。"
+  },
+  {
+    "id": "claude-0075",
+    "topic": "Memory",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "什么是 Managed Policy？它的优先级和适用范围是什么？",
+    "answer": "组织级托管策略，在所有其他记忆之上，适用于企业部署",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "企业管理的策略",
+      "最高优先级"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Memory",
+      "高级"
+    ],
+    "concept_note": "Managed Policy 是组织级策略，优先级最高。"
+  },
+  {
+    "id": "claude-0076",
+    "topic": "Memory",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "autoMemory 配置项有什么作用？",
+    "answer": "控制是否自动保存关键上下文到记忆，可在 settings.json 中配置",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "自动记忆的开关",
+      "control automatic memory"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Memory",
+      "高级"
+    ],
+    "concept_note": "autoMemory 控制自动记忆功能的开关。"
+  },
+  {
+    "id": "claude-0077",
+    "topic": "Skills",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "如何列出所有可用的技能？",
+    "answer": "/skills",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "查看技能列表的命令"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Skills",
+      "进阶"
+    ],
+    "concept_note": "/skills 命令列出所有可用技能。"
+  },
+  {
+    "id": "claude-0078",
+    "topic": "Skills",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "user-invocable 和 disable-model-invocation 字段有什么区别？",
+    "answer": "user-invocable 控制用户能否调用；disable-model-invocation 控制 AI 能否自动触发",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "一个控制用户，一个控制 AI",
+      "两个相反的权限控制"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Skills",
+      "进阶"
+    ],
+    "concept_note": "user-invocable（用户）vs disable-model-invocation（AI）。"
+  },
+  {
+    "id": "claude-0079",
+    "topic": "Skills",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "什么是技能的 context: fork 配置？",
+    "answer": "让技能在隔离的子代理中独立执行，拥有独立的上下文和工具权限",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "fork = 分叉",
+      "在独立的子代理中运行"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Skills",
+      "高级"
+    ],
+    "concept_note": "context: fork 让技能在独立的子代理中隔离执行。"
+  },
+  {
+    "id": "claude-0080",
+    "topic": "Skills",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "技能配置中的 allowed-tools 字段有什么作用？",
+    "answer": "限制技能可使用的工具集，避免技能执行危险的操作",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "限制技能的工具权限",
+      "allowed = 允许的"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Skills",
+      "高级"
+    ],
+    "concept_note": "allowed-tools 限制技能可使用的工具。"
+  },
+  {
+    "id": "claude-0081",
+    "topic": "Skills",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "项目的技能和用户的技能分别存放在哪里？",
+    "answer": "项目级：.claude/skills/；用户级：~/.claude/skills/",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "一个在项目里",
+      "一个在 home 目录"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Skills",
+      "进阶"
+    ],
+    "concept_note": "项目技能在 .claude/skills/，用户技能在 ~/.claude/skills/。"
+  },
+  {
+    "id": "claude-0082",
+    "topic": "Skills",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "/simplify 和 /debug 这两个内置技能分别有什么作用？",
+    "answer": "/simplify 简化复杂代码；/debug 帮助调试代码问题",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "一个简化代码，一个帮助调试"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Skills",
+      "入门"
+    ],
+    "concept_note": "/simplify（简化）和 /debug（调试）是两个内置技能。"
+  },
+  {
+    "id": "claude-0083",
+    "topic": "Subagents",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "子代理的 prompt 字段在 frontmatter 中的作用是什么？",
+    "answer": "定义子代理的系统提示词，决定其行为和专业方向",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "子代理的指令集",
+      "告诉子代理它的角色"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Subagents",
+      "进阶"
+    ],
+    "concept_note": "prompt 字段定义子代理的系统提示词和行为方式。"
+  },
+  {
+    "id": "claude-0084",
+    "topic": "Subagents",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "如何让一个子代理成为只读审查者？",
+    "answer": "在 frontmatter 中将 tools 限制为 read-only 或只授予读工具权限",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "控制子代理的工具权限",
+      "只允许读操作"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Subagents",
+      "进阶"
+    ],
+    "concept_note": "限制子代理的工具权限可实现只读审查模式。"
+  },
+  {
+    "id": "claude-0085",
+    "topic": "Subagents",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "子代理链（Subagent Chaining）是什么意思？",
+    "answer": "多个子代理按顺序接力完成任务，如代码审查后接测试生成",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "子代理流水线",
+      "多个代理先后协作"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Subagents",
+      "高级"
+    ],
+    "concept_note": "Subagent Chaining 实现多代理接力工作流。"
+  },
+  {
+    "id": "claude-0086",
+    "topic": "Subagents",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "什么是后台子代理（Background Subagents）？",
+    "answer": "非阻塞方式运行的子代理，主会话可同时继续其他工作",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "不阻塞主会话的子代理",
+      "在后台默默工作"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Subagents",
+      "高级"
+    ],
+    "concept_note": "后台子代理在后台非阻塞运行，主会话可继续工作。"
+  },
+  {
+    "id": "claude-0087",
+    "topic": "Subagents",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "Claude Code 内置的 Plan 子代理有什么特点？",
+    "answer": "使用 Opus 模型进行规划和架构设计",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "规划用的代理",
+      "使用最强的模型"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Subagents",
+      "入门"
+    ],
+    "concept_note": "Plan 子代理使用 Opus 模型专注于规划。"
+  },
+  {
+    "id": "claude-0088",
+    "topic": "Subagents",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "Explore 子代理使用什么模型？适合什么场景？",
+    "answer": "使用 Haiku 模型，适合快速探索和信息搜索",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "快速的轻量模型",
+      "适合信息搜索"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Subagents",
+      "进阶"
+    ],
+    "concept_note": "Explore 使用 Haiku 模型，适合探索类任务。"
+  },
+  {
+    "id": "claude-0089",
+    "topic": "MCP",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "常用的 MCP 服务器有哪些？（列出至少 3 个）",
+    "answer": "GitHub、数据库（PostgreSQL/MySQL）、文件系统、Slack、Google Docs",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "与外部系统集成",
+      "代码托管、数据库、聊天等"
+    ],
+    "common_errors": {},
+    "tags": [
+      "MCP",
+      "进阶"
+    ],
+    "concept_note": "常用 MCP 服务器：GitHub、数据库、文件系统、Slack 等。"
+  },
+  {
+    "id": "claude-0090",
+    "topic": "MCP",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "MCP 的配置文件支持哪些作用域？优先级顺序是？",
+    "answer": "项目级（.mcp.json）> 用户级（~/.claude.json 中 mcpServers）> 内置",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "离项目越近优先级越高",
+      "项目级优先于用户级"
+    ],
+    "common_errors": {},
+    "tags": [
+      "MCP",
+      "进阶"
+    ],
+    "concept_note": "MCP 优先级：项目级 > 用户级 > 内置。"
+  },
+  {
+    "id": "claude-0091",
+    "topic": "MCP",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "什么是 MCP Tool Search？",
+    "answer": "动态发现 MCP 服务器提供的可用工具，不需要手动记忆工具名称",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "自动发现工具",
+      "不需要记忆工具名称"
+    ],
+    "common_errors": {},
+    "tags": [
+      "MCP",
+      "高级"
+    ],
+    "concept_note": "MCP Tool Search 让 Claude 动态发现可用工具。"
+  },
+  {
+    "id": "claude-0092",
+    "topic": "MCP",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "什么是 MCP 服务器去重？",
+    "answer": "当多个 MCP 服务器提供相同功能时自动去重，避免重复调用",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "避免重复配置",
+      "去除重复的服务器"
+    ],
+    "common_errors": {},
+    "tags": [
+      "MCP",
+      "高级"
+    ],
+    "concept_note": "MCP 服务器去重避免重复配置和重复调用。"
+  },
+  {
+    "id": "claude-0093",
+    "topic": "MCP",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "Stdio 传输类型的 MCP 服务器如何工作？",
+    "answer": "通过标准输入/输出与 Claude Code 通信，适合同机运行的本地服务",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "本地进程通信",
+      "标准输入输出方式"
+    ],
+    "common_errors": {},
+    "tags": [
+      "MCP",
+      "进阶"
+    ],
+    "concept_note": "Stdio 传输通过进程的 stdin/stdout 通信，适合本地服务。"
+  },
+  {
+    "id": "claude-0094",
+    "topic": "MCP",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "MCP OAuth 2.0 身份验证解决了什么问题？",
+    "answer": "让 MCP 服务器支持安全的用户认证，不需要在配置中硬编码凭证",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "安全的认证方式",
+      "替代硬编码凭证"
+    ],
+    "common_errors": {},
+    "tags": [
+      "MCP",
+      "高级"
+    ],
+    "concept_note": "MCP OAuth 2.0 提供安全的服务器认证机制。"
+  },
+  {
+    "id": "claude-0095",
+    "topic": "Hooks",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "SessionStart 和 SessionEnd 钩子分别在什么时候触发？",
+    "answer": "SessionStart 在会话开始时，SessionEnd 在会话结束时",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "一个在开头",
+      "一个在结尾"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Hooks",
+      "进阶"
+    ],
+    "concept_note": "SessionStart（会话开始）/ SessionEnd（会话结束）。"
+  },
+  {
+    "id": "claude-0096",
+    "topic": "Hooks",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "FileChanged 钩子的触发条件是什么？",
+    "answer": "当文件系统中的文件被修改时触发",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "文件修改时触发",
+      "FileChanged = 文件变了"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Hooks",
+      "高级"
+    ],
+    "concept_note": "FileChanged 在文件被修改时触发。"
+  },
+  {
+    "id": "claude-0097",
+    "topic": "Hooks",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "钩子配置中的 matcher 字段有什么作用？",
+    "answer": "过滤条件，只在特定条件下才执行钩子脚本",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "匹配条件",
+      "只在符合条件时触发"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Hooks",
+      "高级"
+    ],
+    "concept_note": "matcher 字段用于过滤钩子的触发条件。"
+  },
+  {
+    "id": "claude-0098",
+    "topic": "Hooks",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "PreCompact 和 PostCompact 钩子在什么时候触发？",
+    "answer": "PreCompact 在对话压缩前，PostCompact 在对话压缩后",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "一个在压缩前",
+      "一个在压缩后"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Hooks",
+      "进阶"
+    ],
+    "concept_note": "PreCompact/PostCompact 钩子围绕对话压缩事件触发。"
+  },
+  {
+    "id": "claude-0099",
+    "topic": "Hooks",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "PreToolUse 钩子可以做哪些事情？",
+    "answer": "验证或修改工具调用的参数、记录工具使用日志、实现安全策略",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "在工具运行前执行",
+      "可以做安全检查"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Hooks",
+      "进阶"
+    ],
+    "concept_note": "PreToolUse 可在工具执行前进行验证、修改或日志记录。"
+  },
+  {
+    "id": "claude-0100",
+    "topic": "Plugins",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "/plugin remove 和 /plugin disable 有什么不同？",
+    "answer": "remove 删除插件，disable 暂时禁用不删除配置",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "一个是删除",
+      "一个是禁用"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Plugins",
+      "进阶"
+    ],
+    "concept_note": "/plugin remove（删除）vs /plugin disable（禁用）。"
+  },
+  {
+    "id": "claude-0101",
+    "topic": "Plugins",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "插件的 version locking 机制是什么？",
+    "answer": "锁定已安装插件的版本，避免自动更新导致的不兼容",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "固定插件版本",
+      "防止意外更新"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Plugins",
+      "高级"
+    ],
+    "concept_note": "Version locking 防止插件意外更新导致的不兼容问题。"
+  },
+  {
+    "id": "claude-0102",
+    "topic": "Plugins",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "插件中的 .lsp.json 配置文件是做什么的？",
+    "answer": "配置 Language Server Protocol 服务器，为代码提供诊断、补全等功能",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "代码语言服务器配置",
+      "LSP = Language Server Protocol"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Plugins",
+      "高级"
+    ],
+    "concept_note": ".lsp.json 配置 LSP 服务器提供代码智能功能。"
+  },
+  {
+    "id": "claude-0103",
+    "topic": "Plugins",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "插件市场（Marketplace）支持哪几种来源？",
+    "answer": "官方市场、社区市场、企业内部私有市场",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "三种不同的来源",
+      "官方/社区/企业"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Plugins",
+      "进阶"
+    ],
+    "concept_note": "插件市场：官方、社区、企业私有。"
+  },
+  {
+    "id": "claude-0104",
+    "topic": "Plugins",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "deniedPlugins 和 strictKnownMarketplaces 配置分别控制什么？",
+    "answer": "deniedPlugins 黑名单禁止的插件；strictKnownMarketplaces 白名单只允许指定市场的插件",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "一个禁止某些插件",
+      "一个限制来源"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Plugins",
+      "高级"
+    ],
+    "concept_note": "deniedPlugins（黑名单）vs strictKnownMarketplaces（白名单）。"
+  },
+  {
+    "id": "claude-0105",
+    "topic": "Checkpoints",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "检查点保存了哪些信息？",
+    "answer": "消息历史、文件修改记录、工具调用历史、上下文状态",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "会话的完整快照",
+      "消息+文件+工具"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Checkpoints",
+      "进阶"
+    ],
+    "concept_note": "检查点保存消息、文件修改、工具历史和上下文。"
+  },
+  {
+    "id": "claude-0106",
+    "topic": "Checkpoints",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "什么是分支点（Branch Point）？与普通检查点有什么不同？",
+    "answer": "用户从某个检查点创建分支探索不同方案，类似 git branch",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "探索不同的解决方案",
+      "像 git 分支一样"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Checkpoints",
+      "高级"
+    ],
+    "concept_note": "Branch Point 允许从检查点创建分支探索不同方案。"
+  },
+  {
+    "id": "claude-0107",
+    "topic": "Checkpoints",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "如何配置自动检查点？",
+    "answer": "在 settings.json 中设置 autoCheckpoint: true/false",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "settings.json 中的配置项",
+      "控制是否自动创建检查点"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Checkpoints",
+      "高级"
+    ],
+    "concept_note": "autoCheckpoint 配置自动检查点的开关。"
+  },
+  {
+    "id": "claude-0108",
+    "topic": "Checkpoints",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "'Summarize from here' 恢复选项是什么作用？",
+    "answer": "从该检查点开始把对话压缩成摘要，节省 token 同时保留关键上下文",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "压缩为摘要",
+      "节省 token 的方式"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Checkpoints",
+      "进阶"
+    ],
+    "concept_note": "Summarize from here 将后续对话压缩为摘要。"
+  },
+  {
+    "id": "claude-0109",
+    "topic": "Advanced",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "规划模式中 Ctrl+G 快捷键的作用是什么？",
+    "answer": "在外部编辑器中打开当前计划，方便编辑修改",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "在编辑器中打开",
+      "G 可能代表编辑"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Advanced",
+      "进阶"
+    ],
+    "concept_note": "Ctrl+G 在外部编辑器打开规划内容以便编辑。"
+  },
+  {
+    "id": "claude-0110",
+    "topic": "Advanced",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "opus 模型别名有什么作用？",
+    "answer": "让 Opus 模型负责规划，Sonnet 模型负责执行",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "分工协作",
+      "强模型规划，快模型执行"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Advanced",
+      "高级"
+    ],
+    "concept_note": "opus 模型别名：Opus 规划 + Sonnet 执行。"
+  },
+  {
+    "id": "claude-0111",
+    "topic": "Advanced",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "acceptEdits 权限模式有什么特点？",
+    "answer": "自动接受所有文件编辑请求，但其他工具调用仍需确认",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "自动接受修改",
+      "减少确认弹窗"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Advanced",
+      "进阶"
+    ],
+    "concept_note": "acceptEdits 模式自动接受文件编辑，其他操作仍需确认。"
+  },
+  {
+    "id": "claude-0112",
+    "topic": "Advanced",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "沙箱（Sandbox）模式提供了哪些隔离能力？",
+    "answer": "操作系统级别的文件系统和网络隔离，可配置例外规则",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "隔离环境",
+      "OS 级别的安全隔离"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Advanced",
+      "高级"
+    ],
+    "concept_note": "沙箱提供文件系统和网络的 OS 级隔离。"
+  },
+  {
+    "id": "claude-0113",
+    "topic": "Advanced",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "任务列表（/tasks）命令的作用是什么？",
+    "answer": "跨会话跟踪和管理多个任务，任务信息在压缩后仍保留",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "管理任务列表",
+      "跨会话的任务跟踪"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Advanced",
+      "进阶"
+    ],
+    "concept_note": "/tasks 管理跨会话的任务列表，压缩后仍保留。"
+  },
+  {
+    "id": "claude-0114",
+    "topic": "Advanced",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "--dangerously-skip-permissions 标志的作用是什么？",
+    "answer": "跳过所有权限检查，仅在完全信任的 CI/CD 或自动化脚本中使用",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "跳过所有权限",
+      "危险标志，谨慎使用"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Advanced",
+      "高级"
+    ],
+    "concept_note": "--dangerously-skip-permissions 跳过所有权限检查，仅在自动化场景使用。"
+  },
+  {
+    "id": "claude-0115",
+    "topic": "Advanced",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "Channels（频道）功能支持哪些消息平台？",
+    "answer": "Discord 和 Telegram，MCP 服务器可通过频道向运行中的会话推送消息",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "两个聊天平台",
+      "Discord 和 Telegram"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Advanced",
+      "高级"
+    ],
+    "concept_note": "Channels 支持 Discord 和 Telegram 消息推送。"
+  },
+  {
+    "id": "claude-0116",
+    "topic": "Advanced",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "Prompt Suggestions（提示建议）功能的作用是什么？",
+    "answer": "根据上下文提供智能命令建议，可被禁用",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "智能命令推荐",
+      "根据上下文推测"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Advanced",
+      "高级"
+    ],
+    "concept_note": "Prompt Suggestions 根据上下文推荐命令。"
+  },
+  {
+    "id": "claude-0117",
+    "topic": "CLI",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "-p/--print 和 -c/--continue 标志分别有什么用？",
+    "answer": "-p 单次查询退出；-c 继续上一个会话",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "一个一次用完退出",
+      "一个接着上次继续"
+    ],
+    "common_errors": {},
+    "tags": [
+      "CLI",
+      "进阶"
+    ],
+    "concept_note": "-p（print/单次）vs -c（continue/继续）。"
+  },
+  {
+    "id": "claude-0118",
+    "topic": "CLI",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "--output-format stream-json 输出格式有什么特点？",
+    "answer": "流式 JSON 输出，每个事件实时输出，适合实时处理场景",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "实时流输出的 JSON",
+      "stream = 流"
+    ],
+    "common_errors": {},
+    "tags": [
+      "CLI",
+      "高级"
+    ],
+    "concept_note": "stream-json 实时输出每个事件的 JSON。"
+  },
+  {
+    "id": "claude-0119",
+    "topic": "CLI",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "如何指定 Claude Code 使用特定的模型启动？",
+    "answer": "claude --model sonnet 或 claude --model opus",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "--model 加模型名",
+      "可选 sonnet/opus/haiku"
+    ],
+    "common_errors": {},
+    "tags": [
+      "CLI",
+      "进阶"
+    ],
+    "concept_note": "claude --model <模型名> 指定启动模型。"
+  },
+  {
+    "id": "claude-0120",
+    "topic": "CLI",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "--system-prompt 和 --system-prompt-file 参数有什么区别？",
+    "answer": "--system-prompt 直接传入提示词字符串；--system-prompt-file 从文件读取内容",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "一个直接写",
+      "一个读文件"
+    ],
+    "common_errors": {},
+    "tags": [
+      "CLI",
+      "高级"
+    ],
+    "concept_note": "--system-prompt（直接传入）vs --system-prompt-file（从文件读取）。"
+  },
+  {
+    "id": "claude-0121",
+    "topic": "综合",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "CLI 定义子代理和 .claude/agents/ 文件中定义子代理的优先级是怎样的？",
+    "answer": "CLI 定义的子代理（--agents）> 用户级（~/.claude/agents/）> 项目级（.claude/agents/）",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "命令行优先",
+      "离当前场景越近越优先"
+    ],
+    "common_errors": {},
+    "tags": [
+      "综合",
+      "高级"
+    ],
+    "concept_note": "子代理优先级：CLI > 用户级 > 项目级。"
+  },
+  {
+    "id": "claude-0122",
+    "topic": "综合",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "自定义斜杠命令和技能（Skill）的历史演变是怎样的？",
+    "answer": "旧版 .claude/commands/ 仍可用，但技能（.claude/skills/）是推荐方式，同时存在时 skills 优先",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "从 commands 演进到 skills",
+      "skills 是推荐方式"
+    ],
+    "common_errors": {},
+    "tags": [
+      "综合",
+      "高级"
+    ],
+    "concept_note": "自定义命令已合并到技能中，推荐使用 skills 目录。"
+  },
+  {
+    "id": "claude-0123",
+    "topic": "综合",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "项目级配置和用户级配置冲突时，哪一级优先？",
+    "answer": "项目级配置优先（.claude/ 下的配置覆盖 ~/.claude/ 下的对应配置）",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "项目本地优先",
+      "离当前工作越近优先级越高"
+    ],
+    "common_errors": {},
+    "tags": [
+      "综合",
+      "进阶"
+    ],
+    "concept_note": "项目级配置通常优先于用户级配置。"
+  },
+  {
+    "id": "claude-0124",
+    "topic": "综合",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "Claude Code 支持哪几种方式启动交互式会话？",
+    "answer": "claude（新会话）、claude -c（继续会话）、claude <查询>（先查后进入交互）",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "三种启动方式",
+      "新会话、继续、先查后交互"
+    ],
+    "common_errors": {},
+    "tags": [
+      "综合",
+      "进阶"
+    ],
+    "concept_note": "三种交互启动方式：claude、claude -c、claude 查询。"
+  },
+  {
+    "id": "claude-0125",
+    "topic": "Slash Commands",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "如何退出 Claude Code 交互式会话？",
+    "answer": "/exit 或 /quit",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "退出命令",
+      "exit 或 quit"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Slash Commands",
+      "入门"
+    ],
+    "concept_note": "/exit 或 /quit 退出会话。"
+  },
+  {
+    "id": "claude-0126",
+    "topic": "Slash Commands",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "/rewind 和 /checkpoint 有什么区别？",
+    "answer": "两者功能相同，/checkpoint 是 /rewind 的别名",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "两个命令功能一样",
+      "别名关系"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Slash Commands",
+      "进阶"
+    ],
+    "concept_note": "/checkpoint 是 /rewind 的别名。"
+  },
+  {
+    "id": "claude-0127",
+    "topic": "Slash Commands",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "如何重命名当前会话？",
+    "answer": "/rename <新名称>",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "重命名命令",
+      "rename 加新名称"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Slash Commands",
+      "进阶"
+    ],
+    "concept_note": "/rename 重命名当前会话。"
+  },
+  {
+    "id": "claude-0128",
+    "topic": "Slash Commands",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "/doctor 命令诊断哪些方面？",
+    "answer": "Claude Code 安装健康状态，包括配置、依赖、网络连接等",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "诊断工具",
+      "检查安装是否正常"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Slash Commands",
+      "高级"
+    ],
+    "concept_note": "/doctor 诊断 Claude Code 安装健康状态。"
+  },
+  {
+    "id": "claude-0129",
+    "topic": "Memory",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "Claude Code 的 # 前缀快速规则有什么用？",
+    "answer": "在对话中输入 # 加内容可快速添加到记忆，不用打开文件编辑",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "井号键快速添加",
+      "不离开对话保存"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Memory",
+      "进阶"
+    ],
+    "concept_note": "# 前缀快速保存规则到记忆。"
+  },
+  {
+    "id": "claude-0130",
+    "topic": "Memory",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "子代理的记忆和主会话的记忆是共享的还是隔离的？",
+    "answer": "子代理有自己独立的记忆作用域，不共享主会话的记忆",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "独立的记忆空间",
+      "不共享"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Memory",
+      "高级"
+    ],
+    "concept_note": "子代理拥有独立的记忆作用域。"
+  },
+  {
+    "id": "claude-0131",
+    "topic": "Memory",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "符号链接在记忆规则目录中有什么用？",
+    "answer": "可以在不同目录间共享规则文件，避免重复",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "文件链接",
+      "避免重复"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Memory",
+      "高级"
+    ],
+    "concept_note": "符号链接实现规则文件共享。"
+  },
+  {
+    "id": "claude-0132",
+    "topic": "Skills",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "技能 SKILL.md 中的 hooks 字段是做什么的？",
+    "answer": "定义该技能关联的钩子，技能被触发时自动执行相应钩子",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "技能和钩子的关联",
+      "自动执行钩子"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Skills",
+      "进阶"
+    ],
+    "concept_note": "hooks 字段将技能与钩子关联。"
+  },
+  {
+    "id": "claude-0133",
+    "topic": "Skills",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "技能的 effort 字段控制什么？",
+    "answer": "控制技能执行时的努力级别（low/medium/high）",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "努力级别",
+      "控制 AI 投入程度"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Skills",
+      "高级"
+    ],
+    "concept_note": "effort 控制技能执行时的努力级别。"
+  },
+  {
+    "id": "claude-0134",
+    "topic": "Skills",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "如何在技能脚本中访问技能目录路径？",
+    "answer": "通过环境变量或 $ARGUMENTS 机制，技能文件和脚本在同一目录下",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "获取技能所在路径",
+      "同目录访问"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Skills",
+      "高级"
+    ],
+    "concept_note": "技能脚本可通过目录结构访问同目录文件。"
+  },
+  {
+    "id": "claude-0135",
+    "topic": "Subagents",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "Bash 子代理有什么特点？",
+    "answer": "专门用于执行 Shell 命令和脚本，有完整的终端访问权限",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "Shell 执行专用",
+      "有终端权限"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Subagents",
+      "进阶"
+    ],
+    "concept_note": "Bash 子代理专门执行 Shell 命令。"
+  },
+  {
+    "id": "claude-0136",
+    "topic": "Subagents",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "子代理的工作树隔离是什么意思？",
+    "answer": "子代理在有独立工作目录的隔离环境中运行，不干扰主会话的工作目录",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "独立的工作目录",
+      "隔离运行环境"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Subagents",
+      "高级"
+    ],
+    "concept_note": "工作树隔离让子代理在独立目录运行。"
+  },
+  {
+    "id": "claude-0137",
+    "topic": "Subagents",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "如何限制 Claude 可以自动调用的子代理？",
+    "answer": "在配置中指定允许自动调用的子代理列表，不在列表中的需要显式调用",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "控制自动调用",
+      "设置白名单"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Subagents",
+      "高级"
+    ],
+    "concept_note": "可配置限制自动调用的子代理。"
+  },
+  {
+    "id": "claude-0138",
+    "topic": "MCP",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "如何查看当前配置了哪些 MCP 服务器？",
+    "answer": "/mcp 命令或 claude mcp list",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "查看 MCP 配置",
+      "mcp list 列表"
+    ],
+    "common_errors": {},
+    "tags": [
+      "MCP",
+      "进阶"
+    ],
+    "concept_note": "/mcp 或 claude mcp list 查看配置的 MCP 服务器。"
+  },
+  {
+    "id": "claude-0139",
+    "topic": "MCP",
+    "grade": "中级",
+    "difficulty": 2,
+    "question": "什么是 MCP 输出限制？如何处理大量数据？",
+    "answer": "MCP 返回数据有 token 限制，应使用代码执行处理数据而非直接 dump",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "数据量限制",
+      "用代码处理"
+    ],
+    "common_errors": {},
+    "tags": [
+      "MCP",
+      "中级"
+    ],
+    "concept_note": "MCP 输出有 token 限制，应使用代码执行缩减数据。"
+  },
+  {
+    "id": "claude-0140",
+    "topic": "MCP",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "Context7 是什么？",
+    "answer": "Claude Code 内置的 MCP 服务器，提供代码库上下文理解能力",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "内置的 MCP 服务",
+      "代码上下文理解"
+    ],
+    "common_errors": {},
+    "tags": [
+      "MCP",
+      "高级"
+    ],
+    "concept_note": "Context7 是内置的代码上下文理解 MCP 服务器。"
+  },
+  {
+    "id": "claude-0141",
+    "topic": "Hooks",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "TaskCreated 钩子在什么时候触发？",
+    "answer": "当创建一个新任务时触发",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "新任务创建时",
+      "TaskCreated"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Hooks",
+      "高级"
+    ],
+    "concept_note": "TaskCreated 在新任务创建时触发。"
+  },
+  {
+    "id": "claude-0142",
+    "topic": "Hooks",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "WorktreeCreate 和 WorktreeRemove 钩子有什么用途？",
+    "answer": "在工作树创建或移除时触发，可用于清理或初始化工作树环境",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "工作树生命周期",
+      "创建和移除时触发"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Hooks",
+      "高级"
+    ],
+    "concept_note": "WorktreeCreate/WorktreeRemove 管理工作树生命周期。"
+  },
+  {
+    "id": "claude-0143",
+    "topic": "Hooks",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "Elicitation 钩子的用途是什么？",
+    "answer": "当 MCP 服务器需要向用户索取额外输入时触发",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "用户输入请求时",
+      "Elicit = 引出"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Hooks",
+      "高级"
+    ],
+    "concept_note": "Elicitation 钩子在 MCP 需要用户输入时触发。"
+  },
+  {
+    "id": "claude-0144",
+    "topic": "Plugins",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "热重载（Hot Reload）插件是什么意思？",
+    "answer": "安装或更新插件后不需要重启 Claude Code 会话即可生效",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "即装即用",
+      "不用重启"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Plugins",
+      "高级"
+    ],
+    "concept_note": "插件热重载无需重启会话。"
+  },
+  {
+    "id": "claude-0145",
+    "topic": "Plugins",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "CLAUDE_PLUGIN_DATA 环境变量有什么作用？",
+    "answer": "提供插件持久化存储路径，插件重启后数据仍在（v2.1.78+）",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "插件数据持久化",
+      "存储路径环境变量"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Plugins",
+      "高级"
+    ],
+    "concept_note": "CLAUDE_PLUGIN_DATA 提供插件持久化存储。"
+  },
+  {
+    "id": "claude-0146",
+    "topic": "Plugins",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "插件安装的超时时间是多少？可以配置吗？",
+    "answer": "Git 安装超时 120 秒，可在配置中调整",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "Git 超时两分钟",
+      "可配置"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Plugins",
+      "高级"
+    ],
+    "concept_note": "插件 Git 安装默认超时 120 秒。"
+  },
+  {
+    "id": "claude-0147",
+    "topic": "Checkpoints",
+    "grade": "进阶",
+    "difficulty": 2,
+    "question": "检查点中会显示哪些详细信息？",
+    "answer": "创建时间、修改的文件列表、消息数量、使用的工具",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "时间、文件、消息、工具",
+      "四个信息字段"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Checkpoints",
+      "进阶"
+    ],
+    "concept_note": "检查点详情包括时间、文件、消息和工具信息。"
+  },
+  {
+    "id": "claude-0148",
+    "topic": "Checkpoints",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "在分支探索场景中，检查点如何发挥作用？",
+    "answer": "从同一检查点创建多个分支，可以并行尝试不同的解决方案",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "从同一点分叉",
+      "尝试不同方案"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Checkpoints",
+      "高级"
+    ],
+    "concept_note": "检查点支持从同一点并行探索不同方案。"
+  },
+  {
+    "id": "claude-0149",
+    "topic": "Advanced",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "语音听写（Voice Dictation）支持多少种语言？",
+    "answer": "20 种语言识别，按下说话的方式输入",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "20 种语言",
+      "按住说话"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Advanced",
+      "高级"
+    ],
+    "concept_note": "语音听写支持 20 种语言。"
+  },
+  {
+    "id": "claude-0150",
+    "topic": "Advanced",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "Web 会话（claude --remote）和本地会话有什么区别？",
+    "answer": "Web 会话在浏览器中运行，可通过 claude --teleport 恢复到本地",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "浏览器会话",
+      "可恢复到本地"
+    ],
+    "common_errors": {},
+    "tags": [
+      "Advanced",
+      "高级"
+    ],
+    "concept_note": "Web 会话在浏览器中运行，可恢复到本地。"
+  },
+  {
+    "id": "claude-0151",
+    "topic": "综合",
+    "grade": "高级",
+    "difficulty": 3,
+    "question": "CLAUDE_CODE_NEW_INIT=1 环境变量有什么作用？",
+    "answer": "让 /init 命令使用新的交互式初始化流程创建 CLAUDE.md",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "新初始化流程",
+      "环境变量控制"
+    ],
+    "common_errors": {},
+    "tags": [
+      "综合",
+      "高级"
+    ],
+    "concept_note": "CLAUDE_CODE_NEW_INIT=1 启用新的初始化流程。"
+  }
+]

@@ -1,0 +1,148 @@
+[
+  {
+    "id": "seed-math-1",
+    "topic": "一元一次方程",
+    "grade": "初一",
+    "difficulty": 1,
+    "question": "解方程：2x + 5 = 13",
+    "answer": "x = 4",
+    "alternatives": [
+      "4"
+    ],
+    "steps": [
+      "移项：2x = 13 - 5",
+      "合并：2x = 8",
+      "x = 4"
+    ],
+    "socratic_hints": [
+      "等式两边同时减去几？",
+      "2x = 8，两边除以几？",
+      "x = 4"
+    ],
+    "common_errors": {
+      "9": "13-5=8，不是9",
+      "3": "2×3+5=11≠13"
+    },
+    "tags": [
+      "方程"
+    ],
+    "concept_note": "等式两边同加减同乘除，保持平衡。"
+  },
+  {
+    "id": "seed-math-2",
+    "topic": "勾股定理",
+    "grade": "初二",
+    "difficulty": 2,
+    "question": "直角三角形两条直角边分别为 3 和 4，斜边长是多少？",
+    "answer": "5",
+    "alternatives": [
+      "5cm"
+    ],
+    "steps": [
+      "勾股定理：a²+b²=c²",
+      "c² = 9 + 16 = 25",
+      "c = 5"
+    ],
+    "socratic_hints": [
+      "直角三角形三边满足什么定理？",
+      "a²+b²=c²，代入a=3,b=4",
+      "√25=5"
+    ],
+    "common_errors": {
+      "7": "3+4=7？勾股定理是平方相加",
+      "25": "25是c²，要开方"
+    },
+    "tags": [
+      "几何"
+    ],
+    "concept_note": "勾股定理：a²+b²=c²。"
+  },
+  {
+    "id": "seed-math-3",
+    "topic": "概率",
+    "grade": "初三",
+    "difficulty": 1,
+    "question": "袋中有3个红球2个蓝球，摸到红球的概率？",
+    "answer": "3/5",
+    "alternatives": [
+      "0.6",
+      "60%"
+    ],
+    "steps": [
+      "总球数=5",
+      "红球=3",
+      "P=3/5"
+    ],
+    "socratic_hints": [
+      "概率 = 符合条件数 / 总数",
+      "红球3个，总共几个？",
+      "3/5"
+    ],
+    "common_errors": {
+      "2/5": "那是蓝球的概率",
+      "3/2": "分子分母反了"
+    },
+    "tags": [
+      "概率"
+    ],
+    "concept_note": "P(A)=发生数/总数。"
+  },
+  {
+    "id": "seed-math-4",
+    "topic": "二次函数",
+    "grade": "初三",
+    "difficulty": 2,
+    "question": "y = x² - 2x - 3 的顶点坐标是？",
+    "answer": "(1, -4)",
+    "alternatives": [
+      "(1,-4)"
+    ],
+    "steps": [
+      "配方法：x²-2x+1-4",
+      "(x-1)²-4",
+      "顶点(1,-4)"
+    ],
+    "socratic_hints": [
+      "顶点式y=a(x-h)²+k，h和k是什么？",
+      "x=-b/(2a)=1",
+      "代入得y=-4"
+    ],
+    "common_errors": {
+      "(-1,-4)": "x-1对应x=1",
+      "(1,3)": "-1-3=-4"
+    },
+    "tags": [
+      "函数"
+    ],
+    "concept_note": "顶点式y=a(x-h)²+k。"
+  },
+  {
+    "id": "seed-math-5",
+    "topic": "有理数运算",
+    "grade": "初一",
+    "difficulty": 1,
+    "question": "计算：(-2)² - 2² = ?",
+    "answer": "0",
+    "alternatives": [
+      "0"
+    ],
+    "steps": [
+      "(-2)²=4",
+      "2²=4",
+      "4-4=0"
+    ],
+    "socratic_hints": [
+      "(-2)²底数是-2还是2？",
+      "(-2)²=(-2)×(-2)=4",
+      "4-4=0"
+    ],
+    "common_errors": {
+      "-4": "(-2)²=4不是-4",
+      "-8": "4-4=0"
+    },
+    "tags": [
+      "运算"
+    ],
+    "concept_note": "(-a)²=a²，-a²=-(a²)。"
+  }
+]

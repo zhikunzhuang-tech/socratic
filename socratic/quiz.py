@@ -270,16 +270,38 @@ def _run_follow_up(problem: dict, subject: str, subj: dict, persona: dict | None
     answer = problem["answer"]
     topic = problem["topic"]
 
-    prompt = (
-        f"你是一位初中{subj['name']}老师。学生刚做对了一道关于{topic}的题。\n"
-        f"题目：{question}\n正确答案：{answer}\n\n"
-        f"{persona['system_extra']}\n\n"
-        "请给学生出一个简短但深入的追问，要求：\n"
-        "1. 问\"为什么这个方法是对的？\"或\"换个条件会怎样？\"\n"
-        "2. 一句话，不要超过30个字\n"
-        "3. 不要直接重复题目，要触类旁通\n"
-        "4. 不要评价学生，只出题"
-    )
+    # ── Claude/Hermes 科目专用追问 ──
+    if subject == "claude":
+        prompt = (
+            f"你是一位 Claude Code 导师。学生刚答对了一道关于 {topic} 的题。\n"
+            f"题目：{question}\n正确答案：{answer}\n\n"
+            "请给学生出一个简短的追问，要求：\n"
+            "1. 问一个更深层的实践问题，比如'什么场景下会用到这个功能？'或'还有别的方式吗？'\n"
+            "2. 一句话，不超过30个字\n"
+            "3. 不要直接重复题目，要触类旁通\n"
+            "4. 不要评价学生，只出题"
+        )
+    elif subject == "hermes":
+        prompt = (
+            f"你是一位 Hermes Agent 专家。学生刚答对了一道关于 {topic} 的题。\n"
+            f"题目：{question}\n正确答案：{answer}\n\n"
+            "请给学生出一个简短的追问，要求：\n"
+            "1. 问一个更深层的实践问题，比如'什么场景下会用到？'或'换个命令会怎样？'\n"
+            "2. 一句话，不超过30个字\n"
+            "3. 不要直接重复题目，要触类旁通\n"
+            "4. 不要评价学生，只出题"
+        )
+    else:
+        prompt = (
+            f"你是一位初中{subj['name']}老师。学生刚做对了一道关于{topic}的题。\n"
+            f"题目：{question}\n正确答案：{answer}\n\n"
+            f"{persona['system_extra']}\n\n"
+            "请给学生出一个简短但深入的追问，要求：\n"
+            "1. 问\"为什么这个方法是对的？\"或\"换个条件会怎样？\"\n"
+            "2. 一句话，不要超过30个字\n"
+            "3. 不要直接重复题目，要触类旁通\n"
+            "4. 不要评价学生，只出题"
+        )
 
     result = sp.run(["sgpt", prompt], capture_output=True, text=True, timeout=20)
     if result.returncode != 0:
@@ -301,17 +323,39 @@ def _run_follow_up(problem: dict, subject: str, subj: dict, persona: dict | None
         return
 
     # 不管答对答错，直接揭晓答案讲解
-    explain_prompt = (
-        f"你是一位初中{subj['name']}老师。\n"
-        f"你的追问：{follow_q}\n"
-        f"学生回答：{student_answer}\n\n"
-        "请给出：\n"
-        "1. 一句话反馈学生回答（正确就表扬，不对就温和指正）\n"
-        "2. 一句话给出追问的正确答案和解释（让学生真正弄懂）\n"
-        "总共两句话，简洁明了。"
-    )
-    SGPT = "/home/zzk/.local/bin/sgpt"
+    if subject == "claude":
+        explain_prompt = (
+            f"你是一位 Claude Code 导师。\n"
+            f"你的追问：{follow_q}\n"
+            f"学生回答：{student_answer}\n\n"
+            "请给出：\n"
+            "1. 一句话反馈学生回答（正确就表扬，不对就温和指正）\n"
+            "2. 一句话给出追问的正确答案和解释（让学生真正弄懂）\n"
+            "总共两句话，简洁明了。"
+        )
+    elif subject == "hermes":
+        explain_prompt = (
+            f"你是一位 Hermes Agent 专家。\n"
+            f"你的追问：{follow_q}\n"
+            f"学生回答：{student_answer}\n\n"
+            "请给出：\n"
+            "1. 一句话反馈学生回答（正确就表扬，不对就温和指正）\n"
+            "2. 一句话给出追问的正确答案和解释（让学生真正弄懂）\n"
+            "总共两句话，简洁明了。"
+        )
+    else:
+        explain_prompt = (
+            f"你是一位初中{subj['name']}老师。\n"
+            f"你的追问：{follow_q}\n"
+            f"学生回答：{student_answer}\n\n"
+            "请给出：\n"
+            "1. 一句话反馈学生回答（正确就表扬，不对就温和指正）\n"
+            "2. 一句话给出追问的正确答案和解释（让学生真正弄懂）\n"
+            "总共两句话，简洁明了。"
+        )
+    SGPT = "sgpt"
     explanation = ""
+
     try:
         result = sp.run([SGPT, explain_prompt], capture_output=True, text=True, timeout=20)
         if result.returncode == 0:

@@ -8,8 +8,8 @@ from .utils import DATA_DIR, Color, latex_to_plain
 
 CACHE_DIR = DATA_DIR / "cache"
 
-SUBJECT_NAMES = {"math": "数学", "english": "英语", "physics": "物理", "chinese": "语文", "biology": "生物", "geography": "地理"}
-SUBJECT_TAGS = {"math": "math", "english": "eng", "physics": "phy", "chinese": "chn", "biology": "bio", "geography": "geo"}
+SUBJECT_NAMES = {"math": "数学", "english": "英语", "physics": "物理", "chinese": "语文", "biology": "生物", "geography": "地理", "claude": "Claude Code", "hermes": "Hermes Agent"}
+SUBJECT_TAGS = {"math": "math", "english": "eng", "physics": "phy", "chinese": "chn", "biology": "bio", "geography": "geo", "claude": "claude", "hermes": "hermes"}
 
 
 # ── 种子题（每个科目 5 道，冷启动 + 断网备用）────────────────
@@ -271,11 +271,20 @@ def _generate(subject: str, topic: str | None = None) -> dict | None:
     timestamp = int(time.time())
     rnd.seed(timestamp)
     difficulty = rnd.choice([1, 2, 3])
+
+    # ── Claude 科目专用出题 ──
+    if subject == "claude":
+        return _generate_claude(subject, tag, topic, difficulty, timestamp)
+
+    # ── Hermes 科目专用出题 ──
+    if subject == "hermes":
+        return _generate_hermes(subject, tag, topic, difficulty, timestamp)
+
     diff_label = "简单" if difficulty == 1 else "中等" if difficulty == 2 else "较难"
     grade = "初一" if difficulty <= 1 else "初二" if difficulty <= 2 else "初三"
     qid = f"{tag}-gen-{timestamp}"
 
-    SGPT = "/home/zzk/.local/bin/sgpt"
+    SGPT = "sgpt"
 
     # ── Stage 1: Idea Agent（出题规划） ──
     # 分析已有题目，确保新题不重复
@@ -298,7 +307,7 @@ def _generate(subject: str, topic: str | None = None) -> dict | None:
     try:
         result = sp.run([SGPT, idea_prompt], capture_output=True, text=True, timeout=20)
         if result.returncode != 0:
-            return _generate_fallback(subject, topic, tag, timestamp, difficulty, grade, qid, SGPT)
+            return _generate_fallback(subject, topic, tag, timestamp, difficulty, grade, qid)
         idea_text = " ".join(l for l in result.stdout.split("\n") if not l.startswith("Warning:")).strip()
         idea_text = idea_text.replace("```json", "").replace("```", "").strip()
         idea = json.loads(idea_text)
@@ -326,13 +335,13 @@ def _generate(subject: str, topic: str | None = None) -> dict | None:
     try:
         result = sp.run([SGPT, gen_prompt], capture_output=True, text=True, timeout=30)
         if result.returncode != 0:
-            return _generate_fallback(subject, topic, tag, timestamp, difficulty, grade, qid, SGPT)
+            return _generate_fallback(subject, topic, tag, timestamp, difficulty, grade, qid)
         text = " ".join(l for l in result.stdout.split("\n") if not l.startswith("Warning:")).strip()
         text = text.replace("```json", "").replace("```", "").strip()
         problem = json.loads(text)
         required = ["question", "answer", "steps", "socratic_hints", "common_errors"]
         if not all(f in problem for f in required):
-            return _generate_fallback(subject, topic, tag, timestamp, difficulty, grade, qid, SGPT)
+            return _generate_fallback(subject, topic, tag, timestamp, difficulty, grade, qid)
 
         # 组装完整题目
         problem["id"] = qid
@@ -356,10 +365,10 @@ def _generate(subject: str, topic: str | None = None) -> dict | None:
 
         return problem
     except Exception:
-        return _generate_fallback(subject, topic, tag, timestamp, difficulty, grade, qid, SGPT)
+        return _generate_fallback(subject, topic, tag, timestamp, difficulty, grade, qid)
 
 
-def _generate_fallback(subject, topic, tag, timestamp, difficulty, grade, qid, SGPT) -> dict | None:
+def _generate_fallback(subject, topic, tag, timestamp, difficulty, grade, qid) -> dict | None:
     """单阶段降级：一步生成（当两阶段失败时）"""
     prompt = (
         "你是一位中国初中" + SUBJECT_NAMES.get(subject, "数学") + "老师。出一道初中题。\n"
@@ -371,7 +380,7 @@ def _generate_fallback(subject, topic, tag, timestamp, difficulty, grade, qid, S
         "要求：socratic_hints必须3条，common_errors至少3条。"
     )
     try:
-        result = sp.run([SGPT, prompt], capture_output=True, text=True, timeout=30)
+        result = sp.run(["sgpt", prompt], capture_output=True, text=True, timeout=30)
         if result.returncode != 0:
             return None
         text = " ".join(l for l in result.stdout.split("\n") if not l.startswith("Warning:")).strip()
@@ -389,6 +398,276 @@ def _generate_fallback(subject, topic, tag, timestamp, difficulty, grade, qid, S
         problem.setdefault("concept_note", "")
         while len(problem.get("socratic_hints", [])) < 3:
             problem["socratic_hints"].append("再想想！")
+        problem["question"] = latex_to_plain(problem["question"])
+        problem["answer"] = latex_to_plain(problem["answer"])
+        return problem
+    except Exception:
+        return None
+
+
+# ── Claude 科目专用 AI 出题 ────────────────────────────────────────
+
+CLAUDE_MODULES = {
+    "Slash Commands": "内置斜杠命令（/help, /clear, /model 等）、技能命令、插件命令、MCP 提示词命令",
+    "Memory": "CLAUDE.md 记忆文件、记忆优先级、Auto Memory、规则系统",
+    "Skills": "SKILL.md 技能定义、渐进式加载、参数替换、内置技能",
+    "Subagents": "子代理配置、工具权限、内置子代理、Agent Teams",
+    "MCP": "Model Context Protocol、MCP 服务器、传输类型、MCP 提示词",
+    "Hooks": "事件驱动钩子、工具钩子、会话钩子、生命周期钩子",
+    "Plugins": "插件系统、LSP 支持、插件市场、userConfig",
+    "Checkpoints": "检查点、撤销/恢复、分支探索",
+    "Advanced": "规划模式、扩展思考、自动模式、后台任务、权限模式、CLI 模式、工作树、远程控制",
+    "CLI": "CLI 命令行标志、Print 模式、输出格式",
+    "综合": "跨模块综合知识",
+}
+
+CLAUDE_GRADES = {1: "入门", 2: "进阶", 3: "高级"}
+
+
+def _generate_claude(subject: str, tag: str, topic: str, difficulty: int, timestamp: int) -> dict | None:
+    """为 claude 科目 AI 出题（单阶段，英文/双语）"""
+    import subprocess as sp
+    import json as _json
+
+    grade = CLAUDE_GRADES.get(difficulty, "入门")
+    qid = f"{tag}-gen-{timestamp}"
+    level_name = grade
+
+    module_info = CLAUDE_MODULES.get(topic, "Claude Code 相关知识")
+    existing = load_cache(subject)
+    existing_questions = [p["question"][:40] for p in existing[-5:]]
+
+    prompt = f"""You are a Claude Code expert and quiz creator. Create a quiz question about Claude Code.
+
+Topic: {topic}
+Difficulty level: {level_name} ({difficulty}/3)
+What this topic covers: {module_info}
+Recent questions on this topic: {', '.join(existing_questions) or 'None yet'}
+
+Requirements:
+1. The question should test practical knowledge of Claude Code
+2. For difficulty 1 (入门): basic command names, concepts, simple recall
+3. For difficulty 2 (进阶): understanding relationships, configuration, best practices  
+4. For difficulty 3 (高级): advanced features, edge cases, integration patterns
+5. Write the question in Chinese (题目用中文)
+6. Answers can include English terms (命令/概念用英文)
+
+Output ONLY valid JSON, no markdown, no explanation. Format:
+{{"question":"题目内容（中文）","answer":"正确答案","alternatives":["备选答案1","备选答案2"],"steps":["步骤1","步骤2","步骤3"],"socratic_hints":["提示1（模糊引导）","提示2（更具体）","提示3（接近答案）"],"common_errors":{{"错误答案1":"针对性反馈","错误答案2":"针对性反馈","错误答案3":"针对性反馈"}},"concept_note":"一句话核心概念","tags":["{topic}","{grade}"]}}
+"""
+
+    print(f"\n{Color.CYAN}🤖 正在为 [{topic}] 生成 Claude Code 题目…{Color.RESET}")
+
+    try:
+        result = sp.run(["sgpt", prompt], capture_output=True, text=True, timeout=30)
+        if result.returncode != 0:
+            return _generate_claude_fallback(topic, tag, grade, difficulty, timestamp)
+
+        text = " ".join(l for l in result.stdout.split("\n") if not l.startswith("Warning:")).strip()
+        text = text.replace("```json", "").replace("```", "").strip()
+        problem = _json.loads(text)
+
+        required = ["question", "answer", "steps", "socratic_hints", "common_errors"]
+        if not all(f in problem for f in required):
+            return _generate_claude_fallback(topic, tag, grade, difficulty, timestamp)
+
+        problem["id"] = qid
+        problem["topic"] = topic
+        problem["grade"] = grade
+        problem["difficulty"] = difficulty
+        problem.setdefault("alternatives", [])
+        problem.setdefault("tags", [topic, "AI生成"])
+        problem.setdefault("concept_note", "")
+        while len(problem.get("socratic_hints", [])) < 3:
+            problem["socratic_hints"].append("再想想，你离答案很近了！")
+
+        # 清理（没有 LaTeX 但保留兼容）
+        problem["question"] = latex_to_plain(problem["question"])
+        problem["answer"] = latex_to_plain(problem["answer"])
+        problem["concept_note"] = latex_to_plain(problem.get("concept_note", ""))
+        problem["steps"] = [latex_to_plain(s) for s in problem["steps"]]
+        problem["socratic_hints"] = [latex_to_plain(h) for h in problem["socratic_hints"]]
+        problem["common_errors"] = {latex_to_plain(k): latex_to_plain(v) for k, v in problem["common_errors"].items()}
+
+        print(f"{Color.GREEN}✅ 新题生成成功！{Color.RESET}")
+        return problem
+    except Exception:
+        return _generate_claude_fallback(topic, tag, grade, difficulty, timestamp)
+
+
+def _generate_claude_fallback(topic: str, tag: str, grade: str, difficulty: int, timestamp: int) -> dict | None:
+    """Claude 出题降级方案"""
+    import subprocess as sp
+    import json as _json
+
+    qid = f"{tag}-gen-{timestamp}"
+    prompt = f"""You are a Claude Code expert. Create a quiz question about Claude Code.
+
+Topic: {topic}
+Level: {grade} ({difficulty}/3)
+Output ONLY valid JSON: {{"question":"...","answer":"...","alternatives":[],"steps":["1","2","3"],"socratic_hints":["hint1","hint2","hint3"],"common_errors":{{"wrong":"feedback"}},"concept_note":"..."}}
+"""
+
+    try:
+        result = sp.run(["sgpt", prompt], capture_output=True, text=True, timeout=20)
+        if result.returncode != 0:
+            return None
+        text = " ".join(l for l in result.stdout.split("\n") if not l.startswith("Warning:")).strip()
+        text = text.replace("```json", "").replace("```", "").strip()
+        problem = _json.loads(text)
+
+        required = ["question", "answer", "steps", "socratic_hints", "common_errors"]
+        if not all(f in problem for f in required):
+            return None
+
+        problem["id"] = qid
+        problem["topic"] = topic
+        problem["grade"] = grade
+        problem["difficulty"] = difficulty
+        problem.setdefault("alternatives", [])
+        problem.setdefault("tags", [topic, "AI生成"])
+        problem.setdefault("concept_note", "")
+        while len(problem.get("socratic_hints", [])) < 3:
+            problem["socratic_hints"].append("再想想！")
+
+        problem["question"] = latex_to_plain(problem["question"])
+        problem["answer"] = latex_to_plain(problem["answer"])
+        return problem
+    except Exception:
+        return None
+
+
+# ── Hermes 科目专用 AI 出题 ──────────────────────────────────────
+
+HERMES_MODULES = {
+    "CLI与基础": "hermes 命令、全局标志、安装、启动、退出、帮助",
+    "斜杠命令": "/new, /model, /help, /retry, /undo, /compress, /rollback 等会话内命令",
+    "配置": "config.yaml 各个配置段、.env 环境变量、hermes config 系列命令",
+    "提供商": "20+ LLM 提供商（OpenRouter、Anthropic、OpenAI、DeepSeek、Google 等）",
+    "工具集": "20+ 工具集（file、web、browser、terminal、code_execution、delegation 等）",
+    "网关平台": "Telegram、Discord、Slack、WhatsApp、Signal、Email 等 15+ 消息平台",
+    "技能系统": "Skills 的创建、安装、搜索、发布、更新、管理",
+    "MCP": "Model Context Protocol 服务器管理、工具注入",
+    "会话管理": "会话的创建、恢复、浏览、导出、删除、分叉",
+    "记忆系统": "跨会话持久化记忆、用户画像、Auto Memory、记忆提供商",
+    "Cron 与 Webhook": "定时任务、Webhook 订阅、事件驱动触发",
+    "配置文件": "config.yaml 结构、hermes config 系列命令、环境变量",
+    "语音与转录": "语音输入（STT）和语音输出（TTS）配置和使用",
+    "Profiles": "多配置隔离、Profile 创建/克隆/切换/导出",
+    "凭证池": "API 密钥轮换、多凭证管理、认证",
+    "高级功能": "Worktree、子代理、后台任务、检查点、压缩、协作",
+    "开发与贡献": "添加工具、添加斜杠命令、测试、项目结构、PR 规范",
+    "故障排除": "常见问题排查、日志查看、配置检查、平台特定问题",
+    "综合": "跨模块综合知识",
+}
+
+HERMES_GRADES = {1: "入门", 2: "进阶", 3: "高级"}
+
+
+def _generate_hermes(subject: str, tag: str, topic: str, difficulty: int, timestamp: int) -> dict | None:
+    """为 hermes 科目 AI 出题"""
+    import subprocess as sp
+    import json as _json
+
+    grade = HERMES_GRADES.get(difficulty, "入门")
+    qid = f"{tag}-gen-{timestamp}"
+    module_info = HERMES_MODULES.get(topic, "Hermes Agent 相关知识")
+    existing = load_cache(subject)
+    existing_questions = [p["question"][:40] for p in existing[-5:]]
+
+    prompt = f"""You are a Hermes Agent expert and quiz creator. Create a quiz question about Hermes Agent (the open-source AI agent framework by Nous Research).
+
+Topic: {topic}
+Difficulty level: {grade} ({difficulty}/3)
+What this topic covers: {module_info}
+Recent questions on this topic: {', '.join(existing_questions) or 'None yet'}
+
+Requirements:
+1. The question should test practical knowledge of Hermes Agent
+2. For difficulty 1 (入门): basic commands, concepts, simple recall
+3. For difficulty 2 (进阶): understanding relationships, configuration, best practices
+4. For difficulty 3 (高级): advanced features, edge cases, integration patterns
+5. Write the question in Chinese (题目用中文)
+6. Answers can include English terms (命令/概念用英文)
+7. Focus on accurate, factual information about Hermes Agent
+
+Output ONLY valid JSON, no markdown, no explanation. Format:
+{{"question":"题目内容（中文）","answer":"正确答案","alternatives":["备选答案1","备选答案2"],"steps":["步骤1","步骤2","步骤3"],"socratic_hints":["提示1（模糊引导）","提示2（更具体）","提示3（接近答案）"],"common_errors":{{"错误答案1":"针对性反馈","错误答案2":"针对性反馈","错误答案3":"针对性反馈"}},"concept_note":"一句话核心概念","tags":["{topic}","{grade}"]}}
+"""
+
+    print(f"\n{Color.CYAN}🤖 正在为 [{topic}] 生成 Hermes 题目…{Color.RESET}")
+
+    try:
+        result = sp.run(["sgpt", prompt], capture_output=True, text=True, timeout=30)
+        if result.returncode != 0:
+            return _generate_hermes_fallback(topic, tag, grade, difficulty, timestamp)
+
+        text = " ".join(l for l in result.stdout.split("\n") if not l.startswith("Warning:")).strip()
+        text = text.replace("```json", "").replace("```", "").strip()
+        problem = _json.loads(text)
+
+        required = ["question", "answer", "steps", "socratic_hints", "common_errors"]
+        if not all(f in problem for f in required):
+            return _generate_hermes_fallback(topic, tag, grade, difficulty, timestamp)
+
+        problem["id"] = qid
+        problem["topic"] = topic
+        problem["grade"] = grade
+        problem["difficulty"] = difficulty
+        problem.setdefault("alternatives", [])
+        problem.setdefault("tags", [topic, "AI生成"])
+        problem.setdefault("concept_note", "")
+        while len(problem.get("socratic_hints", [])) < 3:
+            problem["socratic_hints"].append("再想想，你离答案很近了！")
+
+        problem["question"] = latex_to_plain(problem["question"])
+        problem["answer"] = latex_to_plain(problem["answer"])
+        problem["concept_note"] = latex_to_plain(problem.get("concept_note", ""))
+        problem["steps"] = [latex_to_plain(s) for s in problem["steps"]]
+        problem["socratic_hints"] = [latex_to_plain(h) for h in problem["socratic_hints"]]
+        problem["common_errors"] = {latex_to_plain(k): latex_to_plain(v) for k, v in problem["common_errors"].items()}
+
+        print(f"{Color.GREEN}✅ 新题生成成功！{Color.RESET}")
+        return problem
+    except Exception:
+        return _generate_hermes_fallback(topic, tag, grade, difficulty, timestamp)
+
+
+def _generate_hermes_fallback(topic: str, tag: str, grade: str, difficulty: int, timestamp: int) -> dict | None:
+    """Hermes 出题降级方案"""
+    import subprocess as sp
+    import json as _json
+
+    qid = f"{tag}-gen-{timestamp}"
+    prompt = f"""You are a Hermes Agent expert. Create a quiz question about Hermes Agent.
+
+Topic: {topic}
+Level: {grade} ({difficulty}/3)
+Output ONLY valid JSON: {{"question":"...","answer":"...","alternatives":[],"steps":["1","2","3"],"socratic_hints":["hint1","hint2","hint3"],"common_errors":{{"wrong":"feedback"}},"concept_note":"..."}}
+"""
+
+    try:
+        result = sp.run(["sgpt", prompt], capture_output=True, text=True, timeout=20)
+        if result.returncode != 0:
+            return None
+        text = " ".join(l for l in result.stdout.split("\n") if not l.startswith("Warning:")).strip()
+        text = text.replace("```json", "").replace("```", "").strip()
+        problem = _json.loads(text)
+
+        required = ["question", "answer", "steps", "socratic_hints", "common_errors"]
+        if not all(f in problem for f in required):
+            return None
+
+        problem["id"] = qid
+        problem["topic"] = topic
+        problem["grade"] = grade
+        problem["difficulty"] = difficulty
+        problem.setdefault("alternatives", [])
+        problem.setdefault("tags", [topic, "AI生成"])
+        problem.setdefault("concept_note", "")
+        while len(problem.get("socratic_hints", [])) < 3:
+            problem["socratic_hints"].append("再想想！")
+
         problem["question"] = latex_to_plain(problem["question"])
         problem["answer"] = latex_to_plain(problem["answer"])
         return problem

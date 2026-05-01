@@ -1,0 +1,138 @@
+[
+  {
+    "id": "seed-eng-1",
+    "topic": "主谓一致",
+    "grade": "初一",
+    "difficulty": 1,
+    "question": "She ___ to school every day. (go/goes/going)",
+    "answer": "goes",
+    "alternatives": [],
+    "steps": [
+      "She是第三人称单数",
+      "一般现在时加-s/es",
+      "go→goes"
+    ],
+    "socratic_hints": [
+      "She是第几人称？",
+      "第三人称单数，动词加什么？",
+      "加-s：goes"
+    ],
+    "common_errors": {
+      "go": "She是第三人称单数",
+      "going": "缺少be动词"
+    },
+    "tags": [
+      "语法"
+    ],
+    "concept_note": "三单主语+动词-s/es。"
+  },
+  {
+    "id": "seed-eng-2",
+    "topic": "过去时",
+    "grade": "初二",
+    "difficulty": 2,
+    "question": "Yesterday, I ___ (go) to the park.",
+    "answer": "went",
+    "alternatives": [],
+    "steps": [
+      "Yesterday表示过去",
+      "go的过去式是不规则变化",
+      "go→went"
+    ],
+    "socratic_hints": [
+      "Yesterday表示什么时态？",
+      "一般过去时。go的过去式是？",
+      "went"
+    ],
+    "common_errors": {
+      "go": "yesterday是过去",
+      "goed": "go是不规则动词"
+    },
+    "tags": [
+      "语法"
+    ],
+    "concept_note": "go→went（不规则变化）。"
+  },
+  {
+    "id": "seed-eng-3",
+    "topic": "冠词",
+    "grade": "初一",
+    "difficulty": 1,
+    "question": "I have ___ apple. (a/an/the)",
+    "answer": "an",
+    "alternatives": [],
+    "steps": [
+      "apple以元音音素开头",
+      "元音前用an",
+      "an apple"
+    ],
+    "socratic_hints": [
+      "apple发音以什么开头？",
+      "元音音素前用an",
+      "an apple"
+    ],
+    "common_errors": {
+      "a": "apple发音以元音开头",
+      "the": "第一次泛指用an"
+    },
+    "tags": [
+      "词汇"
+    ],
+    "concept_note": "元音音素前用an。"
+  },
+  {
+    "id": "seed-eng-4",
+    "topic": "介词搭配",
+    "grade": "初一",
+    "difficulty": 2,
+    "question": "He is good ___ basketball. (at/in/on/with)",
+    "answer": "at",
+    "alternatives": [],
+    "steps": [
+      "固定搭配：be good at",
+      "表示擅长某事"
+    ],
+    "socratic_hints": [
+      "be good ___ doing sth，填什么？",
+      "固定搭配be good at",
+      "at"
+    ],
+    "common_errors": {
+      "in": "不是be good in",
+      "on": "be good at是固定搭配"
+    },
+    "tags": [
+      "词汇"
+    ],
+    "concept_note": "be good at = 擅长。"
+  },
+  {
+    "id": "seed-eng-5",
+    "topic": "疑问句",
+    "grade": "初一",
+    "difficulty": 1,
+    "question": "___ you a student? (be动词填空)",
+    "answer": "Are",
+    "alternatives": [
+      "are"
+    ],
+    "steps": [
+      "主语是you",
+      "you对应are",
+      "句首大写：Are"
+    ],
+    "socratic_hints": [
+      "主语you对应哪个be动词？",
+      "are，句首大写。",
+      "Are you a student?"
+    ],
+    "common_errors": {
+      "Is": "you搭配are",
+      "Am": "am搭配I"
+    },
+    "tags": [
+      "语法"
+    ],
+    "concept_note": "you用are，句首大写。"
+  }
+]

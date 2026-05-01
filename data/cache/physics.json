@@ -1,0 +1,143 @@
+[
+  {
+    "id": "seed-phy-1",
+    "topic": "重力",
+    "grade": "初二",
+    "difficulty": 1,
+    "question": "质量5kg，g=10N/kg，重力是多少？",
+    "answer": "50",
+    "alternatives": [
+      "50N"
+    ],
+    "steps": [
+      "G=mg",
+      "G=5×10=50N"
+    ],
+    "socratic_hints": [
+      "重力公式是什么？",
+      "G=mg",
+      "5×10=50N"
+    ],
+    "common_errors": {
+      "5": "G=mg=5×10",
+      "10": "5×10=50"
+    },
+    "tags": [
+      "力学"
+    ],
+    "concept_note": "G=mg。"
+  },
+  {
+    "id": "seed-phy-2",
+    "topic": "串联电路",
+    "grade": "初三",
+    "difficulty": 1,
+    "question": "R₁=2Ω，R₂=3Ω串联，总电阻？",
+    "answer": "5",
+    "alternatives": [
+      "5Ω"
+    ],
+    "steps": [
+      "串联：R=R₁+R₂",
+      "R=2+3=5Ω"
+    ],
+    "socratic_hints": [
+      "串联怎么算？",
+      "直接相加",
+      "2+3=5Ω"
+    ],
+    "common_errors": {
+      "1.2": "那是并联的算法",
+      "6": "2+3=5"
+    },
+    "tags": [
+      "电路"
+    ],
+    "concept_note": "串联：R=R₁+R₂。"
+  },
+  {
+    "id": "seed-phy-3",
+    "topic": "光速",
+    "grade": "初二",
+    "difficulty": 1,
+    "question": "光在真空中的速度约为多少m/s？",
+    "answer": "3×10⁸",
+    "alternatives": [
+      "3e8",
+      "300000000"
+    ],
+    "steps": [
+      "c≈3×10⁸ m/s"
+    ],
+    "socratic_hints": [
+      "光速大约是？",
+      "3后面8个零",
+      "3×10⁸ m/s"
+    ],
+    "common_errors": {
+      "340": "340是声速",
+      "3×10³": "太慢了"
+    },
+    "tags": [
+      "光"
+    ],
+    "concept_note": "c≈3×10⁸m/s。"
+  },
+  {
+    "id": "seed-phy-4",
+    "topic": "密度",
+    "grade": "初二",
+    "difficulty": 2,
+    "question": "1g/cm³等于多少kg/m³？",
+    "answer": "1000",
+    "alternatives": [
+      "1000kg/m³"
+    ],
+    "steps": [
+      "1g=10⁻³kg",
+      "1cm³=10⁻⁶m³",
+      "10⁻³/10⁻⁶=1000"
+    ],
+    "socratic_hints": [
+      "1g等于多少kg？1cm³等于多少m³？",
+      "10⁻³/10⁻⁶",
+      "1000"
+    ],
+    "common_errors": {
+      "1": "要乘1000",
+      "0.001": "方向反了"
+    },
+    "tags": [
+      "密度"
+    ],
+    "concept_note": "1g/cm³=1000kg/m³。"
+  },
+  {
+    "id": "seed-phy-5",
+    "topic": "并联电路",
+    "grade": "初三",
+    "difficulty": 3,
+    "question": "R₁=3Ω，R₂=6Ω并联，总电阻？",
+    "answer": "2",
+    "alternatives": [
+      "2Ω"
+    ],
+    "steps": [
+      "1/R=1/3+1/6=1/2",
+      "R=2Ω"
+    ],
+    "socratic_hints": [
+      "并联公式是什么？",
+      "1/R=1/R₁+1/R₂",
+      "1/3+1/6=1/2→R=2"
+    ],
+    "common_errors": {
+      "9": "那是串联的算法",
+      "4.5": "并联总电阻比每个都小"
+    },
+    "tags": [
+      "电路"
+    ],
+    "concept_note": "并联：1/R=1/R₁+1/R₂。"
+  }
+]

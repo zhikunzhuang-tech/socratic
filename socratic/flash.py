@@ -200,7 +200,7 @@ def _show_explanation(subject: str, problem: dict):
         "要求：\n1. 解释为什么这个答案是对的\n2. 用生活中的例子或比喻帮助理解\n3. 不要超过5句话\n4. 语气像朋友聊天一样轻松"
     )
     try:
-        SGPT = "/home/zzk/.local/bin/sgpt"
+        SGPT = "sgpt"
         result = sp.run([SGPT, prompt], capture_output=True, text=True, timeout=30)
         if result.returncode == 0:
             text = " ".join(l for l in result.stdout.split("\n") if not l.startswith("Warning:")).strip()
