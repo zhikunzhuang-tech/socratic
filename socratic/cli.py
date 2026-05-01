@@ -21,7 +21,10 @@ def select_subject(subjects: dict) -> str:
     for i, key in enumerate(keys, 1):
         s = subjects[key]
         count = len(ALL_PROBLEMS[key])
-        print(f"  {Color.BOLD}{i}.{Color.RESET} {s['icon']} {s['name']}  {Color.DIM}({s['grades']}，{count} 题){Color.RESET}")
+        if key in ("math", "english", "physics", "chinese"):
+            print(f"  {Color.BOLD}{i}.{Color.RESET} {s['icon']} {s['name']}  {Color.DIM}({s['grades']}，AI实时出题){Color.RESET}")
+        else:
+            print(f"  {Color.BOLD}{i}.{Color.RESET} {s['icon']} {s['name']}  {Color.DIM}({s['grades']}，{count} 题){Color.RESET}")
     print(f"\n{Color.DIM}输入数字或科目名，回车默认数学{Color.RESET}")
     print(f"{Color.CYAN}{'─' * 40}{Color.RESET}")
     try:
@@ -196,7 +199,10 @@ def main():
         print(f"{Color.DIM}{'─' * 40}{Color.RESET}")
         for i, t in enumerate(topics, 1):
             count = sum(1 for p in ALL_PROBLEMS[subject] if p["topic"] == t)
-            print(f"  {Color.BOLD}{i}.{Color.RESET} {t}  {Color.DIM}({count} 题){Color.RESET}")
+            if subject in ("math", "english", "physics", "chinese"):
+                print(f"  {Color.BOLD}{i}.{Color.RESET} {t}  {Color.DIM}(AI实时出题){Color.RESET}")
+            else:
+                print(f"  {Color.BOLD}{i}.{Color.RESET} {t}  {Color.DIM}({count} 题){Color.RESET}")
         print(f"\n{Color.DIM}输入数字或模块名，回车默认第 1 个{Color.RESET}")
         try:
             choice = input(f"{Color.BOLD}选择：{Color.RESET} ").strip()
@@ -252,7 +258,12 @@ def main():
                                  grade=args.grade, topic=args.topic)
     else:
         # 自适应模式：从缓存取题
-        selected = get_problems(subject, count=args.num, topic=args.topic)
+        if subject in ("math", "english", "physics", "chinese"):
+            # AI 实时出题，跳过缓存
+            selected = get_problems(subject, count=args.num, topic=args.topic,
+                                     exclude_ids={p["id"] for p in get_all_problems(subject)})
+        else:
+            selected = get_problems(subject, count=args.num, topic=args.topic)
 
     if not selected:
         g = f"（年级={args.grade}）" if args.grade else ""

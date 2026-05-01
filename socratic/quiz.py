@@ -8,6 +8,10 @@ from .knowledge import show_knowledge
 import random as rnd
 
 
+# 始终 AI 出题的科目（跳过缓存种子题，每次实时生成）
+AI_FIRST = ("math", "english", "physics", "chinese")
+
+
 def run_quiz(problems: list, subject: str, subjects: dict, all_problems: dict, loop_mode: bool = False, persona: dict | None = None, topic: str | None = None):
     """苏格拉底式交互答题"""
     if persona is None:
@@ -39,7 +43,14 @@ def run_quiz(problems: list, subject: str, subjects: dict, all_problems: dict, l
                         a = pick_adaptive_problem(topic_problems, progress, done_ids)
                         problems = [a] if a else pick_problems(topic_problems, count=1, exclude_ids=done_ids)
                     if not problems:
-                        # 当前主题做完了，自动用 AI 生成新题
+                        # 当前主题做完了
+                        if subject in AI_FIRST:
+                            # AI 实时出题科目：静默生成下一题
+                            new_list = get_problems(subject, count=1, topic=topic, exclude_ids=done_ids)
+                            if new_list:
+                                problems = new_list
+                                continue
+                        # 显示菜单
                         print(f"\n{Color.BOLD}{Color.CYAN}📚 当前主题「{topic}」已全部完成！{Color.RESET}")
                         print(f"  本轮完成 {round_num - 1} 题")
                         print(f"{Color.DIM}  按回车继续生成新题，或输入 c(换主题) s(换科目) q(退出){Color.RESET}")
@@ -85,6 +96,15 @@ def run_quiz(problems: list, subject: str, subjects: dict, all_problems: dict, l
                 break
             if (not problems or all_done) and loop_mode:
                 if round_num > 1 or all_done:
+                    if subject in AI_FIRST:
+                        # AI 实时出题科目：静默生成下一题，不显示菜单
+                        gen_topic = topic if topic else None
+                        new_list = get_problems(subject, count=1, topic=gen_topic, exclude_ids=done_ids)
+                        if new_list:
+                            problems = new_list
+                            continue
+                        else:
+                            break
                     # All-done menu
                     subj = subjects[subject]
                     wrong_ids = [pid for pid, info in progress.get("problem_history", {}).items() if not info.get("solved")]
@@ -283,6 +303,8 @@ def run_quiz(problems: list, subject: str, subjects: dict, all_problems: dict, l
         round_num += 1
 
         if loop_mode and problems:
+            if subject in AI_FIRST:
+                continue  # AI 实时出题：不弹确认，自动继续
             print(f"\n{Color.DIM}─────────────────────────{Color.RESET}")
             print(f"{Color.BOLD}还要再来一题吗？{Color.RESET} {Color.DIM}(y/n, 回车继续){Color.RESET} ", end="")
             try:
