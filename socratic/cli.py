@@ -137,7 +137,7 @@ def main():
 
     # --review 错题复习
     if args.review:
-        if subject in ("biology", "geography", "claude", "hermes"):
+        if subject in ("biology", "geography"):
             from .flash import run_flash_mode
             run_flash_mode(subject, SUBJECTS, ALL_PROBLEMS, persona)
         else:
@@ -179,12 +179,38 @@ def main():
         run_flash_mode(subject, SUBJECTS, ALL_PROBLEMS, persona)
         return
 
-    # 生物/地理/Claude/Hermes 默认走闪卡模式
-    if subject in ("biology", "geography", "claude", "hermes") and not args.no_loop and not args.generate and not args.review and not args.book and not args.solve and not args.stats and not args.list:
+    # 生物/地理 默认走闪卡模式（填空多，适合快速复习）
+    if subject in ("biology", "geography") and not args.no_loop and not args.generate and not args.review and not args.book and not args.solve and not args.stats and not args.list:
         from .flash import run_flash_mode
-        print(f"{Color.DIM}  生物/地理/Claude/Hermes 默认闪卡模式，加 --no-loop 进入标准模式{Color.RESET}")
+        print(f"{Color.DIM}  生物/地理 默认闪卡模式，加 --no-loop 进入标准模式{Color.RESET}")
         run_flash_mode(subject, SUBJECTS, ALL_PROBLEMS, persona)
         return
+
+    # Claude/Hermes 按主题学习模式
+    if subject in ("claude", "hermes") and not args.topic and not args.generate and not args.review and not args.book and not args.solve and not args.stats and not args.list:
+        topics = sorted(set(p["topic"] for p in ALL_PROBLEMS[subject]))
+        if not topics:
+            print(f"{Color.RED}⚠ 题库为空{Color.RESET}")
+            sys.exit(1)
+        print(f"\n{Color.BOLD}{Color.CYAN}📚 {subj['icon']} {subj['name']} — 选择学习模块{Color.RESET}")
+        print(f"{Color.DIM}{'─' * 40}{Color.RESET}")
+        for i, t in enumerate(topics, 1):
+            count = sum(1 for p in ALL_PROBLEMS[subject] if p["topic"] == t)
+            print(f"  {Color.BOLD}{i}.{Color.RESET} {t}  {Color.DIM}({count} 题){Color.RESET}")
+        print(f"\n{Color.DIM}输入数字或模块名，回车默认第 1 个{Color.RESET}")
+        try:
+            choice = input(f"{Color.BOLD}选择：{Color.RESET} ").strip()
+        except (EOFError, KeyboardInterrupt):
+            choice = ""
+        if not choice:
+            args.topic = topics[0]
+        elif choice.isdigit():
+            idx = int(choice) - 1
+            args.topic = topics[idx] if 0 <= idx < len(topics) else topics[0]
+        else:
+            matched = [t for t in topics if choice.lower() in t.lower()]
+            args.topic = matched[0] if matched else topics[0]
+        print(f"{Color.GREEN}✅ 模块：{args.topic}{Color.RESET}\n")
 
     if args.list:
         show_problem_list(subject)
