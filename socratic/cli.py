@@ -96,6 +96,7 @@ def main():
     parser.add_argument("--flash", action="store_true",
                         help="⚡ 闪卡刷题（看题→回车看答案→自评对错，适合考前冲刺）")
     parser.add_argument("--version", "-v", action="store_true", help="显示版本")
+    parser.add_argument("--path", help="📋 学习路径模式，如 --path math --kb math_bsd 基于教材规划学习路径")
     parser.add_argument("--kb", help="使用知识库出题（kb名称）")
     parser.add_argument("--kb-create", dest="kb_create", help="创建知识库")
     parser.add_argument("--kb-add", dest="kb_add", nargs=2, metavar=("NAME", "FILE"), help="添加文档到知识库")
@@ -153,6 +154,13 @@ def main():
             print(f"{Color.GREEN}📚 知识库「{args.kb}」已加载{Color.RESET}")
         else:
             print(f"{Color.RED}⚠ 知识库「{args.kb}」为空或不存在{Color.RESET}")
+
+    # --path 学习路径模式
+    if args.path:
+        from .path import run_path
+        kb_name = args.kb
+        run_path(subject=args.path, kb_name=kb_name, subjects=SUBJECTS, all_problems=ALL_PROBLEMS)
+        return
 
     # 助教人格
     persona_name = args.persona
