@@ -45,24 +45,32 @@ def run_quiz(problems: list, subject: str, subjects: dict, all_problems: dict, l
                             choice = "q"
                         if not choice or choice == "g":
                             print(f"\n{Color.CYAN}🤖 AI 正在生成新题…{Color.RESET}")
-                            new_list = get_problems(subject, count=1, topic=topic)
+                            new_list = get_problems(subject, count=1, topic=topic, exclude_ids=done_ids)
                             if new_list:
                                 print(f"{Color.GREEN}✅ 新题已加入缓存！{Color.RESET}")
                                 problems = new_list
+                                continue
+                            else:
+                                print(f"{Color.RED}⚠ AI 出题失败，请重试{Color.RESET}")
                         elif choice == "s":
                             return
                         elif choice == "c":
-                            topic = None  # 解除主题限制
-                            pass  # 走到下面的通用逻辑
-                        break
+                            topic = None
+                        elif choice == "q":
+                            break
+                        # 其他情况（包括AI失败）重新显示菜单
                 else:
                     remaining = len(all_problems[subject]) - len(done_ids)
                     if remaining > 0:
                         a = pick_adaptive_problem(all_problems[subject], progress, done_ids)
                         problems = [a] if a else pick_problems(all_problems[subject], count=1, exclude_ids=done_ids)
                 if not problems:
-                    cached = get_cached_all(subject)
-                    remaining = [p for p in cached if p["id"] not in done_ids]
+                    if topic:
+                        # 主题模式无可用题目，回到菜单重新选择
+                        pass
+                    else:
+                        cached = get_cached_all(subject)
+                        remaining = [p for p in cached if p["id"] not in done_ids]
                     if remaining:
                         problems = [rnd.choice(remaining)]
                     else:
