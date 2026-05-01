@@ -76,7 +76,7 @@ def run_quiz(problems: list, subject: str, subjects: dict, all_problems: dict, l
                     else:
                         print(f"\n{Color.CYAN}🤖 题库用完了，AI 正在生成新题…{Color.RESET}")
                         weak = min(progress.get("mastery", {}).keys(), key=lambda t: progress["mastery"].get(t, 0.5)) if progress.get("mastery") else None
-                        new_list = get_problems(subject, count=1, topic=weak)
+                        new_list = get_problems(subject, count=1, topic=weak, exclude_ids=done_ids)
                         if new_list:
                             print(f"{Color.GREEN}✅ 新题已加入缓存！{Color.RESET}")
                             problems = new_list
@@ -121,7 +121,7 @@ def run_quiz(problems: list, subject: str, subjects: dict, all_problems: dict, l
                     elif choice == "g":
                         gen_topic = topic if topic else (min(progress.get("mastery", {}).keys(), key=lambda t: progress["mastery"].get(t, 0.5)) if progress.get("mastery") else None)
                         print(f"\n{Color.CYAN}🤖 AI 正在生成新题，请稍候…{Color.RESET}")
-                        new_list = get_problems(subject, count=1, topic=gen_topic)
+                        new_list = get_problems(subject, count=1, topic=gen_topic, exclude_ids=done_ids)
                         if new_list:
                             print(f"{Color.GREEN}✅ 新题生成成功！{Color.RESET}")
                             problems = new_list
