@@ -94,9 +94,11 @@ def run_quiz(problems: list, subject: str, subjects: dict, all_problems: dict, l
                     print(f"    s → 换一个科目")
                     print(f"    q → 退出")
                     try:
-                        choice = input(f"\n{Color.BOLD}选择 (r/c/g/s/q)：{Color.RESET} ").strip().lower()
+                        choice = input(f"\n{Color.BOLD}选择 (r/c/g/s/q，回车=生成新题)：{Color.RESET} ").strip().lower()
                     except (EOFError, KeyboardInterrupt):
                         choice = "q"
+                    if not choice:
+                        choice = "g"
                     if choice == "r" and wrong_ids:
                         wrong_problems = [p for p in all_problems[subject] if p["id"] in wrong_ids]
                         if wrong_problems:
@@ -194,13 +196,15 @@ def run_quiz(problems: list, subject: str, subjects: dict, all_problems: dict, l
             if ci in ("a", "answer", "答案", "看答案"):
                 answer = problem["answer"]
                 print(f"\n  {Color.YELLOW}答案：{Color.RESET}{Color.BOLD}{answer}{Color.RESET}")
-                print(f"  {Color.DIM}再试试能不能想通为什么是这个答案？(输入 y 下一题 / 任意键继续){Color.RESET}")
+                print(f"  {Color.DIM}理解了吗？输入 y 已掌握 / 任意键继续思考{Color.RESET}")
                 try:
                     cont = input(f"{Color.BOLD}？{Color.RESET} ").strip().lower()
                 except (EOFError, KeyboardInterrupt):
                     cont = ""
-                if cont in ("y", "yes", "是", "下一题"):
+                if cont in ("y", "yes", "是", "已掌握"):
+                    # 看了答案后理解了，视为掌握
                     gave_up = True
+                    solved = True
                     break
                 continue
 
