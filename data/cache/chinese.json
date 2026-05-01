@@ -143,5 +143,305 @@
       "成语"
     ],
     "concept_note": "画蛇添足：做多余的事。"
+  },
+  {
+    "id": "seed-chn-6",
+    "topic": "文言文",
+    "grade": "初二",
+    "difficulty": 2,
+    "question": "「虽乘奔御风，不以疾也」出自哪篇？",
+    "answer": "《三峡》",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "郦道元",
+      "描写三峡"
+    ],
+    "common_errors": {},
+    "tags": [
+      "文言文",
+      "初二"
+    ],
+    "concept_note": "郦道元《三峡》。"
+  },
+  {
+    "id": "seed-chn-7",
+    "topic": "文学常识",
+    "grade": "初二",
+    "difficulty": 1,
+    "question": "朱自清《背影》主要表达了什么情感？",
+    "answer": "父爱（父子情深）",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "父亲送别",
+      "买橘子"
+    ],
+    "common_errors": {},
+    "tags": [
+      "文学常识",
+      "初二"
+    ],
+    "concept_note": "《背影》表现深沉的父爱。"
+  },
+  {
+    "id": "seed-chn-8",
+    "topic": "病句修改",
+    "grade": "初二",
+    "difficulty": 2,
+    "question": "「通过这次活动，使我们开阔了眼界」如何修改？",
+    "answer": "删除「通过」或「使」",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "缺少主语",
+      "介词开头导致"
+    ],
+    "common_errors": {},
+    "tags": [
+      "病句修改",
+      "初二"
+    ],
+    "concept_note": "介词滥用导致缺主语，删其中一个。"
+  },
+  {
+    "id": "seed-chn-9",
+    "topic": "议论文",
+    "grade": "初二",
+    "difficulty": 2,
+    "question": "议论文三要素是什么？",
+    "answer": "论点、论据、论证",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "需要证明什么",
+      "用什么证明"
+    ],
+    "common_errors": {},
+    "tags": [
+      "议论文",
+      "初二"
+    ],
+    "concept_note": "议论文三要素：论点、论据、论证。"
+  },
+  {
+    "id": "seed-chn-10",
+    "topic": "文言文",
+    "grade": "初二",
+    "difficulty": 3,
+    "question": "「之」在「公亦尝闻天子之怒乎」中的用法？",
+    "answer": "取消句子独立性（主谓之间）",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "主谓之间",
+      "取消独立性"
+    ],
+    "common_errors": {},
+    "tags": [
+      "文言文",
+      "初二"
+    ],
+    "concept_note": "「之」在主谓间取消句子独立性。"
+  },
+  {
+    "id": "seed-chn-11",
+    "topic": "古诗文",
+    "grade": "初三",
+    "difficulty": 2,
+    "question": "「长风破浪会有时」下一句是？",
+    "answer": "直挂云帆济沧海",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "李白诗",
+      "表达豪迈"
+    ],
+    "common_errors": {},
+    "tags": [
+      "古诗文",
+      "初三"
+    ],
+    "concept_note": "长风破浪会有时，直挂云帆济沧海。"
+  },
+  {
+    "id": "seed-chn-12",
+    "topic": "文学常识",
+    "grade": "初三",
+    "difficulty": 2,
+    "question": "《水浒传》的作者是谁？",
+    "answer": "施耐庵",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "元末明初",
+      "四大名著"
+    ],
+    "common_errors": {},
+    "tags": [
+      "文学常识",
+      "初三"
+    ],
+    "concept_note": "施耐庵《水浒传》。"
+  },
+  {
+    "id": "seed-chn-13",
+    "topic": "文言文",
+    "grade": "初三",
+    "difficulty": 3,
+    "question": "「不以物喜，不以己悲」出自哪篇？",
+    "answer": "《岳阳楼记》",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "范仲淹",
+      "登楼有感"
+    ],
+    "common_errors": {},
+    "tags": [
+      "文言文",
+      "初三"
+    ],
+    "concept_note": "范仲淹《岳阳楼记》。"
+  },
+  {
+    "id": "seed-chn-14",
+    "topic": "古诗文",
+    "grade": "初三",
+    "difficulty": 2,
+    "question": "「但愿人长久，千里共婵娟」中婵娟指什么？",
+    "answer": "月亮",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "苏轼水调歌头",
+      "美好事物"
+    ],
+    "common_errors": {},
+    "tags": [
+      "古诗文",
+      "初三"
+    ],
+    "concept_note": "婵娟指月亮。"
+  },
+  {
+    "id": "seed-chn-15",
+    "topic": "名著",
+    "grade": "初三",
+    "difficulty": 2,
+    "question": "《简·爱》的作者是谁？",
+    "answer": "夏洛蒂·勃朗特",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "英国女作家",
+      "勃朗特三姐妹"
+    ],
+    "common_errors": {},
+    "tags": [
+      "名著",
+      "初三"
+    ],
+    "concept_note": "夏洛蒂·勃朗特《简·爱》。"
+  },
+  {
+    "id": "seed-chn-16",
+    "topic": "应用文",
+    "grade": "初三",
+    "difficulty": 2,
+    "question": "书信格式包括哪几部分？",
+    "answer": "称呼、正文、祝颂语、署名和日期",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "开头称呼",
+      "结尾署名日期"
+    ],
+    "common_errors": {},
+    "tags": [
+      "应用文",
+      "初三"
+    ],
+    "concept_note": "书信五要素：称呼、正文、祝颂、署名、日期。"
+  },
+  {
+    "id": "seed-chn-17",
+    "topic": "语言得体",
+    "grade": "初三",
+    "difficulty": 2,
+    "question": "请求别人帮忙时应该用什么语气？",
+    "answer": "委婉、礼貌，用「请」「可以……吗」",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "礼貌用语",
+      "商量语气"
+    ],
+    "common_errors": {},
+    "tags": [
+      "语言得体",
+      "初三"
+    ],
+    "concept_note": "请求语气要委婉礼貌。"
+  },
+  {
+    "id": "seed-chn-18",
+    "topic": "作文",
+    "grade": "初三",
+    "difficulty": 2,
+    "question": "记叙文的六要素是什么？",
+    "answer": "时间、地点、人物、起因、经过、结果",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "记叙故事",
+      "完整叙事"
+    ],
+    "common_errors": {},
+    "tags": [
+      "作文",
+      "初三"
+    ],
+    "concept_note": "记叙文六要素。"
+  },
+  {
+    "id": "seed-chn-19",
+    "topic": "名著",
+    "grade": "初三",
+    "difficulty": 2,
+    "question": "《儒林外史》的体裁特点是什么？",
+    "answer": "讽刺小说（长篇讽刺小说）",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "讽刺科举",
+      "清吴敬梓"
+    ],
+    "common_errors": {},
+    "tags": [
+      "名著",
+      "初三"
+    ],
+    "concept_note": "《儒林外史》是长篇讽刺小说。"
+  },
+  {
+    "id": "seed-chn-20",
+    "topic": "综合",
+    "grade": "初三",
+    "difficulty": 3,
+    "question": "对联要求上下联什么关系？",
+    "answer": "字数相等、词性相对、平仄相谐、内容相关",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "字数相同",
+      "同类词相对"
+    ],
+    "common_errors": {},
+    "tags": [
+      "综合",
+      "初三"
+    ],
+    "concept_note": "对联：字数相等、词性相对、平仄相谐、内容相关。"
   }
 ]

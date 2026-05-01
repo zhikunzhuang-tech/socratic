@@ -144,5 +144,305 @@
       "运算"
     ],
     "concept_note": "(-a)²=a²，-a²=-(a²)。"
+  },
+  {
+    "id": "seed-math-6",
+    "topic": "实数",
+    "grade": "初一",
+    "difficulty": 1,
+    "question": "√4 等于多少？",
+    "answer": "2",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "平方根的定义",
+      "谁的平方是4"
+    ],
+    "common_errors": {},
+    "tags": [
+      "实数",
+      "初一"
+    ],
+    "concept_note": "√4 = 2。"
+  },
+  {
+    "id": "seed-math-7",
+    "topic": "全等三角形",
+    "grade": "初二",
+    "difficulty": 2,
+    "question": "全等三角形的判定条件有哪些？（列出3个）",
+    "answer": "SSS、SAS、ASA",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "边边边",
+      "边角边"
+    ],
+    "common_errors": {},
+    "tags": [
+      "全等三角形",
+      "初二"
+    ],
+    "concept_note": "SSS、SAS、ASA 判定全等。"
+  },
+  {
+    "id": "seed-math-8",
+    "topic": "一次函数",
+    "grade": "初二",
+    "difficulty": 2,
+    "question": "一次函数 y = 2x + 1 的斜率是多少？",
+    "answer": "2",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "斜率是x的系数",
+      "2"
+    ],
+    "common_errors": {},
+    "tags": [
+      "一次函数",
+      "初二"
+    ],
+    "concept_note": "一次函数 y=kx+b 中 k 是斜率。"
+  },
+  {
+    "id": "seed-math-9",
+    "topic": "因式分解",
+    "grade": "初二",
+    "difficulty": 2,
+    "question": "因式分解：x² - 9",
+    "answer": "(x + 3)(x - 3)",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "平方差公式",
+      "a²-b²=(a+b)(a-b)"
+    ],
+    "common_errors": {},
+    "tags": [
+      "因式分解",
+      "初二"
+    ],
+    "concept_note": "平方差公式 a²-b²=(a+b)(a-b)。"
+  },
+  {
+    "id": "seed-math-10",
+    "topic": "分式",
+    "grade": "初二",
+    "difficulty": 2,
+    "question": "化简：1/2 + 1/3",
+    "answer": "5/6",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "通分",
+      "分母2和3的最小公倍数"
+    ],
+    "common_errors": {},
+    "tags": [
+      "分式",
+      "初二"
+    ],
+    "concept_note": "分式加减先通分。"
+  },
+  {
+    "id": "seed-math-11",
+    "topic": "轴对称",
+    "grade": "初二",
+    "difficulty": 2,
+    "question": "等腰三角形的两个底角有什么关系？",
+    "answer": "相等",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "等腰三角形性质",
+      "等边对等角"
+    ],
+    "common_errors": {},
+    "tags": [
+      "轴对称",
+      "初二"
+    ],
+    "concept_note": "等腰三角形两底角相等。"
+  },
+  {
+    "id": "seed-math-12",
+    "topic": "数据的分析",
+    "grade": "初二",
+    "difficulty": 1,
+    "question": "一组数据的中位数怎么找？",
+    "answer": "排序后取中间的数",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "先排序",
+      "奇数个取中间，偶数个取平均"
+    ],
+    "common_errors": {},
+    "tags": [
+      "数据的分析",
+      "初二"
+    ],
+    "concept_note": "中位数：排序后取中间值。"
+  },
+  {
+    "id": "seed-math-13",
+    "topic": "一元二次方程",
+    "grade": "初三",
+    "difficulty": 2,
+    "question": "解方程：x² - 4 = 0",
+    "answer": "x = ±2",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "移项",
+      "两边开平方"
+    ],
+    "common_errors": {},
+    "tags": [
+      "一元二次方程",
+      "初三"
+    ],
+    "concept_note": "x² = a 则 x = ±√a。"
+  },
+  {
+    "id": "seed-math-14",
+    "topic": "反比例函数",
+    "grade": "初三",
+    "difficulty": 2,
+    "question": "反比例函数 y = 6/x 的图像在哪两个象限？",
+    "answer": "第一和第三象限",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "k>0",
+      "一三象限"
+    ],
+    "common_errors": {},
+    "tags": [
+      "反比例函数",
+      "初三"
+    ],
+    "concept_note": "k>0 时反比例函数在一三象限。"
+  },
+  {
+    "id": "seed-math-15",
+    "topic": "圆",
+    "grade": "初三",
+    "difficulty": 2,
+    "question": "圆的周长公式是什么？",
+    "answer": "C = 2πr",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "π约等于3.14",
+      "直径×π"
+    ],
+    "common_errors": {},
+    "tags": [
+      "圆",
+      "初三"
+    ],
+    "concept_note": "C=2πr，r为半径。"
+  },
+  {
+    "id": "seed-math-16",
+    "topic": "相似三角形",
+    "grade": "初三",
+    "difficulty": 3,
+    "question": "两个三角形相似，对应边有什么关系？",
+    "answer": "对应边成比例",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "相似比",
+      "边长比例相同"
+    ],
+    "common_errors": {},
+    "tags": [
+      "相似三角形",
+      "初三"
+    ],
+    "concept_note": "相似三角形对应边成比例。"
+  },
+  {
+    "id": "seed-math-17",
+    "topic": "概率",
+    "grade": "初三",
+    "difficulty": 2,
+    "question": "一枚硬币抛两次，两次都正面朝上的概率？",
+    "answer": "1/4",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "每次1/2",
+      "相乘"
+    ],
+    "common_errors": {},
+    "tags": [
+      "概率",
+      "初三"
+    ],
+    "concept_note": "P=1/2 × 1/2 = 1/4。"
+  },
+  {
+    "id": "seed-math-18",
+    "topic": "解直角三角形",
+    "grade": "初三",
+    "difficulty": 3,
+    "question": "直角三角形中，已知两直角边分别为3和4，求斜边",
+    "answer": "5",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "勾股定理",
+      "3²+4²=5²"
+    ],
+    "common_errors": {},
+    "tags": [
+      "解直角三角形",
+      "初三"
+    ],
+    "concept_note": "3-4-5直角三角形。"
+  },
+  {
+    "id": "seed-math-19",
+    "topic": "旋转",
+    "grade": "初三",
+    "difficulty": 2,
+    "question": "图形旋转180°后与原图形重合，这是什么对称？",
+    "answer": "中心对称",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "旋转180度",
+      "中心对称"
+    ],
+    "common_errors": {},
+    "tags": [
+      "旋转",
+      "初三"
+    ],
+    "concept_note": "旋转180°重合为中心对称。"
+  },
+  {
+    "id": "seed-math-20",
+    "topic": "三角函数",
+    "grade": "初三",
+    "difficulty": 3,
+    "question": "sin 30° 等于多少？",
+    "answer": "1/2",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "30-60-90三角形",
+      "对边/斜边"
+    ],
+    "common_errors": {},
+    "tags": [
+      "三角函数",
+      "初三"
+    ],
+    "concept_note": "sin 30° = 1/2。"
   }
 ]

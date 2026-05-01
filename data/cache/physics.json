@@ -139,5 +139,305 @@
       "电路"
     ],
     "concept_note": "并联：1/R=1/R₁+1/R₂。"
+  },
+  {
+    "id": "seed-phy-6",
+    "topic": "密度",
+    "grade": "初二",
+    "difficulty": 2,
+    "question": "同种物质的密度与质量和体积有关吗？",
+    "answer": "无关（密度是物质特性）",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "密度是特性",
+      "与m和V无关"
+    ],
+    "common_errors": {},
+    "tags": [
+      "密度",
+      "初二"
+    ],
+    "concept_note": "密度是物质的固有属性。"
+  },
+  {
+    "id": "seed-phy-7",
+    "topic": "牛顿第一定律",
+    "grade": "初二",
+    "difficulty": 2,
+    "question": "牛顿第一定律内容是什么？",
+    "answer": "物体在不受力时保持静止或匀速直线运动",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "惯性定律",
+      "不受外力时"
+    ],
+    "common_errors": {},
+    "tags": [
+      "牛顿第一定律",
+      "初二"
+    ],
+    "concept_note": "牛顿第一定律也称惯性定律。"
+  },
+  {
+    "id": "seed-phy-8",
+    "topic": "摩擦力",
+    "grade": "初二",
+    "difficulty": 2,
+    "question": "增大摩擦力的方法有哪些？",
+    "answer": "增大压力、增大接触面粗糙程度",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "压力越大摩擦越大",
+      "表面越粗糙摩擦越大"
+    ],
+    "common_errors": {},
+    "tags": [
+      "摩擦力",
+      "初二"
+    ],
+    "concept_note": "增大压力或粗糙度可增大摩擦。"
+  },
+  {
+    "id": "seed-phy-9",
+    "topic": "压强",
+    "grade": "初二",
+    "difficulty": 2,
+    "question": "压强公式是什么？",
+    "answer": "p = F/S",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "压力除以受力面积",
+      "F是压力S是面积"
+    ],
+    "common_errors": {},
+    "tags": [
+      "压强",
+      "初二"
+    ],
+    "concept_note": "p = F / S，单位帕斯卡。"
+  },
+  {
+    "id": "seed-phy-10",
+    "topic": "浮力",
+    "grade": "初二",
+    "difficulty": 3,
+    "question": "阿基米德原理的内容是什么？",
+    "answer": "F浮 = ρ液 g V排",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "浮力等于排开液体重力",
+      "ρ液×g×V排"
+    ],
+    "common_errors": {},
+    "tags": [
+      "浮力",
+      "初二"
+    ],
+    "concept_note": "F浮 = ρ液 g V排。"
+  },
+  {
+    "id": "seed-phy-11",
+    "topic": "功",
+    "grade": "初三",
+    "difficulty": 2,
+    "question": "做功的两个必要因素是什么？",
+    "answer": "有力作用在物体上 + 物体在力的方向上移动距离",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "力和距离",
+      "方向一致"
+    ],
+    "common_errors": {},
+    "tags": [
+      "功",
+      "初三"
+    ],
+    "concept_note": "做功需力和力的方向上的位移。"
+  },
+  {
+    "id": "seed-phy-12",
+    "topic": "功率",
+    "grade": "初三",
+    "difficulty": 2,
+    "question": "功率公式是什么？",
+    "answer": "P = W/t",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "功除以时间",
+      "单位瓦特"
+    ],
+    "common_errors": {},
+    "tags": [
+      "功率",
+      "初三"
+    ],
+    "concept_note": "P = W / t，表示做功快慢。"
+  },
+  {
+    "id": "seed-phy-13",
+    "topic": "杠杆",
+    "grade": "初三",
+    "difficulty": 2,
+    "question": "杠杆平衡条件是什么？",
+    "answer": "F₁L₁ = F₂L₂",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "动力×动力臂",
+      "阻力×阻力臂"
+    ],
+    "common_errors": {},
+    "tags": [
+      "杠杆",
+      "初三"
+    ],
+    "concept_note": "F₁L₁ = F₂L₂（杠杆平衡）。"
+  },
+  {
+    "id": "seed-phy-14",
+    "topic": "欧姆定律",
+    "grade": "初三",
+    "difficulty": 3,
+    "question": "欧姆定律公式是什么？",
+    "answer": "I = U/R",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "电流=电压÷电阻",
+      "U=IR"
+    ],
+    "common_errors": {},
+    "tags": [
+      "欧姆定律",
+      "初三"
+    ],
+    "concept_note": "I = U / R。"
+  },
+  {
+    "id": "seed-phy-15",
+    "topic": "电功率",
+    "grade": "初三",
+    "difficulty": 3,
+    "question": "电功率公式是什么？",
+    "answer": "P = UI",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "电压乘以电流",
+      "单位瓦特"
+    ],
+    "common_errors": {},
+    "tags": [
+      "电功率",
+      "初三"
+    ],
+    "concept_note": "P = UI，P=U²/R=I²R。"
+  },
+  {
+    "id": "seed-phy-16",
+    "topic": "焦耳定律",
+    "grade": "初三",
+    "difficulty": 3,
+    "question": "焦耳定律公式是什么？",
+    "answer": "Q = I²Rt",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "电流平方乘电阻乘时间",
+      "热量单位焦耳"
+    ],
+    "common_errors": {},
+    "tags": [
+      "焦耳定律",
+      "初三"
+    ],
+    "concept_note": "Q = I²Rt。"
+  },
+  {
+    "id": "seed-phy-17",
+    "topic": "电磁感应",
+    "grade": "初三",
+    "difficulty": 3,
+    "question": "发电机的原理是什么？",
+    "answer": "电磁感应",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "线圈切割磁感线",
+      "产生感应电流"
+    ],
+    "common_errors": {},
+    "tags": [
+      "电磁感应",
+      "初三"
+    ],
+    "concept_note": "发电机利用电磁感应原理。"
+  },
+  {
+    "id": "seed-phy-18",
+    "topic": "磁场",
+    "grade": "初三",
+    "difficulty": 2,
+    "question": "磁感线都是从磁体的什么极出发？",
+    "answer": "N极（北极）",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "磁感线方向",
+      "N到S"
+    ],
+    "common_errors": {},
+    "tags": [
+      "磁场",
+      "初三"
+    ],
+    "concept_note": "磁感线从N极出发到S极。"
+  },
+  {
+    "id": "seed-phy-19",
+    "topic": "能量守恒",
+    "grade": "初三",
+    "difficulty": 3,
+    "question": "能量守恒定律内容是什么？",
+    "answer": "能量不会凭空产生也不会凭空消失，只会转化或转移",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "总量不变",
+      "形式转换"
+    ],
+    "common_errors": {},
+    "tags": [
+      "能量守恒",
+      "初三"
+    ],
+    "concept_note": "能量守恒：总量不变。"
+  },
+  {
+    "id": "seed-phy-20",
+    "topic": "家庭电路",
+    "grade": "初三",
+    "difficulty": 2,
+    "question": "家庭电路的电压是多少伏？",
+    "answer": "220V",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "中国标准",
+      "220伏"
+    ],
+    "common_errors": {},
+    "tags": [
+      "家庭电路",
+      "初三"
+    ],
+    "concept_note": "中国家庭电路电压220V。"
   }
 ]

@@ -134,5 +134,305 @@
       "语法"
     ],
     "concept_note": "you用are，句首大写。"
+  },
+  {
+    "id": "seed-eng-6",
+    "topic": "There be句型",
+    "grade": "初一",
+    "difficulty": 1,
+    "question": "There ___ a book on the desk. (is/are)",
+    "answer": "is",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "a book 是单数",
+      "就近原则"
+    ],
+    "common_errors": {},
+    "tags": [
+      "There be句型",
+      "初一"
+    ],
+    "concept_note": "There be 用就近原则。"
+  },
+  {
+    "id": "seed-eng-7",
+    "topic": "比较级",
+    "grade": "初二",
+    "difficulty": 2,
+    "question": "This book is ___ (interesting) than that one.",
+    "answer": "more interesting",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "多音节词用 more",
+      "than 提示比较级"
+    ],
+    "common_errors": {},
+    "tags": [
+      "比较级",
+      "初二"
+    ],
+    "concept_note": "多音节形容词比较级加 more。"
+  },
+  {
+    "id": "seed-eng-8",
+    "topic": "现在完成时",
+    "grade": "初二",
+    "difficulty": 3,
+    "question": "I ___ never ___ (be) to Shanghai.",
+    "answer": "have, been",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "have + 过去分词",
+      "never 用于完成时"
+    ],
+    "common_errors": {},
+    "tags": [
+      "现在完成时",
+      "初二"
+    ],
+    "concept_note": "have been to 表示去过某地。"
+  },
+  {
+    "id": "seed-eng-9",
+    "topic": "被动语态",
+    "grade": "初二",
+    "difficulty": 3,
+    "question": "English ___ (speak) all over the world.",
+    "answer": "is spoken",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "被动结构 be+过去分词",
+      "English 是单数"
+    ],
+    "common_errors": {},
+    "tags": [
+      "被动语态",
+      "初二"
+    ],
+    "concept_note": "一般现在时被动：am/is/are + 过去分词。"
+  },
+  {
+    "id": "seed-eng-10",
+    "topic": "宾语从句",
+    "grade": "初二",
+    "difficulty": 3,
+    "question": "I think ___ he is right. (that/if/what)",
+    "answer": "that",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "宾语从句连接词",
+      "陈述句用that引导"
+    ],
+    "common_errors": {},
+    "tags": [
+      "宾语从句",
+      "初二"
+    ],
+    "concept_note": "陈述句作宾语用 that 引导。"
+  },
+  {
+    "id": "seed-eng-11",
+    "topic": "不定式",
+    "grade": "初二",
+    "difficulty": 2,
+    "question": "I want ___ (be) a doctor.",
+    "answer": "to be",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "want to do sth",
+      "不定式作宾语"
+    ],
+    "common_errors": {},
+    "tags": [
+      "不定式",
+      "初二"
+    ],
+    "concept_note": "want to do 是固定搭配。"
+  },
+  {
+    "id": "seed-eng-12",
+    "topic": "动名词",
+    "grade": "初二",
+    "difficulty": 2,
+    "question": "He enjoys ___ (play) basketball.",
+    "answer": "playing",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "enjoy doing",
+      "动名词作宾语"
+    ],
+    "common_errors": {},
+    "tags": [
+      "动名词",
+      "初二"
+    ],
+    "concept_note": "enjoy 后接动名词 -ing。"
+  },
+  {
+    "id": "seed-eng-13",
+    "topic": "If条件句",
+    "grade": "初二",
+    "difficulty": 2,
+    "question": "If it ___ (rain) tomorrow, we'll stay at home.",
+    "answer": "rains",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "条件句主将从现",
+      "if从句用一般现在时"
+    ],
+    "common_errors": {},
+    "tags": [
+      "If条件句",
+      "初二"
+    ],
+    "concept_note": "if 条件句：主将从现。"
+  },
+  {
+    "id": "seed-eng-14",
+    "topic": "定语从句",
+    "grade": "初三",
+    "difficulty": 3,
+    "question": "The girl ___ is singing is my sister. (who/which)",
+    "answer": "who",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "人用who",
+      "关系代词"
+    ],
+    "common_errors": {},
+    "tags": [
+      "定语从句",
+      "初三"
+    ],
+    "concept_note": "先行词为人用 who/that。"
+  },
+  {
+    "id": "seed-eng-15",
+    "topic": "过去完成时",
+    "grade": "初三",
+    "difficulty": 3,
+    "question": "By the time I arrived, he ___ (leave).",
+    "answer": "had left",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "过去的过去",
+      "by the time 提示"
+    ],
+    "common_errors": {},
+    "tags": [
+      "过去完成时",
+      "初三"
+    ],
+    "concept_note": "过去完成时：had + 过去分词。"
+  },
+  {
+    "id": "seed-eng-16",
+    "topic": "虚拟语气",
+    "grade": "初三",
+    "difficulty": 3,
+    "question": "If I ___ (be) you, I would study harder.",
+    "answer": "were",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "虚拟语气用were",
+      "与现在事实相反"
+    ],
+    "common_errors": {},
+    "tags": [
+      "虚拟语气",
+      "初三"
+    ],
+    "concept_note": "If I were you 是虚拟语气固定表达。"
+  },
+  {
+    "id": "seed-eng-17",
+    "topic": "倒装句",
+    "grade": "初三",
+    "difficulty": 3,
+    "question": "Never ___ I seen such a beautiful place. (have/has)",
+    "answer": "have",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "never 在句首倒装",
+      "主语是I"
+    ],
+    "common_errors": {},
+    "tags": [
+      "倒装句",
+      "初三"
+    ],
+    "concept_note": "否定词在句首用部分倒装。"
+  },
+  {
+    "id": "seed-eng-18",
+    "topic": "强调句",
+    "grade": "初三",
+    "difficulty": 3,
+    "question": "It ___ Tom who won the first prize. (is/was)",
+    "answer": "was",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "It is/was ... that/who",
+      "过去时用was"
+    ],
+    "common_errors": {},
+    "tags": [
+      "强调句",
+      "初三"
+    ],
+    "concept_note": "强调句结构：It is/was + 被强调部分 + that/who。"
+  },
+  {
+    "id": "seed-eng-19",
+    "topic": "主谓一致",
+    "grade": "初三",
+    "difficulty": 3,
+    "question": "The news ___ (be) very surprising.",
+    "answer": "is",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "news 是不可数名词",
+      "单数主语"
+    ],
+    "common_errors": {},
+    "tags": [
+      "主谓一致",
+      "初三"
+    ],
+    "concept_note": "news 虽以-s结尾但作单数。"
+  },
+  {
+    "id": "seed-eng-20",
+    "topic": "非谓语动词",
+    "grade": "初三",
+    "difficulty": 3,
+    "question": "I saw him ___ (cross) the street.",
+    "answer": "cross",
+    "alternatives": [],
+    "steps": [],
+    "socratic_hints": [
+      "see sb do sth",
+      "感官动词后接省to不定式"
+    ],
+    "common_errors": {},
+    "tags": [
+      "非谓语动词",
+      "初三"
+    ],
+    "concept_note": "感官动词 see/watch/hear 后接动词原形。"
   }
 ]
