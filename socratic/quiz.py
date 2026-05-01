@@ -8,7 +8,7 @@ from .knowledge import show_knowledge
 import random as rnd
 
 
-def run_quiz(problems: list, subject: str, subjects: dict, all_problems: dict, loop_mode: bool = False, persona: dict | None = None):
+def run_quiz(problems: list, subject: str, subjects: dict, all_problems: dict, loop_mode: bool = False, persona: dict | None = None, topic: str | None = None):
     """苏格拉底式交互答题"""
     if persona is None:
         from .persona import get_persona
@@ -27,10 +27,43 @@ def run_quiz(problems: list, subject: str, subjects: dict, all_problems: dict, l
             if all_done:
                 pass
             elif loop_mode:
-                remaining = len(all_problems[subject]) - len(done_ids)
-                if remaining > 0:
-                    a = pick_adaptive_problem(all_problems[subject], progress, done_ids)
-                    problems = [a] if a else pick_problems(all_problems[subject], count=1, exclude_ids=done_ids)
+                # 如果指定了主题，只在该主题内抽题
+                if topic:
+                    topic_problems = [p for p in all_problems[subject] if p.get("topic") == topic]
+                    remaining = len(set(p["id"] for p in topic_problems) - done_ids)
+                    if remaining > 0:
+                        a = pick_adaptive_problem(topic_problems, progress, done_ids)
+                        problems = [a] if a else pick_problems(topic_problems, count=1, exclude_ids=done_ids)
+                    if not problems:
+                        # 当前主题做完了，显示菜单
+                        print(f"\n{Color.BOLD}{Color.CYAN}📚 当前主题「{topic}」已全部完成！{Color.RESET}")
+                        print(f"  本轮完成 {round_num - 1} 题")
+                        print(f"\n{Color.DIM}  选项：{Color.RESET}")
+                        print(f"    c → 继续做其他主题")
+                        print(f"    g → 🤖 AI 生成一道 {topic} 新题")
+                        print(f"    s → 换一个科目")
+                        print(f"    q → 退出")
+                        try:
+                            choice = input(f"\n{Color.BOLD}选择 (c/g/s/q)：{Color.RESET} ").strip().lower()
+                        except (EOFError, KeyboardInterrupt):
+                            choice = "q"
+                        if choice == "g":
+                            print(f"\n{Color.CYAN}🤖 AI 正在生成新题…{Color.RESET}")
+                            new_list = get_problems(subject, count=1, topic=topic)
+                            if new_list:
+                                print(f"{Color.GREEN}✅ 新题已加入缓存！{Color.RESET}")
+                                problems = new_list
+                        elif choice == "s":
+                            return
+                        elif choice == "c":
+                            topic = None  # 解除主题限制
+                            pass  # 走到下面的通用逻辑
+                        break
+                else:
+                    remaining = len(all_problems[subject]) - len(done_ids)
+                    if remaining > 0:
+                        a = pick_adaptive_problem(all_problems[subject], progress, done_ids)
+                        problems = [a] if a else pick_problems(all_problems[subject], count=1, exclude_ids=done_ids)
                 if not problems:
                     cached = get_cached_all(subject)
                     remaining = [p for p in cached if p["id"] not in done_ids]

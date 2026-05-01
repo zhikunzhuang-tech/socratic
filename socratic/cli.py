@@ -278,7 +278,7 @@ def main():
         print(f"  捷径：{Color.DIM}h/提示  |  a/答案  |  s/跳过  |  qq/退出{Color.RESET}")
         print(f"{Color.DIM}{'─' * 50}{Color.RESET}")
 
-    run_quiz(selected, subject, SUBJECTS, ALL_PROBLEMS, loop_mode=loop_mode, persona=persona)
+    run_quiz(selected, subject, SUBJECTS, ALL_PROBLEMS, loop_mode=loop_mode, persona=persona, topic=args.topic)
 
 
 if __name__ == "__main__":
