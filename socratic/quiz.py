@@ -50,27 +50,23 @@ def run_quiz(problems: list, subject: str, subjects: dict, all_problems: dict, l
                                 print(f"{Color.GREEN}✅ 新题已加入缓存！{Color.RESET}")
                                 problems = new_list
                                 continue
-                            else:
-                                print(f"{Color.RED}⚠ AI 出题失败，请重试{Color.RESET}")
+                            print(f"{Color.RED}⚠ AI 出题失败，按回车重试{Color.RESET}")
                         elif choice == "s":
                             return
                         elif choice == "c":
                             topic = None
                         elif choice == "q":
                             break
-                        # 其他情况（包括AI失败）重新显示菜单
+                        # 其他情况（包括AI失败）重试
+                        continue
                 else:
                     remaining = len(all_problems[subject]) - len(done_ids)
                     if remaining > 0:
                         a = pick_adaptive_problem(all_problems[subject], progress, done_ids)
                         problems = [a] if a else pick_problems(all_problems[subject], count=1, exclude_ids=done_ids)
-                if not problems:
-                    if topic:
-                        # 主题模式无可用题目，回到菜单重新选择
-                        pass
-                    else:
-                        cached = get_cached_all(subject)
-                        remaining = [p for p in cached if p["id"] not in done_ids]
+                if not problems and not topic:
+                    cached = get_cached_all(subject)
+                    remaining = [p for p in cached if p["id"] not in done_ids]
                     if remaining:
                         problems = [rnd.choice(remaining)]
                     else:
