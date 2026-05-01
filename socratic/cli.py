@@ -186,8 +186,8 @@ def main():
         run_flash_mode(subject, SUBJECTS, ALL_PROBLEMS, persona)
         return
 
-    # Claude/Hermes 按主题学习模式
-    if subject in ("claude", "hermes") and not args.topic and not args.generate and not args.review and not args.book and not args.solve and not args.stats and not args.list:
+    # 按主题学习模式（生物/地理走闪卡，其余科目先选模块）
+    if subject not in ("biology", "geography") and not args.topic and not args.generate and not args.review and not args.book and not args.solve and not args.stats and not args.list:
         topics = sorted(set(p["topic"] for p in ALL_PROBLEMS[subject]))
         if not topics:
             print(f"{Color.RED}⚠ 题库为空{Color.RESET}")
