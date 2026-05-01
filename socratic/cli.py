@@ -275,7 +275,7 @@ def main():
             unsolved = sum(1 for recs in wr.values() for r in recs if not r["solved"])
             if unsolved > 0:
                 print(f"  错题：{Color.RED}{unsolved} 道待复习{Color.RESET}  {Color.DIM}(socratic --review){Color.RESET}")
-        print(f"  捷径：{Color.DIM}h/提示  |  s/跳过  |  qq/退出{Color.RESET}")
+        print(f"  捷径：{Color.DIM}h/提示  |  a/答案  |  s/跳过  |  qq/退出{Color.RESET}")
         print(f"{Color.DIM}{'─' * 50}{Color.RESET}")
 
     run_quiz(selected, subject, SUBJECTS, ALL_PROBLEMS, loop_mode=loop_mode, persona=persona)

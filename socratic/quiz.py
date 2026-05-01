@@ -160,6 +160,18 @@ def run_quiz(problems: list, subject: str, subjects: dict, all_problems: dict, l
             if ci in ("s", "skip", "跳过"):
                 gave_up = True
                 break
+            if ci in ("a", "answer", "答案", "看答案"):
+                answer = problem["answer"]
+                print(f"\n  {Color.YELLOW}答案：{Color.RESET}{Color.BOLD}{answer}{Color.RESET}")
+                print(f"  {Color.DIM}再试试能不能想通为什么是这个答案？(输入 y 下一题 / 任意键继续){Color.RESET}")
+                try:
+                    cont = input(f"{Color.BOLD}？{Color.RESET} ").strip().lower()
+                except (EOFError, KeyboardInterrupt):
+                    cont = ""
+                if cont in ("y", "yes", "是", "下一题"):
+                    gave_up = True
+                    break
+                continue
 
             attempts += 1
 
