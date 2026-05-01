@@ -22,7 +22,11 @@ def run_quiz(problems: list, subject: str, subjects: dict, all_problems: dict, l
         if not problems:
             hist_ids = set(progress.get("problem_history", {}).keys())
             all_ids = set(p["id"] for p in all_problems[subject])
-            all_done = len(hist_ids) >= len(all_ids) and hist_ids.issuperset(all_ids)
+            if topic:
+                topic_ids = set(p["id"] for p in all_problems[subject] if p.get("topic") == topic)
+                all_done = len(hist_ids.intersection(topic_ids)) >= len(topic_ids) and topic_ids
+            else:
+                all_done = len(hist_ids) >= len(all_ids) and hist_ids.issuperset(all_ids)
 
             if all_done:
                 pass
@@ -115,9 +119,9 @@ def run_quiz(problems: list, subject: str, subjects: dict, all_problems: dict, l
                         problems = pick_problems(all_problems[subject], count=1)
                         continue
                     elif choice == "g":
+                        gen_topic = topic if topic else (min(progress.get("mastery", {}).keys(), key=lambda t: progress["mastery"].get(t, 0.5)) if progress.get("mastery") else None)
                         print(f"\n{Color.CYAN}🤖 AI 正在生成新题，请稍候…{Color.RESET}")
-                        weak_topic = min(progress.get("mastery", {}).keys(), key=lambda t: progress["mastery"].get(t, 0.5)) if progress.get("mastery") else None
-                        new_list = get_problems(subject, count=1, topic=weak_topic)
+                        new_list = get_problems(subject, count=1, topic=gen_topic)
                         if new_list:
                             print(f"{Color.GREEN}✅ 新题生成成功！{Color.RESET}")
                             problems = new_list
