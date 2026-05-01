@@ -155,8 +155,6 @@ def run_quiz(problems: list, subject: str, subjects: dict, all_problems: dict, l
                 print(f"  {line}")
 
         concept = latex_to_plain(problem.get("concept_note", ""))
-        if concept:
-            print(f"\n{Color.DIM}📖 相关知识：{concept}{Color.RESET}")
 
         attempts = 0
         solved = False
