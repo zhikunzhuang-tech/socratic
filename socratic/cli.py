@@ -122,10 +122,7 @@ def main():
     # 助教人格
     persona_name = args.persona
     if persona_name is None:
-        if args.solve or args.book or args.review or args.init_kb or args.report or args.stats or args.list or args.generate or args.flash or subject in ("biology", "geography", "claude", "hermes"):
-            persona_name = "default"
-        else:
-            persona_name = show_persona_menu()
+        persona_name = "gentle"  # 默认耐心风格
     elif persona_name not in PERSONA_KEYS:
         print(f"{Color.RED}⚠ 不支持的风格：{persona_name}。可选：{', '.join(PERSONA_KEYS)}{Color.RESET}")
         sys.exit(1)
