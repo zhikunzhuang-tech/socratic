@@ -199,7 +199,7 @@ def run_quiz(problems: list, subject: str, subjects: dict, all_problems: dict, l
                 if total_hints > 0:
                     used = min(attempts, total_hints)
                     print(f"  {Color.DIM}提示进度 {'🟡' * used}{'⚪' * (total_hints - used)}{Color.RESET}")
-                print(f"  {Color.DIM}(输入 h 看提示 | s 跳过此题){Color.RESET}")
+                print(f"  {Color.DIM}(输入 h 看提示 | a 看答案 | s 跳过此题){Color.RESET}")
                 # 首次答错时显示知识库
                 if attempts == 1:
                     show_knowledge(subject, problem["topic"])

@@ -115,6 +115,11 @@ def answer_matches(user_ans: str, problem: dict) -> bool:
     for cand in candidates:
         if user == normalize_answer(cand):
             return True
+    # 模糊匹配：用户答案包含核心关键词，或核心答案包含用户输入
+    for cand in candidates:
+        norm = normalize_answer(cand)
+        if len(norm) > 2 and (norm in user or user in norm):
+            return True
     for cand in candidates:
         norm = normalize_answer(cand)
         if re.match(r"^-?\d+\.?\d*$", norm) and re.match(r"^-?\d+\.?\d*$", user):
