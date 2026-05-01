@@ -50,7 +50,7 @@ def kb_add(name: str, filepath: str):
         else:
             text = src.read_text(encoding="utf-8", errors="replace")
 
-        dest = kb_path / src.name.replace(".", "_") + ".txt"
+        dest = kb_path / (src.name.replace(".", "_") + ".txt")
         dest.write_text(text, encoding="utf-8")
         size = len(text)
         print(f"{Color.GREEN}✅ 已添加：{src.name} → kb/{name}/ ({size} 字符){Color.RESET}")
