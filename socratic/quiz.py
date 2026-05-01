@@ -35,19 +35,15 @@ def run_quiz(problems: list, subject: str, subjects: dict, all_problems: dict, l
                         a = pick_adaptive_problem(topic_problems, progress, done_ids)
                         problems = [a] if a else pick_problems(topic_problems, count=1, exclude_ids=done_ids)
                     if not problems:
-                        # 当前主题做完了，显示菜单
+                        # 当前主题做完了，自动用 AI 生成新题
                         print(f"\n{Color.BOLD}{Color.CYAN}📚 当前主题「{topic}」已全部完成！{Color.RESET}")
                         print(f"  本轮完成 {round_num - 1} 题")
-                        print(f"\n{Color.DIM}  选项：{Color.RESET}")
-                        print(f"    c → 继续做其他主题")
-                        print(f"    g → 🤖 AI 生成一道 {topic} 新题")
-                        print(f"    s → 换一个科目")
-                        print(f"    q → 退出")
+                        print(f"{Color.DIM}  按回车继续生成新题，或输入 c(换主题) s(换科目) q(退出){Color.RESET}")
                         try:
-                            choice = input(f"\n{Color.BOLD}选择 (c/g/s/q)：{Color.RESET} ").strip().lower()
+                            choice = input(f"{Color.BOLD}？{Color.RESET} ").strip().lower()
                         except (EOFError, KeyboardInterrupt):
                             choice = "q"
-                        if choice == "g":
+                        if not choice or choice == "g":
                             print(f"\n{Color.CYAN}🤖 AI 正在生成新题…{Color.RESET}")
                             new_list = get_problems(subject, count=1, topic=topic)
                             if new_list:
