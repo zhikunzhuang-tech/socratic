@@ -4,6 +4,67 @@
 
 ---
 
+## 零、项目初始化
+
+> **前置条件**：任何项目第一次用这套技能前，必须先初始化。只需做一次。
+
+### 流程
+
+```bash
+# 在 Hermes 里加载 setup 技能
+hermes -s setup-matt-pocock-skills
+```
+
+然后在对话中，挨个回答 3 个问题：
+
+| 问题 | 你要决定的事 | 推荐 |
+|------|------------|------|
+| **Issue tracker** | issue 存在哪？GitHub / GitLab / 本地 markdown？ | 个人项目选**本地 markdown**，多人协作选 **GitHub** |
+| **Triage 标签** | 5 种标准状态用不用默认标签名？ | 第一次用直接**默认**，后续随时改 |
+| **领域文档布局** | 单上下文（根目录 CONTEXT.md）还是多上下文（monorepo）？ | 普通项目选**单上下文** |
+
+### 初始化后项目里会多出什么
+
+```
+your-project/
+├── CLAUDE.md                   ← 追加 ## Agent skills 区块
+├── docs/
+│   └── agents/
+│       ├── issue-tracker.md     ← 记录 issue tracker 类型和操作命令
+│       ├── triage-labels.md     ← 记录 5 种标签的映射
+│       └── domain.md            ← 记录 CONTEXT.md 放哪、ADR 放哪
+```
+
+### 为什么要先初始化
+
+没有初始化时，跑 `/to-issues` 等技能，agent 不知道：
+- issue 发 GitHub 还是写本地文件？→ 乱猜
+- 标签叫什么名字？→ 贴一个不存在的标签
+- 领域术语在哪？→ 找不到
+
+做了初始化后，agent 直接读 `docs/agents/`：
+
+> "这个项目用 GitHub Issues，走 `gh` CLI"
+> "`ready-for-agent` 对应标签就叫 `ready-for-agent`"
+> "CONTEXT.md 在根目录，改 `docs/agents/*.md` 就能改配置"
+
+### 实战：socratic 项目初始化
+
+```
+/setup-matt-pocock-skills
+  → 主动探索项目：发现是 GitHub 仓库，没有 CLAUDE.md / CONTEXT.md
+  → 问你 3 个问题：
+    Q1: Issue tracker？→ GitHub Issues
+    Q2: 标签？→ 默认
+    Q3: 文档布局？→ 单上下文
+  → 产出：
+    CLAUDE.md          ← 追加 Agent skills 区块
+    docs/agents/*.md   ← 3 个配置文件
+    CONTEXT.md         ← 待后续 grill 时填充
+```
+
+---
+
 ## 一、新功能 / 新模块
 
 ### 流程
@@ -108,11 +169,12 @@
 
 ## 五、几个要点
 
-1. **先想清楚再做** — `/grill-with-docs` 是最常用的技能。磨刀不误砍柴工
-2. **垂直切片** — 每个 issue 是一次完整端到端，不是只改一层
-3. **AFK 优先** — 能写成 agent 能干的事，就别等人工
-4. **反馈环优先** — debug 时不建好可复现信号，别动代码
-5. **深模块** — 好的代码是小接口大功能，差的代码是接口和实现一样复杂
+1. **先初始化项目** — `setup-matt-pocock-skills` 是第一步。做完它，其他技能才知道你的项目用什么基础设施
+2. **先想清楚再做** — `/grill-with-docs` 是最常用的技能。磨刀不误砍柴工
+3. **垂直切片** — 每个 issue 是一次完整端到端，不是只改一层
+4. **AFK 优先** — 能写成 agent 能干的事，就别等人工
+5. **反馈环优先** — debug 时不建好可复现信号，别动代码
+6. **深模块** — 好的代码是小接口大功能，差的代码是接口和实现一样复杂
 
 ---
 
