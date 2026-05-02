@@ -417,6 +417,35 @@ agent 走一遍探索：
 
 ## 六、常用命令速查
 
+### 技能调用方式
+
+```
+/技能名           ← 直接输，不带参数
+/技能名 + 描述    ← 某些技能需要一句话描述
+```
+
+**规则**：
+- 设计类技能（`/grill-with-docs`、`/grill-me`、`/tdd`、`/diagnose`）：**直接输 `/技能名`**，然后 agent 会主动问你问题
+- 综合类技能（`/to-prd`）：先聊完再输 `/to-prd`，agent 直接综合已有内容，**不会再次问你**
+- 带参数技能（`/triage`、`/zoom-out`）：可以加一句话描述，也可以先 `/技能名` 再对话
+
+### 各技能触发方式速查
+
+| 技能 | 正确用法 | 触发后 |
+|------|---------|--------|
+| `/grill-with-docs` | `/grill-with-docs` | 逐个问你问题，直到设计清晰 |
+| `/grill-me` | `/grill-me` | 同上，但不会写文档 |
+| `/tdd` | `/tdd` | 问你测什么行为，走红-绿-重构 |
+| `/diagnose` | `/diagnose` | 问你什么 bug，开始 6 阶段调试 |
+| `/to-prd` | 先讨论完，再输 `/to-prd` | 不问你，综合对话内容直接写 PRD |
+| `/to-issues` | 先有方案，再输 `/to-issues` | 展示切片方案等你确认 |
+| `/triage` | `/triage 看看有什么待办的` | 按描述查 issue / 管理状态 |
+| `/zoom-out` | `/zoom-out 我不懂 adaptive.py` | 跳出细节，给全局视角 |
+| `/caveman` | `/caveman` | 切换省 token 模式，说 stop 恢复 |
+| `/setup-matt-pocock-skills` | `/setup-matt-pocock-skills` | 探索项目 → 问你 3 个问题 |
+
+### 命令行启动方式
+
 ```bash
 # 在 Hermes 里加载 skill（当前会话）
 /skill grill-with-docs
