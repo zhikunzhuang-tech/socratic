@@ -1,0 +1,962 @@
+[
+  {
+    "id": "cmd-001",
+    "topic": "Linux 基础命令",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "ls 命令的作用是什么？",
+    "answer": "列出当前目录下的文件和目录",
+    "tags": [
+      "Linux",
+      "入门"
+    ]
+  },
+  {
+    "id": "cmd-002",
+    "topic": "Linux 基础命令",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "cd 命令的作用是什么？",
+    "answer": "切换当前工作目录",
+    "tags": [
+      "Linux",
+      "入门"
+    ]
+  },
+  {
+    "id": "cmd-003",
+    "topic": "Linux 基础命令",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "pwd 命令的作用是什么？",
+    "answer": "显示当前工作目录的完整路径",
+    "tags": [
+      "Linux",
+      "入门"
+    ]
+  },
+  {
+    "id": "cmd-004",
+    "topic": "Linux 基础命令",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "mkdir 命令的作用是什么？",
+    "answer": "创建新目录",
+    "tags": [
+      "Linux",
+      "入门"
+    ]
+  },
+  {
+    "id": "cmd-005",
+    "topic": "Linux 基础命令",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "rmdir 命令的作用是什么？",
+    "answer": "删除空目录",
+    "tags": [
+      "Linux",
+      "入门"
+    ]
+  },
+  {
+    "id": "cmd-006",
+    "topic": "Linux 基础命令",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "cp 命令的作用是什么？",
+    "answer": "复制文件或目录",
+    "tags": [
+      "Linux",
+      "入门"
+    ]
+  },
+  {
+    "id": "cmd-007",
+    "topic": "Linux 基础命令",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "mv 命令的作用是什么？",
+    "answer": "移动文件或目录（也可用于重命名）",
+    "tags": [
+      "Linux",
+      "入门"
+    ]
+  },
+  {
+    "id": "cmd-008",
+    "topic": "Linux 基础命令",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "rm 命令的作用是什么？",
+    "answer": "删除文件或目录",
+    "tags": [
+      "Linux",
+      "入门"
+    ]
+  },
+  {
+    "id": "cmd-009",
+    "topic": "Linux 基础命令",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "cat 命令的作用是什么？",
+    "answer": "查看文件内容（一次性输出全部）",
+    "tags": [
+      "Linux",
+      "入门"
+    ]
+  },
+  {
+    "id": "cmd-010",
+    "topic": "Linux 基础命令",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "less 命令的作用是什么？",
+    "answer": "分页查看文件内容（可上下翻页）",
+    "tags": [
+      "Linux",
+      "入门"
+    ]
+  },
+  {
+    "id": "cmd-011",
+    "topic": "Linux 基础命令",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "head 命令的作用是什么？",
+    "answer": "查看文件开头几行（默认10行）",
+    "tags": [
+      "Linux",
+      "入门"
+    ]
+  },
+  {
+    "id": "cmd-012",
+    "topic": "Linux 基础命令",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "tail 命令的作用是什么？",
+    "answer": "查看文件末尾几行（默认10行）",
+    "tags": [
+      "Linux",
+      "入门"
+    ]
+  },
+  {
+    "id": "cmd-013",
+    "topic": "Linux 基础命令",
+    "grade": "熟练",
+    "difficulty": 2,
+    "question": "find 命令的作用是什么？",
+    "answer": "在目录树中查找文件",
+    "tags": [
+      "Linux",
+      "进阶"
+    ]
+  },
+  {
+    "id": "cmd-014",
+    "topic": "Linux 基础命令",
+    "grade": "熟练",
+    "difficulty": 2,
+    "question": "grep 命令的作用是什么？",
+    "answer": "在文件内容中搜索匹配的行",
+    "tags": [
+      "Linux",
+      "进阶"
+    ]
+  },
+  {
+    "id": "cmd-015",
+    "topic": "Linux 基础命令",
+    "grade": "熟练",
+    "difficulty": 2,
+    "question": "chmod 命令的作用是什么？",
+    "answer": "修改文件或目录的权限",
+    "tags": [
+      "Linux",
+      "进阶"
+    ]
+  },
+  {
+    "id": "cmd-016",
+    "topic": "Linux 基础命令",
+    "grade": "熟练",
+    "difficulty": 2,
+    "question": "ps 命令的作用是什么？",
+    "answer": "显示当前运行的进程列表",
+    "tags": [
+      "Linux",
+      "进阶"
+    ]
+  },
+  {
+    "id": "cmd-017",
+    "topic": "Linux 基础命令",
+    "grade": "熟练",
+    "difficulty": 2,
+    "question": "kill 命令的作用是什么？",
+    "answer": "终止指定 PID 的进程",
+    "tags": [
+      "Linux",
+      "进阶"
+    ]
+  },
+  {
+    "id": "cmd-018",
+    "topic": "Linux 基础命令",
+    "grade": "熟练",
+    "difficulty": 2,
+    "question": "tar 命令的作用是什么？",
+    "answer": "创建或解压 tar 归档文件",
+    "tags": [
+      "Linux",
+      "进阶"
+    ]
+  },
+  {
+    "id": "cmd-019",
+    "topic": "Linux 基础命令",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "想列出当前目录下的所有文件（含隐藏文件）的详细信息，用什么命令？",
+    "answer": "ls -la",
+    "tags": [
+      "Linux",
+      "入门"
+    ]
+  },
+  {
+    "id": "cmd-020",
+    "topic": "Linux 基础命令",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "想创建一个目录及其所有父目录（如 mkdir -p a/b/c），用什么命令？",
+    "answer": "mkdir -p",
+    "tags": [
+      "Linux",
+      "入门"
+    ]
+  },
+  {
+    "id": "cmd-021",
+    "topic": "Linux 基础命令",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "想复制整个目录及其所有内容，用什么命令？",
+    "answer": "cp -r",
+    "tags": [
+      "Linux",
+      "入门"
+    ]
+  },
+  {
+    "id": "cmd-022",
+    "topic": "Linux 基础命令",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "想删除一个非空目录及其所有内容，用什么命令？",
+    "answer": "rm -r",
+    "tags": [
+      "Linux",
+      "入门"
+    ]
+  },
+  {
+    "id": "cmd-023",
+    "topic": "Linux 基础命令",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "想强制删除文件或目录（不询问确认），用什么命令？",
+    "answer": "rm -f",
+    "tags": [
+      "Linux",
+      "入门"
+    ]
+  },
+  {
+    "id": "cmd-024",
+    "topic": "Linux 基础命令",
+    "grade": "熟练",
+    "difficulty": 2,
+    "question": "想实时查看不断增长的日志文件（如访问日志），用什么命令？",
+    "answer": "tail -f",
+    "tags": [
+      "Linux",
+      "进阶"
+    ]
+  },
+  {
+    "id": "cmd-025",
+    "topic": "Linux 基础命令",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "想按文件名在目录树中搜索文件，用什么命令？",
+    "answer": "find",
+    "tags": [
+      "Linux",
+      "入门"
+    ]
+  },
+  {
+    "id": "cmd-026",
+    "topic": "Linux 基础命令",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "想在文件内容中搜索包含某个关键字的行，用什么命令？",
+    "answer": "grep",
+    "tags": [
+      "Linux",
+      "入门"
+    ]
+  },
+  {
+    "id": "cmd-027",
+    "topic": "Linux 基础命令",
+    "grade": "熟练",
+    "difficulty": 2,
+    "question": "想递归搜索目录下所有文件的内容，用什么命令？",
+    "answer": "grep -r",
+    "tags": [
+      "Linux",
+      "进阶"
+    ]
+  },
+  {
+    "id": "cmd-028",
+    "topic": "Linux 基础命令",
+    "grade": "熟练",
+    "difficulty": 2,
+    "question": "想给一个脚本文件添加可执行权限，用什么命令？",
+    "answer": "chmod +x",
+    "tags": [
+      "Linux",
+      "进阶"
+    ]
+  },
+  {
+    "id": "cmd-029",
+    "topic": "Linux 基础命令",
+    "grade": "熟练",
+    "difficulty": 2,
+    "question": "想查看系统上所有正在运行的进程详情，用什么命令？",
+    "answer": "ps aux",
+    "tags": [
+      "Linux",
+      "进阶"
+    ]
+  },
+  {
+    "id": "cmd-030",
+    "topic": "Linux 基础命令",
+    "grade": "熟练",
+    "difficulty": 2,
+    "question": "想强制终止一个卡死的进程，用什么命令？",
+    "answer": "kill -9",
+    "tags": [
+      "Linux",
+      "进阶"
+    ]
+  },
+  {
+    "id": "cmd-031",
+    "topic": "Linux 基础命令",
+    "grade": "熟练",
+    "difficulty": 2,
+    "question": "想创建一个压缩的 tar 归档（.tar.gz），用什么命令？",
+    "answer": "tar -czf",
+    "tags": [
+      "Linux",
+      "进阶"
+    ]
+  },
+  {
+    "id": "cmd-032",
+    "topic": "Linux 基础命令",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "想把两个文件的内容合并到一起输出，用什么命令？",
+    "answer": "cat file1 file2 > file3",
+    "tags": [
+      "Linux",
+      "入门"
+    ]
+  },
+  {
+    "id": "cmd-033",
+    "topic": "Linux 基础命令",
+    "grade": "熟练",
+    "difficulty": 2,
+    "question": "想在前一个命令后追加输出到文件（不覆盖），用什么符号？",
+    "answer": ">>",
+    "tags": [
+      "Linux",
+      "进阶"
+    ]
+  },
+  {
+    "id": "cmd-034",
+    "topic": "Linux 基础命令",
+    "grade": "熟练",
+    "difficulty": 2,
+    "question": "想查看当前目录占用多少磁盘空间，用什么命令？",
+    "answer": "du -sh",
+    "tags": [
+      "Linux",
+      "进阶"
+    ]
+  },
+  {
+    "id": "cmd-035",
+    "topic": "Linux 基础命令",
+    "grade": "熟练",
+    "difficulty": 2,
+    "question": "想查看磁盘各分区的使用情况，用什么命令？",
+    "answer": "df -h",
+    "tags": [
+      "Linux",
+      "进阶"
+    ]
+  },
+  {
+    "id": "cmd-036",
+    "topic": "vi 编辑器",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "要在 vi 中进入插入模式编辑文本，按哪个键？",
+    "answer": "i",
+    "tags": [
+      "vi",
+      "入门"
+    ]
+  },
+  {
+    "id": "cmd-037",
+    "topic": "vi 编辑器",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "vi 中要从插入模式返回普通模式，按哪个键？",
+    "answer": "Esc",
+    "tags": [
+      "vi",
+      "入门"
+    ]
+  },
+  {
+    "id": "cmd-038",
+    "topic": "vi 编辑器",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "vi 中保存文件并退出的命令是什么？",
+    "answer": ":wq",
+    "tags": [
+      "vi",
+      "入门"
+    ]
+  },
+  {
+    "id": "cmd-039",
+    "topic": "vi 编辑器",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "vi 中不保存强制退出的命令是什么？",
+    "answer": ":q!",
+    "tags": [
+      "vi",
+      "入门"
+    ]
+  },
+  {
+    "id": "cmd-040",
+    "topic": "vi 编辑器",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "vi 中只保存文件不退出的命令是什么？",
+    "answer": ":w",
+    "tags": [
+      "vi",
+      "入门"
+    ]
+  },
+  {
+    "id": "cmd-041",
+    "topic": "vi 编辑器",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "vi 中只退出（未修改时）的命令是什么？",
+    "answer": ":q",
+    "tags": [
+      "vi",
+      "入门"
+    ]
+  },
+  {
+    "id": "cmd-042",
+    "topic": "vi 编辑器",
+    "grade": "熟练",
+    "difficulty": 2,
+    "question": "vi 中删除当前行的命令是什么？",
+    "answer": "dd",
+    "tags": [
+      "vi",
+      "进阶"
+    ]
+  },
+  {
+    "id": "cmd-043",
+    "topic": "vi 编辑器",
+    "grade": "熟练",
+    "difficulty": 2,
+    "question": "vi 中复制当前行的命令是什么？",
+    "answer": "yy",
+    "tags": [
+      "vi",
+      "进阶"
+    ]
+  },
+  {
+    "id": "cmd-044",
+    "topic": "vi 编辑器",
+    "grade": "熟练",
+    "difficulty": 2,
+    "question": "vi 中粘贴已复制或删除的内容的命令是什么？",
+    "answer": "p",
+    "tags": [
+      "vi",
+      "进阶"
+    ]
+  },
+  {
+    "id": "cmd-045",
+    "topic": "vi 编辑器",
+    "grade": "熟练",
+    "difficulty": 2,
+    "question": "vi 中撤销上一步操作按什么键？",
+    "answer": "u",
+    "tags": [
+      "vi",
+      "进阶"
+    ]
+  },
+  {
+    "id": "cmd-046",
+    "topic": "vi 编辑器",
+    "grade": "熟练",
+    "difficulty": 2,
+    "question": "vi 中在文件中搜索某个关键词按什么键？",
+    "answer": "/",
+    "tags": [
+      "vi",
+      "进阶"
+    ]
+  },
+  {
+    "id": "cmd-047",
+    "topic": "vi 编辑器",
+    "grade": "熟练",
+    "difficulty": 2,
+    "question": "vi 中跳转到文件最后一行的命令是什么？",
+    "answer": "G",
+    "tags": [
+      "vi",
+      "进阶"
+    ]
+  },
+  {
+    "id": "cmd-048",
+    "topic": "vi 编辑器",
+    "grade": "熟练",
+    "difficulty": 2,
+    "question": "vi 中跳转到文件第一行的命令是什么？",
+    "answer": "gg",
+    "tags": [
+      "vi",
+      "进阶"
+    ]
+  },
+  {
+    "id": "cmd-049",
+    "topic": "vi 编辑器",
+    "grade": "熟练",
+    "difficulty": 2,
+    "question": "vi 中显示行号的命令是什么？",
+    "answer": ":set nu",
+    "tags": [
+      "vi",
+      "进阶"
+    ]
+  },
+  {
+    "id": "cmd-050",
+    "topic": "vi 编辑器",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "在 vi 中想保存文件并退出，输入什么命令？",
+    "answer": ":wq",
+    "tags": [
+      "vi",
+      "入门"
+    ]
+  },
+  {
+    "id": "cmd-051",
+    "topic": "vi 编辑器",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "在 vi 中编辑到一半不想保存了，强制退出怎么操作？",
+    "answer": ":q!",
+    "tags": [
+      "vi",
+      "入门"
+    ]
+  },
+  {
+    "id": "cmd-052",
+    "topic": "vi 编辑器",
+    "grade": "熟练",
+    "difficulty": 2,
+    "question": "vi 中想删除当前光标所在行，按什么键？",
+    "answer": "dd",
+    "tags": [
+      "vi",
+      "进阶"
+    ]
+  },
+  {
+    "id": "cmd-053",
+    "topic": "vi 编辑器",
+    "grade": "熟练",
+    "difficulty": 2,
+    "question": "vi 中想复制一行然后粘贴到别处，怎样操作？",
+    "answer": "yy 然后移到目标位置按 p",
+    "tags": [
+      "vi",
+      "进阶"
+    ]
+  },
+  {
+    "id": "cmd-054",
+    "topic": "vi 编辑器",
+    "grade": "熟练",
+    "difficulty": 2,
+    "question": "vi 中想在文件里搜索 error 这个词，怎么操作？",
+    "answer": "输入 /error 然后回车",
+    "tags": [
+      "vi",
+      "进阶"
+    ]
+  },
+  {
+    "id": "cmd-055",
+    "topic": "vi 编辑器",
+    "grade": "熟练",
+    "difficulty": 2,
+    "question": "vi 中想撤销刚才的误操作，按什么？",
+    "answer": "u",
+    "tags": [
+      "vi",
+      "进阶"
+    ]
+  },
+  {
+    "id": "cmd-056",
+    "topic": "git 版本控制",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "git clone 的作用是什么？",
+    "answer": "将远程仓库克隆到本地",
+    "tags": [
+      "git",
+      "入门"
+    ]
+  },
+  {
+    "id": "cmd-057",
+    "topic": "git 版本控制",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "git add 的作用是什么？",
+    "answer": "将文件更改添加到暂存区",
+    "tags": [
+      "git",
+      "入门"
+    ]
+  },
+  {
+    "id": "cmd-058",
+    "topic": "git 版本控制",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "git commit 的作用是什么？",
+    "answer": "将暂存区的更改提交到本地仓库",
+    "tags": [
+      "git",
+      "入门"
+    ]
+  },
+  {
+    "id": "cmd-059",
+    "topic": "git 版本控制",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "git push 的作用是什么？",
+    "answer": "将本地提交推送到远程仓库",
+    "tags": [
+      "git",
+      "入门"
+    ]
+  },
+  {
+    "id": "cmd-060",
+    "topic": "git 版本控制",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "git pull 的作用是什么？",
+    "answer": "拉取远程仓库的最新更改并合并到本地",
+    "tags": [
+      "git",
+      "入门"
+    ]
+  },
+  {
+    "id": "cmd-061",
+    "topic": "git 版本控制",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "git status 的作用是什么？",
+    "answer": "查看当前工作区的状态（修改/暂存/未跟踪）",
+    "tags": [
+      "git",
+      "入门"
+    ]
+  },
+  {
+    "id": "cmd-062",
+    "topic": "git 版本控制",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "git log 的作用是什么？",
+    "answer": "查看提交历史记录",
+    "tags": [
+      "git",
+      "入门"
+    ]
+  },
+  {
+    "id": "cmd-063",
+    "topic": "git 版本控制",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "git diff 的作用是什么？",
+    "answer": "查看文件的具体更改内容",
+    "tags": [
+      "git",
+      "入门"
+    ]
+  },
+  {
+    "id": "cmd-064",
+    "topic": "git 版本控制",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "git branch 的作用是什么？",
+    "answer": "列出/创建/删除分支",
+    "tags": [
+      "git",
+      "入门"
+    ]
+  },
+  {
+    "id": "cmd-065",
+    "topic": "git 版本控制",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "git checkout 的作用是什么？",
+    "answer": "切换分支或恢复文件",
+    "tags": [
+      "git",
+      "入门"
+    ]
+  },
+  {
+    "id": "cmd-066",
+    "topic": "git 版本控制",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "git merge 的作用是什么？",
+    "answer": "将指定分支的更改合并到当前分支",
+    "tags": [
+      "git",
+      "入门"
+    ]
+  },
+  {
+    "id": "cmd-067",
+    "topic": "git 版本控制",
+    "grade": "熟练",
+    "difficulty": 2,
+    "question": "git stash 的作用是什么？",
+    "answer": "临时保存工作区更改，恢复干净工作区",
+    "tags": [
+      "git",
+      "进阶"
+    ]
+  },
+  {
+    "id": "cmd-068",
+    "topic": "git 版本控制",
+    "grade": "熟练",
+    "difficulty": 2,
+    "question": "git reset 的作用是什么？",
+    "answer": "撤销提交或取消暂存",
+    "tags": [
+      "git",
+      "进阶"
+    ]
+  },
+  {
+    "id": "cmd-069",
+    "topic": "git 版本控制",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "想从 GitHub 下载一个仓库到本地，用什么命令？",
+    "answer": "git clone 仓库地址",
+    "tags": [
+      "git",
+      "入门"
+    ]
+  },
+  {
+    "id": "cmd-070",
+    "topic": "git 版本控制",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "修改完文件后想把它加入暂存区准备提交，用什么命令？",
+    "answer": "git add 文件名",
+    "tags": [
+      "git",
+      "入门"
+    ]
+  },
+  {
+    "id": "cmd-071",
+    "topic": "git 版本控制",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "暂存区准备好后想创建一次提交，用什么命令？",
+    "answer": "git commit -m '提交信息'",
+    "tags": [
+      "git",
+      "入门"
+    ]
+  },
+  {
+    "id": "cmd-072",
+    "topic": "git 版本控制",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "想把本地的提交同步到远程仓库，用什么命令？",
+    "answer": "git push",
+    "tags": [
+      "git",
+      "入门"
+    ]
+  },
+  {
+    "id": "cmd-073",
+    "topic": "git 版本控制",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "想从远程仓库拉取同事的最新提交，用什么命令？",
+    "answer": "git pull",
+    "tags": [
+      "git",
+      "入门"
+    ]
+  },
+  {
+    "id": "cmd-074",
+    "topic": "git 版本控制",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "想查看当前有哪些文件被修改了，用什么命令？",
+    "answer": "git status",
+    "tags": [
+      "git",
+      "入门"
+    ]
+  },
+  {
+    "id": "cmd-075",
+    "topic": "git 版本控制",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "想查看每次提交的详细信息（作者、日期、说明），用什么命令？",
+    "answer": "git log",
+    "tags": [
+      "git",
+      "入门"
+    ]
+  },
+  {
+    "id": "cmd-076",
+    "topic": "git 版本控制",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "想创建一个叫 feature-login 的新分支，用什么命令？",
+    "answer": "git branch feature-login",
+    "tags": [
+      "git",
+      "入门"
+    ]
+  },
+  {
+    "id": "cmd-077",
+    "topic": "git 版本控制",
+    "grade": "入门",
+    "difficulty": 1,
+    "question": "想切换到 main 分支，用什么命令？",
+    "answer": "git checkout main",
+    "tags": [
+      "git",
+      "入门"
+    ]
+  },
+  {
+    "id": "cmd-078",
+    "topic": "git 版本控制",
+    "grade": "熟练",
+    "difficulty": 2,
+    "question": "想把 feature-login 分支的代码合并到当前分支，用什么命令？",
+    "answer": "git merge feature-login",
+    "tags": [
+      "git",
+      "进阶"
+    ]
+  },
+  {
+    "id": "cmd-079",
+    "topic": "git 版本控制",
+    "grade": "熟练",
+    "difficulty": 2,
+    "question": "想看到某个文件每一行的最后修改者和提交信息，用什么命令？",
+    "answer": "git blame 文件名",
+    "tags": [
+      "git",
+      "进阶"
+    ]
+  },
+  {
+    "id": "cmd-080",
+    "topic": "git 版本控制",
+    "grade": "熟练",
+    "difficulty": 2,
+    "question": "想暂时放下手头的工作去修一个紧急 bug（不提交当前更改），用什么命令？",
+    "answer": "git stash",
+    "tags": [
+      "git",
+      "进阶"
+    ]
+  }
+]

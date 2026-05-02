@@ -12,8 +12,8 @@ def run_flash_mode(subject: str, subjects: dict, all_problems: dict, persona: di
     subj = subjects[subject]
     progress = load_progress(subject)
 
-    # 生物/地理：章节选择
-    if subject in ("biology", "geography"):
+    # 生物/地理/常用命令：章节选择
+    if subject in ("biology", "geography", "cmd"):
         all_probs = get_all_problems(subject)
         chapters = _get_chapters(all_probs)
         chapter = _select_chapter(chapters, progress, subj)

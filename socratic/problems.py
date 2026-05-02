@@ -10,6 +10,7 @@ SUBJECTS = {
     "geography": {"name": "地理", "icon": "🌍", "emoji": "🌏", "grades": "初二", "tag": "geo"},
     "claude":  {"name": "Claude Code", "icon": "🤖", "emoji": "🤖", "grades": "入门~高级", "tag": "claude"},
     "hermes":  {"name": "Hermes Agent", "icon": "⚡", "emoji": "⚡", "grades": "入门~高级", "tag": "hermes"},
+    "cmd":     {"name": "常用命令", "icon": "💻", "emoji": "💻", "grades": "入门~熟练", "tag": "cmd"},
 }
 SUBJECT_KEYS = list(SUBJECTS.keys())
 SUBJECT_NAMES = {v["name"]: k for k, v in SUBJECTS.items()}

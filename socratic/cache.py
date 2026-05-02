@@ -8,8 +8,8 @@ from .utils import DATA_DIR, Color, latex_to_plain
 
 CACHE_DIR = DATA_DIR / "cache"
 
-SUBJECT_NAMES = {"math": "数学", "english": "英语", "physics": "物理", "chinese": "语文", "biology": "生物", "geography": "地理", "claude": "Claude Code", "hermes": "Hermes Agent"}
-SUBJECT_TAGS = {"math": "math", "english": "eng", "physics": "phy", "chinese": "chn", "biology": "bio", "geography": "geo", "claude": "claude", "hermes": "hermes"}
+SUBJECT_NAMES = {"math": "数学", "english": "英语", "physics": "物理", "chinese": "语文", "biology": "生物", "geography": "地理", "claude": "Claude Code", "hermes": "Hermes Agent", "cmd": "常用命令"}
+SUBJECT_TAGS = {"math": "math", "english": "eng", "physics": "phy", "chinese": "chn", "biology": "bio", "geography": "geo", "claude": "claude", "hermes": "hermes", "cmd": "cmd"}
 
 
 # ── 种子题（每个科目 5 道，冷启动 + 断网备用）────────────────
@@ -190,6 +190,28 @@ SEEDS = {
          "socratic_hints": ["地球是完美的球形吗？", "从卫星照片看地球两极和赤道有什么不同？", "两极稍扁、赤道略鼓的不规则球体"],
          "common_errors": {"圆形": "地球是球体不是圆形", "球形": "不是完美的球形"},
          "tags": ["地理", "会考"], "concept_note": "地球：两极稍扁、赤道略鼓的不规则球体。"},
+    ],
+    "cmd": [
+        {"id": "seed-cmd-1", "topic": "Linux 基础命令", "grade": "入门", "difficulty": 1,
+         "question": "ls 命令的作用是什么？", "answer": "列出当前目录下的文件和目录",
+         "alternatives": [], "steps": [], "socratic_hints": [], "common_errors": {},
+         "tags": ["Linux", "入门"], "concept_note": "ls = list segments"},
+        {"id": "seed-cmd-2", "topic": "Linux 基础命令", "grade": "入门", "difficulty": 1,
+         "question": "cd 命令的作用是什么？", "answer": "切换当前工作目录",
+         "alternatives": [], "steps": [], "socratic_hints": [], "common_errors": {},
+         "tags": ["Linux", "入门"], "concept_note": "cd = change directory"},
+        {"id": "seed-cmd-3", "topic": "vi 编辑器", "grade": "入门", "difficulty": 1,
+         "question": "要进入 vi 的插入模式输入文字，按哪个键？", "answer": "i",
+         "alternatives": ["I"], "steps": [], "socratic_hints": [], "common_errors": {},
+         "tags": ["vi", "入门"], "concept_note": "i = insert"},
+        {"id": "seed-cmd-4", "topic": "git 版本控制", "grade": "入门", "difficulty": 1,
+         "question": "git add 的作用是什么？", "answer": "将文件更改添加到暂存区",
+         "alternatives": [], "steps": [], "socratic_hints": [], "common_errors": {},
+         "tags": ["git", "入门"], "concept_note": "git add 将修改放入暂存区，等待 commit"},
+        {"id": "seed-cmd-5", "topic": "git 版本控制", "grade": "入门", "difficulty": 1,
+         "question": "git commit 的作用是什么？", "answer": "将暂存区的更改提交到本地仓库",
+         "alternatives": [], "steps": [], "socratic_hints": [], "common_errors": {},
+         "tags": ["git", "入门"], "concept_note": "git commit 创建一次版本快照"},
     ],
 }
 
