@@ -434,5 +434,244 @@
       "初三"
     ],
     "concept_note": "感官动词 see/watch/hear 后接动词原形。"
+  },
+  {
+    "question": "There ___ a cat and two dogs in the yard.",
+    "answer": "is",
+    "alternatives": [
+      "is",
+      "are",
+      "be"
+    ],
+    "steps": [
+      "1. 找到句子中紧跟在There后面的名词。",
+      "2. 判断这个名词是单数还是复数。",
+      "3. 根据就近原则，be动词与最近的名词保持一致，单数用is。"
+    ],
+    "socratic_hints": [
+      "观察一下紧跟着There后面的第一个名词是什么？",
+      "这个名词是单数还是复数？",
+      "单数名词应该用 哪个be动词？"
+    ],
+    "common_errors": {
+      "are": "你看到了后面的'two dogs'，但根据就近原则，be动词应与最近的'a cat'一致，a cat是单数，所以应该用is。",
+      "be": "'be'是动词原形，不能直接用在There句型中，需要根据主语变化。",
+      "isn't": "这里不需要否定形式，原句是肯定句。"
+    },
+    "concept_note": "在The re be句型中，be动词的单复数形式由紧跟在它后面的第一个名词（即最近的主语）决定。",
+    "id": "eng-gen-1778116937",
+    "topic": "There be句型",
+    "grade": "初一",
+    "difficulty": 1,
+    "tags": [
+      "There be句型",
+      "自动生成"
+    ],
+    "focus": "There be句型的就近原则（be动词与最近主语一致）"
+  },
+  {
+    "question": "If the weather ___ nice, we will go to the park.",
+    "answer": "is",
+    "alternatives": [
+      "are",
+      "am",
+      "was"
+    ],
+    "steps": [
+      "1. 找出if从句的主语：the weather（第三人称单数）",
+      "2. 确定时态：真实条件句if从句用一般现在时",
+      "3. 选择be动词的正确形式：第三人称单数主语对应is"
+    ],
+    "socratic_hints": [
+      "想想这个句子的主语是单数还是复数？",
+      "主语是第三人称单数，be动词有哪些形式？",
+      "一 般现在时中，he/she/it后面通常用哪个be动词？"
+    ],
+    "common_errors": {
+      "are": "主语weather是单数，are用于复数主语，应改为is",
+      "am": "am只能与第一人称I搭配， 这里主语是weather",
+      "was": "真实条件句if从句需用一般现在时，不能用过去时was"
+    },
+    "concept_note": "在if真实条件句中，if从句使用一般现在时，be动词的形式（ am/is/are）必须与主语的人称和数保持一致。",
+    "id": "eng-gen-1779541995",
+    "topic": "If条件句",
+    "grade": "初一",
+    "difficulty": 1,
+    "tags": [
+      "If条件句",
+      "自动生成"
+    ],
+    "focus": "if真实条件句中if从句一般现在时be动词的用法（主谓一致）"
+  },
+  {
+    "question": "If she ______ (take) the medicine yesterday, she ______ (feel) better now.",
+    "answer": "had taken, would feel",
+    "alternatives": [
+      "took,   would feel",
+      "had taken, would have felt",
+      "takes, will feel"
+    ],
+    "steps": [
+      "1. 识别时间状语：yesterday（过去）和now（现在），说明从句和主句时间不一致。",
+      "2. 根据混合虚拟语气规则：从句对过去虚拟用had+过去分词，主句对现在虚拟用would+动词原形。",
+      "3. 填入正确形式：had taken（从句）和would feel（主句）。"
+    ],
+    "socratic_hints": [
+      "这个句子中，if从句的时间和主句的时间是否一致？",
+      "注意时间词：yesterday和now，它们分别指向什么时间点？",
+      "对过去 事实的假设从句要用什么时态？对现在结果用主句什么形式？"
+    ],
+    "common_errors": {
+      "took, would feel": "这是真实条件句的时态，但yesterday表明与过去事实相反，需要虚拟语气。",
+      "had taken, would have felt": "主句对现在虚拟要用would+动词原形，would have felt是对过去虚拟。",
+      "takes, will feel": "这是真实条件句表示一般将来，不符合yesterday的过去时间语境。"
+    },
+    "concept_note": "混合虚拟语气用于从句与主句时间不一致时，从句对过去虚拟用had done，主句对现在虚拟用would do。",
+    "id": "eng-gen-1779542075",
+    "topic": "If条件句",
+    "grade": "初三",
+    "difficulty": 3,
+    "tags": [
+      "If条件句",
+      "自动生成"
+    ],
+    "focus": "if条件句中的混合虚拟语气（从句对过去虚拟，主句对现在虚拟）"
+  },
+  {
+    "question": "If Sally ______ (not forget) her umbrella yesterday, she ______ (not get) wet in the rain. Please fill in the blanks with the correct verb forms to express a contrary-to-fact past situation.",
+    "answer": "had not forgotten; would not have gotten",
+    "alternatives": [
+      "hadn't forgotten;   wouldn't have got",
+      "did not forget; would not get",
+      "not forgotten; will not get",
+      "had not forgot; would not have gotten"
+    ],
+    "steps": [
+      "1. Identify the time: the action happened yesterday, and it is contrary to fact (she did forget). So we need past perfect in the if-clause: had + past participle. For 'forget', past participle is 'forgotten'. The negative is 'had not forgotten'.",
+      "2. The main clause expresses the unreal result in the past: would (not) have + past participle. 'get' past participle is 'gotten' (or 'got' in British English, but we accept both). So 'would not have gotten' (or 'got').",
+      "3. Combine: 'If Sally had not forgotten her umbrella yesterday, she would not have gotten wet in the rain.'"
+    ],
+    "socratic_hints": [
+      "Think about when the unreal situation happened. Is it about the past or the present?",
+      "In the if-clause for past unreal situations, we use a special tense that combines 'had' and a past participle. Which tense is that?",
+      "For the result part, we use 'would have' plus what form of the verb? Check the verb 'get'."
+    ],
+    "common_errors": {
+      "had not forgot; would not get": "You used 'forgot' (simple past) instead of the past participle 'forgotten'. Also the main clause should be 'would not have gotten', not 'would not get'.",
+      "did not forget; would not get": "This describes a real or possible past, not an unreal situation. Use past perfect for unreal past.",
+      "not forgotten; will not get": "Missing 'had' in the if-clause, and 'will' instead of 'would have' in the main clause."
+    },
+    "concept_note": "与过去事实相反的虚拟语气：if从句用had + 过去分词，主句用would/could/might + have + 过去分词。",
+    "id": "eng-gen-1779542131",
+    "topic": "If条件句",
+    "grade": "初二",
+    "difficulty": 2,
+    "tags": [
+      "If条件句",
+      "自动生成"
+    ],
+    "focus": "if条件句中的虚拟语气（与过去事实相反）"
+  },
+  {
+    "question": "The teacher has a funny story ______ the students.",
+    "answer": "to tell",
+    "alternatives": [
+      "A. to tell",
+      "B. telling",
+      "C. tell",
+      "D.        tells"
+    ],
+    "steps": [
+      "找到被修饰的名词“story”，它需要补充说明用于做什么",
+      "不定式作定语时动词用“to + 动词原形”结构",
+      "因此选择“to tell”，表示“要讲的故事”"
+    ],
+    "socratic_hints": [
+      "这个故事是用来做什么的？想一想动词应该以什么形式出现",
+      "表示“目的”或“用途”时，英语常用to加动词",
+      "那“故 事要讲给学生听”应该用哪个词？"
+    ],
+    "common_errors": {
+      "telling": "动名词不能作定语直接表示用途",
+      "tell": "缺少to，不定式标志不能省略",
+      "tells": "动词加了s， 但不定式要用原形"
+    },
+    "concept_note": "不定式作定语时，放在被修饰名词后，表示该名词要做的动作。",
+    "id": "eng-gen-1779542958",
+    "topic": "不定式",
+    "grade": "初一",
+    "difficulty": 1,
+    "tags": [
+      "不定式",
+      "自动生成"
+    ],
+    "focus": "不定式作定语（修饰名词，如something to                                                                                                   do）"
+  },
+  {
+    "question": "I want a friend ______. (play)",
+    "answer": "to play with",
+    "alternatives": [
+      "to play                                                      with"
+    ],
+    "steps": [
+      "识别语境：需要找一个朋友一起玩，play表示动作。",
+      "注意play是不及物动词，与朋友的关系是“和……玩”，需要介词with。",
+      "不定式作定语修饰f riend，正确形式为to play with。"
+    ],
+    "socratic_hints": [
+      "想一想，你想要一个朋友一起做什么？",
+      "表达“一起玩”时，play后面需要加上哪个介词？",
+      "朋友是“和谁玩”的对象，不定式结尾要带 上这个介词。"
+    ],
+    "common_errors": {
+      "to play": "缺少介词with，friend无法成为play的宾语，会造成语义不清。",
+      "to play with it": "多加了it，重复指代friend，语法错误。",
+      "for playing": "用for playing表示目的，但不定式作定语通常不用for+动名词，且语义不直接。"
+    },
+    "concept_note": "当不定式作定语且动词与被修饰名词有动宾关系时，如果动词是不及物 的或需搭配介词，则不定式末尾要加上相应的介词。",
+    "id": "eng-gen-1779542979",
+    "topic": "不定式",
+    "grade": "初二",
+    "difficulty": 2,
+    "tags": [
+      "不定式",
+      "自动生成"
+    ],
+    "focus": "不定式作定语（与被修饰名词有动宾关系时需加适当介词）"
+  },
+  {
+    "question": "Choose the correct option to complete the sentence: I can't decide ______ for the party.",
+    "answer": "A. what to wear",
+    "alternatives": [
+      "A. what to wear",
+      "B. what should I wear",
+      "C. what I wear",
+      "D. what do I wear"
+    ],
+    "steps": [
+      "Step 1: Identify the verb 'decide' which can be followed by either a 'wh-word + to-infinitive' or a 'wh-word clause'.",
+      "Step 2: Recognize that option A uses the correct 'wh-word + to-infinitive' structure, which is concise and appropriate when the subject of the main verb and the infinitive are the same.",
+      "Step 3: Check other options: B and D have incorrect word order (question order in a clause), and C lacks a modal verb or tense marker needed for the intended meaning."
+    ],
+    "socratic_hints": [
+      "Hint 1: After decision verbs like 'decide', think about what kind of phrase can follow.",
+      "Hint 2: Can you spot which option has a 'wh-word' followed directly by 'to'? That's a special structure.",
+      "Hint 3: Compare with the clause version: the correct clause would need 'should' and a subject before the verb. Which option matches that pattern?"
+    ],
+    "common_errors": {
+      "B. what should I wear": "This uses inverted word order typical of direct questions, but an embedded clause requires statement order: 'what I should wear'.",
+      "C. what I wear": "This is too simple; it sounds like a habitual action, not a decision about a future event. A modal or 'to-infinitive' is needed.",
+      "D. what do I wear": "Same as B, direct question word order, incorrect as an object clause."
+    },
+    "concept_note": "Wh-word + to-infinitive (e.g., what to do) acts as a shortened object clause when the subject is the same as the main clause subject.",
+    "id": "eng-gen-1779543015",
+    "topic": "不定式",
+    "grade": "初三",
+    "difficulty": 3,
+    "tags": [
+      "不定式",
+      "自动生成"
+    ],
+    "focus": "疑问词+不定式作宾语（如I don't know what to                                                                                              do）与从句的区别"
   }
 ]

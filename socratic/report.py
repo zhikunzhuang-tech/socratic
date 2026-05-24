@@ -1,7 +1,7 @@
 """学习报告 — 周报/统计/趋势"""
 from datetime import date, timedelta
 from collections import defaultdict
-from .utils import Color, DATA_DIR
+from .utils import Color
 from .progress import load_progress, show_mastery_stats
 
 

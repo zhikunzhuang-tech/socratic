@@ -1,6 +1,6 @@
 """--review 模式：错题复习"""
 from .utils import Color
-from .progress import load_progress, get_wrong_problems, record_wrong_answer
+from .progress import load_progress, get_wrong_problems
 from .quiz import run_quiz
 
 
@@ -31,10 +31,14 @@ def run_review_mode(subject: str, subjects: dict, all_problems: dict, persona: d
             status += f"，上次答：{last_ans}"
         print(f"  {i}. [{p['topic']}] {p['question'][:50]}…  {status}")
 
-    print(f"\n{Color.BOLD}开始逐一复习？{Color.RESET} {Color.DIM}(回车开始, q退出){Color.RESET} ", end="")
+    print(f"\n{Color.BOLD}开始逐一复习？{Color.RESET} {Color.DIM}(回车开始, b/返回, q/退出){Color.RESET} ", end="")
     try:
         choice = input().strip().lower()
     except (EOFError, KeyboardInterrupt):
+        return
+    if choice in ("b", "back", "返回"):
+        from .cli import main
+        main()
         return
     if choice in ("q", "quit", "退出", "n", "no"):
         return

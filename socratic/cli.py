@@ -5,16 +5,16 @@ from datetime import date
 from . import __version__
 from .utils import Color
 from .problems import SUBJECTS, SUBJECT_KEYS, SUBJECT_NAMES, ALL_PROBLEMS
-from .progress import load_progress, show_stats, show_mastery_stats
+from .progress import load_progress, show_stats
 from .adaptive import pick_problems
 from .quiz import run_quiz
 from .solve import run_solve_mode
-from .persona import get_persona, show_persona_menu, PERSONA_KEYS
+from .persona import get_persona, PERSONA_KEYS
 from .cache import get_problems, get_all_problems
 
 
 def select_subject(subjects: dict) -> str:
-    """交互式选择科目"""
+    """交互式选择科目，返回科目key或 __review__ / __exit__"""
     keys = list(subjects.keys())
     print(f"\n{Color.BOLD}{Color.CYAN}🧠 苏格拉底互动学习{Color.RESET}")
     print(f"{Color.DIM}请选择要练习的科目：{Color.RESET}\n")
@@ -25,19 +25,30 @@ def select_subject(subjects: dict) -> str:
             print(f"  {Color.BOLD}{i}.{Color.RESET} {s['icon']} {s['name']}  {Color.DIM}({s['grades']}，AI实时出题){Color.RESET}")
         else:
             print(f"  {Color.BOLD}{i}.{Color.RESET} {s['icon']} {s['name']}  {Color.DIM}({s['grades']}，{count} 题){Color.RESET}")
-    print(f"\n{Color.DIM}输入数字或科目名，回车默认数学{Color.RESET}")
+    print(f"  {Color.BOLD}10.{Color.RESET} 📕 错题重做")
+    print(f"  {Color.BOLD}11.{Color.RESET} 🚪 退出程序")
+    print(f"\n{Color.DIM}输入数字/科目名，回车默认数学{Color.RESET}")
     print(f"{Color.CYAN}{'─' * 40}{Color.RESET}")
     try:
         choice = input(f"{Color.BOLD}选择：{Color.RESET} ").strip()
     except (EOFError, KeyboardInterrupt):
         print()
-        return "math"
+        return "__exit__"
     if not choice:
         return "math"
     if choice.isdigit():
-        idx = int(choice) - 1
+        idx = int(choice)
+        if idx == 10:
+            return "__review__"
+        if idx == 11:
+            return "__exit__"
+        idx = idx - 1
         if 0 <= idx < len(keys):
             return keys[idx]
+    if choice.lower() in ("q", "quit", "exit", "退出"):
+        return "__exit__"
+    if choice.lower() in ("r", "review", "错题", "错题重做"):
+        return "__review__"
     choice_lower = choice.lower()
     for key in keys:
         if choice_lower == key or choice_lower == subjects[key]["name"]:
@@ -142,6 +153,24 @@ def main():
         else:
             subject = select_subject(SUBJECTS)
 
+    if subject == "__exit__":
+        print(f"{Color.DIM}👋 再见！{Color.RESET}")
+        sys.exit(0)
+    if subject == "__review__":
+        from .review import run_review_mode
+        print(f"\n{Color.BOLD}{Color.CYAN}📕 错题重做 — 选择科目{Color.RESET}")
+        subject = select_subject(SUBJECTS)
+        if subject in ("__exit__", "__review__"):
+            print(f"{Color.DIM}👋 再见！{Color.RESET}")
+            sys.exit(0)
+        persona_name = args.persona or "gentle"
+        if persona_name not in PERSONA_KEYS:
+            persona_name = "gentle"
+        persona = get_persona(persona_name)
+        run_review_mode(subject, SUBJECTS, ALL_PROBLEMS, persona)
+        main()
+        return
+
     subj = SUBJECTS[subject]
 
     # 知识库
@@ -220,6 +249,7 @@ def main():
     if args.flash:
         from .flash import run_flash_mode
         run_flash_mode(subject, SUBJECTS, ALL_PROBLEMS, persona)
+        main()
         return
 
     # 生物/地理/常用命令 默认走闪卡模式（填空多，适合快速复习）
@@ -227,6 +257,7 @@ def main():
         from .flash import run_flash_mode
         print(f"{Color.DIM}  生物/地理/常用命令 默认闪卡模式，加 --no-loop 进入标准模式{Color.RESET}")
         run_flash_mode(subject, SUBJECTS, ALL_PROBLEMS, persona)
+        main()
         return
 
     # 按主题学习模式（生物/地理/常用命令走闪卡，其余科目先选模块）
@@ -243,13 +274,16 @@ def main():
                 print(f"  {Color.BOLD}{i}.{Color.RESET} {t}  {Color.DIM}(AI实时出题){Color.RESET}")
             else:
                 print(f"  {Color.BOLD}{i}.{Color.RESET} {t}  {Color.DIM}({count} 题){Color.RESET}")
-        print(f"\n{Color.DIM}输入数字或模块名，回车默认第 1 个{Color.RESET}")
+        print(f"\n{Color.DIM}输入数字/模块名，b/返回上层，回车默认第 1 个{Color.RESET}")
         try:
             choice = input(f"{Color.BOLD}选择：{Color.RESET} ").strip()
         except (EOFError, KeyboardInterrupt):
             choice = ""
         if not choice:
             args.topic = topics[0]
+        elif choice.lower() in ("b", "back", "返回"):
+            main()
+            return
         elif choice.isdigit():
             idx = int(choice) - 1
             args.topic = topics[idx] if 0 <= idx < len(topics) else topics[0]
@@ -278,7 +312,7 @@ def main():
         if args.num > 1:
             # 批量生成模式
             print(f"\n{Color.CYAN}🤖 批量生成 {args.num} 道题目…{Color.RESET}")
-            from .cache import save_cache, get_all_problems, _generate as gen_fn
+            from .cache import save_cache, _generate as gen_fn
             all_p = get_all_problems(subject)
             topic = args.topic
             new_count = 0
@@ -305,7 +339,7 @@ def main():
         # 检查是否真的拿到了新题（非种子题）
         if selected and selected[0]["id"].startswith("seed-"):
             print(f"{Color.YELLOW}⚠ 从缓存取到的是种子题，强制 AI 生成{Color.RESET}")
-            from .cache import save_cache, get_all_problems
+            from .cache import save_cache
             import socratic.cache as _c
             new_p = _c._generate(subject, topic=args.topic)
             if new_p:
@@ -321,13 +355,8 @@ def main():
         selected = pick_problems(get_all_problems(subject), count=args.num, seed=today_seed,
                                  grade=args.grade, topic=args.topic)
     else:
-        # 自适应模式：从缓存取题
-        if subject in ("math", "english", "physics", "chinese"):
-            # AI 实时出题，跳过缓存
-            selected = get_problems(subject, count=args.num, topic=args.topic,
-                                     exclude_ids={p["id"] for p in get_all_problems(subject)})
-        else:
-            selected = get_problems(subject, count=args.num, topic=args.topic)
+        # 自适应模式：从缓存取题（不够时 AI 批量生成）
+        selected = get_problems(subject, count=args.num, topic=args.topic)
 
     if not selected:
         g = f"（年级={args.grade}）" if args.grade else ""
@@ -354,6 +383,7 @@ def main():
         print(f"{Color.DIM}{'─' * 50}{Color.RESET}")
 
     run_quiz(selected, subject, SUBJECTS, ALL_PROBLEMS, loop_mode=loop_mode, persona=persona, topic=args.topic)
+    main()
 
 
 if __name__ == "__main__":

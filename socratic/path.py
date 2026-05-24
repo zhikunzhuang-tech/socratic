@@ -3,11 +3,9 @@
 """
 import json
 import subprocess as sp
-from pathlib import Path
-from .utils import Color, DATA_DIR
-from .cache import load_cache, get_problems, save_cache, get_all_problems
+from .utils import Color
+from .cache import get_problems
 from .progress import load_progress, save_progress
-from .quiz import run_quiz
 
 
 def get_mastery_summary(subject: str) -> str:
@@ -116,9 +114,13 @@ def run_path(subject: str, kb_name: str | None = None, **kwargs):
     if saved_steps and current_step < len(saved_steps):
         print(f"{Color.DIM}  检测到未完成的路径：第 {current_step + 1}/{len(saved_steps)} 步{Color.RESET}")
         try:
-            choice = input(f"{Color.BOLD}  是否继续？(y/n, 回车继续){Color.RESET} ").strip().lower()
+            choice = input(f"{Color.BOLD}  是否继续？(y/n/b, 回车继续){Color.RESET} ").strip().lower()
         except (EOFError, KeyboardInterrupt):
             choice = "n"
+        if choice in ("b", "back", "返回"):
+            from .cli import main
+            main()
+            return
         if choice and choice not in ("y", "yes", "是", ""):
             saved_steps = []
             current_step = 0
@@ -139,12 +141,16 @@ def run_path(subject: str, kb_name: str | None = None, **kwargs):
             print(f"  {tag} [{i+1}] {step['topic']} — {step['difficulty']}（{step['questions']} 题）")
         print()
         try:
-            input(f"{Color.BOLD}按回车开始学习{Color.RESET} ")
+            choice = input(f"{Color.BOLD}按回车开始学习 (b/返回){Color.RESET} ").strip().lower()
         except (EOFError, KeyboardInterrupt):
+            return
+        if choice in ("b", "back", "返回"):
+            from .cli import main
+            main()
             return
 
     # 逐步骤执行
-    from .problems import SUBJECTS, ALL_PROBLEMS
+    from .problems import SUBJECTS
     from .persona import get_persona
 
     persona = get_persona("gentle")
@@ -246,9 +252,13 @@ def run_path(subject: str, kb_name: str | None = None, **kwargs):
         if current_step < len(saved_steps):
             next_step = saved_steps[current_step]
             try:
-                cont = input(f"\n{Color.BOLD}进入下一步「{next_step['topic']}」？(回车继续 / q 退出){Color.RESET} ").strip().lower()
+                cont = input(f"\n{Color.BOLD}进入下一步「{next_step['topic']}」？(回车继续 / b/返回 / q/退出){Color.RESET} ").strip().lower()
             except (EOFError, KeyboardInterrupt):
                 cont = "q"
+            if cont in ("b", "back", "返回"):
+                from .cli import main
+                main()
+                return
             if cont in ("q", "quit", "退出", "qq"):
                 print(f"{Color.CYAN}📋 保存进度，下次继续第 {current_step + 1} 步{Color.RESET}")
                 return

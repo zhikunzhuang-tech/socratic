@@ -46,30 +46,37 @@ def run_quiz(problems: list, subject: str, subjects: dict, all_problems: dict, l
                         # 当前主题做完了
                         if subject in AI_FIRST:
                             # AI 实时出题科目：静默生成下一题
-                            new_list = get_problems(subject, count=1, topic=topic, exclude_ids=done_ids)
+                            new_list = get_problems(subject, count=3, topic=topic, exclude_ids=done_ids)
                             if new_list:
                                 problems = new_list
                                 continue
                         # 显示菜单
                         print(f"\n{Color.BOLD}{Color.CYAN}📚 当前主题「{topic}」已全部完成！{Color.RESET}")
                         print(f"  本轮完成 {round_num - 1} 题")
-                        print(f"{Color.DIM}  按回车继续生成新题，或输入 c(换主题) s(换科目) q(退出){Color.RESET}")
+                        print(f"{Color.DIM}  按回车继续生成新题，或输入 c(换主题) s(换科目) b(返回菜单) q(退出){Color.RESET}")
                         try:
                             choice = input(f"{Color.BOLD}？{Color.RESET} ").strip().lower()
                         except (EOFError, KeyboardInterrupt):
                             choice = "q"
                         if not choice or choice == "g":
                             print(f"\n{Color.CYAN}🤖 AI 正在生成新题…{Color.RESET}")
-                            new_list = get_problems(subject, count=1, topic=topic, exclude_ids=done_ids)
+                            new_list = get_problems(subject, count=3, topic=topic, exclude_ids=done_ids)
                             if new_list:
                                 print(f"{Color.GREEN}✅ 新题已加入缓存！{Color.RESET}")
                                 problems = new_list
                                 continue
                             print(f"{Color.RED}⚠ AI 出题失败，按回车重试{Color.RESET}")
                         elif choice == "s":
-                            return
+                            from .cli import select_subject
+                            new_subj = select_subject(subjects)
+                            if new_subj and new_subj != subject:
+                                return
                         elif choice == "c":
                             topic = None
+                        elif choice == "b":
+                            from .cli import main
+                            main()
+                            return
                         elif choice == "q":
                             break
                         # 其他情况（包括AI失败）重试
@@ -97,9 +104,9 @@ def run_quiz(problems: list, subject: str, subjects: dict, all_problems: dict, l
             if (not problems or all_done) and loop_mode:
                 if round_num > 1 or all_done:
                     if subject in AI_FIRST:
-                        # AI 实时出题科目：静默生成下一题，不显示菜单
+                        # AI 实时出题科目：静默批量生成，不显示菜单
                         gen_topic = topic if topic else None
-                        new_list = get_problems(subject, count=1, topic=gen_topic, exclude_ids=done_ids)
+                        new_list = get_problems(subject, count=3, topic=gen_topic, exclude_ids=done_ids)
                         if new_list:
                             problems = new_list
                             continue
@@ -116,13 +123,18 @@ def run_quiz(problems: list, subject: str, subjects: dict, all_problems: dict, l
                     print(f"    c → 清空进度重新开始")
                     print(f"    g → 🤖 AI 生成一道新题")
                     print(f"    s → 换一个科目")
+                    print(f"    b → 返回主菜单")
                     print(f"    q → 退出")
                     try:
-                        choice = input(f"\n{Color.BOLD}选择 (r/c/g/s/q，回车=生成新题)：{Color.RESET} ").strip().lower()
+                        choice = input(f"\n{Color.BOLD}选择 (r/c/g/s/b/q，回车=生成新题)：{Color.RESET} ").strip().lower()
                     except (EOFError, KeyboardInterrupt):
                         choice = "q"
                     if not choice:
                         choice = "g"
+                    if choice == "b":
+                        from .cli import main
+                        main()
+                        return
                     if choice == "r" and wrong_ids:
                         wrong_problems = [p for p in all_problems[subject] if p["id"] in wrong_ids]
                         if wrong_problems:
@@ -220,17 +232,15 @@ def run_quiz(problems: list, subject: str, subjects: dict, all_problems: dict, l
             if ci in ("a", "answer", "答案", "看答案"):
                 answer = problem["answer"]
                 print(f"\n  {Color.YELLOW}答案：{Color.RESET}{Color.BOLD}{answer}{Color.RESET}")
-                print(f"  {Color.DIM}理解了吗？输入 y 已掌握 / 任意键继续思考{Color.RESET}")
+                print(f"  {Color.DIM}y/已掌握  任意键下一题{Color.RESET}")
                 try:
                     cont = input(f"{Color.BOLD}？{Color.RESET} ").strip().lower()
                 except (EOFError, KeyboardInterrupt):
                     cont = ""
                 if cont in ("y", "yes", "是", "已掌握"):
-                    # 看了答案后理解了，视为掌握
-                    gave_up = True
                     solved = True
-                    break
-                continue
+                gave_up = True
+                break
 
             attempts += 1
 
@@ -337,7 +347,13 @@ def _run_follow_up(problem: dict, subject: str, subj: dict, persona: dict | None
         persona = get_persona("default")
 
     print(f"\n{Color.DIM}{'─' * 40}{Color.RESET}")
-    print(f"{Color.BOLD}🧐 追问：{Color.RESET}{Color.DIM}答对了，但你真的理解了吗？(回车跳过){Color.RESET}")
+    print(f"{Color.BOLD}🧐 追问：{Color.RESET}{Color.DIM}答对了，但你真的理解了吗？{Color.RESET}")
+    try:
+        cont = input(f"{Color.DIM}(回车跳过 / 输入任意键展开追问){Color.RESET} ").strip()
+    except (EOFError, KeyboardInterrupt):
+        return
+    if not cont:
+        return
 
     question = problem["question"][:200]
     answer = problem["answer"]

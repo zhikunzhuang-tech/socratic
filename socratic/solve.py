@@ -8,7 +8,7 @@ def run_solve_mode(subject: str, subjects: dict):
     subj = subjects[subject]
     print(f"\n{Color.BOLD}{Color.CYAN}🧠 苏格拉底解题引导 — {subj['icon']} {subj['name']}{Color.RESET}")
     print(f"{Color.DIM}输入你的题目，AI 会一步步引导你思考，而不是直接给答案{Color.RESET}")
-    print(f"{Color.DIM}捷径：h 更多提示 | s 显示完整解法 | q 退出{Color.RESET}")
+    print(f"{Color.DIM}捷径：h 更多提示 | s 显示完整解法 | q 退出 | b 返回菜单{Color.RESET}")
     print(f"{Color.CYAN}{'─' * 50}{Color.RESET}")
 
     print(f"\n{Color.BOLD}{Color.GREEN}📝 请输入你的题目：{Color.RESET} ", end="")
@@ -18,6 +18,10 @@ def run_solve_mode(subject: str, subjects: dict):
         print()
         return
     if not user_question or user_question.lower() in ("q", "quit", "退出"):
+        return
+    if user_question.lower() in ("b", "back", "返回"):
+        from .cli import main
+        main()
         return
 
     system_prompt = (
@@ -52,7 +56,9 @@ def run_solve_mode(subject: str, subjects: dict):
 
         c = user_input.lower()
         if c in ("q", "quit", "退出", "qq"):
-            break
+            from .cli import main
+            main()
+            return
 
         if c in ("s", "skip", "跳过"):
             showed_solution = True

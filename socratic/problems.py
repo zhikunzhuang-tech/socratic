@@ -1,5 +1,5 @@
 """科目配置 + 题库入口（题目通过 cache.py 动态获取）"""
-from .cache import get_problems, get_all_problems, get_topics
+from .cache import get_all_problems
 
 SUBJECTS = {
     "math":    {"name": "数学", "icon": "🧮", "emoji": "📐", "grades": "初一~初三", "tag": "math"},

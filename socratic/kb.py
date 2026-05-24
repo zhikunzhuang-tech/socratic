@@ -3,7 +3,6 @@
 存储路径: ~/socratic/data/kb/<name>/
 """
 import os
-import sys
 from pathlib import Path
 from .utils import DATA_DIR, Color
 

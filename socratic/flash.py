@@ -18,6 +18,8 @@ def run_flash_mode(subject: str, subjects: dict, all_problems: dict, persona: di
         chapters = _get_chapters(all_probs)
         chapter = _select_chapter(chapters, progress, subj)
         if chapter is None:
+            from .cli import main
+            main()
             return
         if chapter == "__all__":
             problems = all_probs
@@ -77,6 +79,8 @@ def run_flash_mode(subject: str, subjects: dict, all_problems: dict, persona: di
                 _show_explanation(subject, problem)
                 continue
             if eval_input in ("q", "quit", "退出", "qq"):
+                from .cli import main
+                main()
                 return
             if eval_input in ("y", "yes", "对", "对了"):
                 correct_count += 1
@@ -151,7 +155,7 @@ def _select_chapter(chapters: OrderedDict, progress: dict, subj: dict) -> str | 
             c = Color.GREEN if pct >= 80 else Color.YELLOW if pct > 0 else Color.DIM
             print(f"  {c}{i:>2}.{Color.RESET} {ch:<20} {c}{bar} {pct}%{Color.RESET}")
 
-        print(f"\n  {Color.DIM}0 = 全部  |  n = 下一页  |  p = 上一页  |  回车 = 全部{Color.RESET}")
+        print(f"\n  {Color.DIM}0 = 全部  |  n = 下一页  |  p = 上一页  |  b = 返回  |  回车 = 全部{Color.RESET}")
         try:
             choice = input(f"{Color.BOLD}选择：{Color.RESET} ").strip().lower()
         except (EOFError, KeyboardInterrupt):
@@ -161,6 +165,8 @@ def _select_chapter(chapters: OrderedDict, progress: dict, subj: dict) -> str | 
             return "__all__"
         if choice == "0":
             return "__all__"
+        if choice in ("b", "back", "返回", "q", "quit", "退出"):
+            return None
         if choice == "n" and current_page < total_pages - 1:
             current_page += 1
             continue

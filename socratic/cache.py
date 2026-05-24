@@ -5,6 +5,7 @@ import subprocess as sp
 import time
 from pathlib import Path
 from .utils import DATA_DIR, Color, latex_to_plain
+from .wiki_math import is_available as wiki_available, get_grade as wiki_get_grade, get_wiki_context
 
 CACHE_DIR = DATA_DIR / "cache"
 
@@ -277,6 +278,8 @@ def get_problems(subject: str, count: int = 1, exclude_ids: set | None = None, t
     if problems != load_cache(subject):  # 有新增
         save_cache(subject, problems)
 
+    if not candidates:
+        print(f"{Color.YELLOW}⚠ AI 生成失败，请检查网络或稍后重试{Color.RESET}")
     return rnd.sample(candidates, min(count, len(candidates))) if candidates else []
 
 
@@ -291,6 +294,205 @@ def get_topics(subject: str) -> list:
     for p in load_cache(subject):
         topics.add(p["topic"])
     return sorted(topics)
+
+
+def _repair_json(text: str) -> str | None:
+    """修复 AI 返回的常见 JSON 格式问题：未转义引号、截断等。"""
+    import re
+
+    # 1. 找到最外层 { }
+    start = text.find("{")
+    end = text.rfind("}")
+    if start == -1 or end == -1 or end <= start:
+        return None
+    text = text[start:end + 1]
+
+    # 2. 已知的合法 key 列表，用于定位值边界
+    known_keys = [
+        "question", "answer", "alternatives", "steps",
+        "socratic_hints", "common_errors", "concept_note",
+        "focus", "question_type", "rationale", "id", "topic",
+        "grade", "difficulty", "tags",
+    ]
+
+    # 3. 逐个 key 安全提取，重建干净 JSON
+    result = {}
+    pos = 0
+    while pos < len(text):
+        # 跳过空白和逗号
+        while pos < len(text) and text[pos] in " \t\n\r,":
+            pos += 1
+        if pos >= len(text) or text[pos] == "}":
+            break
+
+        # 匹配 key: "xxx"
+        key_match = re.match(r'"([^"]+)"\s*:\s*', text[pos:])
+        if not key_match:
+            # 可能是数组成员，跳过
+            pos += 1
+            continue
+        key = key_match.group(1)
+        pos += key_match.end()
+
+        if pos >= len(text):
+            break
+
+        if text[pos] == '"':
+            # 字符串值：找到结束引号（后面跟 , 或 }）
+            pos += 1  # skip opening quote
+            val_start = pos
+            escaped_val = []
+            while pos < len(text):
+                ch = text[pos]
+                if ch == '\\' and pos + 1 < len(text):
+                    escaped_val.append(ch)
+                    escaped_val.append(text[pos + 1])
+                    pos += 2
+                elif ch == '"':
+                    # 检查后面是否 , 或 }（表示值结束）
+                    after = pos + 1
+                    while after < len(text) and text[after] in " \t\n\r":
+                        after += 1
+                    if after < len(text) and text[after] in ",}]":
+                        pos += 1  # skip closing quote
+                        break
+                    else:
+                        # 字符串内的未转义引号，转义它
+                        escaped_val.append('\\')
+                        escaped_val.append('"')
+                        pos += 1
+                else:
+                    escaped_val.append(ch)
+                    pos += 1
+            result[key] = "".join(escaped_val)
+        elif text[pos] == "[":
+            # 数组值：找到匹配的 ]，安全提取字符串元素
+            depth = 1
+            pos += 1
+            arr_items = []
+            while pos < len(text) and depth > 0:
+                ch = text[pos]
+                if ch == "[":
+                    depth += 1
+                    pos += 1
+                elif ch == "]":
+                    depth -= 1
+                    if depth == 0:
+                        pos += 1
+                        break
+                    pos += 1
+                elif ch == '"':
+                    # 提取数组内的字符串元素（处理未转义引号）
+                    pos += 1
+                    elem_chars = []
+                    while pos < len(text):
+                        if text[pos] == '\\' and pos + 1 < len(text):
+                            elem_chars.append(text[pos])
+                            elem_chars.append(text[pos + 1])
+                            pos += 2
+                        elif text[pos] == '"':
+                            # 检查后面是逗号还是 ]
+                            after = pos + 1
+                            while after < len(text) and text[after] in " \t\n\r":
+                                after += 1
+                            if after < len(text) and text[after] in ",]":
+                                pos += 1
+                                arr_items.append("".join(elem_chars))
+                                break
+                            else:
+                                elem_chars.append('\\')
+                                elem_chars.append('"')
+                                pos += 1
+                        else:
+                            elem_chars.append(text[pos])
+                            pos += 1
+                    # 跳过逗号
+                    while pos < len(text) and text[pos] in " \t\n\r," and text[pos] != "]":
+                        pos += 1
+                else:
+                    pos += 1
+            result[key] = arr_items
+        elif text[pos] == "{":
+            # 嵌套对象（如 common_errors）：匹配括号，递归提取键值对
+            depth = 1
+            pos += 1
+            obj_start = pos
+            while pos < len(text) and depth > 0:
+                if text[pos] == "{":
+                    depth += 1
+                elif text[pos] == "}":
+                    depth -= 1
+                if depth > 0:
+                    pos += 1
+            obj_text = text[obj_start:pos]
+            pos += 1
+            # 安全提取嵌套对象的键值对
+            pairs = {}
+            ip = 0
+            while ip < len(obj_text):
+                while ip < len(obj_text) and obj_text[ip] in " \t\n\r,":
+                    ip += 1
+                if ip >= len(obj_text):
+                    break
+                # 匹配 key
+                km = re.match(r'"([^"]+)"\s*:\s*', obj_text[ip:])
+                if not km:
+                    ip += 1
+                    continue
+                nkey = km.group(1)
+                ip += km.end()
+                if ip >= len(obj_text):
+                    break
+                if obj_text[ip] == '"':
+                    ip += 1
+                    nval_chars = []
+                    while ip < len(obj_text):
+                        if obj_text[ip] == '\\' and ip + 1 < len(obj_text):
+                            nval_chars.append(obj_text[ip])
+                            nval_chars.append(obj_text[ip + 1])
+                            ip += 2
+                        elif obj_text[ip] == '"':
+                            after = ip + 1
+                            while after < len(obj_text) and obj_text[after] in " \t\n\r":
+                                after += 1
+                            if after >= len(obj_text) or obj_text[after] in ",}":
+                                ip += 1
+                                pairs[nkey] = "".join(nval_chars)
+                                break
+                            else:
+                                nval_chars.append('\\')
+                                nval_chars.append('"')
+                                ip += 1
+                        else:
+                            nval_chars.append(obj_text[ip])
+                            ip += 1
+                else:
+                    ip += 1
+            result[key] = pairs
+        else:
+            # 数字/布尔/null
+            m = re.match(r'(-?\d+\.?\d*|true|false|null)', text[pos:])
+            if m:
+                if key in known_keys:
+                    val = m.group(1)
+                    result[key] = int(val) if val.isdigit() else (
+                        float(val) if "." in val else
+                        True if val == "true" else
+                        False if val == "false" else None
+                    )
+                pos += m.end()
+            else:
+                pos += 1
+
+    if not result:
+        return None
+
+    # 验证必须有 core 字段
+    core = {"question", "answer"}
+    if not core.issubset(result.keys()):
+        return None
+
+    return json.dumps(result, ensure_ascii=False)
 
 
 def _generate(subject: str, topic: str | None = None) -> dict | None:
@@ -316,7 +518,11 @@ def _generate(subject: str, topic: str | None = None) -> dict | None:
         return _generate_hermes(subject, tag, topic, difficulty, timestamp)
 
     diff_label = "简单" if difficulty == 1 else "中等" if difficulty == 2 else "较难"
-    grade = "初一" if difficulty <= 1 else "初二" if difficulty <= 2 else "初三"
+    # math 科目优先用 wiki-math 的教材年级
+    if subject == "math" and wiki_available():
+        grade = wiki_get_grade(topic) or "初二"
+    else:
+        grade = "初一" if difficulty <= 1 else "初二" if difficulty <= 2 else "初三"
     qid = f"{tag}-gen-{timestamp}"
 
     SGPT = "sgpt"
@@ -332,6 +538,17 @@ def _generate(subject: str, topic: str | None = None) -> dict | None:
     kb_text = get_kb_context()
     kb_hint = f"\n\n请严格根据以下教材内容出题：\n{kb_text[:2000]}\n" if kb_text else ""
 
+    # ── math 科目：自动加载 wiki-math 上下文 ──
+    wiki_hint = ""
+    if subject == "math" and wiki_available():
+        wiki_text = get_wiki_context(topic)
+        if wiki_text:
+            wiki_hint = f"\n\n请严格根据以下教材内容出题（这些内容来自人教版课本知识库）：\n{wiki_text[:2500]}\n"
+            if not kb_hint:
+                kb_hint = wiki_hint
+            else:
+                kb_hint = wiki_hint + "\n（用户自定义知识库已同时加载，优先参考教材知识库）"
+
     idea_prompt = (
         f"你是一位初中{name}出题规划师。请为一道{name}题做规划。\n"
         f"主题范围：{topic}。难度：{diff_label}({difficulty}/3)。\n"
@@ -346,19 +563,22 @@ def _generate(subject: str, topic: str | None = None) -> dict | None:
     try:
         result = sp.run([SGPT, idea_prompt], capture_output=True, text=True, timeout=20)
         if result.returncode != 0:
+            print(f"{Color.YELLOW}⚠ 出题构思失败，尝试降级出题：{result.stderr.strip()[:200]}{Color.RESET}")
             return _generate_fallback(subject, topic, tag, timestamp, difficulty, grade, qid)
         idea_text = " ".join(l for l in result.stdout.split("\n") if not l.startswith("Warning:")).strip()
         idea_text = idea_text.replace("```json", "").replace("```", "").strip()
         idea = json.loads(idea_text)
         focus = idea.get("focus", topic)
-    except Exception:
+    except Exception as e:
+        print(f"{Color.YELLOW}⚠ 出题构思异常，跳过规划阶段：{e}{Color.RESET}")
         focus = topic
 
     # ── Stage 2: Generator（出题执行） ──
     print(f"{Color.GREEN}✅ 构思完成，正在生成题目（第二阶段：出题执行）…{Color.RESET}")
     gen_prompt = (
         f"你是一位初中{name}老师。请根据以下出题规划出一道具体的{name}题。\n"
-        f"主题：{topic}\n具体考察点：{focus}\n难度：{diff_label}({difficulty}/3)\n年级：{grade}\n\n"
+        f"主题：{topic}\n具体考察点：{focus}\n难度：{diff_label}({difficulty}/3)\n年级：{grade}\n"
+        f"{wiki_hint}\n"
         "只输出一行JSON，不要markdown，不要换行。格式：\n"
         '{"question":"题目","answer":"正确答案","alternatives":["备选格式1"],'
         '"steps":["步骤1","步骤2","步骤3"],'
@@ -374,12 +594,28 @@ def _generate(subject: str, topic: str | None = None) -> dict | None:
     try:
         result = sp.run([SGPT, gen_prompt], capture_output=True, text=True, timeout=30)
         if result.returncode != 0:
+            print(f"{Color.YELLOW}⚠ AI 出题失败：{result.stderr.strip()[:200]}{Color.RESET}")
             return _generate_fallback(subject, topic, tag, timestamp, difficulty, grade, qid)
         text = " ".join(l for l in result.stdout.split("\n") if not l.startswith("Warning:")).strip()
         text = text.replace("```json", "").replace("```", "").strip()
-        problem = json.loads(text)
+        try:
+            problem = json.loads(text)
+        except json.JSONDecodeError as e:
+            repaired = _repair_json(text)
+            if repaired:
+                try:
+                    problem = json.loads(repaired)
+                    print(f"{Color.DIM}  JSON 修复成功{Color.RESET}")
+                except json.JSONDecodeError:
+                    print(f"{Color.YELLOW}⚠ AI 返回格式异常：{e}{Color.RESET}")
+                    return _generate_fallback(subject, topic, tag, timestamp, difficulty, grade, qid)
+            else:
+                print(f"{Color.YELLOW}⚠ AI 返回格式异常：{e}{Color.RESET}")
+                return _generate_fallback(subject, topic, tag, timestamp, difficulty, grade, qid)
         required = ["question", "answer", "steps", "socratic_hints", "common_errors"]
         if not all(f in problem for f in required):
+            missing = [f for f in required if f not in problem]
+            print(f"{Color.YELLOW}⚠ AI 生成题目缺少字段：{missing}{Color.RESET}")
             return _generate_fallback(subject, topic, tag, timestamp, difficulty, grade, qid)
 
         # 组装完整题目
@@ -403,7 +639,8 @@ def _generate(subject: str, topic: str | None = None) -> dict | None:
         problem["common_errors"] = {latex_to_plain(k): latex_to_plain(v) for k, v in problem["common_errors"].items()}
 
         return problem
-    except Exception:
+    except Exception as e:
+        print(f"{Color.YELLOW}⚠ AI 出题异常：{e}{Color.RESET}")
         return _generate_fallback(subject, topic, tag, timestamp, difficulty, grade, qid)
 
 
@@ -421,12 +658,28 @@ def _generate_fallback(subject, topic, tag, timestamp, difficulty, grade, qid) -
     try:
         result = sp.run(["sgpt", prompt], capture_output=True, text=True, timeout=30)
         if result.returncode != 0:
+            print(f"{Color.YELLOW}⚠ 降级出题也失败：{result.stderr.strip()[:200]}{Color.RESET}")
             return None
         text = " ".join(l for l in result.stdout.split("\n") if not l.startswith("Warning:")).strip()
         text = text.replace("```json", "").replace("```", "").strip()
-        problem = json.loads(text)
+        try:
+            problem = json.loads(text)
+        except json.JSONDecodeError as e:
+            repaired = _repair_json(text)
+            if repaired:
+                try:
+                    problem = json.loads(repaired)
+                    print(f"{Color.DIM}  降级 JSON 修复成功{Color.RESET}")
+                except json.JSONDecodeError:
+                    print(f"{Color.YELLOW}⚠ 降级出题 JSON 异常：{e}{Color.RESET}")
+                    return None
+            else:
+                print(f"{Color.YELLOW}⚠ 降级出题 JSON 异常：{e}{Color.RESET}")
+                return None
         required = ["question", "answer", "steps", "socratic_hints", "common_errors"]
         if not all(f in problem for f in required):
+            missing = [f for f in required if f not in problem]
+            print(f"{Color.YELLOW}⚠ 降级出题缺少字段：{missing}{Color.RESET}")
             return None
         problem["id"] = qid
         problem["topic"] = topic
@@ -440,7 +693,8 @@ def _generate_fallback(subject, topic, tag, timestamp, difficulty, grade, qid) -
         problem["question"] = latex_to_plain(problem["question"])
         problem["answer"] = latex_to_plain(problem["answer"])
         return problem
-    except Exception:
+    except Exception as e:
+        print(f"{Color.YELLOW}⚠ 降级出题异常：{e}{Color.RESET}")
         return None
 
 
