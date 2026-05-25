@@ -103,7 +103,7 @@ def run_flash_mode(subject: str, subjects: dict, all_problems: dict, persona: di
             progress["last_date"] = today
 
         # 记录章节进度
-        _update_chapter_progress(progress, problem["topic"], correct=(eval_input in ("y", "yes", "对", "对了")))
+        _update_chapter_progress(progress, problem["topic"], problem["id"], correct=(eval_input in ("y", "yes", "对", "对了")))
         save_progress(progress, subject)
 
     total = correct_count + wrong_count
@@ -149,7 +149,8 @@ def _select_chapter(chapters: OrderedDict, progress: dict, subj: dict) -> str | 
         print(f"\n  {Color.BOLD}第 {current_page+1}/{total_pages} 页{Color.RESET}")
         for i, (ch, count) in enumerate(page_items, start + 1):
             ch_data = chap_prog.get(ch, {})
-            done = ch_data.get("done", 0)
+            done_ids = ch_data.get("done_ids", [])
+            done = len(done_ids) if done_ids else ch_data.get("done", 0)
             pct = int(done / count * 100) if count > 0 else 0
             bar = "█" * int(pct / 10) + "░" * (10 - int(pct / 10))
             c = Color.GREEN if pct >= 80 else Color.YELLOW if pct > 0 else Color.DIM
@@ -179,14 +180,20 @@ def _select_chapter(chapters: OrderedDict, progress: dict, subj: dict) -> str | 
                 return ch_list[idx][0]
 
 
-def _update_chapter_progress(progress: dict, chapter: str, correct: bool):
-    """更新章节进度"""
+def _update_chapter_progress(progress: dict, chapter: str, problem_id: str, correct: bool):
+    """更新章节进度（按题目 ID 去重，避免跨会话重复计数）"""
     chap_prog = progress.setdefault("chapter_progress", {})
     if chapter not in chap_prog:
-        chap_prog[chapter] = {"done": 0, "correct": 0}
-    chap_prog[chapter]["done"] += 1
-    if correct:
-        chap_prog[chapter]["correct"] += 1
+        chap_prog[chapter] = {"done_ids": [], "correct_ids": []}
+    ch_data = chap_prog[chapter]
+    # 兼容旧格式：done/correct 计数 → done_ids/correct_ids 列表
+    if "done_ids" not in ch_data:
+        ch_data["done_ids"] = []
+        ch_data["correct_ids"] = []
+    if problem_id not in ch_data["done_ids"]:
+        ch_data["done_ids"].append(problem_id)
+    if correct and problem_id not in ch_data["correct_ids"]:
+        ch_data["correct_ids"].append(problem_id)
 
 
 def _show_explanation(subject: str, problem: dict):
