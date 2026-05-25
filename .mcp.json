@@ -1,8 +1,8 @@
 {
   "mcpServers": {
     "codegraph": {
-      "command": "/home/user/.npm-global/bin/codegraph",
-      "args": ["serve", "--mcp"],
+      "command": "/home/zzk/.nvm/versions/node/v22.22.1/bin/codegraph",
+      "args": ["mcp"],
       "env": {}
     }
   }

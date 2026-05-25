@@ -4,15 +4,16 @@ from .progress import load_progress, get_wrong_problems, save_progress, record_w
 from .adaptive import update_ability
 
 
-def run_review_mode(subject: str, subjects: dict, all_problems: dict, persona: dict, flash: bool = False):
-    """错题复习：按错误次数排序，逐一重做。flash=True 用闪卡模式（不输入答案）。"""
+def run_review_mode(subject: str, subjects: dict, all_problems: dict, persona: dict, flash: bool = False) -> bool:
+    """错题复习：按错误次数排序，逐一重做。flash=True 用闪卡模式（不输入答案）。
+    返回 True 表示有错题并完成了复习，False 表示没有错题。"""
     subj = subjects[subject]
     progress = load_progress(subject)
     wrong_problems = get_wrong_problems(progress, all_problems[subject])
 
     if not wrong_problems:
-        print(f"\n{Color.GREEN}🎉 没有错题！全部已攻克。{Color.RESET}")
-        return
+        print(f"\n{Color.GREEN}🎉 「{subj['name']}」没有错题！全部已攻克。请选择其他科目。{Color.RESET}")
+        return False
 
     records = progress.get("wrong_records", {})
     mode_tag = "⚡ 闪卡复习" if flash else "错题复习"
@@ -99,6 +100,7 @@ def run_review_mode(subject: str, subjects: dict, all_problems: dict, persona: d
     if conquered < reviewed:
         print(f"  还有 {Color.RED}{reviewed - conquered}{Color.RESET} 题需要再练")
     print(f"{Color.CYAN}{'═' * 50}{Color.RESET}\n")
+    return True
 
 
 def _review_flash_card(problem: dict, subject: str, progress: dict) -> bool:

@@ -13,20 +13,44 @@ from .persona import get_persona, PERSONA_KEYS
 from .cache import get_problems, get_all_problems
 
 
-def select_subject(subjects: dict) -> str:
-    """交互式选择科目，返回科目key或 __review__ / __exit__"""
+def select_subject(subjects: dict, show_review: bool = True) -> str:
+    """交互式选择科目，返回科目key或 __review__ / __exit__。
+    show_review=False 时隐藏「错题重做」选项并显示每科待复习错题数。"""
     keys = list(subjects.keys())
+    # 错题模式下，提前加载每个科目的错题数
+    wrong_counts = {}
+    if not show_review:
+        for key in keys:
+            p = load_progress(key)
+            records = p.get("wrong_records", {})
+            wrong_counts[key] = sum(1 for recs in records.values() for r in recs if not r["solved"])
+
     print(f"\n{Color.BOLD}{Color.CYAN}🧠 苏格拉底互动学习{Color.RESET}")
     print(f"{Color.DIM}请选择要练习的科目：{Color.RESET}\n")
     for i, key in enumerate(keys, 1):
         s = subjects[key]
         count = len(ALL_PROBLEMS[key])
-        if key in ("math", "english", "physics", "chinese"):
-            print(f"  {Color.BOLD}{i}.{Color.RESET} {s['icon']} {s['name']}  {Color.DIM}({s['grades']}，AI实时出题){Color.RESET}")
+        wc = wrong_counts.get(key, -1)
+        if wc >= 0:
+            if wc > 0:
+                wrong_hint = f"  {Color.RED}📕 {wc} 道待复习{Color.RESET}"
+            else:
+                wrong_hint = f"  {Color.DIM}暂无错题{Color.RESET}"
         else:
-            print(f"  {Color.BOLD}{i}.{Color.RESET} {s['icon']} {s['name']}  {Color.DIM}({s['grades']}，{count} 题){Color.RESET}")
-    print(f"  {Color.BOLD}10.{Color.RESET} 📕 错题重做")
-    print(f"  {Color.BOLD}11.{Color.RESET} 🚪 退出程序")
+            wrong_hint = ""
+        if key in ("math", "english", "physics", "chinese"):
+            print(f"  {Color.BOLD}{i}.{Color.RESET} {s['icon']} {s['name']}  {Color.DIM}({s['grades']}，AI实时出题){Color.RESET}{wrong_hint}")
+        else:
+            print(f"  {Color.BOLD}{i}.{Color.RESET} {s['icon']} {s['name']}  {Color.DIM}({s['grades']}，{count} 题){Color.RESET}{wrong_hint}")
+    if show_review:
+        print(f"  {Color.BOLD}10.{Color.RESET} 📕 错题重做")
+        print(f"  {Color.BOLD}11.{Color.RESET} 🚪 退出程序")
+        exit_num = 11
+        review_num = 10
+    else:
+        print(f"  {Color.BOLD}10.{Color.RESET} 🚪 返回")
+        exit_num = 10
+        review_num = None
     print(f"\n{Color.DIM}输入数字/科目名，回车默认数学{Color.RESET}")
     print(f"{Color.CYAN}{'─' * 40}{Color.RESET}")
     try:
@@ -38,16 +62,16 @@ def select_subject(subjects: dict) -> str:
         return "math"
     if choice.isdigit():
         idx = int(choice)
-        if idx == 10:
+        if show_review and idx == review_num:
             return "__review__"
-        if idx == 11:
+        if idx == exit_num:
             return "__exit__"
         idx = idx - 1
         if 0 <= idx < len(keys):
             return keys[idx]
     if choice.lower() in ("q", "quit", "exit", "退出"):
         return "__exit__"
-    if choice.lower() in ("r", "review", "错题", "错题重做"):
+    if show_review and choice.lower() in ("r", "review", "错题", "错题重做"):
         return "__review__"
     choice_lower = choice.lower()
     for key in keys:
@@ -159,19 +183,20 @@ def main():
     if subject == "__review__":
         from .review import run_review_mode
         from .flash import run_flash_mode
-        print(f"\n{Color.BOLD}{Color.CYAN}📕 错题重做 — 选择科目{Color.RESET}")
-        subject = select_subject(SUBJECTS)
-        if subject in ("__exit__", "__review__"):
-            print(f"{Color.DIM}👋 再见！{Color.RESET}")
-            sys.exit(0)
         persona_name = args.persona or "gentle"
         if persona_name not in PERSONA_KEYS:
             persona_name = "gentle"
         persona = get_persona(persona_name)
-        if subject in ("biology", "geography"):
-            run_review_mode(subject, SUBJECTS, ALL_PROBLEMS, persona, flash=True)
-        else:
-            run_review_mode(subject, SUBJECTS, ALL_PROBLEMS, persona)
+        while True:
+            print(f"\n{Color.BOLD}{Color.CYAN}📕 错题重做 — 选择科目{Color.RESET}")
+            subject = select_subject(SUBJECTS, show_review=False)
+            if subject == "__exit__":
+                main()
+                return
+            flash = subject in ("biology", "geography")
+            has_problems = run_review_mode(subject, SUBJECTS, ALL_PROBLEMS, persona, flash=flash)
+            if has_problems:
+                break
         main()
         return
 
