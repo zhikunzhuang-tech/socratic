@@ -158,6 +158,7 @@ def main():
         sys.exit(0)
     if subject == "__review__":
         from .review import run_review_mode
+        from .flash import run_flash_mode
         print(f"\n{Color.BOLD}{Color.CYAN}📕 错题重做 — 选择科目{Color.RESET}")
         subject = select_subject(SUBJECTS)
         if subject in ("__exit__", "__review__"):
@@ -167,7 +168,10 @@ def main():
         if persona_name not in PERSONA_KEYS:
             persona_name = "gentle"
         persona = get_persona(persona_name)
-        run_review_mode(subject, SUBJECTS, ALL_PROBLEMS, persona)
+        if subject in ("biology", "geography"):
+            run_review_mode(subject, SUBJECTS, ALL_PROBLEMS, persona, flash=True)
+        else:
+            run_review_mode(subject, SUBJECTS, ALL_PROBLEMS, persona)
         main()
         return
 
@@ -209,12 +213,9 @@ def main():
 
     # --review 错题复习
     if args.review:
-        if subject in ("biology", "geography"):
-            from .flash import run_flash_mode
-            run_flash_mode(subject, SUBJECTS, ALL_PROBLEMS, persona)
-        else:
-            from .review import run_review_mode
-            run_review_mode(subject, SUBJECTS, ALL_PROBLEMS, persona)
+        from .review import run_review_mode
+        flash = subject in ("biology", "geography")
+        run_review_mode(subject, SUBJECTS, ALL_PROBLEMS, persona, flash=flash)
         return
 
     # --init-kb 初始化知识库

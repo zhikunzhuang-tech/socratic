@@ -232,13 +232,17 @@ def run_quiz(problems: list, subject: str, subjects: dict, all_problems: dict, l
             if ci in ("a", "answer", "答案", "看答案"):
                 answer = problem["answer"]
                 print(f"\n  {Color.YELLOW}答案：{Color.RESET}{Color.BOLD}{answer}{Color.RESET}")
-                print(f"  {Color.DIM}y/已掌握  任意键下一题{Color.RESET}")
+                print(f"  {Color.DIM}y/已掌握  q/退出  任意键下一题{Color.RESET}")
                 try:
                     cont = input(f"{Color.BOLD}？{Color.RESET} ").strip().lower()
                 except (EOFError, KeyboardInterrupt):
                     cont = ""
                 if cont in ("y", "yes", "是", "已掌握"):
                     solved = True
+                if cont in ("q", "quit", "退出", "qq"):
+                    from .cli import main
+                    main()
+                    return
                 gave_up = True
                 break
 

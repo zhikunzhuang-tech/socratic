@@ -1,11 +1,11 @@
 """--review 模式：错题复习"""
-from .utils import Color
-from .progress import load_progress, get_wrong_problems
-from .quiz import run_quiz
+from .utils import Color, latex_to_plain
+from .progress import load_progress, get_wrong_problems, save_progress, record_wrong_answer
+from .adaptive import update_ability
 
 
-def run_review_mode(subject: str, subjects: dict, all_problems: dict, persona: dict):
-    """错题复习：按错误次数排序，逐一重做"""
+def run_review_mode(subject: str, subjects: dict, all_problems: dict, persona: dict, flash: bool = False):
+    """错题复习：按错误次数排序，逐一重做。flash=True 用闪卡模式（不输入答案）。"""
     subj = subjects[subject]
     progress = load_progress(subject)
     wrong_problems = get_wrong_problems(progress, all_problems[subject])
@@ -15,9 +15,13 @@ def run_review_mode(subject: str, subjects: dict, all_problems: dict, persona: d
         return
 
     records = progress.get("wrong_records", {})
-    print(f"\n{Color.BOLD}{Color.CYAN}📕 错题复习 — {subj['icon']} {subj['name']}{Color.RESET}")
+    mode_tag = "⚡ 闪卡复习" if flash else "错题复习"
+    print(f"\n{Color.BOLD}{Color.CYAN}📕 {mode_tag} — {subj['icon']} {subj['name']}{Color.RESET}")
     print(f"  共 {len(wrong_problems)} 道错题待复习")
-    print(f"  按错误次数从多到少排序")
+    if flash:
+        print(f"  模式：{Color.DIM}看题→回车看答案→自评对错（不输入答案）{Color.RESET}")
+    else:
+        print(f"  按错误次数从多到少排序")
     print(f"{Color.DIM}{'─' * 50}{Color.RESET}")
 
     # 显示错题列表
@@ -54,14 +58,17 @@ def run_review_mode(subject: str, subjects: dict, all_problems: dict, persona: d
         print(f"{Color.BOLD}📕 错题复习 ({reviewed + 1}/{len(wrong_problems)}){Color.RESET}")
         print(f"  之前错了 {Color.RED}{wrong_count} 次{Color.RESET}，加油攻克它！")
 
-        # 显示上次错误的答案
         last_wrong = [r for r in recs if not r["solved"]]
         if last_wrong:
             last = last_wrong[-1]
             print(f"  上次答成：{Color.YELLOW}{last['user_answer']}{Color.RESET} ({last['date']})")
 
-        # 用 run_quiz 处理单题
-        run_quiz([p], subject, subjects, all_problems, loop_mode=False, persona=persona)
+        if flash:
+            quit_early = not _review_flash_card(p, subject, progress)
+        else:
+            from .quiz import run_quiz
+            run_quiz([p], subject, subjects, all_problems, loop_mode=False, persona=persona)
+            quit_early = False
 
         # 检查是否攻克
         new_progress = load_progress(subject)
@@ -70,7 +77,20 @@ def run_review_mode(subject: str, subjects: dict, all_problems: dict, persona: d
         if new_solved:
             conquered += 1
 
+        if quit_early:
+            break
+
         reviewed += 1
+
+        # 还有错题没复习完 → 询问是否继续
+        if reviewed < len(wrong_problems):
+            print(f"\n{Color.DIM}继续下一题？{Color.RESET} {Color.DIM}(回车继续 / q 退出){Color.RESET} ", end="")
+            try:
+                cont = input().strip().lower()
+            except (EOFError, KeyboardInterrupt):
+                cont = "q"
+            if cont in ("q", "quit", "退出", "qq"):
+                break
 
     # 总结
     print(f"\n{Color.BOLD}{Color.CYAN}{'═' * 50}{Color.RESET}")
@@ -79,3 +99,44 @@ def run_review_mode(subject: str, subjects: dict, all_problems: dict, persona: d
     if conquered < reviewed:
         print(f"  还有 {Color.RED}{reviewed - conquered}{Color.RESET} 题需要再练")
     print(f"{Color.CYAN}{'═' * 50}{Color.RESET}\n")
+
+
+def _review_flash_card(problem: dict, subject: str, progress: dict) -> bool:
+    """单张错题闪卡：显示题目 → 回车看答案 → 自评对错。返回 True 继续，False 退出。"""
+    q = latex_to_plain(problem["question"])
+    for line in q.split("\n"):
+        print(f"  {line}")
+
+    print(f"\n{Color.DIM}（在心里默答，回车看答案 / q 退出）{Color.RESET}", end="")
+    try:
+        choice = input().strip().lower()
+    except (EOFError, KeyboardInterrupt):
+        print()
+        return False
+    if choice in ("q", "quit", "退出", "qq"):
+        return False
+
+    answer = latex_to_plain(problem["answer"])
+    print(f"\n{Color.BOLD}{Color.GREEN}✅ 答案：{Color.RESET} {answer}")
+
+    while True:
+        print(f"\n{Color.DIM}你答对了吗？{Color.RESET} {Color.BOLD}(y/n/q){Color.RESET} ", end="")
+        try:
+            eval_input = input().strip().lower()
+        except (EOFError, KeyboardInterrupt):
+            return False
+
+        if eval_input in ("y", "yes", "对", "对了"):
+            record_wrong_answer(progress, problem["id"], "", 0, solved=True)
+            update_ability(progress, problem, 1, solved=True)
+            save_progress(progress, subject)
+            print(f"  {Color.GREEN}✓ 已攻克！{Color.RESET}")
+            return True
+        elif eval_input in ("n", "no", "不", "不对", "错"):
+            record_wrong_answer(progress, problem["id"], "", 0, solved=False)
+            update_ability(progress, problem, 1, solved=False)
+            save_progress(progress, subject)
+            print(f"  {Color.RED}✗ 继续加油{Color.RESET}")
+            return True
+        elif eval_input in ("q", "quit", "退出", "qq"):
+            return False
