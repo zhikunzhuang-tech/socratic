@@ -1,0 +1,115 @@
+科目,章节,题目,答案,知识点
+常用命令,文件导航,ls 命令的作用是什么,列出当前目录下的文件和目录,ls = list 最常用的查看命令
+常用命令,文件导航,ls -la 各选项什么意思,-l 详细格式 -a 显示隐藏文件 合起来显示全部文件的详细信息,ls -la 最常用的组合
+常用命令,文件导航,ls -lh 中 -h 的作用是什么,human-readable 以人类可读格式显示文件大小 K M G,加 -h 大小不用自己换算
+常用命令,文件导航,cd 命令的作用是什么,切换当前工作目录 change directory,cd = 切换目录
+常用命令,文件导航,cd .. 的作用是什么,回到上一级目录,.. 代表父目录
+常用命令,文件导航,cd ~ 或 cd 的作用是什么,回到当前用户的家目录,~ = home 目录
+常用命令,文件导航,cd - 的作用是什么,切换到上一次所在的目录,cd - = 在两个目录间切换
+常用命令,文件导航,pwd 命令的作用是什么,打印当前工作目录的完整路径 print working directory,pwd 确认你在哪里
+常用命令,文件导航,which 命令的作用是什么,查找可执行命令的完整路径 如 which python3,which 找到命令在哪
+常用命令,文件导航,whereis 命令的作用是什么,查找命令的二进制文件源代码和手册页的路径,whereis 比 which 更全
+常用命令,文件操作,cp 命令的作用是什么,复制文件或目录 cp -r 递归复制整个目录,cp = copy -r 复制目录
+常用命令,文件操作,mv 命令的作用是什么,移动文件或目录 也用于重命名 mv old.txt new.txt,mv = move 也是改名命令
+常用命令,文件操作,rm 命令的作用是什么,删除文件 rm -r 删除目录 rm -rf 递归强制删除 需格外谨慎,rm -rf 非常危险删前确认
+常用命令,文件操作,touch 命令的作用是什么,创建空文件或更新已有文件的时间戳,touch 新建文件或更新时间
+常用命令,文件操作,mkdir 命令的作用是什么,创建目录 mkdir -p parent/child 递归创建多级目录,mkdir = make directory
+常用命令,文件操作,rmdir 命令的作用是什么,删除空目录 非空目录用 rm -r,rmdir 只删空目录
+常用命令,文件操作,ln -s target linkname 的作用是什么,创建符号链接 软链接 类似 Windows 的快捷方式,ln -s = 创建软链接
+常用命令,文件操作,cp -a 和 cp -r 有什么区别,-a 保留权限 时间戳 软链接等属性 -r 只递归复制,-a 完整保留文件属性
+常用命令,压缩解压,tar -czf archive.tar.gz dir/ 的作用是什么,将 dir 目录打包并 gzip 压缩为 archive.tar.gz,tar 打包 c=创建 z=gzip f=文件
+常用命令,压缩解压,tar -xzf archive.tar.gz 的作用是什么,解压并解包 .tar.gz 文件 x=extract 提取,x=解包 z=gzip f=文件
+常用命令,压缩解压,gzip file 的作用是什么,用 gzip 算法压缩文件 生成 .gz 文件 原文件被替换,gzip = 压缩
+常用命令,压缩解压,gunzip file.gz 的作用是什么,解压 .gz 文件 恢复原始文件,gunzip = 解压 gzip
+常用命令,压缩解压,zip -r archive.zip dir/ 的作用是什么,将目录递归打包为 zip 格式 跨平台兼容,zip 通用压缩格式
+常用命令,文件查看,cat 命令的作用是什么,显示文件全部内容 也可合并多个文件 cat 1.txt 2.txt > 3.txt,cat = concatenate 查看或合并
+常用命令,文件查看,less 命令的作用是什么,分页浏览文件内容 可上下滚动 按 q 退出 按 / 搜索,less 比 cat 更适合大文件
+常用命令,文件查看,more 和 less 的区别是什么,more 只能向下翻 less 可以上下滚 还能搜索 less 功能更强,less > more 功能更强
+常用命令,文件查看,head 命令的作用是什么,显示文件的前 N 行 默认 10 行 head -n 20 显示前 20 行,head 看文件头
+常用命令,文件查看,tail -f log.txt 的作用是什么,实时跟踪文件末尾新增内容 常用于监控日志 Ctrl+C 退出,tail -f = 实时看日志
+常用命令,文件查看,tail -n 50 file 的作用是什么,显示文件最后 50 行,tail -n 看最后几行
+常用命令,文件查看,wc -l file 的作用是什么,统计文件的行数 wc = word count -l 只统计行,-l=行 -w=词 -c=字节
+常用命令,文本搜索,grep "pattern" file 的作用是什么,在文件中搜索匹配的行 默认区分大小写,grep = 文本搜索利器
+常用命令,文本搜索,grep 常用选项有哪些,-R 递归搜索目录 -n 显示行号 -i 忽略大小写 -v 反向匹配,--color 高亮匹配 gnu 三件套 -R -n -i
+常用命令,文本搜索,grep -c pattern file 的作用是什么,统计匹配行数 count,-c 想看有几个匹配
+常用命令,文本搜索,ps aux | grep nginx 中管道 | 的作用是什么,将 ps 的输出传给 grep 过滤出含 nginx 的行,管道 = 串联命令
+常用命令,文件搜索,find . -name "*.txt" 的作用是什么,在当前目录及子目录中搜索所有 .txt 文件,find 搜文件 -name 按名
+常用命令,文件搜索,find . -type f 的作用是什么,搜索所有普通文件 不包括目录,f=文件 d=目录 l=符号链接
+常用命令,文件搜索,find . -mtime -7 的作用是什么,搜索最近 7 天内修改过的文件,-mtime 按修改时间找
+常用命令,文件搜索,find . -size +100M 的作用是什么,搜索大于 100MB 的文件,-size 按大小过滤
+常用命令,文件搜索,locate 和 find 的区别是什么,locate 查预建数据库 速度快但不够实时 find 实时扫描 速度慢但准确,locate 快 find 准
+常用命令,权限管理,chmod 755 file 的含义是什么,所有者 rwx 7 同组 r-x 5 其他人 r-x 5,r=4 w=2 x=1 三位数=owner/group/others
+常用命令,权限管理,chmod 644 file 的含义是什么,所有者 rw- 6 同组 r-- 4 其他人 r-- 4,644=文件标准权限 755=目录标准权限
+常用命令,权限管理,chmod +x script.sh 的作用是什么,给文件添加可执行权限 所有人可执行,chmod +x = 加执行权限
+常用命令,权限管理,chmod -R 755 dir/ 的作用是什么,递归修改目录及其所有子文件的权限,-R = 递归修改
+常用命令,权限管理,chown user:group file 的作用是什么,更改文件的所有者和所属组,chown = change owner
+常用命令,权限管理,chown -R www-data: /var/www 的作用是什么,递归将 /var/www 下所有文件所有权改为 www-data 用户和组,网站文件通常归 www-data
+常用命令,进程管理,ps aux 显示什么信息,当前系统所有运行进程的详细状态 用户 PID CPU 内存 启动时间 命令,ps aux = 查看所有进程
+常用命令,进程管理,top 命令的作用是什么,实时动态显示系统进程和资源占用 CPU/内存 按 q 退出,top 实时监控 按 k 可杀进程
+常用命令,进程管理,kill 1234 的作用是什么,向 PID 为 1234 的进程发送终止信号,默认信号是 TERM 温和终止
+常用命令,进程管理,kill -9 1234 的作用是什么,强制终止 PID 1234 的进程 -9=KILL 进程无法忽略,KILL 信号无法被捕捉 最终手段
+常用命令,进程管理,pkill -f "nginx" 的作用是什么,按进程名模糊匹配并终止匹配的进程,pkill 不用查 PID 直接按名杀
+常用命令,进程管理,nohup command & 的作用是什么,后台运行命令且不受终端关闭影响 输出重定向到 nohup.out,nohup = 终端关了也不停
+常用命令,进程管理,Ctrl+Z 然后 bg 命令的作用是什么,Ctrl+Z 暂停当前任务 bg 将其放入后台继续运行,前台→后台任务
+常用命令,磁盘管理,df -h 的作用是什么,显示磁盘分区使用情况 已用/可用/总空间 -h=人类可读,df -h 看磁盘空间
+常用命令,磁盘管理,du -sh dir/ 的作用是什么,显示目录的总大小 -s=汇总 -h=人类可读,du -sh 看目录占多少空间
+常用命令,磁盘管理,du -h --max-depth=1 的作用是什么,显示当前目录下各子目录的大小 深度限制 1 层,只看一级子目录的大小
+常用命令,内存管理,free -h 的作用是什么,显示系统内存使用情况 总量/已用/空闲/缓存 -h=人类可读,free -h 看内存
+常用命令,系统信息,uname -a 的作用是什么,显示系统内核版本 主机名 架构等全部信息,uname = Unix name
+常用命令,系统信息,uptime 命令的作用是什么,显示系统运行时间 当前在线用户数和负载均值,uptime 看开了多久
+常用命令,系统信息,whoami 命令的作用是什么,显示当前登录用户名,whoami = 我是谁
+常用命令,系统信息,id 命令的作用是什么,显示用户 UID GID 和所属组信息,id 查看用户身份详情
+常用命令,系统信息,env 命令的作用是什么,显示当前会话的所有环境变量,env = 环境变量列表
+常用命令,网络操作,ping www.baidu.com 的作用是什么,测试与目标主机的网络连通性和延迟 Ctrl+C 停止,ping 测能不能通 看延迟
+常用命令,网络操作,ssh user@192.168.1.1 的作用是什么,通过 SSH 协议安全远程登录到目标主机,ssh = secure shell 加密远程登录
+常用命令,网络操作,scp file user@host:/path/ 的作用是什么,通过 SSH 安全地将文件复制到远程主机,scp = ssh + cp 远程传文件
+常用命令,网络操作,rsync -avz dir/ user@host:/path/ 的作用是什么,增量同步目录到远程 -a=归档 -v=详细 -z=压缩,rsync 比 scp 高效 支持增量
+常用命令,网络操作,wget https://example.com/file.zip 的作用是什么,从指定 URL 下载文件 支持断点续传,wget 下载 加 -c 断点续传
+常用命令,网络操作,curl https://api.example.com 的作用是什么,发送 HTTP 请求并显示响应 常用于调试 API,curl API 调试神器
+常用命令,网络操作,ip addr 或 ifconfig 的作用是什么,显示网络接口信息 IP 地址 MAC 地址等,查看本机 IP
+常用命令,网络操作,ss -tlnp 的作用是什么,显示当前监听的 TCP 端口及对应进程,ss 查看端口监听情况
+常用命令,网络操作,curl -I https://example.com 的作用是什么,只获取 HTTP 响应头 HEAD 请求 -I 大写,curl -I 只看头
+常用命令,Shell 基础,echo "Hello" 的作用是什么,在终端打印文本 常用于脚本输出和变量查看,echo = 输出
+常用命令,Shell 基础,history 命令的作用是什么,显示命令历史记录 用 !数字 可重新执行,history 复用之前的命令
+常用命令,Shell 基础,clear 或 Ctrl+L 的作用是什么,清空终端屏幕,清除屏幕内容
+常用命令,Shell 基础,alias ll='ls -la' 的作用是什么,给长命令起别名 ll 就等于 ls -la,alias = 命令别名
+常用命令,Shell 基础,unalias ll 的作用是什么,取消已定义的别名,unalias = 删除别名
+常用命令,Shell 基础,export PATH=/opt/bin:$PATH 的作用是什么,将 /opt/bin 添加到 PATH 环境变量 PATH 是命令搜索路径,export 设置环境变量
+常用命令,Shell 基础,source ~/.bashrc 的作用是什么,在当前 Shell 重新加载配置文件 使修改立即生效不需重新登录,source 立即生效
+常用命令,Shell 基础,重定向 > 和 >> 的区别是什么,> 覆盖写入文件 >> 追加到文件末尾,> 覆盖 >> 追加 注意别用错
+常用命令,Shell 基础,2> error.log 的作用是什么,将标准错误输出 stderr 重定向到 error.log 文件,2> 专门处理错误输出
+常用命令,Shell 基础,command > /dev/null 2>&1 的作用是什么,将标准输出和标准错误都丢弃 静默执行,/dev/null = 黑洞 丢弃所有输出
+常用命令,Shell 基础,&& 和 || 在 Shell 中的含义是什么,&& 前命令成功后执行后命令 || 前命令失败后才执行后命令,&& 串联成功 || 捕捉失败
+常用命令,Shell 基础,Ctrl+C 和 Ctrl+D 的区别是什么,Ctrl+C 中断当前进程 Ctrl+D 发送 EOF 信号 通常表示输入结束,中断进程 vs 结束输入
+常用命令,vi 编辑器,vi 有哪两种模式,命令模式 默认 和 插入模式 输入文字 按 i 进入,Esc 退出插入模式回到命令模式
+常用命令,vi 编辑器,按 i 键在 vi 中做什么,从命令模式进入插入模式 开始输入文字,i = insert 进入编辑
+常用命令,vi 编辑器,在 vi 中如何保存文件并退出,命令模式下输入 :wq enter w=write 保存 q=quit 退出,:wq = 保存并退出
+常用命令,vi 编辑器,在 vi 中如何不保存强制退出,命令模式下输入 :q! enter,! 表示强制执行 放弃修改,:q! = 不保存退出
+常用命令,vi 编辑器,在 vi 中删除一整行按什么,命令模式下按 dd 删除光标所在行,dd = 删行
+常用命令,vi 编辑器,在 vi 中粘贴之前删除的内容按什么,命令模式下按 p paste,p = 粘贴 配合 dd 剪切
+常用命令,vi 编辑器,在 vi 中搜文本按什么,命令模式下按 / 后输入搜索文本 Enter n 下一处 N 上一处,/ = 搜索 类似 less
+常用命令,vi 编辑器,:w 和 :wq 的区别是什么,:w 只保存不退出 :wq 保存并退出,:w=保存 :q=退出 :wq=一起
+常用命令,git 版本控制,git init 的作用是什么,在当前目录初始化一个空的 Git 仓库 创建 .git 目录,git init = 新仓库起点
+常用命令,git 版本控制,git clone <url> 的作用是什么,将远程仓库完整复制到本地 clone,git clone = 下载整个仓库
+常用命令,git 版本控制,git add 的作用是什么,将文件更改添加到暂存区 staging area,暂存区 = 准备提交区域
+常用命令,git 版本控制,git add . 和 git add -A 的区别,. 添加当前目录 -A 添加整个仓库包括删除的文件,推荐用 -A 覆盖所有变更
+常用命令,git 版本控制,git commit -m "msg" 的作用是什么,将暂存区更改提交到本地仓库 -m 附带提交信息,commit = 拍快照
+常用命令,git 版本控制,git status 显示什么,当前工作目录状态 已修改 已暂存 未跟踪的文件,git status = 看改了什么
+常用命令,git 版本控制,git log 显示什么,提交历史记录 包括 commit SHA 作者 日期 提交信息,--oneline 简洁 -p 看详情
+常用命令,git 版本控制,git diff 显示什么,工作目录与暂存区之间的差异 或暂存区与上次提交的差异,git diff = 看具体改了什么
+常用命令,git 版本控制,git branch 做什么,查看分支列表 创建新分支 git branch new 删除分支 git branch -d old,git branch = 管分支
+常用命令,git 版本控制,git checkout -b newbranch 做什么,创建新分支并立即切换到该分支 相当于 branch + checkout,checkout -b = 创建并切换
+常用命令,git 版本控制,git merge feature 做什么,将 feature 分支的更改合并到当前分支,merge = 合并分支
+常用命令,git 版本控制,git pull 做什么,从远程仓库拉取最新代码并自动合并到当前分支 git fetch + git merge,git pull = 拉取并合并
+常用命令,git 版本控制,git push 做什么,将本地提交推送到远程仓库,git push = 上传到远程
+常用命令,git 版本控制,git stash 做什么,临时保存当前修改 让工作目录变干净 之后可 git stash pop 恢复,git stash = 暂存 切换分支前常用
+常用命令,权限提升,sudo command 的作用是什么,以超级用户 root 权限执行 command 需要输入当前用户密码,sudo = 临时管理员权限
+常用命令,权限提升,sudo -i 或 sudo su 的作用是什么,切换到 root 用户的交互式 Shell,获取 root Shell
+常用命令,权限提升,为什么不要直接用 root 登录,安全最佳实践 避免误操作 所有操作有记录可追溯,日常用 sudo 不要直接 root
+常用命令,服务管理,systemctl status nginx 的作用是什么,查看 nginx 服务的运行状态,systemctl = 服务管理器
+常用命令,服务管理,systemctl start nginx 的作用是什么,启动 nginx 服务,启动服务
+常用命令,服务管理,systemctl enable nginx 的作用是什么,设置 nginx 开机自启动,enable = 开机自启
+常用命令,服务管理,journalctl -u nginx -f 的作用是什么,实时查看 nginx 服务的日志 -u=指定服务 -f=实时跟踪,journalctl = 查看系统日志
+常用命令,定时任务,crontab -e 的作用是什么,编辑当前用户的 crontab 定时任务文件,crontab = cron table 定时任务
+常用命令,定时任务,crontab -l 的作用是什么,列出当前用户的所有定时任务,查看已设置的定时任务
+常用命令,定时任务,0 9 * * * /script.sh 的含义是什么,每天早上 9 点执行 script.sh 脚本,cron 表达式 分 时 日 月 周

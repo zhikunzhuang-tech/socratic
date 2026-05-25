@@ -1,0 +1,68 @@
+科目,章节,题目,答案,知识点
+Hermes Agent,核心概念,Hermes Agent 是由谁开发的开源项目,Nous Research MIT 协议 GitHub 134k+ stars,Hermes = Nous Research 开源的自我进化 AI Agent
+Hermes Agent,核心概念,Hermes Agent 的最大特点是什么,自我进化的闭环学习系统 完成任务后自动提炼技能 持续改进,核心差异：能力随使用持续生长非出厂固定
+Hermes Agent,核心概念,Hermes Agent 是聊天机器人吗,不是 它是完全自主的 AI 代理 能执行复杂任务操作文件调用工具,不是聊天机器人是自主执行 Agent
+Hermes Agent,核心概念,Hermes Agent 的软件许可证是什么,MIT 开源协议 可自由使用修改分发 商业用途也允许,MIT = 最宽松的开源协议
+Hermes Agent,核心概念,Hermes Agent 的 GitHub 仓库地址是什么,github.com/NousResearch/hermes-agent,官方仓库名称：hermes-agent
+Hermes Agent,核心概念,Hermes Agent 最新版本是什么,v0.13.0 2026 年 5 月 7 日发布,活跃更新中 社区贡献频繁
+Hermes Agent,安装部署,Hermes Agent 的运行环境要求是什么,Python 3.11+ Linux/macOS/WSL2 不支持原生 Windows,Python 3.11+ 和 Git 必备
+Hermes Agent,安装部署,Hermes Agent 最低需要什么配置,最低 $5 VPS 或 Modal/Daytona/Vercel 等 serverless 平台,$5 就能跑自己的 Agent
+Hermes Agent,安装部署,Hermes Agent 如何安装,git clone 仓库后 pip install 依赖 配置 provider 后运行,安装简单三步：clone install configure
+Hermes Agent,安装部署,Hermes Agent 的数据存储在哪里,本地文件系统 ~/.hermes/ 目录 包含会话记忆技能配置等,数据完全在本地 ~/.hermes/
+Hermes Agent,Skills 系统,Hermes Agent 的自主 Skills 创建机制是什么,完成 5+ 工具调用的复杂任务后自动提炼可复用 Skill 文档,Skills = AI 自动写经验文档
+Hermes Agent,Skills 系统,Skills 在使用过程中如何改进,检测到过时不完整或错误时自动修补 Skill 文档,Skills 不是写死的是持续迭代的
+Hermes Agent,Skills 系统,hermes curator 命令的作用是什么,审查合并归档和清理 Agent 自动创建的 Skills 防止膨胀,curator = Skills 管家定期整理
+Hermes Agent,Skills 系统,Skills 文件存储在哪里,~/.hermes/skills/ 目录 每个技能一个 Markdown 文件,技能是普通 .md 文件
+Hermes Agent,Skills 系统,Hermes Agent 的 Skills 和普通工具的区别是什么,Skills 由 AI 自主生成 传统工具是人工预设的,AI 自创 vs 人类编写
+Hermes Agent,Skills 系统,GEPA 是什么,Genetic-Pareto Prompt Evolution 遗传算法自动优化 Agent 的提示词 ICLR 2026 Oral,GEPA = AI 自动进化自己的提示词
+Hermes Agent,持久记忆,Hermes Agent 如何跨会话保持记忆,通过 MEMORY.md 文件存储 Agent 提炼的关键事实 定期 nudge 提醒更新,MEMORY.md = Agent 的知识库
+Hermes Agent,持久记忆,Agent 记忆更新是自动的吗,Agent 自动写入并定期提醒用户审核更新旧记忆 nudge 机制,有定期提醒机制防止记忆过时
+Hermes Agent,持久记忆,Honcho 集成在 Hermes 中的作用是什么,辩证式用户建模 构建跨会话的持久用户偏好和行为模型,Honcho = 用得越久 AI 越懂你
+Hermes Agent,多平台支持,Hermes Agent 支持多少个消息平台,20+ 平台 Telegram Discord Slack WhatsApp Signal 飞书钉钉微信 QQ 等,一个 Agent 20+ 平台同时在线
+Hermes Agent,多平台支持,多个平台是否需要架多个实例,不需要 同一套 Gateway 进程管理所有平台,一个 Gateway 统一管理
+Hermes Agent,多平台支持,如何给 Hermes 接入新的消息平台,通过插件系统创建 Gateway 插件 放到 ~/.hermes/plugins/ 即可,新平台 = 一个插件文件
+Hermes Agent,终端界面,hermes --tui 启动的是什么,基于 React/Ink 的全功能交互式终端界面 有粘性输入框实时 token 显示,hermes --tui = 终端驾驶舱
+Hermes Agent,终端界面,TUI 模式下可以看到哪些信息,实时 token 流 git 分支显示 子代理监控面板 秒表计时,TUI 是可视化 Agent 控制台
+Hermes Agent,终端界面,不用 TUI 可以吗,可以 默认就是纯命令行模式 TUI 是可选的,纯命令行和 TUI 两种交互方式
+Hermes Agent,模型接入,Hermes Agent 支持哪些 AI 模型提供商,20+ 提供商 Nous Portal(400+) OpenRouter(200+) Anthropic OpenAI Gemini Bedrock Ollama,不限模型随意切换
+Hermes Agent,模型接入,如何切换 AI 模型提供商,修改配置文件中的 provider 字段即可 无需修改代码,改一行配置换模型
+Hermes Agent,模型接入,支持本地模型吗,支持 Ollama LM Studio Hugging Face 等本地推理引擎,隐私优先可使用本地模型
+Hermes Agent,工具系统,Hermes Agent 的并发工具执行是什么意思,最多 8 个 ThreadPoolExecutor Worker 并行执行工具调用,8 路并行 = 速度快 8 倍
+Hermes Agent,工具系统,Hermes 支持几种终端执行环境,6 种 本地 Docker SSH Daytona Singularity Modal serverless,6 种终端后端全覆盖
+Hermes Agent,工具系统,Docker 后端的作用是什么,在隔离容器中执行命令 保护宿主机安全,容器隔离执行更安全
+Hermes Agent,工具系统,SSH 后端的作用是什么,在远程服务器上执行命令 Agent 可以管理多台机器,远程执行管理多机器
+Hermes Agent,插件系统,如何给 Hermes 添加自定义功能,将 Python 文件放入 ~/.hermes/plugins/ 目录即可 无需 fork 源码,插件即文件丢进目录就生效
+Hermes Agent,插件系统,插件支持哪些类型,工具/命令/钩子/TUI 仪表板/Gateway 平台/provider 后端/图片生成后端,插件覆盖几乎所有扩展点
+Hermes Agent,插件系统,插件需要重启 Hermes 吗,需要 修改插件后重启 Hermes 使其生效,重启即加载新功能
+Hermes Agent,安全特性,Hermes Agent 有哪些安全防护,6 层 PII 脱敏 密钥正则脱敏 SSRF 防护 时序攻击缓解 tar 遍历防护 跨会话隔离,内置 6 层安全防护
+Hermes Agent,安全特性,跨会话隔离是什么意思,不同用户或会话之间的数据不会互相泄露,会话间数据隔离
+Hermes Agent,安全特性,Hermes 能防止 API key 泄露吗,能 内置正则检测自动遮蔽 API key 等敏感信息,自动遮蔽密钥
+Hermes Agent,语音模式,Hermes 的语音模式如何工作,按住说话 push-to-talk Whisper 语音转文字 完后文本交给 Agent,按住说话 Whisper 转录 Agent 处理
+Hermes Agent,语音模式,语音模式支持哪些平台,终端和 Discord 语音频道 终端下按空格即可说话,终端和 Discord 都可语音
+Hermes Agent,上下文管理,Hermes 如何处理长对话,内置上下文压缩 达到阈值自动压缩历史 保留关键信息,自动压缩不断片
+Hermes Agent,上下文管理,压缩和清空的区别是什么,压缩保留摘要 清空删除全部历史 压缩更智能,压缩比清空更好
+Hermes Agent,搜索功能,如何搜索历史会话,FTS5 全文搜索引擎索引所有会话 支持 LLM 摘要搜索结果,FTS5 + LLM 摘要 = 找不到都能找到
+Hermes Agent,搜索功能,搜索能搜到什么内容,所有历史对话内容 不只是文件名或标题,全文搜索所有对话
+Hermes Agent,社区生态,Hermes Agent 有中文社区资源吗,有 橙皮书 GitHub alchaincyf/hermes-agent-orange-book 从入门到精通,中文社区资源丰富
+Hermes Agent,社区生态,怎样给 Hermes 贡献代码,在 GitHub 上 Fork 仓库 提交 PR 加入 Nous Research Discord 讨论,开源社区活跃欢迎贡献
+Hermes Agent,社区生态,Hermes Agent 的版本更新频率如何,非常活跃 几乎每周有新版本 社区贡献频繁,更新频繁功能快速演进
+Hermes Agent,进阶主题,什么是 GEPA 相对于 GRPO 的优势,GEPA 比 GRPO 少 35 倍训练数据 效果反而高 6-20% ICLR 2026 Oral,少数据高效果
+Hermes Agent,进阶主题,Hermes 的自我进化框架叫什么,hermes-agent-self-evolution 用 GEPA 算法自动优化提示词和工具描述,自进化 = 遗传算法自动调优
+Hermes Agent,进阶主题,Daytona 后端是什么,Serverless 终端后端 在云端按需启动隔离环境执行命令,Serverless 终端按需运行
+Hermes Agent,进阶主题,Modal 后端是什么,Serverless GPU 平台 可在云端运行 GPU 密集型任务,Serverless GPU 后端
+Hermes Agent,进阶主题,Singularity 后端是什么,高性能计算容器平台 适合科研和 HPC 场景,科研计算 HPC 容器
+Hermes Agent,进阶主题,Context compression 的触发条件是什么,上下文达到可配置的阈值时自动触发 不影响用户操作,静默自动压缩
+Hermes Agent,进阶主题,MCP 集成在 Hermes 中是如何工作的,支持 stdio 和 HTTP transport 支持 OAuth 2.1 PKCE 认证,通过 MCP 连接外部工具
+Hermes Agent,进阶主题,Hermes 支持 OAuth 吗,支持 OAuth 2.1 PKCE 用于 MCP 远程服务器的安全认证,安全认证标准
+Hermes Agent,进阶主题,如何查看 Agent 的执行轨迹和调试信息,查看日志文件或在 TUI 模式下观察实时执行流程,TUI 可实时观察执行
+Hermes Agent,进阶主题,Hermes Agent 与 Claude Code 的主要区别是什么,Hermes 开源多平台自我进化 Claude Code 专注终端编程 Anthropic 闭源,开源 vs 闭源 通用 vs 编程
+Hermes Agent,进阶主题,什么是 SSRF 防护,Hermes 防止 Agent 被利用来探测内网服务,Server-Side Request Forgery 防护
+Hermes Agent,进阶主题,Hermes 的 Home Assistant 集成是什么,控制智能家居设备 灯 空调 门锁等 通过自然语言操作,连接 Home Assistant 控制智能家居
+Hermes Agent,进阶主题,Spotify 集成能做什么,通过 Agent 自然语言控制音乐播放 搜歌 播放 暂停 调整音量,自然语言控制 Spotify
+Hermes Agent,进阶主题,Google Meet 集成的作用是什么,Agent 可加入 Google Meet 会议 自动记录和总结,AI 参会记录
+Hermes Agent,进阶主题,ComfyUI 集成是什么,通过 Agent 调用 ComfyUI 生成 AI 图像,图像生成集成
+Hermes Agent,进阶主题,Piper TTS 集成是什么,本地 TTS 引擎 将 Agent 回复转为语音读出,本地文字转语音
+Hermes Agent,进阶主题,Hermes 支持 Push Notifications 吗,支持 任务完成或需要决策时可发送推送通知到手机,任务完成推送通知
+Hermes Agent,进阶主题,Hermes 的定时任务机制是怎样的,自然语言描述时间和任务 cron 风格或自然语言都可 支持递归和一次性,比传统 cron 更智能
+Hermes Agent,进阶主题,多个 Hermes Agent 实例如何协作,通过共享的 Gateway 和消息平台 可以为不同用户创建独立实例,多实例通过平台联动
+Hermes Agent,进阶主题,Hermes 是否支持中文,完全支持 多平台支持飞书 钉钉 微信 QQ 等中文平台 自然语言理解含中文,由底层模型决定中文能力

@@ -193,7 +193,7 @@ def main():
             if subject == "__exit__":
                 main()
                 return
-            flash = subject in ("biology", "geography")
+            flash = subject in ("biology", "geography", "claude", "hermes", "cmd")
             has_problems = run_review_mode(subject, SUBJECTS, ALL_PROBLEMS, persona, flash=flash)
             if has_problems:
                 break
@@ -278,16 +278,16 @@ def main():
         main()
         return
 
-    # 生物/地理/常用命令 默认走闪卡模式（填空多，适合快速复习）
-    if subject in ("biology", "geography", "cmd") and not args.no_loop and not args.generate and not args.review and not args.book and not args.solve and not args.stats and not args.list:
+    # 生物/地理/claude/hermes/常用命令 默认走闪卡模式（知识问答型，适合快速复习）
+    if subject in ("biology", "geography", "claude", "hermes", "cmd") and not args.no_loop and not args.generate and not args.review and not args.book and not args.solve and not args.stats and not args.list:
         from .flash import run_flash_mode
-        print(f"{Color.DIM}  生物/地理/常用命令 默认闪卡模式，加 --no-loop 进入标准模式{Color.RESET}")
+        print(f"{Color.DIM}  该科目默认闪卡模式，加 --no-loop 进入标准模式{Color.RESET}")
         run_flash_mode(subject, SUBJECTS, ALL_PROBLEMS, persona)
         main()
         return
 
-    # 按主题学习模式（生物/地理/常用命令走闪卡，其余科目先选模块）
-    if subject not in ("biology", "geography", "cmd") and not args.topic and not args.generate and not args.review and not args.book and not args.solve and not args.stats and not args.list:
+    # 按主题学习模式（闪卡类科目跳过，其余科目先选模块）
+    if subject not in ("biology", "geography", "claude", "hermes", "cmd") and not args.topic and not args.generate and not args.review and not args.book and not args.solve and not args.stats and not args.list:
         topics = sorted(set(p["topic"] for p in ALL_PROBLEMS[subject]))
         if not topics:
             print(f"{Color.RED}⚠ 题库为空{Color.RESET}")

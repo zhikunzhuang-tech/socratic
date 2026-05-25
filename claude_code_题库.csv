@@ -1,0 +1,113 @@
+科目,章节,题目,答案,知识点
+Claude Code,基本命令,/init 命令的作用是什么,扫描项目并自动生成 CLAUDE.md 文件（项目记忆文档）,/init 是进入项目的第一步
+Claude Code,基本命令,/help 命令的作用是什么,列出所有可用的斜杠命令,/help 查看完整命令列表
+Claude Code,基本命令,/status 命令显示什么信息,显示当前版本、模型、账户、API 连接状态和工具状态,/status 查看环境和连接状态
+Claude Code,基本命令,/clear 命令的作用是什么,清空整个对话历史释放全部上下文窗口,/clear = 硬重置，全新开始
+Claude Code,基本命令,/compact 命令的作用是什么,压缩当前会话上下文将冗长历史提炼为摘要以释放 token 空间,/compact 保留摘要 /clear 全部清空
+Claude Code,基本命令,/copy 命令的作用是什么,将上一次回复复制到系统剪贴板,/copy 快速复制回复内容
+Claude Code,模型管理,/model 命令可以切换到哪些模型,Sonnet Opus Haiku 三种,Opus=最强 Sonnet=均衡 Haiku=最快
+Claude Code,模型管理,/effort 命令设置什么,推理深度级别 low/medium/high/xhigh/max 五档,effort = 思考深度 从快到慢
+Claude Code,模型管理,/fast 模式是什么,低延迟输出模式 使用相同模型但输出速度约 2.5 倍,/fast 速度优先 适合简单任务
+Claude Code,模型管理,Claude Opus 4.7 的定位是什么,Anthropic 最强的编码模型 2026 年 4 月发布,Opus 4.7 是最强编码模型 xhigh effort
+Claude Code,会话管理,/resume 命令的作用是什么,列出历史会话并选择恢复 从中断处继续,/resume 让长期任务不怕中断
+Claude Code,会话管理,/rename 命令的作用是什么,给当前会话命名 方便后续通过 /resume 识别,/rename 方便管理多个会话
+Claude Code,会话管理,/rewind 命令的作用是什么,撤销最近的代码更改和/或对话步骤 回到之前的检查点,/rewind 回退到之前的状态
+Claude Code,会话管理,/fork 命令的作用是什么,从当前对话位置分叉出一个实验性分支会话 原会话不受影响,/fork = 对话实验分支
+Claude Code,会话管理,/export 命令的作用是什么,导出当前对话到文件或剪贴板,/export 保存对话记录
+Claude Code,会话管理,按 Ctrl+D 在 Claude Code 中的效果是什么,退出 Claude Code 程序,Ctrl+D = 退出程序
+Claude Code,会话管理,/teleport 命令的作用是什么,将 Web/iOS 端的会话拉到终端继续,/teleport 跨设备迁移会话
+Claude Code,会话管理,claude -c 参数的作用是什么,继续最近一次会话 continue 自动恢复上次中断的对话,claude -c 最快恢复上次会话
+Claude Code,CLI 参数,claude -p "prompt" 中 -p 的含义是什么,print mode 非交互式单次查询 输出结果后退出,claude -p 用于脚本和 CI
+Claude Code,CLI 参数,claude --resume <id> 的作用是什么,恢复指定 ID 的历史会话,--resume 精确恢复某个会话
+Claude Code,CLI 参数,claude --from-pr <#> 的作用是什么,从指定 PR 的上下文恢复会话,--from-pr 从 PR 继续工作
+Claude Code,CLI 参数,claude --bare 参数的作用是什么,跳过 hooks/skills/plugins/MCP 自动发现 加速启动,--bare 极简启动用于 CI
+Claude Code,CLI 参数,claude --allowedTools 的作用是什么,预先授权特定工具 如 --allowedTools "Bash Read Edit",--allowedTools 减少权限提示
+Claude Code,CLI 参数,claude --permission-mode acceptEdits 的作用是什么,自动批准编辑类和常见文件系统操作,acceptEdits 自动批准写操作
+Claude Code,CLI 参数,claude --output-format json 的作用是什么,以结构化 JSON 格式输出结果 适合程序解析,--output-format 用于程序化调用
+Claude Code,CLI 参数,claude --verbose 的作用是什么,输出详细的执行日志 用于调试,--verbose 查看详细执行过程
+Claude Code,CLI 参数,claude -w "task" 的作用是什么,创建隔离的 git worktree 安全实验,-w 在隔离环境中安全试验
+Claude Code,交互技巧,输入 @ + 文件路径的作用是什么,触发文件自动补全 将指定文件作为上下文引用,@符号是最常用的文件引用方式
+Claude Code,交互技巧,输入 ! + 命令如 !ls 的作用是什么,直接在终端中执行该命令 不经过 Claude 处理,!command = 直接跑命令绕过 AI
+Claude Code,交互技巧,输入 # + 文本如 #记住 的作用是什么,快速将文本添加到 CLAUDE.md 记忆文件中,#文本 = 一句话写项目记忆
+Claude Code,交互技巧,按 Tab 键在 Claude Code 中的功能,自动补全命令/文件路径 或切换 thinking 显示,Tab = 补全 + thinking 切换
+Claude Code,交互技巧,按 Shift+Enter 的作用是什么,输入多行文本而不发送消息,Shift+Enter = 换行不发送
+Claude Code,交互技巧,按 Alt+P / Alt+N 的作用是什么,浏览上一条/下一条消息,Alt+P/N 浏览消息历史
+Claude Code,监控诊断,/cost 命令显示什么,当前会话的 token 消耗量和费用估算,/cost 实时查看花费
+Claude Code,监控诊断,/context 命令的作用是什么,可视化显示上下文窗口使用情况 彩色使用率图表,/context 看还有多少 token 可用
+Claude Code,监控诊断,/usage 命令显示什么,套餐用量详情 各会话/子代理/缓存命中/长上下文的消耗占比和优化建议,/usage 套餐级统计 + 省钱建议
+Claude Code,监控诊断,/stats 命令的作用是什么,可视化历史使用数据 每日用量/连续天数等,/stats 看历史使用趋势
+Claude Code,监控诊断,/doctor 命令的作用是什么,诊断安装环境、网络连接、认证状态和 MCP 配置问题,/doctor 出问题时先看它
+Claude Code,监控诊断,/debug 命令的作用是什么,开启详细调试日志 用于系统排查,/debug 深入排查问题
+Claude Code,监控诊断,/release-notes 命令的作用是什么,查看当前版本的更新日志,/release-notes 了解新功能
+Claude Code,监控诊断,/insights 命令的作用是什么,生成会话分析报告 包含模式/效率/改进建议,/insights 优化使用习惯
+Claude Code,MCP 扩展,/mcp 命令的作用是什么,管理 MCP Model Context Protocol 服务器的连接 添加移除重连外部工具,MCP 让 Claude 连接外部服务
+Claude Code,MCP 扩展,/skills 命令的作用是什么,列出所有可用的 Skills 包括内置和用户自定义的,/skills 查看可用技能
+Claude Code,MCP 扩展,/hooks 命令的作用是什么,查看和配置生命周期钩子 如启动前/停止后执行的命令,/hooks 自动化工作流
+Claude Code,MCP 扩展,/plugin 命令的作用是什么,管理 Claude Code 插件 安装/卸载/更新,/plugin 扩展功能
+Claude Code,MCP 扩展,/sandbox 命令的作用是什么,配置沙箱执行环境 控制命令执行的安全边界,/sandbox 安全执行环境配置
+Claude Code,MCP 扩展,什么是 MCP Model Context Protocol,让 AI 助手与外部工具/数据源交互的开放协议,MCP = 连接外部世界的桥梁
+Claude Code,项目管理,/diff 命令的作用是什么,显示当前会话中所有文件变更的交互式差异对比视图,/diff 查看变更
+Claude Code,项目管理,/commit 命令做什么,自动分析变更内容生成规范的 git commit message 并执行提交,/commit = AI 写提交信息 + 执行
+Claude Code,项目管理,/review 命令做什么,审查当前 PR 或变更差异 提供代码评审意见,/review = AI 代码审查
+Claude Code,项目管理,/pr-comments 命令做什么,拉取 GitHub PR 上的 review 评论 逐个分析并自动处理每条反馈,/pr-comments = 自动处理 PR 评审
+Claude Code,项目管理,/simplify 命令做什么,审查变更代码中的质量问题/过度工程化并给出简化建议,/simplify 代码简化审查
+Claude Code,项目管理,/security-review 做什么,扫描当前分支的变更 检测安全漏洞 注入 XSS 敏感数据泄露等,/security-review = 提交前安全门禁
+Claude Code,项目管理,/memory 命令的作用是什么,查看和编辑 CLAUDE.md 记忆文件,/memory 管理项目记忆
+Claude Code,项目管理,/search 命令的作用是什么,全局搜索代码库中的内容,/search 快速定位代码
+Claude Code,项目管理,/open 命令的作用是什么,显式将文件添加到当前上下文,/open 手动添加文件引用
+Claude Code,项目管理,/ls 命令的作用是什么,列出当前工作目录的文件,/ls 浏览项目目录
+Claude Code,项目管理,/add-dir 命令的作用是什么,添加另一个目录到工作上下文,/add-dir 扩展工作目录范围
+Claude Code,工作模式,/plan 模式是什么,只读规划模式 Claude 只能浏览和分析代码 不能编辑文件,/plan 只看不做 /execute 开始动手
+Claude Code,工作模式,/execute 命令的作用是什么,退出 /plan 规划模式并开始执行代码修改,/execute 批准执行计划
+Claude Code,工作模式,/output-style 命令的作用是什么,设置输出风格 Concise/Educational/Reviewer/Prototyping,/output-style 调整回答风格
+Claude Code,工作模式,/focus 命令的作用是什么,进入专注视图 简化界面干扰,/focus 专注模式
+Claude Code,工作模式,/goal 命令的作用是什么,设置完成条件 Claude 按条件跨轮次工作直到达成目标,/goal 设定目标自动完成
+Claude Code,快捷键,按 Esc 键在 Claude Code 中做什么,取消当前正在生成的回复,Esc = 紧急刹车取消输出
+Claude Code,快捷键,按 Esc Esc 两次做什么,打开 rewind 菜单 可回退代码和对话,Esc Esc = 打开回退菜单
+Claude Code,快捷键,按 Ctrl+R 做什么,搜索命令历史,Ctrl+R 搜索历史命令
+Claude Code,快捷键,按 Ctrl+T 做什么,切换任务列表显示/隐藏,Ctrl+T 查看任务列表
+Claude Code,快捷键,按 Ctrl+L 做什么,清屏 仅视觉清理不影响上下文,Ctrl+L = 清屏
+Claude Code,快捷键,按 Shift+Tab 做什么,循环切换模式 标准自动接受计划,Shift+Tab 切换权限模式
+Claude Code,任务管理,/tasks 命令的作用是什么,列出和管理所有正在运行的后台任务,/tasks = 后台任务控制面板
+Claude Code,任务管理,/agents 命令的作用是什么,管理子代理 sub-agent 进行并行工作,/agents 管理并行子代理
+Claude Code,任务管理,/batch 命令做什么,在 5-30 个并行 git worktree 中大规模执行批量变更,/batch = 大规模并行重构
+Claude Code,任务管理,/schedule 命令的作用是什么,创建定时任务 例如每天自动审查 PR,/schedule 自动定时执行任务
+Claude Code,任务管理,/loop 命令的作用是什么,按指定间隔循环执行某命令 如 /loop 5m /test,/loop 循环自动执行
+Claude Code,配置管理,CLAUDE.md 文件的作用是什么,项目级持久记忆文件 存储项目描述技术栈编码规则每会话自动加载,CLAUDE.md = 项目说明书 AI 每会话必读
+Claude Code,配置管理,/config 命令的作用是什么,打开交互式配置菜单 管理运行时设置,/config 调整运行参数
+Claude Code,配置管理,/permissions 命令的作用是什么,查看和管理工具权限规则,/permissions 控制工具访问权
+Claude Code,配置管理,/theme 命令的作用是什么,切换终端颜色主题,/theme 个性化外观
+Claude Code,配置管理,/vim 命令的作用是什么,启用 Vim 键绑定模式,/vim 用 Vim 方式操作输入
+Claude Code,配置管理,/tui 命令的作用是什么,切换经典和新版无闪烁渲染模式,/tui 切换渲染引擎
+Claude Code,配置管理,自定义命令如何创建,在 .claude/commands/ 目录下创建 .md 文件,自定义命令 = 放入 commands 目录
+Claude Code,配置管理,~/.claude/settings.json 的作用是什么,全局用户配置文件 作用于所有项目的默认设置,全局设置文件
+Claude Code,其他功能,/powerup 命令做什么,启动交互式动画教学 学习 Claude Code 的新功能,/powerup 交互式学习教程
+Claude Code,其他功能,/voice 命令做什么,切换按住说话语音输入模式 按住空格键录音,/voice 语音输入
+Claude Code,其他功能,/login 命令的作用是什么,登录 Anthropic 账户,/login 登录账户
+Claude Code,其他功能,/logout 命令的作用是什么,退出当前 Anthropic 账户,/logout 退出登录
+Claude Code,其他功能,/bug 命令的作用是什么,提交 bug 报告 附带会话日志,/bug 提交问题反馈
+Claude Code,其他功能,/mobile 命令的作用是什么,显示二维码下载 Claude 手机 app,/mobile 获取手机版
+Claude Code,其他功能,/desktop 命令的作用是什么,将当前会话切换到桌面版应用,/desktop 转到桌面版
+Claude Code,快捷键,Ctrl+C 在 Claude Code 中的作用是什么,中断当前正在执行的命令或任务,Ctrl+C = 中断执行
+Claude Code,快捷键,按住 Space 空格键 做什么,触发 push-to-talk 语音输入 松开后转录并发送,空格键 = 语音输入
+Claude Code,任务管理,/schedule 和 /loop 的区别是什么,/schedule 创建持久定时任务存活多天 /loop 只在当前会话循环,/schedule 持久 /loop 会话内
+Claude Code,配置管理,~/.claude/projects/ 目录存储什么,每个项目的会话历史记录,项目会话存档
+Claude Code,配置管理,~/.claude/skills/ 目录是什么,自定义技能目录 放 .md 文件创建自定义技能,自定义技能目录
+Claude Code,配置管理,/terminal-setup 命令的作用是什么,配置终端键绑定和显示设置,/terminal-setup 调整终端行为
+Claude Code,工作模式,Shift+Tab 在各模式间怎么切换,按一次切换到 auto-accept 再按切换到 plan 再按回到 normal 循环,三模式循环切换
+Claude Code,配置管理,.claude/settings.json 和项目级 settings.json 的优先级,项目级 > 用户全局级 项目设置覆盖全局,项目设置优先
+Claude Code,配置管理,/statusline 命令的作用是什么,配置底部状态栏显示的内容,/statusline 自定义状态栏
+Claude Code,其他功能,/chrome 命令的作用是什么,管理 Chrome 浏览器扩展 设置,Chrome 扩展集成
+Claude Code,其他功能,/install-github-app 做什么,为仓库安装 Claude GitHub App 实现 PR 自动审查等,/install-github-app GitHub 集成
+Claude Code,其他功能,/install-slack-app 做什么,安装 Claude Slack App 在 Slack 中使用 Claude,/install-slack-app Slack 集成
+Claude Code,项目管理,/build 命令的作用是什么,执行项目的构建命令,/build 构建项目
+Claude Code,项目管理,/test 命令的作用是什么,运行测试套件/test 运行测试
+Claude Code,项目管理,/lint 命令的作用是什么,运行代码检查 格式化/lint,/lint 代码检查
+Claude Code,其他功能,/ide 命令的作用是什么,管理 IDE 集成状态 如 VS Code JetBrains 等,/ide 管理 IDE 插件连接
+Claude Code,安全审查,/security-check 做什么,快速扫描当前环境中的已知威胁,/security-check 快速安全检查
+Claude Code,安全审查,/security-audit 做什么,6 阶段全面安全态势评估,/security-audit 全面安全审计
+Claude Code,安全审查,/update-threat-db 做什么,同步本地威胁数据库与最新安全研究,/update-threat-db 更新威胁库
+Claude Code,工作模式,/simplify 和 /review 的区别,/simplify 专注代码质量和过度工程化 /review 全面代码评审,简化 vs 全面审查
+Claude Code,其他功能,/stickers 做什么,订购 Claude Code 贴纸,/stickers 周边商品
+Claude Code,基本命令,/usage-report 做什么,生成月度使用量 HTML 报告,/usage-report 月度报告
+Claude Code,任务管理,/ultrareview 做什么,云端多 Agent 并行综合性代码审查 含对抗性批判,云端并行多 Agent 深度审查
