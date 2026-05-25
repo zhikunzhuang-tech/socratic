@@ -17,13 +17,18 @@ def select_subject(subjects: dict, show_review: bool = True) -> str:
     """交互式选择科目，返回科目key或 __review__ / __exit__。
     show_review=False 时隐藏「错题重做」选项并显示每科待复习错题数。"""
     keys = list(subjects.keys())
-    # 错题模式下，提前加载每个科目的错题数
+    # 错题模式下，提前加载每个科目的错题数（只统计题库中存在的题目）
     wrong_counts = {}
     if not show_review:
         for key in keys:
             p = load_progress(key)
             records = p.get("wrong_records", {})
-            wrong_counts[key] = sum(1 for recs in records.values() for r in recs if not r["solved"])
+            valid_ids = {prob["id"] for prob in ALL_PROBLEMS[key]}
+            wrong_counts[key] = sum(
+                1 for pid, recs in records.items()
+                if pid in valid_ids
+                for r in recs if not r["solved"]
+            )
 
     print(f"\n{Color.BOLD}{Color.CYAN}🧠 苏格拉底互动学习{Color.RESET}")
     print(f"{Color.DIM}请选择要练习的科目：{Color.RESET}\n")
